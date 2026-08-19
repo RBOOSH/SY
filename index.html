@@ -2,11 +2,11 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<title>RBooSH™ مجموعة أبو سليمان</title>
+<title>RBooSH™ Abu Sulayman Group</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-body{font-family:'Tahoma';background:#0a0a0a;color:#fff;margin:0;text-align:center}
-.header{background:#000;padding:25px 10px;border-bottom:2px solid #00aaff}
+body{font-family:'Tahoma';background:#0a0a0a;color:#fff;margin:0;text-align:center; transition:0.3s;}
+.header{background:#000;padding:25px 10px;border-bottom:2px solid #00aaff; position:relative;}
 .logo{width:340px;max-width:95%;margin:10px auto; border-radius:12px;}
 h1{color:#00aaff;margin:5px 0; font-size:22px;}
 h1 sup{font-size:13px; vertical-align:super; color:#ccc; margin-right:2px; font-weight:bold;}
@@ -16,79 +16,96 @@ h2{color:#00aaff}
 .payment b{color:#00aaff; display:block; margin-bottom:5px; font-size:16px;}
 .offer{color:#00ff88; font-size:14px; margin-top:12px; font-weight:bold;}
 .btn{display:flex; align-items:center; justify-content:center; gap:8px; background:#25D366;color:#fff;padding:14px;margin:10px 20px;border-radius:10px;text-decoration:none;font-weight:bold;font-size:16px}
-.btn:hover{background:#1ebe5d}
 .btn-fb{display:flex; align-items:center; justify-content:center; gap:8px; background:#1877F2;color:#fff;padding:14px;margin:10px 20px;border-radius:10px;text-decoration:none;font-weight:bold;font-size:16px}
-.btn-fb:hover{background:#0e65d3}
 .box{background:#1a1a1a;margin:15px;padding:20px;border-radius:12px;border:1px solid #333}
 .map{color:#00aaff;text-decoration:none}
 .footer{background:#000; padding:25px 10px; margin-top:20px; border-top:2px solid #00aaff;}
 .footer-slogan{color:#00ff88; font-size:17px; font-weight:bold; margin-bottom:8px;}
 .footer-copy{color:#888; font-size:13px;}
+/* زر اللغة */
+.lang-btn{position:absolute; top:15px; left:15px; background:#00aaff; color:#000; border:none; padding:8px 15px; border-radius:8px; font-weight:bold; cursor:pointer; font-size:14px;}
+.lang-btn:hover{background:#0088cc}
+[dir="ltr"]{text-align:left;}
+[dir="ltr"] .lang-btn{left:auto; right:15px;}
 </style>
 </head>
 <body>
 
 <div class="header">
+<button class="lang-btn" onclick="toggleLang()">EN / AR</button>
 <img src="logo.png" class="logo">
-<h1>RBooSH<sup>™</sup> مجموعة أبو سليمان ⚡ لتجارة الكهرباء</h1>
-<p>كيان متخصص في توريد وتجارة المعدات الكهربائية، خدمات التركيب، والاستشارات في مجال الطاقة الكهربائية</p>
+<h1 data-ar="RBooSH<sup>™</sup> مجموعة أبو سليمان ⚡ لتجارة الكهرباء" data-en="RBooSH<sup>™</sup> Abu Sulayman Group ⚡ Electrical Trading">RBooSH<sup>™</sup> مجموعة أبو سليمان ⚡ لتجارة الكهرباء</h1>
+<p data-ar="كيان متخصص في توريد وتجارة المعدات الكهربائية، خدمات التركيب، والاستشارات في مجال الطاقة الكهربائية" data-en="Specialized in supply and trade of electrical equipment, installation services, and electrical energy consulting">كيان متخصص في توريد وتجارة المعدات الكهربائية، خدمات التركيب، والاستشارات في مجال الطاقة الكهربائية</p>
 </div>
 
 <div class="box">
-<h2>خدماتنا</h2>
-<p>بيع لوحات توزيع، كابلات، منظمات، قواطع، كندكتورات وأجهزة كهربائية<br>نخدم الشركات الصناعية والتجارية والأفراد</p>
+<h2 data-ar="خدماتنا" data-en="Our Services">خدماتنا</h2>
+<p data-ar="بيع لوحات توزيع، كابلات، منظمات، قواطع، كندكتورات وأجهزة كهربائية<br>نخدم الشركات الصناعية والتجارية والأفراد" data-en="Sale of distribution panels, cables, stabilizers, circuit breakers, contactors and electrical devices<br>We serve industrial companies, commercial businesses, and individuals">بيع لوحات توزيع، كابلات، منظمات، قواطع، كندكتورات وأجهزة كهربائية<br>نخدم الشركات الصناعية والتجارية والأفراد</p>
 </div>
 
 <div class="box">
-<h2>فروعنا</h2>
-<p><b>1. المركز الرئيسي - الحسكة</b> ⭐<br><a class="map" href="https://maps.app.goo.gl/2rj3FpMhs2bfFSRf7">عرض الموقع على الخريطة</a></p>
-<p><b>2. فرع القامشلي</b><br><a class="map" href="https://maps.app.goo.gl/3pfCJqsVj5XU28WW6">عرض الموقع على الخريطة</a></p>
+<h2 data-ar="فروعنا" data-en="Our Branches">فروعنا</h2>
+<p><b data-ar="1. المركز الرئيسي - الحسكة" data-en="1. Main Center - Al-Hasakah">1. المركز الرئيسي - الحسكة</b> ⭐<br><a class="map" href="https://maps.app.goo.gl/2rj3FpMhs2bfFSRf7" data-ar="عرض الموقع على الخريطة" data-en="View on Map">عرض الموقع على الخريطة</a></p>
+<p><b data-ar="2. فرع القامشلي" data-en="2. Qamishli Branch">2. فرع القامشلي</b><br><a class="map" href="https://maps.app.goo.gl/3pfCJqsVj5XU28WW6" data-ar="عرض الموقع على الخريطة" data-en="View on Map">عرض الموقع على الخريطة</a></p>
 </div>
 
 <div class="box">
-<h2>طرق الدفع المتاحة</h2>
+<h2 data-ar="طرق الدفع المتاحة" data-en="Payment Methods">طرق الدفع المتاحة</h2>
 <div class="payment">
-<b>💵 الدفع في المتجر</b>
-كاش عند الاستلام من أي فرع
-</div>
-<div class="payment">
-<b>📱 شام كاش</b>
-الدفع الالكتروني عبر ShamCash
+<b data-ar="💵 الدفع في المتجر" data-en="💵 Cash Payment">💵 الدفع في المتجر</b>
+<span data-ar="كاش عند الاستلام من أي فرع" data-en="Cash on delivery from any branch">كاش عند الاستلام من أي فرع</span>
 </div>
 <div class="payment">
-<b>💳 Masary</b>
-الدفع الالكتروني عبر مصاري
+<b data-ar="📱 شام كاش" data-en="📱 ShamCash">📱 شام كاش</b>
+<span data-ar="الدفع الالكتروني عبر ShamCash" data-en="Electronic payment via ShamCash">الدفع الالكتروني عبر ShamCash</span>
 </div>
 <div class="payment">
-<b>📋 الدفع بالتقسيط</b>
-للشركات والمشاريع الكبيرة بشروط ميسرة
+<b data-ar="💳 Masary" data-en="💳 Masary">💳 Masary</b>
+<span data-ar="الدفع الالكتروني عبر مصاري" data-en="Electronic payment via Masary">الدفع الالكتروني عبر مصاري</span>
 </div>
-<p class="offer">✨ اسأل عن العروض والخصومات الخاصة عند الدفع بشام كاش ومصاري</p>
+<div class="payment">
+<b data-ar="📋 الدفع بالتقسيط" data-en="📋 Installments">📋 الدفع بالتقسيط</b>
+<span data-ar="للشركات والمشاريع الكبيرة بشروط ميسرة" data-en="For companies and large projects with easy terms">للشركات والمشاريع الكبيرة بشروط ميسرة</span>
 </div>
-
-<div class="box">
-<h2>لماذا تختارنا</h2>
-<span class="badge">🏆 ضمان حسب المنتج</span>
-<span class="badge">📄 فواتير نظامية</span>
-<span class="badge">⚡ توريد سريع</span>
+<p class="offer" data-ar="✨ اسأل عن العروض والخصومات الخاصة عند الدفع بشام كاش ومصاري" data-en="✨ Ask about special offers and discounts when paying with ShamCash and Masary">✨ اسأل عن العروض والخصومات الخاصة عند الدفع بشام كاش ومصاري</p>
 </div>
 
 <div class="box">
-<h2>تواصل معنا</h2>
-<a class="btn" href="https://wa.me/963966436341">📱 واتساب ابو سليمان: +963 966 436 341</a>
-<a class="btn" href="https://wa.me/4915216839609">📱 واتساب سليمان ربوشي: +49 152 16839609</a>
-<a class="btn-fb" href="https://www.facebook.com/share/1PTgggjbw1/">📘 الصفحة الرسمية على الفيسبوك</a>
+<h2 data-ar="لماذا تختارنا" data-en="Why Choose Us">لماذا تختارنا</h2>
+<span class="badge" data-ar="🏆 ضمان حسب المنتج" data-en="🏆 Product Warranty">🏆 ضمان حسب المنتج</span>
+<span class="badge" data-ar="📄 فواتير نظامية" data-en="📄 Official Invoices">📄 فواتير نظامية</span>
+<span class="badge" data-ar="⚡ توريد سريع" data-en="⚡ Fast Delivery">⚡ توريد سريع</span>
 </div>
 
 <div class="box">
-<h2>ساعات العمل</h2>
-<p>السبت - الخميس: 8:00 ص - 7:30 م<br>الجمعة: حالات الطوارئ فقط</p>
+<h2 data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</h2>
+<a class="btn" href="https://wa.me/963966436341">📱 WhatsApp Abu Sulayman: +963 966 436 341</a>
+<a class="btn" href="https://wa.me/4915216839609">📱 WhatsApp Sulayman Rabooshi: +49 152 16839609</a>
+<a class="btn-fb" href="https://www.facebook.com/share/1PTgggjbw1/">📘 Facebook Page</a>
+</div>
+
+<div class="box">
+<h2 data-ar="ساعات العمل" data-en="Working Hours">ساعات العمل</h2>
+<p data-ar="السبت - الخميس: 8:00 ص - 7:30 م<br>الجمعة: حالات الطوارئ فقط" data-en="Saturday - Thursday: 8:00 AM - 7:30 PM<br>Friday: Emergency cases only">السبت - الخميس: 8:00 ص - 7:30 م<br>الجمعة: حالات الطوارئ فقط</p>
 </div>
 
 <div class="footer">
-<p class="footer-slogan">RBooSH™ نمدك بالطاقة... ونضمن استمرارها</p>
-<p class="footer-copy">© 2026 جميع الحقوق محفوظة - مجموعة أبو سليمان</p>
+<p class="footer-slogan" data-ar="RBooSH™ نمدك بالطاقة... ونضمن استمرارها" data-en="RBooSH™ We Power You... We Ensure Continuity">RBooSH™ نمدك بالطاقة... ونضمن استمرارها</p>
+<p class="footer-copy" data-ar="© 2026 جميع الحقوق محفوظة - مجموعة أبو سليمان" data-en="© 2026 All Rights Reserved - Abu Sulayman Group">© 2026 جميع الحقوق محفوظة - مجموعة أبو سليمان</p>
 </div>
+
+<script>
+let currentLang = 'ar';
+function toggleLang(){
+  currentLang = currentLang === 'ar' ? 'en' : 'ar';
+  document.documentElement.lang = currentLang;
+  document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+  
+  document.querySelectorAll('[data-ar]').forEach(el => {
+    el.innerHTML = el.getAttribute('data-' + currentLang);
+  });
+}
+</script>
 
 </body>
 </html>
