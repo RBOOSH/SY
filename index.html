@@ -7,7 +7,7 @@
 <style>
   *{margin:0; padding:0; box-sizing:border-box; font-family:'Tahoma', sans-serif;}
   body{background:#000; color:#fff; line-height:1.8;}
-.container{max-width:900px; margin:0 auto; padding:20px;}
+.container{max-width:900px; margin:0 auto; padding:20px; padding-top:80px;}
 .logo{text-align:center; margin:20px 0;}
 .logo img{max-width:250px;}
   h2{color:#00bfff; text-align:center; font-size:26px; margin-bottom:15px;}
@@ -17,9 +17,27 @@
 .btn-fb{background:#1877F2; color:#fff;}
 .btn-calc{background:#1e3a8a; color:#fff; font-size:18px; padding:16px 35px; display:inline-block;}
 
-.lang-switch {position:fixed; top:10px; left:10px; z-index:999; display:flex; gap:6px;}
-.lang-btn {background:#222; color:#aaa; border:1px solid #333; padding:8px 14px; border-radius:8px; cursor:pointer; font-weight:bold;}
+.header-top{position:fixed; top:0; left:0; right:0; background:#000; border-bottom:2px solid #1e3a8a; padding:12px 15px; z-index:1000; display:flex; justify-content:space-between; align-items:center;}
+.menu-btn{font-size:28px; background:none; border:none; color:#00bfff; cursor:pointer;}
+.lang-switch {display:flex; gap:6px;}
+.lang-btn {background:#222; color:#aaa; border:1px solid #333; padding:6px 12px; border-radius:8px; cursor:pointer; font-weight:bold; font-size:12px;}
 .lang-btn.active {background:#00bfff; color:#000; border-color:#00bfff;}
+
+/* القائمة الجانبية */
+.sidebar {
+  position: fixed; top: 0; right: -300px; width: 280px; height: 100%;
+  background: #111; border-left: 2px solid #1e3a8a; z-index: 1001;
+  transition: right 0.3s ease; padding: 20px;
+}
+.sidebar.open { right: 0; }
+[dir="ltr"].sidebar { right: auto; left: -300px; border-left: none; border-right: 2px solid #1e3a8a; }
+[dir="ltr"].sidebar.open { left: 0; }
+.sidebar h3{color:#00bfff; margin-bottom:20px; text-align:center;}
+.sidebar a{display:block; padding:14px; color:#fff; text-decoration:none; border-bottom:1px solid #222; font-size:16px;}
+.sidebar a:hover{background:#1e3a8a; border-radius:8px;}
+.close-btn{background:none; border:none; color:#fff; font-size:24px; float:left; cursor:pointer;}
+.overlay{position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.7); display:none; z-index:1000;}
+.overlay.show{display:block;}
 
 .payment-item,.why-item {border:1px solid #1e3a8a; padding:15px; border-radius:10px; margin:10px 0; text-align:center;}
   footer{text-align:center; padding:30px 20px; color:#0f0; font-size:14px;}
@@ -27,10 +45,26 @@
 </head>
 <body>
 
-<div class="lang-switch">
-  <button class="lang-btn active" onclick="setLang('ar')">AR</button>
-  <button class="lang-btn" onclick="setLang('en')">EN</button>
-  <button class="lang-btn" onclick="setLang('ku')">KU</button>
+<!-- الهيدر الثابت -->
+<div class="header-top">
+  <button class="menu-btn" onclick="openMenu()">☰</button>
+  <div class="lang-switch">
+    <button class="lang-btn active" onclick="setLang('ar')">AR</button>
+    <button class="lang-btn" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" onclick="setLang('ku')">KU</button>
+  </div>
+</div>
+
+<!-- القائمة الجانبية -->
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
+<div class="sidebar" id="sidebar">
+  <button class="close-btn" onclick="closeMenu()">×</button>
+  <h3 id="menu_title">القائمة</h3>
+  <a href="index.html" id="menu_home">الرئيسية</a>
+  <a href="calculator.html" id="menu_calc">الحاسبة</a>
+  <a href="products.html" id="menu_products">المنتجات</a>
+  <a href="offers.html" id="menu_offers">العروض</a>
+  <a href="about.html" id="menu_about">من نحن</a>
 </div>
 
 <div class="container">
@@ -48,7 +82,6 @@
     <p id="services_desc">بيع لوحات التوزيع، الكابلات، مثبتات الجهد، القواطع، الكونتاكتورات والأجهزة الكهربائية<br>نخدم الشركات الصناعية، المحلات التجارية، والأفراد</p>
   </div>
 
-  <!-- قسم الفروع داخل المربع -->
   <div class="card">
     <h2 id="branches_title">فروعنا</h2>
     <div style="text-align:right; margin-top:20px;">
@@ -91,7 +124,6 @@
     <p id="hours_desc">السبت - الخميس: 8:00 صباحاً - 7:30 مساءً<br>الجمعة: حالات الطوارئ فقط</p>
   </div>
 
-  <!-- قسم الحاسبة 3 لغات -->
   <div class="card" style="text-align:center;" id="calc_section">
     <h2 id="calc_title">احسب احتياجاتك بنفسك</h2>
     <p id="calc_desc">استخدم حاسبة RBooSH™ لتقدير كميات المواد الكهربائية لمشروعك خلال 30 ثانية</p>
@@ -109,104 +141,57 @@
 const translations = {
   ar: {
     dir:'rtl',
+    menu_title:'القائمة', menu_home:'الرئيسية', menu_calc:'الحاسبة', menu_products:'المنتجات', menu_offers:'العروض', menu_about:'من نحن',
     main_title:'RBooSH™ مجموعة ابو سليمان ⚡ للتجارة الكهربائية',
     main_desc:'متخصصون في توريد وتجارة المعدات الكهربائية، خدمات التركيب، واستشارات الطاقة الكهربائية',
-    services_title:'خدماتنا',
-    services_desc:'بيع لوحات التوزيع، الكابلات، مثبتات الجهد، القواطع، الكونتاكتورات والأجهزة الكهربائية<br>نخدم الشركات الصناعية، المحلات التجارية، والأفراد',
-    branches_title:'فروعنا',
-    branch1:'المركز الرئيسي - الحسكة',
-    branch2:'فرع القامشلي',
-    map1:'عرض على الخريطة',
-    map2:'عرض على الخريطة',
-    payment_title:'طرق الدفع',
-    pay1_title:'الدفع نقداً', pay1_desc:'الدفع عند الاستلام من اي فرع',
-    pay2_title:'شام كاش', pay2_desc:'الدفع الالكتروني عبر شام كاش',
-    pay3_title:'مساري', pay3_desc:'الدفع الالكتروني عبر مساري',
-    pay4_title:'التقسيط', pay4_desc:'للشركات والمشاريع الكبيرة بشروط ميسرة',
-    payment_note:'اسأل عن العروض والخصومات الخاصة عند الدفع بشام كاش ومساري',
-    why_title:'لماذا تختارنا',
-    why1:'ضمان المنتج', why2:'فواتير رسمية', why3:'توصيل سريع',
-    contact_title:'تواصل معنا',
-    wa1:'واتساب ابو سليمان: +963 966 436 341',
-    wa2:'واتساب سليمان ربوش: +49 152 16839609',
-    fb:'صفحة الفيسبوك',
-    hours_title:'اوقات الدوام',
-    hours_desc:'السبت - الخميس: 8:00 صباحاً - 7:30 مساءً<br>الجمعة: حالات الطوارئ فقط',
-    calc_title:'احسب احتياجاتك بنفسك',
-    calc_desc:'استخدم حاسبة RBooSH™ لتقدير كميات المواد الكهربائية لمشروعك خلال 30 ثانية',
-    calc_btn:'افتح الحاسبة الآن',
+    services_title:'خدماتنا', services_desc:'بيع لوحات التوزيع، الكابلات، مثبتات الجهد، القواطع، الكونتاكتورات والأجهزة الكهربائية<br>نخدم الشركات الصناعية، المحلات التجارية، والأفراد',
+    branches_title:'فروعنا', branch1:'المركز الرئيسي - الحسكة', branch2:'فرع القامشلي', map1:'عرض على الخريطة', map2:'عرض على الخريطة',
+    payment_title:'طرق الدفع', pay1_title:'الدفع نقداً', pay1_desc:'الدفع عند الاستلام من اي فرع', pay2_title:'شام كاش', pay2_desc:'الدفع الالكتروني عبر شام كاش', pay3_title:'مساري', pay3_desc:'الدفع الالكتروني عبر مساري', pay4_title:'التقسيط', pay4_desc:'للشركات والمشاريع الكبيرة بشروط ميسرة', payment_note:'اسأل عن العروض والخصومات الخاصة عند الدفع بشام كاش ومساري',
+    why_title:'لماذا تختارنا', why1:'ضمان المنتج', why2:'فواتير رسمية', why3:'توصيل سريع',
+    contact_title:'تواصل معنا', wa1:'واتساب ابو سليمان: +963 966 436 341', wa2:'واتساب سليمان ربوش: +49 152 16839609', fb:'صفحة الفيسبوك',
+    hours_title:'اوقات الدوام', hours_desc:'السبت - الخميس: 8:00 صباحاً - 7:30 مساءً<br>الجمعة: حالات الطوارئ فقط',
+    calc_title:'احسب احتياجاتك بنفسك', calc_desc:'استخدم حاسبة RBooSH™ لتقدير كميات المواد الكهربائية لمشروعك خلال 30 ثانية', calc_btn:'افتح الحاسبة الآن',
     footer_slogan:'نحن نزودك بالطاقة... نحن نضمن الاستمرارية'
   },
   en: {
     dir:'ltr',
+    menu_title:'Menu', menu_home:'Home', menu_calc:'Calculator', menu_products:'Products', menu_offers:'Offers', menu_about:'About Us',
     main_title:'RBooSH™ Abu Suleiman Group ⚡ Electrical Trading',
     main_desc:'Specialized in supply and trade of electrical equipment, installation services, and electrical energy consulting',
-    services_title:'Our Services',
-    services_desc:'Sale of distribution panels, cables, stabilizers, circuit breakers, contactors and electrical devices<br>We serve industrial companies, commercial businesses, and individuals',
-    branches_title:'Our Branches',
-    branch1:'Main Center - Al-Hasakah',
-    branch2:'Qamishli Branch',
-    map1:'View on Map',
-    map2:'View on Map',
-    payment_title:'Payment Methods',
-    pay1_title:'Cash Payment', pay1_desc:'Cash on delivery from any branch',
-    pay2_title:'ShamCash', pay2_desc:'Electronic payment via ShamCash',
-    pay3_title:'Masary', pay3_desc:'Electronic payment via Masary',
-    pay4_title:'Installments', pay4_desc:'For companies and large projects with easy terms',
-    payment_note:'Ask about special offers and discounts when paying with ShamCash and Masary',
-    why_title:'Why Choose Us',
-    why1:'Product Warranty', why2:'Official Invoices', why3:'Fast Delivery',
-    contact_title:'Contact Us',
-    wa1:'WhatsApp Abu Suleiman: +963 966 436 341',
-    wa2:'WhatsApp Sulaiman Rboosh: +49 152 16839609',
-    fb:'Facebook Page',
-    hours_title:'Working Hours',
-    hours_desc:'Saturday - Thursday: 8:00 AM - 7:30 PM<br>Friday: Emergency cases only',
-    calc_title:'Estimate Your Needs Yourself',
-    calc_desc:'Use the RBooSH™ Calculator to estimate electrical material quantities for your project in 30 seconds',
-    calc_btn:'Open Calculator Now',
+    services_title:'Our Services', services_desc:'Sale of distribution panels, cables, stabilizers, circuit breakers, contactors and electrical devices<br>We serve industrial companies, commercial businesses, and individuals',
+    branches_title:'Our Branches', branch1:'Main Center - Al-Hasakah', branch2:'Qamishli Branch', map1:'View on Map', map2:'View on Map',
+    payment_title:'Payment Methods', pay1_title:'Cash Payment', pay1_desc:'Cash on delivery from any branch', pay2_title:'ShamCash', pay2_desc:'Electronic payment via ShamCash', pay3_title:'Masary', pay3_desc:'Electronic payment via Masary', pay4_title:'Installments', pay4_desc:'For companies and large projects with easy terms', payment_note:'Ask about special offers and discounts when paying with ShamCash and Masary',
+    why_title:'Why Choose Us', why1:'Product Warranty', why2:'Official Invoices', why3:'Fast Delivery',
+    contact_title:'Contact Us', wa1:'WhatsApp Abu Suleiman: +963 966 436 341', wa2:'WhatsApp Sulaiman Rboosh: +49 152 16839609', fb:'Facebook Page',
+    hours_title:'Working Hours', hours_desc:'Saturday - Thursday: 8:00 AM - 7:30 PM<br>Friday: Emergency cases only',
+    calc_title:'Estimate Your Needs Yourself', calc_desc:'Use the RBooSH™ Calculator to estimate electrical material quantities for your project in 30 seconds', calc_btn:'Open Calculator Now',
     footer_slogan:'We Power You... We Ensure Continuity'
   },
   ku: {
     dir:'ltr',
+    menu_title:'Menu', menu_home:'Mal', menu_calc:'Hesabker', menu_products:'Berhem', menu_offers:'Pêşkêşî', menu_about:'Derbarê Me',
     main_title:'RBooSH™ Koma Ebu Suleyman ⚡ Bazirganiya Elektrîkê',
     main_desc:'Em pispor in di dabînkirin û bazirganiya amûrên elektrîkê, karûbarên sazkirinê, û şêwirmendiya enerjiya elektrîkê de',
-    services_title:'Karûbarên Me',
-    services_desc:'Firotina tabloyên belavkirinê, kablo, stabilizer, sîgorte, kontaktor û amûrên elektrîkê<br>Em xizmetê ji pargadanên pîşesazî, bazirganî û kesan re dikin',
-    branches_title:'Şaxên Me',
-    branch1:'Navenda Sereke - Hesîçe',
-    branch2:'Şaxa Qamişlo',
-    map1:'Li ser Nexşeyê Binêre',
-    map2:'Li ser Nexşeyê Binêre',
-    payment_title:'Rêbazên Dayînê',
-    pay1_title:'Dayîna Bi Nakit', pay1_desc:'Dayîn bi dest de ji her şaxekî',
-    pay2_title:'Şam Cash', pay2_desc:'Dayîna elektronîkî bi riya Şam Cash',
-    pay3_title:'Mesari', pay3_desc:'Dayîna elektronîkî bi riya Mesari',
-    pay4_title:'Taksît', pay4_desc:'Ji bo pargadan û projeyên mezin bi şertên hêsan',
-    payment_note:'Derbarê pêşkêşî û daxistinên taybet de dema dayîna bi Şam Cash û Mesari bipirse',
-    why_title:'Çima Em Hilbijêrin',
-    why1:'Temînata Berhemê', why2:'Fatûreyên Fermî', why3:'Radestkirina Lezgîn',
-    contact_title:'Têkilî Bi Me Re',
-    wa1:'WhatsApp Ebu Suleyman: +963 966 436 341',
-    wa2:'WhatsApp Sulaiman Rboosh: +49 152 16839609',
-    fb:'Rûpela Facebookê',
-    hours_title:'Saetên Kar',
-    hours_desc:'Şemî - Pêncşem: 8:00 Sibê - 7:30 Êvarê<br>În: Tenê rewşên acîl',
-    calc_title:'Pêdiviyên Xwe Bi Xwe Hesab Bike',
-    calc_desc:'Hesabkera RBooSH™ bi kar bîne da ku di 30 saniyeyan de mîqdara materyalên elektrîkê yên projeya xwe texmîn bike',
-    calc_btn:'Hesabkerê Veke',
+    services_title:'Karûbarên Me', services_desc:'Firotina tabloyên belavkirinê, kablo, stabilizer, sîgorte, kontaktor û amûrên elektrîkê<br>Em xizmetê ji pargadanên pîşesazî, bazirganî û kesan re dikin',
+    branches_title:'Şaxên Me', branch1:'Navenda Sereke - Hesîçe', branch2:'Şaxa Qamişlo', map1:'Li ser Nexşeyê Binêre', map2:'Li ser Nexşeyê Binêre',
+    payment_title:'Rêbazên Dayînê', pay1_title:'Dayîna Bi Nakit', pay1_desc:'Dayîn bi dest de ji her şaxekî', pay2_title:'Şam Cash', pay2_desc:'Dayîna elektronîkî bi riya Şam Cash', pay3_title:'Mesari', pay3_desc:'Dayîna elektronîkî bi riya Mesari', pay4_title:'Taksît', pay4_desc:'Ji bo pargadan û projeyên mezin bi şertên hêsan', payment_note:'Derbarê pêşkêşî û daxistinên taybet de dema dayîna bi Şam Cash û Mesari bipirse',
+    why_title:'Çima Em Hilbijêrin', why1:'Temînata Berhemê', why2:'Fatûreyên Fermî', why3:'Radestkirina Lezgîn',
+    contact_title:'Têkilî Bi Me Re', wa1:'WhatsApp Ebu Suleyman: +963 966 436 341', wa2:'WhatsApp Sulaiman Rboosh: +49 152 16839609', fb:'Rûpela Facebookê',
+    hours_title:'Saetên Kar', hours_desc:'Şemî - Pêncşem: 8:00 Sibê - 7:30 Êvarê<br>În: Tenê rewşên acîl',
+    calc_title:'Pêdiviyên Xwe Bi Xwe Hesab Bike', calc_desc:'Hesabkera RBooSH™ bi kar bîne da ku di 30 saniyeyan de mîqdara materyalên elektrîkê yên projeya xwe texmîn bike', calc_btn:'Hesabkerê Veke',
     footer_slogan:'Em Hêzê Didin Te... Em Domdariyê Misoger Dikin'
   }
 };
+
+function openMenu(){ document.getElementById('sidebar').classList.add('open'); document.getElementById('overlay').classList.add('show'); }
+function closeMenu(){ document.getElementById('sidebar').classList.remove('open'); document.getElementById('overlay').classList.remove('show'); }
 
 function setLang(lang){
   const t = translations[lang];
   document.documentElement.lang = lang;
   document.documentElement.dir = t.dir;
-
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
   document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
-
   for(let key in t){
     if(document.getElementById(key)){
       document.getElementById(key).innerHTML = t[key];
