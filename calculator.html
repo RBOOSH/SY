@@ -10,16 +10,36 @@
   header{background:#000; border-bottom:2px solid #1e3a8a; padding:15px 20px; text-align:center;}
   header .logo{font-size:24px; font-weight:bold; color:#1e3a8a;}
   header a{color:#aaa; text-decoration:none; font-size:14px;}
-  .container{max-width:600px; margin:40px auto; padding:20px;}
-  .calculator {background:#111; padding:30px; border-radius:12px; border:1px solid #1e3a8a;}
-  h2{color:#1e3a8a; margin-bottom:10px; text-align:center;}
-  .calc-form {display:flex; flex-direction:column; gap:15px; margin-top:20px;}
-  .calc-form label{font-size:14px; color:#aaa;}
-  .calc-form input, .calc-form select {padding:14px; border-radius:8px; border:1px solid #333; background:#000; color:#fff; font-size:16px;}
-  .calc-form button {background:#1e3a8a; color:#fff; padding:16px; border:none; border-radius:8px; font-weight:bold; cursor:pointer; font-size:16px;}
-  .calc-form button.whatsapp {background:#25D366;}
+  .container{max-width:650px; margin:30px auto; padding:20px;}
+  .calculator {background:#111; padding:30px; border-radius:16px; border:2px solid #1e3a8a;}
+  h2{color:#1e3a8a; margin-bottom:10px; text-align:center; font-size:22px;}
+  .subtitle{text-align:center; color:#aaa; font-size:14px; margin-bottom:25px;}
+  
+  .calc-form {display:flex; flex-direction:column; gap:18px;}
+  .calc-form label{font-size:14px; color:#aaa; text-align:right;}
+  .calc-form input, .calc-form select {
+    padding:14px; border-radius:10px; border:1px solid #333; 
+    background:#0a0a0a; color:#fff; font-size:16px; width:100%; text-align:right;
+  }
+  .calc-form button {
+    background:#1e3a8a; color:#fff; padding:16px; border:none; 
+    border-radius:10px; font-weight:bold; cursor:pointer; font-size:16px; margin-top:5px;
+  }
+  .calc-form button.whatsapp {background:#25D366; margin-top:10px;}
   .calc-form button:hover {opacity:0.9;}
-  .calc-result {background:#0a0a0a; border:1px solid #1e3a8a; padding:20px; border-radius:10px; margin-top:20px; text-align:right;}
+  
+  .calc-result {
+    background:#0a0a0a; border:1px solid #1e3a8a; 
+    padding:20px; border-radius:12px; margin-top:20px; text-align:right;
+  }
+  .calc-result h4{color:#1e3a8a; margin-bottom:10px;}
+  .calc-result p{margin:6px 0;}
+  
+  .contact-section{
+    border-top:1px dashed #333; 
+    padding-top:20px; 
+    margin-top:20px;
+  }
   footer{text-align:center; padding:20px; color:#555; font-size:12px;}
 </style>
 </head>
@@ -33,7 +53,7 @@
 <div class="container">
   <div class="calculator">
     <h2>حاسبة تقدير المواد الكهربائية</h2>
-    <p style="text-align:center; color:#aaa; font-size:14px;">احسب كمياتك التقريبية وارسلها مباشرة لواتساب سليمان ربوشي</p>
+    <p class="subtitle">احسب كمياتك التقريبية وارسلها مباشرة لواتساب سليمان ربوشي</p>
     
     <div class="calc-form">
       <label>نوع المكان</label>
@@ -47,17 +67,19 @@
       <input type="number" id="area" placeholder="مثال: 150">
 
       <label>عدد الغرف / الاقسام</label>
-      <input type="number" id="rooms" placeholder="مثال: 3">
+      <input type="number" id="rooms" placeholder="مثال: 4">
 
       <button onclick="calcOnly()">1. احسب الكميات</button>
 
       <div id="result" class="calc-result" style="display:none;"></div>
 
-      <div id="contactBox" style="display:none;">
+      <div id="contactBox" class="contact-section" style="display:none;">
         <label>اسمك</label>
-        <input type="text" id="c_name" placeholder="احمد محمد">
+        <input type="text" id="c_name" placeholder="اكتب اسمك هنا">
+        
         <label>رقم هاتفك</label>
         <input type="tel" id="c_phone" placeholder="09xxxxxxxx">
+        
         <button onclick="sendToWhatsApp()" class="whatsapp">2. ارسال التفاصيل لواتساب سليمان ربوشي</button>
       </div>
     </div>
@@ -101,7 +123,7 @@ function calcOnly(){
     <p>- مفاتيح: <b>${lastCalc.switches} حبة</b></p>
     <p>- لوحات: <b>${lastCalc.panels} لوحة</b></p>
   `;
-  document.getElementById('contactBox').style.display = 'flex';
+  document.getElementById('contactBox').style.display = 'block';
 }
 
 function sendToWhatsApp(){
@@ -112,7 +134,6 @@ function sendToWhatsApp(){
   let message = `🔌 طلب تقدير جديد من حاسبة RBooSH%0A%0Aالاسم: ${name}%0Aالتلفون: ${phone}%0Aنوع المكان: ${lastCalc.placeName}%0Aالمساحة: ${lastCalc.area} متر%0Aعدد الغرف: ${lastCalc.rooms}%0A%0A*الكميات المطلوبة:*%0A- 2.5mm: ${lastCalc.cable2_5} متر%0A- 4mm: ${lastCalc.cable4} متر%0A- 6mm: ${lastCalc.cable6} متر%0A- قواطع: ${lastCalc.breaker} حبة%0A- برايز: ${lastCalc.sockets} حبة%0A- مفاتيح: ${lastCalc.switches} حبة%0A- لوحات: ${lastCalc.panels} لوحة`;
   
   let whatsappNumber = "4915216839609"; // سليمان ربوشي
-  
   window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
 }
 </script>
