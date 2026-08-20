@@ -2,126 +2,175 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<title>RBooSH™ Abu Suleiman Group</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RBooSH™ | ربووش للتجارة العامة والتوريدات</title>
 <style>
-body{font-family:'Tahoma';background:#0a0a0a;color:#fff;margin:0;text-align:center; transition:0.3s;}
-.header{background:#000;padding:25px 10px;border-bottom:2px solid #00aaff; position:relative;}
-.logo{width:340px;max-width:95%;margin:10px auto; border-radius:12px;}
-h1{color:#00aaff;margin:5px 0; font-size:22px;}
-h1 sup{font-size:13px; vertical-align:super; color:#ccc; margin-right:2px; font-weight:bold;}
-h2{color:#00aaff}
-.badge{display:inline-block;background:#1a1a1a;border:1px solid #00aaff;padding:12px 18px;margin:8px;border-radius:8px;font-size:15px; min-width:160px}
-.payment{display:inline-block;background:#111;border:1px solid #00aaff;padding:15px 20px;margin:8px;border-radius:10px;font-size:15px; width:90%; max-width:300px}
-.payment b{color:#00aaff; display:block; margin-bottom:5px; font-size:16px;}
-.offer{color:#00ff88; font-size:14px; margin-top:12px; font-weight:bold;}
-.btn{display:flex; align-items:center; justify-content:center; gap:8px; background:#25D366;color:#fff;padding:14px;margin:10px 20px;border-radius:10px;text-decoration:none;font-weight:bold;font-size:16px}
-.btn-fb{display:flex; align-items:center; justify-content:center; gap:8px; background:#1877F2;color:#fff;padding:14px;margin:10px 20px;border-radius:10px;text-decoration:none;font-weight:bold;font-size:16px}
-.box{background:#1a1a1a;margin:15px;padding:20px;border-radius:12px;border:1px solid #333}
-.map{color:#00aaff;text-decoration:none}
-.footer{background:#000; padding:25px 10px; margin-top:20px; border-top:2px solid #00aaff;}
-.footer-slogan{color:#00ff88; font-size:17px; font-weight:bold; margin-bottom:8px;}
-.footer-copy{color:#888; font-size:13px;}
-.lang-btn{position:absolute; top:15px; left:15px; background:#00aaff; color:#000; border:none; padding:8px 12px; border-radius:8px; font-weight:bold; cursor:pointer; font-size:13px;}
-.lang-btn:hover{background:#0088cc}
-[dir="ltr"]{text-align:left;}
-[dir="ltr"].lang-btn{left:auto; right:15px;}
+  *{margin:0; padding:0; box-sizing:border-box; font-family:'Tahoma', sans-serif;}
+  body{background:#000; color:#fff; line-height:1.8;}
+  header{background:#000; border-bottom:2px solid #1e3a8a; padding:15px 20px; position:sticky; top:0; z-index:100; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap;}
+  header .logo{font-size:24px; font-weight:bold; color:#1e3a8a;}
+  nav a{color:#fff; margin:0 10px; text-decoration:none; font-size:14px;}
+  nav a:hover{color:#1e3a8a;}
+  .lang-switch button{background:#1e3a8a; color:#fff; border:none; padding:5px 10px; margin:0 3px; border-radius:5px; cursor:pointer;}
+  section{padding:60px 20px; max-width:1100px; margin:auto;}
+  h2{color:#1e3a8a; margin-bottom:20px; text-align:center;}
+  .grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:20px;}
+  .card{background:#111; padding:20px; border-radius:10px; border:1px solid #1e3a8a; transition:0.3s;}
+  .card:hover{border-color:#2563eb;}
+  .card h3{color:#1e3a8a; margin-bottom:10px;}
+  footer{background:#111; text-align:center; padding:30px 20px; border-top:2px solid #1e3a8a; margin-top:40px;}
+  .btn{background:#1e3a8a; color:#fff; padding:12px 20px; border-radius:8px; text-decoration:none; display:inline-block; margin-top:10px;}
+  .btn.whatsapp{background:#25D366;}
+  
+  /* ستايل الحاسبة */
+  .calculator {background:#111; padding:40px 20px; border-radius:12px; margin:40px 0; border:1px solid #1e3a8a;}
+  .calc-form {display:flex; flex-direction:column; gap:15px; max-width:450px; margin:auto;}
+  .calc-form input, .calc-form select {padding:12px; border-radius:8px; border:1px solid #333; background:#000; color:#fff; font-size:16px;}
+  .calc-form button {background:#25D366; color:#fff; padding:14px; border:none; border-radius:8px; font-weight:bold; cursor:pointer; font-size:16px;}
+  .calc-form button:hover {background:#22c55e;}
+  .calc-result {background:#000; border:1px solid #1e3a8a; padding:20px; border-radius:10px; margin-top:20px; text-align:right;}
 </style>
 </head>
 <body>
 
-<div class="header">
-<button class="lang-btn" onclick="toggleLang()">AR / EN / KU</button>
-<img src="logo.png" class="logo">
-<h1 data-ar="RBooSH<sup>™</sup> مجموعة أبو سليمان ⚡ لتجارة الكهرباء" data-en="RBooSH<sup>™</sup> Abu Suleiman Group ⚡ Electrical Trading" data-ku="RBooSH<sup>™</sup> Koma Ebû Suleyman ⚡ Bazirganiya Elektrîkê">RBooSH<sup>™</sup> مجموعة أبو سليمان ⚡ لتجارة الكهرباء</h1>
-<p data-ar="كيان متخصص في توريد وتجارة المعدات الكهربائية، خدمات التركيب، والاستشارات في مجال الطاقة الكهربائية" data-en="Specialized in supply and trade of electrical equipment, installation services, and electrical energy consulting" data-ku="Saziyek pispor di dabînkirin û bazirganiya alavên elektrîkê, xizmetên sazkirinê û şêwirmendiya enerjiya elektrîkê de">كيان متخصص في توريد وتجارة المعدات الكهربائية، خدمات التركيب، والاستشارات في مجال الطاقة الكهربائية</p>
-</div>
+<header>
+  <div class="logo">RBooSH™</div>
+  <nav>
+    <a href="#about" data-ar="من نحن" data-en="About" data-ku="Derbarê Me">من نحن</a>
+    <a href="#services" data-ar="خدماتنا" data-en="Services" data-ku="Xizmetên Me">خدماتنا</a>
+    <a href="#products" data-ar="منتجاتنا" data-en="Products" data-ku="Berhemên Me">منتجاتنا</a>
+    <a href="#calculator" data-ar="الحاسبة" data-en="Calculator" data-ku="Hesabker">الحاسبة</a>
+    <a href="#contact" data-ar="تواصل" data-en="Contact" data-ku="Têkilî">تواصل</a>
+  </nav>
+  <div class="lang-switch">
+    <button onclick="setLang('ar')">عربي</button>
+    <button onclick="setLang('en')">EN</button>
+    <button onclick="setLang('ku')">کوردی</button>
+  </div>
+</header>
 
-<div class="box">
-<h2 data-ar="خدماتنا" data-en="Our Services" data-ku="Xizmetên Me">خدماتنا</h2>
-<p data-ar="بيع لوحات توزيع، كابلات، منظمات، قواطع، كندكتورات وأجهزة كهربائية<br>نخدم الشركات الصناعية والتجارية والأفراد" data-en="Sale of distribution panels, cables, stabilizers, circuit breakers, contactors and electrical devices<br>We serve industrial companies, commercial businesses, and individuals" data-ku="Firotina tabloyên belavkirinê, kablo, rêkxer, şikêner, kontakt û amûrên elektrîkê<br>Em xizmetê didin pargîdaniyên pîşesazî, bazirganî û kesan">بيع لوحات توزيع، كابلات، منظمات، قواطع، كندكتورات وأجهزة كهربائية<br>نخدم الشركات الصناعية والتجارية والأفراد</p>
-</div>
+<section id="about">
+  <h2 data-ar="من نحن" data-en="About Us" data-ku="Derbarê Me">من نحن</h2>
+  <p data-ar="شركة RBooSH™ للتجارة العامة والتوريدات الكهربائية. خبرة في توريد الكابلات، المنظمات، اللوحات، والقواطع لجميع المشاريع السكنية والتجارية والصناعية في سوريا."
+     data-en="RBooSH™ General Trading & Electrical Supplies. Experts in cables, regulators, panels, and breakers for residential, commercial, and industrial projects in Syria."
+     data-ku="Şirketa RBooSH™ ya Bazirganî û Pêdiviyên Elektrîkê. Pispor di kablo, rêkexer, panel û sîgorteyan de ji bo projeyên niştecîhî, bazirganî û pîşesazî li Sûriyê.">
+    شركة RBooSH™ للتجارة العامة والتوريدات الكهربائية. خبرة في توريد الكابلات، المنظمات، اللوحات، والقواطع لجميع المشاريع السكنية والتجارية والصناعية في سوريا.
+  </p>
+</section>
 
-<div class="box">
-<h2 data-ar="فروعنا" data-en="Our Branches" data-ku="Şaxên Me">فروعنا</h2>
-<p><b data-ar="1. المركز الرئيسي - الحسكة" data-en="1. Main Center - Al-Hasakah" data-ku="1. Navenda Sereke - Hesekê">1. المركز الرئيسي - الحسكة</b> ⭐<br><a class="map" href="https://maps.app.goo.gl/2rj3FpMhs2bfFSRf7" data-ar="عرض الموقع على الخريطة" data-en="View on Map" data-ku="Nîşandana cih li ser nexşeyê">عرض الموقع على الخريطة</a></p>
-<p><b data-ar="2. فرع القامشلي" data-en="2. Qamishli Branch" data-ku="2. Şaxa Qamişlo">2. فرع القامشلي</b><br><a class="map" href="https://maps.app.goo.gl/3pfCJqsVj5XU28WW6" data-ar="عرض الموقع على الخريطة" data-en="View on Map" data-ku="Nîşandana cih li ser nexşeyê">عرض الموقع على الخريطة</a></p>
-</div>
+<section id="services">
+  <h2 data-ar="خدماتنا" data-en="Our Services" data-ku="Xizmetên Me">خدماتنا</h2>
+  <div class="grid">
+    <div class="card"><h3 data-ar="توريد مواد" data-en="Supply" data-ku="Dabînkirin">توريد مواد</h3><p data-ar="توريد جميع انواع الكابلات والاسلاك الكهربائية" data-en="All types of cables and wires" data-ku="Hemû cureyên kablo û têlan">توريد جميع انواع الكابلات والاسلاك الكهربائية</p></div>
+    <div class="card"><h3 data-ar="منظمات كهرباء" data-en="Voltage Regulators" data-ku="Rêkexerên Elektrîkê">منظمات كهرباء</h3><p data-ar="بيع وتركيب منظمات 1KVA الى 100KVA" data-en="Sale & Install 1KVA to 100KVA" data-ku="Firotin û Sazkirina 1KVA heta 100KVA">بيع وتركيب منظمات 1KVA الى 100KVA</p></div>
+    <div class="card"><h3 data-ar="لوحات كهربائية" data-en="Electrical Panels" data-ku="Panelên Elektrîkê">لوحات كهربائية</h3><p data-ar="تصنيع وتوريد لوحات التوزيع الرئيسية والفرعية" data-en="Manufacture & Supply Distribution Panels" data-ku="Çêkirin û Dabînkirina Panelên Dabeşkirinê">تصنيع وتوريد لوحات التوزيع الرئيسية والفرعية</p></div>
+  </div>
+</section>
 
-<div class="box">
-<h2 data-ar="طرق الدفع المتاحة" data-en="Payment Methods" data-ku="Rêbazên Dayînê">طرق الدفع المتاحة</h2>
-<div class="payment">
-<b data-ar="💵 الدفع في المتجر" data-en="💵 Cash Payment" data-ku="💵 Dayîn li Firoşgehê">💵 الدفع في المتجر</b>
-<span data-ar="كاش عند الاستلام من أي فرع" data-en="Cash on delivery from any branch" data-ku="Nakit dema wergirtinê ji her şaxekî">كاش عند الاستلام من أي فرع</span>
-</div>
-<div class="payment">
-<b data-ar="📱 شام كاش" data-en="📱 ShamCash" data-ku="📱 ShamCash">📱 شام كاش</b>
-<span data-ar="الدفع الالكتروني عبر ShamCash" data-en="Electronic payment via ShamCash" data-ku="Dayîna elektronîk bi riya ShamCash">الدفع الالكتروني عبر ShamCash</span>
-</div>
-<div class="payment">
-<b data-ar="💳 Masary" data-en="💳 Masary" data-ku="💳 Masary">💳 Masary</b>
-<span data-ar="الدفع الالكتروني عبر مصاري" data-en="Electronic payment via Masary" data-ku="Dayîna elektronîk bi riya Masary">الدفع الالكتروني عبر مصاري</span>
-</div>
-<div class="payment">
-<b data-ar="📋 الدفع بالتقسيط" data-en="📋 Installments" data-ku="📋 Dayîna bi Qist">📋 الدفع بالتقسيط</b>
-<span data-ar="للشركات والمشاريع الكبيرة بشروط ميسرة" data-en="For companies and large projects with easy terms" data-ku="Ji bo pargîdanî û projeyên mezin bi mercên hêsan">للشركات والمشاريع الكبيرة بشروط ميسرة</span>
-</div>
-<p class="offer" data-ar="✨ اسأل عن العروض والخصومات الخاصة عند الدفع بشام كاش ومصاري" data-en="✨ Ask about special offers and discounts when paying with ShamCash and Masary" data-ku="✨ Li ser pêşkêşî û daxistinên taybet dema dayînê bi ShamCash û Masary bipirsin">✨ اسأل عن العروض والخصومات الخاصة عند الدفع بشام كاش ومصاري</p>
-</div>
+<section id="products">
+  <h2 data-ar="منتجاتنا" data-en="Our Products" data-ku="Berhemên Me">منتجاتنا</h2>
+  <div class="grid">
+    <div class="card"><h3 data-ar="كابلات" data-en="Cables" data-ku="Kablo">كابلات</h3><p>2.5mm - 4mm - 6mm - 16mm - 35mm</p></div>
+    <div class="card"><h3 data-ar="منظمات" data-en="Regulators" data-ku="Rêkexer">منظمات</h3><p>Servo - Relay - 3 Phase</p></div>
+    <div class="card"><h3 data-ar="قواطع ولوحات" data-en="Breakers & Panels" data-ku="Sîgorte û Panel">قواطع ولوحات</h3><p>SCHNEIDER - ABB - LEGRAND</p></div>
+  </div>
+</section>
 
-<div class="box">
-<h2 data-ar="لماذا تختارنا" data-en="Why Choose Us" data-ku="Çima Em Hilbijêrin">لماذا تختارنا</h2>
-<span class="badge" data-ar="🏆 ضمان حسب المنتج" data-en="🏆 Product Warranty" data-ku="🏆 Garantî li gorî hilberê">🏆 ضمان حسب المنتج</span>
-<span class="badge" data-ar="📄 فواتير نظامية" data-en="📄 Official Invoices" data-ku="📄 Fatûreyên Fermî">📄 فواتير نظامية</span>
-<span class="badge" data-ar="⚡ توريد سريع" data-en="⚡ Fast Delivery" data-ku="⚡ Radestkirina Zû">⚡ توريد سريع</span>
-</div>
+<!-- قسم الحاسبة -->
+<section id="calculator" class="calculator">
+  <h2 data-ar="حاسبة تقدير المواد" data-en="Material Estimator" data-ku="Hesabkerê Materyal">حاسبة تقدير المواد</h2>
+  <p style="text-align:center; margin-bottom:20px;" data-ar="دخل بياناتك وستصلك النتيجة مباشرة على واتساب سليمان" data-en="Enter details and results will be sent to Suleiman's WhatsApp" data-ku="Zanyariyên xwe têke û encam dê rasterast ji bo WhatsAppê Suleiman were şandin">دخل بياناتك وستصلك النتيجة مباشرة على واتساب سليمان</p>
+  
+  <div class="calc-form">
+    <label data-ar="الاسم" data-en="Name" data-ku="Nav">الاسم</label>
+    <input type="text" id="c_name" placeholder="احمد محمد">
 
-<div class="box">
-<h2 data-ar="تواصل معنا" data-en="Contact Us" data-ku="Têkilî Bi Me Re">تواصل معنا</h2>
-<a class="btn" href="https://wa.me/963966436341"
-   data-ar="📱 واتساب ابو سليمان: +963 966 436 341"
-   data-en="📱 WhatsApp Abu Suleiman: +963 966 436 341"
-   data-ku="📱 WhatsApp Ebû Suleyman: +963 966 436 341">
-   📱 واتساب ابو سليمان: +963 966 436 341
-</a>
-<a class="btn" href="https://wa.me/4915216839609"
-   data-ar="📱 واتساب سليمان ربوش: +49 152 16839609"
-   data-en="📱 WhatsApp Suleiman Rboosh: +49 152 16839609"
-   data-ku="📱 WhatsApp Suleyman Rboosh: +49 152 16839609">
-   📱 واتساب سليمان ربوش: +49 152 16839609
-</a>
-<a class="btn-fb" href="https://www.facebook.com/share/1PTgggjbw1/"
-   data-ar="📘 الصفحة الرسمية على الفيسبوك"
-   data-en="📘 Facebook Page"
-   data-ku="📘 Rûpela Fermî li Facebookê">
-   📘 الصفحة الرسمية على الفيسبوك
-</a>
-</div>
+    <label data-ar="رقم الهاتف" data-en="Phone" data-ku="Telefon">رقم الهاتف</label>
+    <input type="tel" id="c_phone" placeholder="09xxxxxxxx">
 
-<div class="box">
-<h2 data-ar="ساعات العمل" data-en="Working Hours" data-ku="Saetên Kar">ساعات العمل</h2>
-<p data-ar="السبت - الخميس: 8:00 ص - 7:30 م<br>الجمعة: حالات الطوارئ فقط" data-en="Saturday - Thursday: 8:00 AM - 7:30 PM<br>Friday: Emergency cases only" data-ku="Şemî - Pêncşem: 8:00 sibeh - 7:30 êvar<br>În: Tenê rewşên acîl">السبت - الخميس: 8:00 ص - 7:30 م<br>الجمعة: حالات الطوارئ فقط</p>
-</div>
+    <label data-ar="نوع المكان" data-en="Place Type" data-ku="Cûreya Cîhî">نوع المكان</label>
+    <select id="place_type">
+      <option value="house">بيت سكني</option>
+      <option value="shop">محل تجاري</option>
+      <option value="factory">معمل / ورشة</option>
+    </select>
 
-<div class="footer">
-<p class="footer-slogan" data-ar="RBooSH™ نمدك بالطاقة... ونضمن استمرارها" data-en="RBooSH™ We Power You... We Ensure Continuity" data-ku="RBooSH™ Em hêzê didin we... û domdariyê garantî dikin">RBooSH™ نمدك بالطاقة... ونضمن استمرارها</p>
-<p class="footer-copy" data-ar="© 2026 جميع الحقوق محفوظة - مجموعة أبو سليمان" data-en="© 2026 All Rights Reserved - Abu Suleiman Group" data-ku="© 2026 Hemû Maf Parastî ne - Koma Ebû Suleyman">© 2026 جميع الحقوق محفوظة - مجموعة أبو سليمان</p>
-</div>
+    <label data-ar="المساحة بالمتر" data-en="Area in m²" data-ku="Rûber bi m²">المساحة بالمتر</label>
+    <input type="number" id="area" placeholder="150">
+
+    <label data-ar="عدد الغرف / الاقسام" data-en="Rooms / Sections" data-ku="Jûr / Beş">عدد الغرف / الاقسام</label>
+    <input type="number" id="rooms" placeholder="3">
+
+    <button onclick="sendToWhatsApp()" data-ar="ارسال الطلب للواتساب" data-en="Send to WhatsApp" data-ku="Bişîne WhatsApp">ارسال الطلب للواتساب</button>
+  </div>
+
+  <div id="result" class="calc-result" style="display:none;"></div>
+</section>
+
+<section id="contact">
+  <h2 data-ar="تواصل معنا" data-en="Contact Us" data-ku="Têkilî bi Me">تواصل معنا</h2>
+  <p data-ar="العنوان: القامشلي - المنطقة الصناعية" data-en="Address: Qamishli - Industrial Zone" data-ku="Navnîşan: Qamişlo - Herêma Pîşesaziyê">العنوان: القامشلي - المنطقة الصناعية</p>
+  <p data-ar="الايميل: info@rboosh.com" data-en="Email: info@rboosh.com" data-ku="E-mail: info@rboosh.com">الايميل: info@rboosh.com</p>
+  <a href="https://wa.me/96393XXXXXXX" class="btn whatsapp">واتساب سليمان ربوشي</a>
+</section>
+
+<footer>
+  <p>© 2026 RBooSH™ | All Rights Reserved</p>
+</footer>
 
 <script>
-let langs = ['ar', 'en', 'ku'];
-let currentLangIndex = 0;
-
-function toggleLang(){
-  currentLangIndex = (currentLangIndex + 1) % 3;
-  let currentLang = langs[currentLangIndex];
-
-  document.documentElement.lang = currentLang;
-  document.documentElement.dir = currentLang === 'ar'? 'rtl' : 'ltr';
-
-  document.querySelectorAll('[data-ar]').forEach(el => {
-    el.innerHTML = el.getAttribute('data-' + currentLang);
+function setLang(lang){
+  document.querySelectorAll('[data-ar]').forEach(el=>{
+    el.innerText = el.getAttribute('data-'+lang);
   });
+  document.documentElement.dir = lang=='ar'?'rtl':'ltr';
+  document.documentElement.lang = lang;
+}
+
+function sendToWhatsApp(){
+  let name = document.getElementById('c_name').value;
+  let phone = document.getElementById('c_phone').value;
+  let place = document.getElementById('place_type').value;
+  let area = document.getElementById('area').value;
+  let rooms = document.getElementById('rooms').value;
+  
+  if(!name || !phone || !area || !rooms){ 
+    alert("الرجاء ملئ جميع الحقول"); 
+    return; 
+  }
+
+  let factor = 1.3; let placeName = "بيت سكني";
+  if(place == "shop"){ factor = 1.6; placeName = "محل تجاري"; }
+  if(place == "factory"){ factor = 2.2; placeName = "معمل / ورشة"; }
+
+  let cable2_5 = Math.round(area * factor);
+  let cable4 = Math.round(rooms * 30);
+  let cable6 = Math.round(rooms * 15);
+  let breaker = Math.ceil(rooms / 2) + 3;
+  let sockets = rooms * (place == "factory" ? 6 : 4);
+  let switches = rooms * 2;
+  let panels = place == "factory" ? 2 : 1;
+
+  document.getElementById('result').style.display = 'block';
+  document.getElementById('result').innerHTML = `
+    <h3>تقديرك الاولي لـ ${placeName}:</h3>
+    <p>- كابل 2.5mm: ${cable2_5} متر</p>
+    <p>- كابل 4mm: ${cable4} متر</p>
+    <p>- كابل 6mm: ${cable6} متر</p>
+    <p>- قواطع: ${breaker} حبة</p>
+    <p>- برايز: ${sockets} حبة</p>
+    <p>- مفاتيح: ${switches} حبة</p>
+    <p>- لوحات: ${panels} لوحة</p>
+    <p style="color:#25D366;">جاري تحويلك للواتساب...</p>
+  `;
+
+  let message = `🔌 طلب تقدير جديد من موقع RBooSH%0A%0Aالاسم: ${name}%0Aالتلفون: ${phone}%0Aنوع المكان: ${placeName}%0Aالمساحة: ${area} متر%0Aعدد الغرف/الاقسام: ${rooms}%0A%0A*التقدير التقريبي للكميات:*%0A- كابل 2.5mm: ${cable2_5} متر%0A- كابل 4mm: ${cable4} متر%0A- كابل 6mm: ${cable6} متر%0A- قواطع: ${breaker} حبة%0A- برايز: ${sockets} حبة%0A- مفاتيح: ${switches} حبة%0A- لوحات: ${panels} لوحة`;
+
+  let whatsappNumber = "96393XXXXXXX"; // <-- غيره لرقم سليمان
+  
+  setTimeout(() => {
+    window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+  }, 1500);
 }
 </script>
 
