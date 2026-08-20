@@ -7,21 +7,21 @@
 <style>
   *{margin:0; padding:0; box-sizing:border-box; font-family:'Tahoma', sans-serif;}
   body{background:#000; color:#fff; line-height:1.8;}
- .container{max-width:900px; margin:0 auto; padding:20px;}
- .logo{text-align:center; margin:20px 0;}
- .logo img{max-width:250px;}
+.container{max-width:900px; margin:0 auto; padding:20px;}
+.logo{text-align:center; margin:20px 0;}
+.logo img{max-width:250px;}
   h2{color:#00bfff; text-align:center; font-size:26px; margin-bottom:15px;}
- .card{background:#111; border:1px solid #1e3a8a; border-radius:12px; padding:25px; margin:20px 0;}
- .btn{padding:14px 20px; border-radius:10px; text-decoration:none; font-weight:bold; display:block; text-align:center; margin:10px 0;}
- .btn-whatsapp{background:#25D366; color:#fff;}
- .btn-fb{background:#1877F2; color:#fff;}
- .btn-calc{background:#1e3a8a; color:#fff; font-size:18px; padding:16px 35px; display:inline-block;}
+.card{background:#111; border:1px solid #1e3a8a; border-radius:12px; padding:25px; margin:20px 0;}
+.btn{padding:14px 20px; border-radius:10px; text-decoration:none; font-weight:bold; display:block; text-align:center; margin:10px 0;}
+.btn-whatsapp{background:#25D366; color:#fff;}
+.btn-fb{background:#1877F2; color:#fff;}
+.btn-calc{background:#1e3a8a; color:#fff; font-size:18px; padding:16px 35px; display:inline-block;}
 
- .lang-switch {position:fixed; top:10px; left:10px; z-index:999;}
- .lang-btn {background:#222; color:#aaa; border:1px solid #333; padding:8px 14px; border-radius:8px; cursor:pointer; font-weight:bold; margin:0 3px;}
- .lang-btn.active {background:#00bfff; color:#000; border-color:#00bfff;}
+.lang-switch {position:fixed; top:10px; left:10px; z-index:999; display:flex; gap:6px;}
+.lang-btn {background:#222; color:#aaa; border:1px solid #333; padding:8px 14px; border-radius:8px; cursor:pointer; font-weight:bold;}
+.lang-btn.active {background:#00bfff; color:#000; border-color:#00bfff;}
 
- .payment-item,.why-item {border:1px solid #1e3a8a; padding:15px; border-radius:10px; margin:10px 0; text-align:center;}
+.payment-item,.why-item {border:1px solid #1e3a8a; padding:15px; border-radius:10px; margin:10px 0; text-align:center;}
   footer{text-align:center; padding:30px 20px; color:#0f0; font-size:14px;}
 </style>
 </head>
@@ -39,47 +39,56 @@
   </div>
 
   <div style="text-align:center; margin:30px 0;">
-    <h2 id="main_title">RBooSH™ Abu Suleiman Group ⚡ Electrical Trading</h2>
-    <p id="main_desc">Specialized in supply and trade of electrical equipment, installation services, and electrical energy consulting</p>
+    <h2 id="main_title">RBooSH™ مجموعة ابو سليمان ⚡ للتجارة الكهربائية</h2>
+    <p id="main_desc">متخصصون في توريد وتجارة المعدات الكهربائية، خدمات التركيب، واستشارات الطاقة الكهربائية</p>
   </div>
 
   <div class="card">
-    <h2 id="services_title">Our Services</h2>
-    <p id="services_desc">Sale of distribution panels, cables, stabilizers, circuit breakers, contactors and electrical devices<br>We serve industrial companies, commercial businesses, and individuals</p>
+    <h2 id="services_title">خدماتنا</h2>
+    <p id="services_desc">بيع لوحات التوزيع، الكابلات، مثبتات الجهد، القواطع، الكونتاكتورات والأجهزة الكهربائية<br>نخدم الشركات الصناعية، المحلات التجارية، والأفراد</p>
+  </div>
+
+  <!-- قسم الفروع داخل المربع -->
+  <div class="card">
+    <h2 id="branches_title">فروعنا</h2>
+    <div style="text-align:right; margin-top:20px;">
+      <p style="margin-bottom:20px;">
+        <b>1.</b> <span id="branch1">المركز الرئيسي - الحسكة</span> ⭐ <br>
+        <a href="https://maps.app.goo.gl/9rPCzmoVwEvoYURo6" target="_blank" id="map1" style="color:#00bfff; text-decoration:underline;">عرض على الخريطة</a>
+      </p>
+      <p>
+        <b>2.</b> <span id="branch2">فرع القامشلي</span> <br>
+        <a href="https://maps.app.goo.gl/jLjDA49LaaHDywKg8?g_st=ac" target="_blank" id="map2" style="color:#00bfff; text-decoration:underline;">عرض على الخريطة</a>
+      </p>
+    </div>
   </div>
 
   <div class="card">
-    <h2 id="branches_title">Our Branches</h2>
-    <p><b>1.</b> <span id="branch1">Main Center - Al-Hasakah</span> ⭐ <br><a href="#" style="color:#00bfff;">View on Map</a></p>
-    <p style="margin-top:10px;"><b>2.</b> <span id="branch2">Qamishli Branch</span> <br><a href="#" style="color:#00bfff;">View on Map</a></p>
+    <h2 id="payment_title">طرق الدفع</h2>
+    <div class="payment-item">💵 <b id="pay1_title">الدفع نقداً</b><br><span id="pay1_desc">الدفع عند الاستلام من اي فرع</span></div>
+    <div class="payment-item">📱 <b id="pay2_title">شام كاش</b><br><span id="pay2_desc">الدفع الالكتروني عبر شام كاش</span></div>
+    <div class="payment-item">💳 <b id="pay3_title">مساري</b><br><span id="pay3_desc">الدفع الالكتروني عبر مساري</span></div>
+    <div class="payment-item">📋 <b id="pay4_title">التقسيط</b><br><span id="pay4_desc">للشركات والمشاريع الكبيرة بشروط ميسرة</span></div>
+    <p style="color:#0f0; text-align:center; margin-top:15px;">✨ <span id="payment_note">اسأل عن العروض والخصومات الخاصة عند الدفع بشام كاش ومساري</span></p>
   </div>
 
   <div class="card">
-    <h2 id="payment_title">Payment Methods</h2>
-    <div class="payment-item">💵 <b id="pay1_title">Cash Payment</b><br><span id="pay1_desc">Cash on delivery from any branch</span></div>
-    <div class="payment-item">📱 <b id="pay2_title">ShamCash</b><br><span id="pay2_desc">Electronic payment via ShamCash</span></div>
-    <div class="payment-item">💳 <b id="pay3_title">Masary</b><br><span id="pay3_desc">Electronic payment via Masary</span></div>
-    <div class="payment-item">📋 <b id="pay4_title">Installments</b><br><span id="pay4_desc">For companies and large projects with easy terms</span></div>
-    <p style="color:#0f0; text-align:center; margin-top:15px;">✨ <span id="payment_note">Ask about special offers and discounts when paying with ShamCash and Masary</span></p>
+    <h2 id="why_title">لماذا تختارنا</h2>
+    <div class="why-item">🏆 <span id="why1">ضمان المنتج</span></div>
+    <div class="why-item">📄 <span id="why2">فواتير رسمية</span></div>
+    <div class="why-item">⚡ <span id="why3">توصيل سريع</span></div>
   </div>
 
   <div class="card">
-    <h2 id="why_title">Why Choose Us</h2>
-    <div class="why-item">🏆 <span id="why1">Product Warranty</span></div>
-    <div class="why-item">📄 <span id="why2">Official Invoices</span></div>
-    <div class="why-item">⚡ <span id="why3">Fast Delivery</span></div>
+    <h2 id="contact_title">تواصل معنا</h2>
+    <a href="https://wa.me/963966436341" class="btn btn-whatsapp">📱 <span id="wa1">واتساب ابو سليمان: +963 966 436 341</span></a>
+    <a href="https://wa.me/4915216839609" class="btn btn-whatsapp">📱 <span id="wa2">واتساب سليمان ربوش: +49 152 16839609</span></a>
+    <a href="#" class="btn btn-fb">📘 <span id="fb">صفحة الفيسبوك</span></a>
   </div>
 
   <div class="card">
-    <h2 id="contact_title">Contact Us</h2>
-    <a href="https://wa.me/963966436341" class="btn btn-whatsapp">📱 <span id="wa1">WhatsApp Abu Suleiman: +963 966 436 341</span></a>
-    <a href="https://wa.me/4915216839609" class="btn btn-whatsapp">📱 <span id="wa2">WhatsApp Suleiman Rboosh: +49 152 16839609</span></a>
-    <a href="#" class="btn btn-fb">📘 <span id="fb">Facebook Page</span></a>
-  </div>
-
-  <div class="card">
-    <h2 id="hours_title">Working Hours</h2>
-    <p id="hours_desc">Saturday - Thursday: 8:00 AM - 7:30 PM<br>Friday: Emergency cases only</p>
+    <h2 id="hours_title">اوقات الدوام</h2>
+    <p id="hours_desc">السبت - الخميس: 8:00 صباحاً - 7:30 مساءً<br>الجمعة: حالات الطوارئ فقط</p>
   </div>
 
   <!-- قسم الحاسبة 3 لغات -->
@@ -90,7 +99,7 @@
   </div>
 
   <footer>
-    <p style="color:#0f0; font-weight:bold;">RBooSH™ <span id="footer_slogan">We Power You... We Ensure Continuity</span></p>
+    <p style="color:#0f0; font-weight:bold;">RBooSH™ <span id="footer_slogan">نحن نزودك بالطاقة... نحن نضمن الاستمرارية</span></p>
     <p style="color:#555; font-size:12px;">© 2026 All Rights Reserved - Abu Suleiman Group</p>
   </footer>
 
@@ -107,6 +116,8 @@ const translations = {
     branches_title:'فروعنا',
     branch1:'المركز الرئيسي - الحسكة',
     branch2:'فرع القامشلي',
+    map1:'عرض على الخريطة',
+    map2:'عرض على الخريطة',
     payment_title:'طرق الدفع',
     pay1_title:'الدفع نقداً', pay1_desc:'الدفع عند الاستلام من اي فرع',
     pay2_title:'شام كاش', pay2_desc:'الدفع الالكتروني عبر شام كاش',
@@ -135,6 +146,8 @@ const translations = {
     branches_title:'Our Branches',
     branch1:'Main Center - Al-Hasakah',
     branch2:'Qamishli Branch',
+    map1:'View on Map',
+    map2:'View on Map',
     payment_title:'Payment Methods',
     pay1_title:'Cash Payment', pay1_desc:'Cash on delivery from any branch',
     pay2_title:'ShamCash', pay2_desc:'Electronic payment via ShamCash',
@@ -145,7 +158,7 @@ const translations = {
     why1:'Product Warranty', why2:'Official Invoices', why3:'Fast Delivery',
     contact_title:'Contact Us',
     wa1:'WhatsApp Abu Suleiman: +963 966 436 341',
-    wa2:'WhatsApp Suleiman Rboosh: +49 152 16839609',
+    wa2:'WhatsApp Sulaiman Rboosh: +49 152 16839609',
     fb:'Facebook Page',
     hours_title:'Working Hours',
     hours_desc:'Saturday - Thursday: 8:00 AM - 7:30 PM<br>Friday: Emergency cases only',
@@ -163,6 +176,8 @@ const translations = {
     branches_title:'Şaxên Me',
     branch1:'Navenda Sereke - Hesîçe',
     branch2:'Şaxa Qamişlo',
+    map1:'Li ser Nexşeyê Binêre',
+    map2:'Li ser Nexşeyê Binêre',
     payment_title:'Rêbazên Dayînê',
     pay1_title:'Dayîna Bi Nakit', pay1_desc:'Dayîn bi dest de ji her şaxekî',
     pay2_title:'Şam Cash', pay2_desc:'Dayîna elektronîkî bi riya Şam Cash',
