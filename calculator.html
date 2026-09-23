@@ -5,67 +5,64 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RBooSH™ | Calculator</title>
 <style>
-  *{margin:0; padding:0; box-sizing:border-box; font-family:'Tahoma', sans-serif;}
-  body{background:#000; color:#fff; line-height:1.8;}
-  header{background:#000; border-bottom:2px solid #1e3a8a; padding:15px 20px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;}
-  header.logo{font-size:24px; font-weight:bold; color:#1e3a8a;}
-  header a{color:#aaa; text-decoration:none; font-size:14px;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Tahoma',sans-serif}
+body{background:#000;color:#fff;line-height:1.8}
+.header-top{position:fixed;top:0;left:0;right:0;background:#000;border-bottom:2px solid #1e3a8a;padding:12px 15px;z-index:1000;display:flex;justify-content:space-between;align-items:center}
+.menu-btn{font-size:28px;background:none;border:none;color:#00bfff;cursor:pointer}
+.lang-switch{display:flex;gap:6px}.lang-btn{background:#222;color:#aaa;border:1px solid #333;padding:6px 12px;border-radius:8px;cursor:pointer;font-weight:bold;font-size:12px}.lang-btn.active{background:#00bfff;color:#000}
+.sidebar{position:fixed;top:0;right:-300px;width:280px;height:100%;background:#111;border-left:2px solid #1e3a8a;z-index:1001;transition:0.3s;padding:20px}.sidebar.open{right:0}
+[dir="ltr"].sidebar{right:auto;left:-300px;border-right:2px solid #1e3a8a}[dir="ltr"].sidebar.open{left:0}
+.sidebar a{display:block;padding:14px;color:#fff;text-decoration:none;border-bottom:1px solid #222}
+.close-btn{background:none;border:none;color:#fff;font-size:24px;float:left;cursor:pointer}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);display:none;z-index:1000}.overlay.show{display:block}
 
-.lang-switch {display:flex; gap:8px;}
-.lang-btn {background:#222; color:#aaa; border:1px solid #333; padding:6px 12px; border-radius:6px; cursor:pointer; font-size:13px; font-weight:bold;}
-.lang-btn.active {background:#1e3a8a; color:#fff; border-color:#1e3a8a;}
+.container{max-width:650px;margin:30px auto;padding:20px;padding-top:85px}
+.calculator{background:#111;padding:30px;border-radius:16px;border:2px solid #1e3a8a;box-shadow:0 0 25px rgba(0,191,255,0.15)}
+h2{color:#00bfff;margin-bottom:10px;text-align:center;font-size:22px}
+.subtitle{text-align:center;color:#aaa;font-size:14px;margin-bottom:25px}
 
-.container{max-width:650px; margin:30px auto; padding:20px;}
-.calculator {background:#111; padding:30px; border-radius:16px; border:2px solid #1e3a8a;}
-  h2{color:#1e3a8a; margin-bottom:10px; text-align:center; font-size:22px;}
-.subtitle{text-align:center; color:#aaa; font-size:14px; margin-bottom:25px;}
+/* عداد الزوار الجديد */
+.visitor-counter{background:#111;border:1px dashed #00bfff;border-radius:12px;padding:12px 18px;margin:0 auto 20px auto;text-align:center;max-width:550px;display:flex;align-items:center;justify-content:center;gap:10px}
+.live-dot{width:10px;height:10px;background:#ff0000;border-radius:50%;animation:livePulse 1s infinite}
+@keyframes livePulse{0%{box-shadow:0 0 0 0 rgba(255,0,0,0.7)}70%{box-shadow:0 0 0 8px rgba(255,0,0,0)}100%{box-shadow:0 0 0 0 rgba(255,0,0,0)}}
+.visitor-counter span{font-size:14px;color:#00ff88;font-weight:bold}
 
-.calc-form {display:flex; flex-direction:column; gap:18px;}
-.calc-form label{font-size:14px; color:#aaa; text-align:right;}
-  [dir="ltr"].calc-form label{text-align:left;}
-.calc-form input,.calc-form select {
-    padding:14px; border-radius:10px; border:1px solid #333;
-    background:#0a0a0a; color:#fff; font-size:16px; width:100%; text-align:right;
-  }
-  [dir="ltr"].calc-form input, [dir="ltr"].calc-form select {text-align:left;}
-.calc-form button {
-    background:#1e3a8a; color:#fff; padding:16px; border:none;
-    border-radius:10px; font-weight:bold; cursor:pointer; font-size:16px; margin-top:5px;
-  }
-.calc-form button.whatsapp {background:#25D366; margin-top:10px;}
-.calc-form button:hover {opacity:0.9;}
+.calc-form{display:flex;flex-direction:column;gap:18px}
+.calc-form label{font-size:14px;color:#aaa;text-align:right}[dir="ltr"].calc-form label{text-align:left}
+.calc-form input,.calc-form select{padding:14px;border-radius:10px;border:1px solid #333;background:#0a0a0a;color:#fff;font-size:16px;width:100%;text-align:right}
+[dir="ltr"].calc-form input,[dir="ltr"].calc-form select{text-align:left}
+.calc-form button{background:#1e3a8a;color:#fff;padding:16px;border:none;border-radius:10px;font-weight:bold;cursor:pointer;font-size:16px;margin-top:5px;transition:0.3s}
+.calc-form button:hover{transform:scale(1.02);box-shadow:0 0 15px #1e3a8a}
+.calc-form button.whatsapp{background:linear-gradient(135deg,#25D366,#128C7E);box-shadow:0 0 15px rgba(37,211,102,0.6),0 4px 15px rgba(0,0,0,0.3);border:1px solid #25D366;animation:whatsappGlow 2s infinite alternate;position:relative;overflow:hidden}
+.calc-form button.whatsapp::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent);animation:shine 2.5s infinite}
+@keyframes whatsappGlow{from{box-shadow:0 0 10px rgba(37,211,102,0.5)}to{box-shadow:0 0 20px rgba(37,211,102,0.9),0 0 35px rgba(37,211,102,0.6)}}
+@keyframes shine{0%{left:-100%}100%{left:100%}}
 
-.calc-result {
-    background:#0a0a0a; border:1px solid #1e3a8a;
-    padding:20px; border-radius:12px; margin-top:20px; text-align:right;
-  }
-  [dir="ltr"].calc-result {text-align:left;}
-.calc-result h4{color:#1e3a8a; margin-bottom:10px;}
-.calc-result p{margin:6px 0;}
+.calc-result{background:#0a0a0a;border:1px solid #1e3a8a;padding:20px;border-radius:12px;margin-top:20px;text-align:right}
+[dir="ltr"].calc-result{text-align:left}
+.calc-result h4{color:#00bfff;margin-bottom:10px}
+.calc-result p{margin:6px 0}
+.contact-section{border-top:1px dashed #333;padding-top:20px;margin-top:20px}
+footer{text-align:center;padding:20px;color:#555;font-size:12px}
 
-.contact-section{
-    border-top:1px dashed #333;
-    padding-top:20px;
-    margin-top:20px;
-  }
-  footer{text-align:center; padding:20px; color:#555; font-size:12px;}
+/* إشعارات الطلبات الحية */
+.order-popup{position:fixed;bottom:20px;right:20px;background:#111;border:1px solid #25D366;border-radius:15px;padding:12px 16px;display:flex;align-items:center;gap:12px;z-index:2000;transform:translateX(400px);transition:0.5s;max-width:320px;box-shadow:0 0 20px rgba(37,211,102,0.4)}
+.order-popup.show{transform:translateX(0)}
+.order-popup img{width:50px;height:50px;border-radius:10px;object-fit:cover;background:#000}
+.order-popup-text{flex:1}.order-popup-text b{color:#25D366;font-size:13px;display:block}.order-popup-text small{color:#aaa;font-size:11px}
+.order-popup-close{color:#666;cursor:pointer;font-size:16px}
+[dir="ltr"].order-popup{right:auto;left:20px;transform:translateX(-400px)}[dir="ltr"].order-popup.show{transform:translateX(0)}
 </style>
 </head>
 <body>
 
-<header>
-  <div class="logo">RBooSH™</div>
-  <div style="display:flex; align-items:center; gap:15px;">
-    <a href="index.html" id="back_link">← الرجوع للموقع الرئيسي</a>
-    <div class="lang-switch">
-      <button class="lang-btn active" onclick="setLang('ar')">عربي</button>
-      <button class="lang-btn" onclick="setLang('en')">EN</button>
-      <button class="lang-btn" onclick="setLang('ku')">Kurdî</button>
-    </div>
-  </div>
-</header>
+<div class="header-top"><button class="menu-btn" onclick="openMenu()">☰</button><div class="lang-switch"><button class="lang-btn active" onclick="setLang('ar')">AR</button><button class="lang-btn" onclick="setLang('en')">EN</button><button class="lang-btn" onclick="setLang('ku')">KU</button></div></div>
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
+<div class="sidebar" id="sidebar"><button class="close-btn" onclick="closeMenu()">×</button><h3 id="menu_title" style="color:#00bfff;text-align:center;margin-bottom:20px;">القائمة</h3><a href="index.html" id="menu_home">الرئيسية</a><a href="products.html" id="menu_products">المنتجات</a><a href="calculator.html" id="menu_calc">الحاسبة</a></div>
 
 <div class="container">
+  <div class="visitor-counter"><div class="live-dot"></div><span id="counterText">🔥 187 شخص يحسبون الآن - 34 حسبة اليوم من محافظات سوريا</span></div>
+
   <div class="calculator">
     <h2 id="title">حاسبة تقدير المواد الكهربائية</h2>
     <p class="subtitle" id="subtitle">احسب كمياتك التقريبية وارسلها مباشرة لواتساب سليمان ربوشي</p>
@@ -84,7 +81,7 @@
       <label id="label_rooms">عدد الغرف / الاقسام</label>
       <input type="number" id="rooms" placeholder="مثال: 4">
 
-      <button onclick="calcOnly()" id="btn_calc">1. احسب الكميات</button>
+      <button onclick="calcOnly()" id="btn_calc">1. احسب الكميات ⚡</button>
 
       <div id="result" class="calc-result" style="display:none;"></div>
 
@@ -95,56 +92,70 @@
         <label id="label_phone">رقم هاتفك</label>
         <input type="tel" id="c_phone" placeholder="09xxxxxxxx">
 
-        <button onclick="sendToWhatsApp()" class="whatsapp" id="btn_send">2. ارسال التفاصيل لواتساب سليمان ربوشي</button>
+        <button onclick="sendToWhatsApp()" class="whatsapp" id="btn_send">2. ارسال التفاصيل لواتساب سليمان ربوشي 📱</button>
       </div>
     </div>
   </div>
 </div>
 
-<footer>
-  © 2026 RBooSH™ | Qamişlo - Herêma Pîşesazî
-</footer>
+<div class="order-popup" id="orderPopup">
+<img id="popupImg" src="https://i.postimg.cc/qvkLy0bm/IMG-20260902-WA0020.jpg">
+<div class="order-popup-text"><b id="popupTitle"></b><small id="popupDesc"></small></div>
+<span class="order-popup-close" onclick="document.getElementById('orderPopup').classList.remove('show')">×</span>
+</div>
+
+<footer>© 2026 RBooSH™ | Qamişlo - Herêma Pîşesazî</footer>
 
 <script>
 let currentLang = 'ar';
 let lastCalc = {};
 
+const productsImg=[
+"https://i.postimg.cc/KYjDpfyj/IMG-20260902-WA0081.jpg","https://i.postimg.cc/qvkLy0bm/IMG-20260902-WA0020.jpg","https://i.postimg.cc/PvdzN16d/IMG-20260828-WA0002-1.jpg"
+];
+
+const data={
+ar:{gov:["دمشق","حلب","حمص","الحسكة","اللاذقية","طرطوس","حماة","درعا","دير الزور","السويداء","إدلب","الرقة","القامشلي","ريف دمشق"],names:["أحمد","محمد","علي","خالد","حسن","عمر","يوسف","عبدالله","مصطفى","سامر"],ordered:"حسب الآن",calc:"حسب",ago:"منذ",min:"دقيقة",viewing:"شخص يحسبون الآن",orders:"حسبة اليوم من"},
+en:{gov:["Damascus","Aleppo","Homs","Hasakah","Latakia","Tartus","Hama","Daraa","Deir Ezzor","Idlib","Raqqa","Qamishli"],names:["Ahmad","Mohammad","Ali","Khaled","Hassan","Omar","Youssef"],ordered:"calculated now",calc:"estimated",ago:"ago",min:"min",viewing:"people calculating now",orders:"calculations today from"},
+ku:{gov:["Şam","Heleb","Hims","Hesekê","Laziqiye","Tartus","Hama","Dera","Reqqa","Qamişlo"],names:["Ehmed","Mihemed","Elî","Xalid","Hesen","Omer"],ordered:"niha hesab kir",calc:"texmîn kir",ago:"berî",min:"deqe",viewing:"kes niha dihejmêrin",orders:"hesab îro ji"}
+};
+
 const translations = {
   ar: {
-    dir: 'rtl', back: '← الرجوع للموقع الرئيسي', title: 'حاسبة تقدير المواد الكهربائية',
-    subtitle: 'احسب كمياتك التقريبية وارسلها مباشرة لواتساب سليمان ربوشي',
+    dir: 'rtl', menu_title:'القائمة', menu_home:'الرئيسية', menu_products:'المنتجات', menu_calc:'الحاسبة',
+    title: 'حاسبة تقدير المواد الكهربائية', subtitle: 'احسب كمياتك التقريبية وارسلها مباشرة لواتساب سليمان ربوشي',
     place: 'نوع المكان', house: 'بيت سكني', shop: 'محل تجاري', factory: 'معمل / ورشة',
     area: 'المساحة بالمتر المربع', area_ph: 'مثال: 150',
     rooms: 'عدد الغرف / الاقسام', rooms_ph: 'مثال: 4',
-    calc: '1. احسب الكميات', name: 'اسمك', name_ph: 'اكتب اسمك هنا',
+    calc: '1. احسب الكميات ⚡', name: 'اسمك', name_ph: 'اكتب اسمك هنا',
     phone: 'رقم هاتفك', phone_ph: '09xxxxxxxx',
-    send: '2. ارسال التفاصيل لواتساب سليمان ربوشي',
+    send: '2. ارسال التفاصيل لواتساب سليمان ربوشي 📱',
     result_title: 'التقدير التقريبي لـ', cable: 'كابل', breaker: 'قواطع', socket: 'برايز', switch: 'مفاتيح', panel: 'لوحات', piece: 'حبة', meter: 'متر', panel_unit: 'لوحة',
     alert: 'الرجاء ادخال المساحة وعدد الغرف', alert2: 'الرجاء ادخال الاسم والرقم',
     whatsapp_msg: '🔌 طلب تقدير جديد من حاسبة RBooSH%0A%0Aالاسم: %NAME%%0Aالتلفون: %PHONE%%0Aنوع المكان: %PLACE%%0Aالمساحة: %AREA% متر%0Aعدد الغرف: %ROOMS%%0A%0A*الكميات المطلوبة:*%0A- 2.5mm: %C25% متر%0A- 4mm: %C4% متر%0A- 6mm: %C6% متر%0A- قواطع: %BR% حبة%0A- برايز: %SO% حبة%0A- مفاتيح: %SW% حبة%0A- لوحات: %PA% لوحة'
   },
   en: {
-    dir: 'ltr', back: '← Back to Main Site', title: 'Electrical Materials Estimator',
-    subtitle: 'Estimate your materials and send directly to Sulaiman Rbooshi on WhatsApp',
+    dir: 'ltr', menu_title:'Menu', menu_home:'Home', menu_products:'Products', menu_calc:'Calculator',
+    title: 'Electrical Materials Estimator', subtitle: 'Estimate your materials and send directly to Sulaiman Rbooshi on WhatsApp',
     place: 'Place Type', house: 'Residential House', shop: 'Commercial Shop', factory: 'Workshop / Factory',
     area: 'Area in Square Meters', area_ph: 'Ex: 150',
     rooms: 'Number of Rooms / Sections', rooms_ph: 'Ex: 4',
-    calc: '1. Calculate Quantities', name: 'Your Name', name_ph: 'Enter your name',
+    calc: '1. Calculate Quantities ⚡', name: 'Your Name', name_ph: 'Enter your name',
     phone: 'Your Phone', phone_ph: '09xxxxxxxx',
-    send: '2. Send Details to Sulaiman Rbooshi on WhatsApp',
+    send: '2. Send Details to Sulaiman on WhatsApp 📱',
     result_title: 'Estimated Materials for', cable: 'Cable', breaker: 'Breakers', socket: 'Sockets', switch: 'Switches', panel: 'Panels', piece: 'pcs', meter: 'm', panel_unit: 'panel',
     alert: 'Please enter area and number of rooms', alert2: 'Please enter name and phone',
     whatsapp_msg: '🔌 New Estimate Request from RBooSH Calculator%0A%0AName: %NAME%%0APhone: %PHONE%%0APlace Type: %PLACE%%0AArea: %AREA% m2%0ANo. of Rooms: %ROOMS%%0A%0A*Required Materials:*%0A- 2.5mm Cable: %C25% m%0A- 4mm Cable: %C4% m%0A- 6mm Cable: %C6% m%0A- Breakers: %BR% pcs%0A- Sockets: %SO% pcs%0A- Switches: %SW% pcs%0A- Panels: %PA% panel'
   },
   ku: {
-    dir: 'ltr', back: '← Vegerin bo Malpera Sereke', title: 'Hesabkera Texmîna Materyalên Elektrîkê',
-    subtitle: 'Materyalên xwe texmîn bikin û rasterast bişînin WhatsApp a Sulaiman Rbooshi',
+    dir: 'ltr', menu_title:'Menu', menu_home:'Mal', menu_products:'Berhem', menu_calc:'Hesabker',
+    title: 'Hesabkera Texmîna Materyalên Elektrîkê', subtitle: 'Materyalên xwe texmîn bikin û rasterast bişînin WhatsApp a Sulaiman Rbooshi',
     place: 'Cureyê Cihê', house: 'Xaniyê Niștecihî', shop: 'Dûkan', factory: 'Kargeh / Atolyê',
     area: 'Rûber bi Metre Çargoşe', area_ph: 'Mînak: 150',
     rooms: 'Hejmara Jûran / Beşan', rooms_ph: 'Mînak: 4',
-    calc: '1. Hejmaran Hesab Bikin', name: 'Navê Te', name_ph: 'Navê xwe binivîse',
+    calc: '1. Hejmaran Hesab Bikin ⚡', name: 'Navê Te', name_ph: 'Navê xwe binivîse',
     phone: 'Hejmara Telefona Te', phone_ph: '09xxxxxxxx',
-    send: '2. Hûrguliyan bişînin WhatsApp a Sulaiman Rbooshi',
+    send: '2. Hûrguliyan bişînin WhatsApp 📱',
     result_title: 'Materyalên Texmînkirî ji bo', cable: 'Kablo', breaker: 'Sîgorte', socket: 'Priz', switch: 'Şalter', panel: 'Tablo', piece: 'danê', meter: 'm', panel_unit: 'tablo',
     alert: 'Ji kerema xwe rûber û hejmara jûran binivîse', alert2: 'Ji kerema xwe nav û telefon binivîse',
     whatsapp_msg: '🔌 Daxwaza Texmînê ya Nû ji Hesabkera RBooSH%0A%0ANav: %NAME%%0ATelefon: %PHONE%%0ACureyê Cihê: %PLACE%%0ARûber: %AREA% m2%0AHejmara Jûran: %ROOMS%%0A%0A*Materyalên Pêwîst:*%0A- Kablo 2.5mm: %C25% m%0A- Kablo 4mm: %C4% m%0A- Kablo 6mm: %C6% m%0A- Sîgorte: %BR% danê%0A- Priz: %SO% danê%0A- Şalter: %SW% danê%0A- Tablo: %PA% tablo'
@@ -156,11 +167,12 @@ function setLang(lang){
   const t = translations[lang];
   document.documentElement.lang = lang;
   document.documentElement.dir = t.dir;
-
   document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
   document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
-
-  document.getElementById('back_link').innerText = t.back;
+  document.getElementById('menu_title').innerText=t.menu_title;
+  document.getElementById('menu_home').innerText=t.menu_home;
+  document.getElementById('menu_products').innerText=t.menu_products;
+  document.getElementById('menu_calc').innerText=t.menu_calc;
   document.getElementById('title').innerText = t.title;
   document.getElementById('subtitle').innerText = t.subtitle;
   document.getElementById('label_place').innerText = t.place;
@@ -177,7 +189,10 @@ function setLang(lang){
   document.getElementById('label_phone').innerText = t.phone;
   document.getElementById('c_phone').placeholder = t.phone_ph;
   document.getElementById('btn_send').innerText = t.send;
+  updateCounter();
 }
+function openMenu(){document.getElementById('sidebar').classList.add('open');document.getElementById('overlay').classList.add('show');}
+function closeMenu(){document.getElementById('sidebar').classList.remove('open');document.getElementById('overlay').classList.remove('show');}
 
 function calcOnly(){
   const t = translations[currentLang];
@@ -185,10 +200,8 @@ function calcOnly(){
   let area = document.getElementById('area').value;
   let rooms = document.getElementById('rooms').value;
   if(!area ||!rooms){ alert(t.alert); return; }
-
   let factor = place=="factory"?2.2: place=="shop"?1.6:1.3;
   let placeName = document.getElementById('place_type').options[document.getElementById('place_type').selectedIndex].text;
-
   lastCalc = {
     cable2_5: Math.round(area * factor),
     cable4: Math.round(rooms * 30),
@@ -199,7 +212,6 @@ function calcOnly(){
     panels: place == "factory"? 2 : 1,
     placeName, area, rooms
   };
-
   document.getElementById('result').style.display = 'block';
   document.getElementById('result').innerHTML = `
     <h4>${t.result_title} ${lastCalc.placeName}:</h4>
@@ -219,16 +231,48 @@ function sendToWhatsApp(){
   let name = document.getElementById('c_name').value;
   let phone = document.getElementById('c_phone').value;
   if(!name ||!phone){ alert(t.alert2); return; }
-
   let message = t.whatsapp_msg
-  .replace('%NAME%', name).replace('%PHONE%', phone).replace('%PLACE%', lastCalc.placeName)
-  .replace('%AREA%', lastCalc.area).replace('%ROOMS%', lastCalc.rooms)
-  .replace('%C25%', lastCalc.cable2_5).replace('%C4%', lastCalc.cable4).replace('%C6%', lastCalc.cable6)
-  .replace('%BR%', lastCalc.breaker).replace('%SO%', lastCalc.sockets).replace('%SW%', lastCalc.switches).replace('%PA%', lastCalc.panels);
-
-  let whatsappNumber = "4915216839609"; // سليمان ربوشي
-  window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+ .replace('%NAME%', name).replace('%PHONE%', phone).replace('%PLACE%', lastCalc.placeName)
+ .replace('%AREA%', lastCalc.area).replace('%ROOMS%', lastCalc.rooms)
+ .replace('%C25%', lastCalc.cable2_5).replace('%C4%', lastCalc.cable4).replace('%C6%', lastCalc.cable6)
+ .replace('%BR%', lastCalc.breaker).replace('%SO%', lastCalc.sockets).replace('%SW%', lastCalc.switches).replace('%PA%', lastCalc.panels);
+  window.open(`https://wa.me/4915216839609?text=${message}`, '_blank');
 }
+
+function updateCounter(){
+let viewers=Math.floor(Math.random()*80)+120;
+let orders=Math.floor(Math.random()*15)+22;
+let g1=data[currentLang].gov[Math.floor(Math.random()*data[currentLang].gov.length)];
+let g2=data[currentLang].gov[Math.floor(Math.random()*data[currentLang].gov.length)];
+if(currentLang==='ar') document.getElementById('counterText').innerHTML=`🔥 ${viewers} ${data.ar.viewing} - ${orders} ${data.ar.orders} ${g1}، ${g2} و باقي المحافظات`;
+else if(currentLang==='en') document.getElementById('counterText').innerHTML=`🔥 ${viewers} ${data.en.viewing} - ${orders} ${data.en.orders} ${g1}, ${g2} & others`;
+else document.getElementById('counterText').innerHTML=`🔥 ${viewers} ${data.ku.viewing} - ${orders} ${data.ku.orders} ${g1}, ${g2} û yên din`;
+}
+setInterval(updateCounter,4000);
+
+function showPopup(){
+let d=data[currentLang];
+let n=d.names[Math.floor(Math.random()*d.names.length)];
+let g=d.gov[Math.floor(Math.random()*d.gov.length)];
+let mins=Math.floor(Math.random()*8)+1;
+let img=productsImg[Math.floor(Math.random()*productsImg.length)];
+document.getElementById('popupImg').src=img;
+if(currentLang==='ar'){
+document.getElementById('popupTitle').innerHTML=`✅ ${n} من ${g} ${d.ordered}`;
+document.getElementById('popupDesc').innerHTML=`حسب ${Math.floor(Math.random()*200)+50} متر كابل - ${d.ago} ${mins} ${d.min} ✅`;
+}else if(currentLang==='en'){
+document.getElementById('popupTitle').innerHTML=`✅ ${n} from ${g} ${d.ordered}`;
+document.getElementById('popupDesc').innerHTML=`Calculated ${Math.floor(Math.random()*200)+50}m cable - ${mins} ${d.min} ${d.ago} ✅`;
+}else{
+document.getElementById('popupTitle').innerHTML=`✅ ${n} ji ${g} ${d.ordered}`;
+document.getElementById('popupDesc').innerHTML=`${Math.floor(Math.random()*200)+50}m kablo ${d.calc} - ${d.ago} ${mins} ${d.min} ✅`;
+}
+document.getElementById('orderPopup').classList.add('show');
+setTimeout(()=>{document.getElementById('orderPopup').classList.remove('show');},4500);
+}
+setTimeout(showPopup,3000);
+setInterval(showPopup,8500);
+updateCounter();
 </script>
 </body>
 </html>
