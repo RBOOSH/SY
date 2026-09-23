@@ -5,121 +5,144 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RBooSH™ Abu Suleiman Group</title>
 <style>
-*{margin:0; padding:0; box-sizing:border-box; font-family:'Tahoma', sans-serif;}
-body{background:#000; color:#fff; line-height:1.8;}
-.container{max-width:900px; margin:0 auto; padding:20px; padding-top:80px;}
-.logo{text-align:center; margin:20px 0;}
-.logo img{max-width:350px; width:100%;}
-h2{color:#00bfff; text-align:center; font-size:26px; margin-bottom:15px;}
-.card{background:#111; border:1px solid #1e3a8a; border-radius:12px; padding:25px; margin:20px 0;}
-.btn{padding:14px 20px; border-radius:10px; text-decoration:none; font-weight:bold; display:block; text-align:center; margin:10px 0;}
-.btn-whatsapp{background:#25D366; color:#fff;}
-.btn-fb{background:#1877F2; color:#fff;}
-.btn-calc{background:#1e3a8a; color:#fff; font-size:18px; padding:16px 35px; display:inline-block;}
-.header-top{position:fixed; top:0; left:0; right:0; background:#000; border-bottom:2px solid #1e3a8a; padding:12px 15px; z-index:1000; display:flex; justify-content:space-between; align-items:center;}
-.menu-btn{font-size:28px; background:none; border:none; color:#00bfff; cursor:pointer;}
-.lang-switch {display:flex; gap:6px;}
-.lang-btn {background:#222; color:#aaa; border:1px solid #333; padding:6px 12px; border-radius:8px; cursor:pointer; font-weight:bold; font-size:12px;}
-.lang-btn.active {background:#00bfff; color:#000; border-color:#00bfff;}
-.sidebar {position: fixed; top: 0; right: -300px; width: 280px; height: 100%; background: #111; border-left: 2px solid #1e3a8a; z-index: 1001; transition: right 0.3s ease; padding: 20px;}
-.sidebar.open { right: 0; }
-[dir="ltr"].sidebar { right: auto; left: -300px; border-left: none; border-right: 2px solid #1e3a8a; }
-[dir="ltr"].sidebar.open { left: 0; }
-.sidebar h3{color:#00bfff; margin-bottom:20px; text-align:center;}
-.sidebar a{display:block; padding:14px; color:#fff; text-decoration:none; border-bottom:1px solid #222; font-size:16px;}
-.sidebar a:hover{background:#1e3a8a; border-radius:8px;}
-.close-btn{background:none; border:none; color:#fff; font-size:24px; float:left; cursor:pointer;}
-.overlay{position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.7); display:none; z-index:1000;}
-.overlay.show{display:block;}
-.payment-item,.why-item {border:1px solid #1e3a8a; padding:15px; border-radius:10px; margin:10px 0; text-align:center;}
-footer{text-align:center; padding:30px 20px; color:#0f0; font-size:14px;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Tahoma',sans-serif}
+body{background:#000;color:#fff;line-height:1.8}
+.container{max-width:900px;margin:0 auto;padding:20px;padding-top:80px}
+.logo{text-align:center;margin:20px 0}.logo img{max-width:350px;width:100%}
+h2{color:#00bfff;text-align:center;font-size:26px;margin-bottom:15px}
+.card{background:#111;border:1px solid #222;border-radius:12px;padding:25px;margin:20px 0;transition:0.3s}.card:hover{border-color:#1e3a8a}
+.btn{padding:14px 20px;border-radius:10px;text-decoration:none;font-weight:bold;display:block;text-align:center;margin:10px 0;transition:0.3s}
+.btn-whatsapp{background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;box-shadow:0 0 15px rgba(37,211,102,0.6),0 4px 15px rgba(0,0,0,0.3);border:1px solid #25D366;animation:whatsappGlow 2s infinite alternate;position:relative;overflow:hidden}
+.btn-whatsapp::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent);animation:shine 2.5s infinite}
+@keyframes whatsappGlow{from{box-shadow:0 0 10px rgba(37,211,102,0.5)}to{box-shadow:0 0 20px rgba(37,211,102,0.9),0 0 35px rgba(37,211,102,0.6)}}
+@keyframes shine{0%{left:-100%}100%{left:100%}}
+.btn-fb{background:#1877F2;color:#fff}
+.btn-calc{background:linear-gradient(135deg,#1e3a8a,#00bfff);color:#fff;font-size:18px;padding:16px 35px;display:inline-block;border-radius:25px;animation:btnPulse 1.5s infinite;box-shadow:0 0 20px rgba(0,191,255,0.5)}
+@keyframes btnPulse{0%{transform:scale(1)}50%{transform:scale(1.05)}100%{transform:scale(1)}}
+.header-top{position:fixed;top:0;left:0;right:0;background:#000;border-bottom:2px solid #1e3a8a;padding:12px 15px;z-index:1000;display:flex;justify-content:space-between;align-items:center}
+.menu-btn{font-size:28px;background:none;border:none;color:#00bfff;cursor:pointer}
+.lang-switch{display:flex;gap:6px}.lang-btn{background:#222;color:#aaa;border:1px solid #333;padding:6px 12px;border-radius:8px;cursor:pointer;font-weight:bold;font-size:12px}.lang-btn.active{background:#00bfff;color:#000}
+.sidebar{position:fixed;top:0;right:-300px;width:280px;height:100%;background:#111;border-left:2px solid #1e3a8a;z-index:1001;transition:0.3s;padding:20px}.sidebar.open{right:0}
+[dir="ltr"].sidebar{right:auto;left:-300px;border-left:none;border-right:2px solid #1e3a8a}[dir="ltr"].sidebar.open{left:0}
+.sidebar h3{color:#00bfff;margin-bottom:20px;text-align:center}.sidebar a{display:block;padding:14px;color:#fff;text-decoration:none;border-bottom:1px solid #222;font-size:16px}.sidebar a:hover{background:#1e3a8a;border-radius:8px}
+.close-btn{background:none;border:none;color:#fff;font-size:24px;float:left;cursor:pointer}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);display:none;z-index:1000}.overlay.show{display:block}
+.payment-item,.why-item{border:1px solid #1e3a8a;padding:15px;border-radius:10px;margin:10px 0;text-align:center;background:#0a0a0a}
+footer{text-align:center;padding:30px 20px;color:#555;font-size:14px}
+
+/* عداد الزوار */
+.visitor-counter{background:#111;border:1px dashed #00bfff;border-radius:12px;padding:12px 18px;margin:0 auto 20px auto;text-align:center;max-width:650px;display:flex;align-items:center;justify-content:center;gap:10px}
+.live-dot{width:10px;height:10px;background:#ff0000;border-radius:50%;animation:livePulse 1s infinite}
+@keyframes livePulse{0%{box-shadow:0 0 0 0 rgba(255,0,0,0.7)}70%{box-shadow:0 0 0 8px rgba(255,0,0,0)}100%{box-shadow:0 0 0 0 rgba(255,0,0,0)}}
+.visitor-counter span{font-size:14px;color:#00ff88;font-weight:bold}
+
+/* بنر الحاسبة */
+.calc-banner{background:linear-gradient(135deg,#1e3a8a,#00bfff);border-radius:15px;padding:25px;margin:25px 0;text-align:center;border:2px solid #00bfff;animation:glow 2s infinite alternate}
+@keyframes glow{from{box-shadow:0 0 10px #1e3a8a}to{box-shadow:0 0 25px #00bfff}}
+
+/* إشعارات */
+.order-popup{position:fixed;bottom:20px;right:20px;background:#111;border:1px solid #25D366;border-radius:15px;padding:12px 16px;display:flex;align-items:center;gap:12px;z-index:2000;transform:translateX(400px);transition:0.5s;max-width:320px;box-shadow:0 0 20px rgba(37,211,102,0.4)}
+.order-popup.show{transform:translateX(0)}
+.order-popup img{width:50px;height:50px;border-radius:10px;object-fit:cover;background:#000}
+.order-popup-text{flex:1}.order-popup-text b{color:#25D366;font-size:13px;display:block}.order-popup-text small{color:#aaa;font-size:11px}
+.order-popup-close{color:#666;cursor:pointer;font-size:16px}
+[dir="ltr"].order-popup{right:auto;left:20px;transform:translateX(-400px)}[dir="ltr"].order-popup.show{transform:translateX(0)}
 </style>
 </head>
 <body>
-<div class="header-top">
-<button class="menu-btn" onclick="openMenu()">☰</button>
-<div class="lang-switch">
-<button class="lang-btn active" onclick="setLang('ar')">AR</button>
-<button class="lang-btn" onclick="setLang('en')">EN</button>
-<button class="lang-btn" onclick="setLang('ku')">KU</button>
-</div>
-</div>
+<div class="header-top"><button class="menu-btn" onclick="openMenu()">☰</button><div class="lang-switch"><button class="lang-btn active" onclick="setLang('ar')">AR</button><button class="lang-btn" onclick="setLang('en')">EN</button><button class="lang-btn" onclick="setLang('ku')">KU</button></div></div>
 <div class="overlay" id="overlay" onclick="closeMenu()"></div>
-<div class="sidebar" id="sidebar">
-<button class="close-btn" onclick="closeMenu()">×</button>
-<h3 id="menu_title">القائمة</h3>
-<a href="index.html" id="menu_home">الرئيسية</a>
-<a href="products.html" id="menu_products">المنتجات 🛒</a>
-<a href="calculator.html" id="menu_calc">الحاسبة</a>
-<a href="#contact" id="menu_contact">اتصال</a>
-</div>
+<div class="sidebar" id="sidebar"><button class="close-btn" onclick="closeMenu()">×</button><h3 id="menu_title">القائمة</h3><a href="index.html" id="menu_home">الرئيسية</a><a href="products.html" id="menu_products">المنتجات 🛒</a><a href="calculator.html" id="menu_calc">الحاسبة</a><a href="#contact" id="menu_contact">اتصال</a></div>
+
 <div class="container">
 <div class="logo"><img src="logo.png" alt="RBooSH"></div>
-<div style="text-align:center; margin:30px 0;">
+
+<div class="visitor-counter"><div class="live-dot"></div><span id="counterText">🔥 247 شخص يشاهدون الآن - 56 طلب اليوم من محافظات سوريا</span></div>
+
+<div style="text-align:center;margin:30px 0;">
 <h2 id="main_title">RBooSH™ مجموعة ابو سليمان ⚡ للتجارة الكهربائية</h2>
 <p id="main_desc">متخصصون في توريد وتجارة المعدات الكهربائية، خدمات التركيب، واستشارات الطاقة الكهربائية</p>
 </div>
-<div class="card">
-<h2 id="services_title">خدماتنا</h2>
-<p id="services_desc">بيع لوحات التوزيع، الكابلات، مثبتات الجهد، القواطع، الكونتاكتورات والأجهزة الكهربائية<br>نخدم الشركات الصناعية، المحلات التجارية، والأفراد</p>
+
+<div class="calc-banner">
+<h2 id="banner_calc_title" style="color:#fff;margin-bottom:10px">🧮 حاسبة RBooSH™ المجانية</h2>
+<p id="banner_calc_desc" style="color:#e0f2ff;font-size:14px;margin-bottom:15px">احسب احتياجات بيتك أو محلك في 30 ثانية وأرسلها لنا على الواتساب فوراً!</p>
+<a id="banner_calc_btn" href="calculator.html" class="btn-calc" style="background:#fff;color:#1e3a8a">⚡ افتح الحاسبة الآن - مجاناً</a>
 </div>
-<div class="card">
-<h2 id="branches_title">فروعنا</h2>
-<div style="text-align:right; margin-top:20px;">
-<p style="margin-bottom:20px;"><b>1.</b> <span id="branch1">المركز الرئيسي - الحسكة</span> ⭐ <br><a href="https://maps.app.goo.gl/9rPCzmoVwEvoYURo6" target="_blank" id="map1" style="color:#00bfff; text-decoration:underline;">عرض على الخريطة</a></p>
-<p><b>2.</b> <span id="branch2">فرع القامشلي</span> <br><a href="https://maps.app.goo.gl/jLjDA49LaaHDywKg8?g_st=ac" target="_blank" id="map2" style="color:#00bfff; text-decoration:underline;">عرض على الخريطة</a></p>
+
+<div class="card"><h2 id="services_title">خدماتنا</h2><p id="services_desc">بيع لوحات التوزيع، الكابلات، مثبتات الجهد، القواطع، الكونتاكتورات والأجهزة الكهربائية<br>نخدم الشركات الصناعية، المحلات التجارية، والأفراد</p></div>
+<div class="card"><h2 id="branches_title">فروعنا</h2><div style="text-align:right;margin-top:20px;"><p style="margin-bottom:20px;"><b>1.</b> <span id="branch1">المركز الرئيسي - الحسكة</span> ⭐ <br><a href="https://maps.app.goo.gl/9rPCzmoVwEvoYURo6" target="_blank" id="map1" style="color:#00bfff;text-decoration:underline;">عرض على الخريطة</a></p><p><b>2.</b> <span id="branch2">فرع القامشلي</span> <br><a href="https://maps.app.goo.gl/jLjDA49LaaHDywKg8?g_st=ac" target="_blank" id="map2" style="color:#00bfff;text-decoration:underline;">عرض على الخريطة</a></p></div></div>
+<div class="card"><h2 id="payment_title">طرق الدفع</h2><div class="payment-item">💵 <b id="pay1_title">الدفع نقداً</b><br><span id="pay1_desc">الدفع عند الاستلام من اي فرع</span></div><div class="payment-item">📱 <b id="pay2_title">شام كاش</b><br><span id="pay2_desc">الدفع الالكتروني عبر شام كاش</span></div><div class="payment-item">💳 <b id="pay3_title">مساري</b><br><span id="pay3_desc">الدفع الالكتروني عبر مساري</span></div><div class="payment-item">📋 <b id="pay4_title">التقسيط</b><br><span id="pay4_desc">للشركات والمشاريع الكبيرة بشروط ميسرة</span></div><p style="color:#00ff88;text-align:center;margin-top:15px;">✨ <span id="payment_note">اسأل عن العروض والخصومات الخاصة عند الدفع بشام كاش ومساري</span></p></div>
+<div class="card"><h2 id="why_title">لماذا تختارنا</h2><div class="why-item">🏆 <span id="why1">ضمان المنتج</span></div><div class="why-item">📄 <span id="why2">فواتير رسمية</span></div><div class="why-item">⚡ <span id="why3">توصيل سريع</span></div></div>
+<div class="card" id="contact"><h2 id="contact_title">اتصال</h2><a href="https://wa.me/963966436341" class="btn btn-whatsapp">📱 <span id="wa1">واتساب ابو سليمان: +963 966 436 341</span></a><a href="https://wa.me/4915216839609" class="btn btn-whatsapp">📱 <span id="wa2">واتساب سليمان ربوشي: +49 152 16839609</span></a><a href="https://www.facebook.com/share/19CY71w9uo/" target="_blank" class="btn btn-fb">📘 <span id="fb">صفحة الفيسبوك</span></a></div>
+<div class="card"><h2 id="hours_title">اوقات الدوام</h2><p id="hours_desc">السبت - الخميس: 8:00 صباحاً - 7:30 مساءً<br>الجمعة: حالات الطوارئ فقط</p></div>
+<div class="card" style="text-align:center;" id="calc_section"><h2 id="calc_title">احسب احتياجاتك بنفسك</h2><p id="calc_desc">استخدم حاسبة RBooSH™ لتقدير كميات المواد الكهربائية لمشروعك خلال 30 ثانية</p><a id="calc_btn" href="calculator.html" class="btn-calc">افتح الحاسبة الآن</a></div>
+<footer><p style="color:#00ff88;font-weight:bold">RBooSH™ <span id="footer_slogan">نحن نزودك بالطاقة... نحن نضمن الاستمرارية</span></p><p style="color:#555;font-size:12px">© 2026 All Rights Reserved - Abu Suleiman Group</p></footer>
 </div>
+
+<div class="order-popup" id="orderPopup">
+<img id="popupImg" src="https://i.postimg.cc/qvkLy0bm/IMG-20260902-WA0020.jpg">
+<div class="order-popup-text"><b id="popupTitle"></b><small id="popupDesc"></small></div>
+<span class="order-popup-close" onclick="document.getElementById('orderPopup').classList.remove('show')">×</span>
 </div>
-<div class="card">
-<h2 id="payment_title">طرق الدفع</h2>
-<div class="payment-item">💵 <b id="pay1_title">الدفع نقداً</b><br><span id="pay1_desc">الدفع عند الاستلام من اي فرع</span></div>
-<div class="payment-item">📱 <b id="pay2_title">شام كاش</b><br><span id="pay2_desc">الدفع الالكتروني عبر شام كاش</span></div>
-<div class="payment-item">💳 <b id="pay3_title">مساري</b><br><span id="pay3_desc">الدفع الالكتروني عبر مساري</span></div>
-<div class="payment-item">📋 <b id="pay4_title">التقسيط</b><br><span id="pay4_desc">للشركات والمشاريع الكبيرة بشروط ميسرة</span></div>
-<p style="color:#0f0; text-align:center; margin-top:15px;">✨ <span id="payment_note">اسأل عن العروض والخصومات الخاصة عند الدفع بشام كاش ومساري</span></p>
-</div>
-<div class="card">
-<h2 id="why_title">لماذا تختارنا</h2>
-<div class="why-item">🏆 <span id="why1">ضمان المنتج</span></div>
-<div class="why-item">📄 <span id="why2">فواتير رسمية</span></div>
-<div class="why-item">⚡ <span id="why3">توصيل سريع</span></div>
-</div>
-<div class="card" id="contact">
-<h2 id="contact_title">اتصال</h2>
-<a href="https://wa.me/963966436341" class="btn btn-whatsapp">📱 <span id="wa1">واتساب ابو سليمان: +963 966 436 341</span></a>
-<a href="https://wa.me/4915216839609" class="btn btn-whatsapp">📱 <span id="wa2">واتساب سليمان ربوشي: +49 152 16839609</span></a>
-<a href="https://www.facebook.com/share/19CY71w9uo/" target="_blank" class="btn btn-fb">📘 <span id="fb">صفحة الفيسبوك</span></a>
-</div>
-<div class="card">
-<h2 id="hours_title">اوقات الدوام</h2>
-<p id="hours_desc">السبت - الخميس: 8:00 صباحاً - 7:30 مساءً<br>الجمعة: حالات الطوارئ فقط</p>
-</div>
-<div class="card" style="text-align:center;" id="calc_section">
-<h2 id="calc_title">احسب احتياجاتك بنفسك</h2>
-<p id="calc_desc">استخدم حاسبة RBooSH™ لتقدير كميات المواد الكهربائية لمشروعك خلال 30 ثانية</p>
-<a id="calc_btn" href="calculator.html" class="btn-calc">افتح الحاسبة الآن</a>
-</div>
-<footer>
-<p style="color:#0f0; font-weight:bold;">RBooSH™ <span id="footer_slogan">نحن نزودك بالطاقة... نحن نضمن الاستمرارية</span></p>
-<p style="color:#555; font-size:12px;">© 2026 All Rights Reserved - Abu Suleiman Group</p>
-</footer>
-</div>
+
 <script>
-const translations = {
-ar: { dir:'rtl', menu_title:'القائمة', menu_home:'الرئيسية', menu_products:'المنتجات 🛒', menu_calc:'الحاسبة', menu_contact:'اتصال', main_title:'RBooSH™ مجموعة ابو سليمان ⚡ للتجارة الكهربائية', main_desc:'متخصصون في توريد وتجارة المعدات الكهربائية، خدمات التركيب، واستشارات الطاقة الكهربائية', services_title:'خدماتنا', services_desc:'بيع لوحات التوزيع، الكابلات، مثبتات الجهد، القواطع، الكونتاكتورات والأجهزة الكهربائية<br>نخدم الشركات الصناعية، المحلات التجارية، والأفراد', branches_title:'فروعنا', branch1:'المركز الرئيسي - الحسكة', branch2:'فرع القامشلي', map1:'عرض على الخريطة', map2:'عرض على الخريطة', payment_title:'طرق الدفع', pay1_title:'الدفع نقداً', pay1_desc:'الدفع عند الاستلام من اي فرع', pay2_title:'شام كاش', pay2_desc:'الدفع الالكتروني عبر شام كاش', pay3_title:'مساري', pay3_desc:'الدفع الالكتروني عبر مساري', pay4_title:'التقسيط', pay4_desc:'للشركات والمشاريع الكبيرة بشروط ميسرة', payment_note:'اسأل عن العروض والخصومات الخاصة عند الدفع بشام كاش ومساري', why_title:'لماذا تختارنا', why1:'ضمان المنتج', why2:'فواتير رسمية', why3:'توصيل سريع', contact_title:'اتصال', wa1:'واتساب ابو سليمان: +963 966 436 341', wa2:'واتساب سليمان ربوشي: +49 152 16839609', fb:'صفحة الفيسبوك', hours_title:'اوقات الدوام', hours_desc:'السبت - الخميس: 8:00 صباحاً - 7:30 مساءً<br>الجمعة: حالات الطوارئ فقط', calc_title:'احسب احتياجاتك بنفسك', calc_desc:'استخدم حاسبة RBooSH™ لتقدير كميات المواد الكهربائية لمشروعك خلال 30 ثانية', calc_btn:'افتح الحاسبة الآن', footer_slogan:'نحن نزودك بالطاقة... نحن نضمن الاستمرارية' },
-en: { dir:'ltr', menu_title:'Menu', menu_home:'Home', menu_products:'Products 🛒', menu_calc:'Calculator', menu_contact:'Contact', main_title:'RBooSH™ Abu Suleiman Group ⚡ Electrical Trading', main_desc:'Specialized in supply and trade of electrical equipment, installation services, and electrical energy consulting', services_title:'Our Services', services_desc:'Sale of distribution panels, cables, stabilizers, circuit breakers, contactors and electrical devices<br>We serve industrial companies, commercial businesses, and individuals', branches_title:'Our Branches', branch1:'Main Center - Al-Hasakah', branch2:'Qamishli Branch', map1:'View on Map', map2:'View on Map', payment_title:'Payment Methods', pay1_title:'Cash Payment', pay1_desc:'Cash on delivery from any branch', pay2_title:'ShamCash', pay2_desc:'Electronic payment via ShamCash', pay3_title:'Masary', pay3_desc:'Electronic payment via Masary', pay4_title:'Installments', pay4_desc:'For companies and large projects with easy terms', payment_note:'Ask about special offers and discounts when paying with ShamCash and Masary', why_title:'Why Choose Us', why1:'Product Warranty', why2:'Official Invoices', why3:'Fast Delivery', contact_title:'Contact', wa1:'WhatsApp Abu Suleiman: +963 966 436 341', wa2:'WhatsApp Sulaiman Rbooshi: +49 152 16839609', fb:'Facebook Page', hours_title:'Working Hours', hours_desc:'Saturday - Thursday: 8:00 AM - 7:30 PM<br>Friday: Emergency cases only', calc_title:'Estimate Your Needs Yourself', calc_desc:'Use the RBooSH™ Calculator to estimate electrical material quantities for your project in 30 seconds', calc_btn:'Open Calculator Now', footer_slogan:'We Power You... We Ensure Continuity' },
-ku: { dir:'ltr', menu_title:'Menu', menu_home:'Mal', menu_products:'Berhem 🛒', menu_calc:'Hesabker', menu_contact:'Têkilî', main_title:'RBooSH™ Koma Ebu Suleyman ⚡ Bazirganiya Elektrîkê', main_desc:'Em pispor in di dabînkirin û bazirganiya amûrên elektrîkê, karûbarên sazkirinê, û şêwirmendiya enerjiya elektrîkê de', services_title:'Karûbarên Me', services_desc:'Firotina tabloyên belavkirinê, kablo, stabilizer, sîgorte, kontaktor û amûrên elektrîkê<br>Em xizmetê ji pargadanên pîşesazî, bazirganî û kesan re dikin', branches_title:'Şaxên Me', branch1:'Navenda Sereke - Hesîçe', branch2:'Şaxa Qamişlo', map1:'Li ser Nexşeyê Binêre', map2:'Li ser Nexşeyê Binêre', payment_title:'Rêbazên Dayînê', pay1_title:'Dayîna Bi Nakit', pay1_desc:'Dayîn bi dest de ji her şaxekî', pay2_title:'Şam Cash', pay2_desc:'Dayîna elektronîkî bi riya Şam Cash', pay3_title:'Mesari', pay3_desc:'Dayîna elektronîkî bi riya Mesari', pay4_title:'Taksît', pay4_desc:'Ji bo pargadan û projeyên mezin bi şertên hêsan', payment_note:'Derbarê pêşkêşî û daxistinên taybet de dema dayîna bi Şam Cash û Mesari bipirse', why_title:'Çima Em Hilbijêrin', why1:'Temînata Berhemê', why2:'Fatûreyên Fermî', why3:'Radestkirina Lezgîn', contact_title:'Têkilî', wa1:'WhatsApp Ebu Suleyman: +963 966 436 341', wa2:'WhatsApp Sulaiman Rbooshi: +49 152 16839609', fb:'Rûpela Facebookê', hours_title:'Saetên Kar', hours_desc:'Şemî - Pêncşem: 8:00 Sibê - 7:30 Êvarê<br>În: Tenê rewşên acîl', calc_title:'Pêdiviyên Xwe Bi Xwe Hesab Bike', calc_desc:'Hesabkera RBooSH™ bi kar bîne da ku di 30 saniyeyan de mîqdara materyalên elektrîkê yên projeya xwe texmîn bike', calc_btn:'Hesabkerê Veke', footer_slogan:'Em Hêzê Didin Te... Em Domdariyê Misoger Dikin' }
+const data={
+ar:{gov:["دمشق","حلب","حمص","الحسكة","اللاذقية","طرطوس","حماة","درعا","دير الزور","السويداء","إدلب","الرقة","القامشلي","ريف دمشق"],names:["أحمد","محمد","علي","خالد","حسن","عمر","يوسف","عبدالله","مصطفى","أبو عمار","سامر","لؤي"],ordered:"زار موقعنا",viewing:"شخص يشاهدون الآن",orders:"طلب اليوم من"},
+en:{gov:["Damascus","Aleppo","Homs","Hasakah","Latakia","Tartus","Hama","Daraa","Deir Ezzor","Suwayda","Idlib","Raqqa","Qamishli"],names:["Ahmad","Mohammad","Ali","Khaled","Hassan","Omar","Youssef","Abdullah"],ordered:"visited our store",viewing:"people viewing now",orders:"orders today from"},
+ku:{gov:["Şam","Heleb","Hims","Hesekê","Laziqiye","Tartus","Hama","Dera","Dêrezor","Siweyda","Idlib","Reqqa","Qamişlo"],names:["Ehmed","Mihemed","Elî","Xalid","Hesen","Omer","Yûsif"],ordered:"serdana me kir",viewing:"kes niha dibînin",orders:"daxwaz îro ji"}
 };
-function openMenu(){ document.getElementById('sidebar').classList.add('open'); document.getElementById('overlay').classList.add('show'); }
-function closeMenu(){ document.getElementById('sidebar').classList.remove('open'); document.getElementById('overlay').classList.remove('show'); }
+const translations = {
+ar: { dir:'rtl', menu_title:'القائمة', menu_home:'الرئيسية', menu_products:'المنتجات 🛒', menu_calc:'الحاسبة', menu_contact:'اتصال', main_title:'RBooSH™ مجموعة ابو سليمان ⚡ للتجارة الكهربائية', main_desc:'متخصصون في توريد وتجارة المعدات الكهربائية، خدمات التركيب، واستشارات الطاقة الكهربائية', services_title:'خدماتنا', services_desc:'بيع لوحات التوزيع، الكابلات، مثبتات الجهد، القواطع، الكونتاكتورات والأجهزة الكهربائية<br>نخدم الشركات الصناعية، المحلات التجارية، والأفراد', branches_title:'فروعنا', branch1:'المركز الرئيسي - الحسكة', branch2:'فرع القامشلي', map1:'عرض على الخريطة', map2:'عرض على الخريطة', payment_title:'طرق الدفع', pay1_title:'الدفع نقداً', pay1_desc:'الدفع عند الاستلام من اي فرع', pay2_title:'شام كاش', pay2_desc:'الدفع الالكتروني عبر شام كاش', pay3_title:'مساري', pay3_desc:'الدفع الالكتروني عبر مساري', pay4_title:'التقسيط', pay4_desc:'للشركات والمشاريع الكبيرة بشروط ميسرة', payment_note:'اسأل عن العروض والخصومات الخاصة عند الدفع بشام كاش ومساري', why_title:'لماذا تختارنا', why1:'ضمان المنتج', why2:'فواتير رسمية', why3:'توصيل سريع', contact_title:'اتصال', wa1:'واتساب ابو سليمان: +963 966 436 341', wa2:'واتساب سليمان ربوشي: +49 152 16839609', fb:'صفحة الفيسبوك', hours_title:'اوقات الدوام', hours_desc:'السبت - الخميس: 8:00 صباحاً - 7:30 مساءً<br>الجمعة: حالات الطوارئ فقط', calc_title:'احسب احتياجاتك بنفسك', calc_desc:'استخدم حاسبة RBooSH™ لتقدير كميات المواد الكهربائية لمشروعك خلال 30 ثانية', calc_btn:'افتح الحاسبة الآن', footer_slogan:'نحن نزودك بالطاقة... نحن نضمن الاستمرارية', banner_calc_title:'🧮 حاسبة RBooSH™ المجانية', banner_calc_desc:'احسب احتياجات بيتك أو محلك في 30 ثانية وأرسلها لنا على الواتساب فوراً!', banner_calc_btn:'⚡ افتح الحاسبة الآن - مجاناً' },
+en: { dir:'ltr', menu_title:'Menu', menu_home:'Home', menu_products:'Products 🛒', menu_calc:'Calculator', menu_contact:'Contact', main_title:'RBooSH™ Abu Suleiman Group ⚡ Electrical Trading', main_desc:'Specialized in supply and trade of electrical equipment, installation services, and electrical energy consulting', services_title:'Our Services', services_desc:'Sale of distribution panels, cables, stabilizers, circuit breakers, contactors and electrical devices<br>We serve industrial companies, commercial businesses, and individuals', branches_title:'Our Branches', branch1:'Main Center - Al-Hasakah', branch2:'Qamishli Branch', map1:'View on Map', map2:'View on Map', payment_title:'Payment Methods', pay1_title:'Cash Payment', pay1_desc:'Cash on delivery from any branch', pay2_title:'ShamCash', pay2_desc:'Electronic payment via ShamCash', pay3_title:'Masary', pay3_desc:'Electronic payment via Masary', pay4_title:'Installments', pay4_desc:'For companies and large projects with easy terms', payment_note:'Ask about special offers and discounts when paying with ShamCash and Masary', why_title:'Why Choose Us', why1:'Product Warranty', why2:'Official Invoices', why3:'Fast Delivery', contact_title:'Contact', wa1:'WhatsApp Abu Suleiman: +963 966 436 341', wa2:'WhatsApp Sulaiman Rbooshi: +49 152 16839609', fb:'Facebook Page', hours_title:'Working Hours', hours_desc:'Saturday - Thursday: 8:00 AM - 7:30 PM<br>Friday: Emergency cases only', calc_title:'Estimate Your Needs Yourself', calc_desc:'Use the RBooSH™ Calculator to estimate electrical material quantities for your project in 30 seconds', calc_btn:'Open Calculator Now', footer_slogan:'We Power You... We Ensure Continuity', banner_calc_title:'🧮 Free RBooSH™ Calculator', banner_calc_desc:'Estimate your house or shop needs in 30 seconds and send to us on WhatsApp instantly!', banner_calc_btn:'⚡ Open Calculator - Free' },
+ku: { dir:'ltr', menu_title:'Menu', menu_home:'Mal', menu_products:'Berhem 🛒', menu_calc:'Hesabker', menu_contact:'Têkilî', main_title:'RBooSH™ Koma Ebu Suleyman ⚡ Bazirganiya Elektrîkê', main_desc:'Em pispor in di dabînkirin û bazirganiya amûrên elektrîkê, karûbarên sazkirinê, û şêwirmendiya enerjiya elektrîkê de', services_title:'Karûbarên Me', services_desc:'Firotina tabloyên belavkirinê, kablo, stabilizer, sîgorte, kontaktor û amûrên elektrîkê<br>Em xizmetê ji pargadanên pîşesazî, bazirganî û kesan re dikin', branches_title:'Şaxên Me', branch1:'Navenda Sereke - Hesîçe', branch2:'Şaxa Qamişlo', map1:'Li ser Nexşeyê Binêre', map2:'Li ser Nexşeyê Binêre', payment_title:'Rêbazên Dayînê', pay1_title:'Dayîna Bi Nakit', pay1_desc:'Dayîn bi dest de ji her şaxekî', pay2_title:'Şam Cash', pay2_desc:'Dayîna elektronîkî bi riya Şam Cash', pay3_title:'Mesari', pay3_desc:'Dayîna elektronîkî bi riya Mesari', pay4_title:'Taksît', pay4_desc:'Ji bo pargadan û projeyên mezin bi şertên hêsan', payment_note:'Derbarê pêşkêşî û daxistinên taybet de dema dayîna bi Şam Cash û Mesari bipirse', why_title:'Çima Em Hilbijêrin', why1:'Temînata Berhemê', why2:'Fatûreyên Fermî', why3:'Radestkirina Lezgîn', contact_title:'Têkilî', wa1:'WhatsApp Ebu Suleyman: +963 966 436 341', wa2:'WhatsApp Sulaiman Rbooshi: +49 152 16839609', fb:'Rûpela Facebookê', hours_title:'Saetên Kar', hours_desc:'Şemî - Pêncşem: 8:00 Sibê - 7:30 Êvarê<br>În: Tenê rewşên acîl', calc_title:'Pêdiviyên Xwe Bi Xwe Hesab Bike', calc_desc:'Hesabkera RBooSH™ bi kar bîne da ku di 30 saniyeyan de mîqdara materyalên elektrîkê yên projeya xwe texmîn bike', calc_btn:'Hesabkerê Veke', footer_slogan:'Em Hêzê Didin Te... Em Domdariyê Misoger Dikin', banner_calc_title:'🧮 Hesabkera Belaş a RBooSH™', banner_calc_desc:'Pêdiviyên mala an dukanê xwe di 30 saniyeyan de hesab bike û tavilê ji me re bişîne!', banner_calc_btn:'⚡ Hesabkerê Veke - Belaş' }
+};
+let currentLang='ar';
+function openMenu(){document.getElementById('sidebar').classList.add('open');document.getElementById('overlay').classList.add('show');}
+function closeMenu(){document.getElementById('sidebar').classList.remove('open');document.getElementById('overlay').classList.remove('show');}
 function setLang(lang){
-const t = translations[lang];
-document.documentElement.lang = lang;
-document.documentElement.dir = t.dir;
-document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+currentLang=lang;
+const t=translations[lang];
+document.documentElement.lang=lang;
+document.documentElement.dir=t.dir;
+document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
 document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
-for(let key in t){ if(document.getElementById(key)){ document.getElementById(key).innerHTML = t[key]; } }
+for(let key in t){if(document.getElementById(key)){document.getElementById(key).innerHTML=t[key];}}
+updateCounter();
 }
+function updateCounter(){
+let viewers=Math.floor(Math.random()*100)+180;
+let orders=Math.floor(Math.random()*20)+30;
+let g1=data[currentLang].gov[Math.floor(Math.random()*data[currentLang].gov.length)];
+let g2=data[currentLang].gov[Math.floor(Math.random()*data[currentLang].gov.length)];
+if(currentLang==='ar') document.getElementById('counterText').innerHTML=`🔥 ${viewers} ${data.ar.viewing} - ${orders} ${data.ar.orders} ${g1}، ${g2} و باقي محافظات سوريا`;
+else if(currentLang==='en') document.getElementById('counterText').innerHTML=`🔥 ${viewers} ${data.en.viewing} - ${orders} ${data.en.orders} ${g1}, ${g2} & other Syrian govs`;
+else document.getElementById('counterText').innerHTML=`🔥 ${viewers} ${data.ku.viewing} - ${orders} ${data.ku.orders} ${g1}, ${g2} û parêzgehên din ên Sûriyê`;
+}
+setInterval(updateCounter,4000);
+function showPopup(){
+let d=data[currentLang];
+let n=d.names[Math.floor(Math.random()*d.names.length)];
+let g=d.gov[Math.floor(Math.random()*d.gov.length)];
+let mins=Math.floor(Math.random()*8)+1;
+let imgs=["https://i.postimg.cc/KYjDpfyj/IMG-20260902-WA0081.jpg","https://i.postimg.cc/qvkLy0bm/IMG-20260902-WA0020.jpg","https://i.postimg.cc/PvdzN16d/IMG-20260828-WA0002-1.jpg"];
+document.getElementById('popupImg').src=imgs[Math.floor(Math.random()*imgs.length)];
+if(currentLang==='ar'){
+document.getElementById('popupTitle').innerHTML=`✅ ${n} من ${g} ${d.ordered}`;
+document.getElementById('popupDesc').innerHTML=`يتصفح المنتجات - منذ ${mins} دقيقة`;
+}else if(currentLang==='en'){
+document.getElementById('popupTitle').innerHTML=`✅ ${n} from ${g} ${d.ordered}`;
+document.getElementById('popupDesc').innerHTML=`Browsing products - ${mins} min ago`;
+}else{
+document.getElementById('popupTitle').innerHTML=`✅ ${n} ji ${g} ${d.ordered}`;
+document.getElementById('popupDesc').innerHTML=`Berheman dibîne - berî ${mins} deqe`;
+}
+document.getElementById('orderPopup').classList.add('show');
+setTimeout(()=>{document.getElementById('orderPopup').classList.remove('show');},4500);
+}
+setTimeout(showPopup,3000);
+setInterval(showPopup,9000);
+updateCounter();
 </script>
 </body>
 </html>
