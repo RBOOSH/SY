@@ -36,12 +36,18 @@ h1{color:#00bfff;text-align:center;margin:20px 0}
 .live-view{position:absolute;top:12px;left:12px;background:rgba(0,0,0,0.8);border:1px solid #00ff88;color:#00ff88;font-size:11px;padding:4px 8px;border-radius:20px;display:flex;align-items:center;gap:5px}
 .live-view i{width:6px;height:6px;background:#00ff88;border-radius:50%;display:inline-block;animation:livePulse 1s infinite}
 .btn-wa{background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;text-align:center;padding:14px;border-radius:12px;display:block;text-decoration:none;font-weight:bold;margin-top:10px;font-size:15px;box-shadow:0 0 15px rgba(37,211,102,0.6),0 4px 15px rgba(0,0,0,0.3);border:1px solid #25D366;animation:whatsappGlow 2s infinite alternate;position:relative;overflow:hidden}
-.btn-wa::before{content:'';poition:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent);animation:shine 2.5s infinite}
+.btn-wa::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent);animation:shine 2.5s infinite}
 @keyframes whatsappGlow{from{box-shadow:0 0 10px rgba(37,211,102,0.5),0 0 20px rgba(37,211,102,0.3)}to{box-shadow:0 0 20px rgba(37,211,102,0.9),0 0 35px rgba(37,211,102,0.6),0 4px 20px rgba(0,0,0,0.4)}}
 @keyframes shine{0%{left:-100%}100%{left:100%}}
 .btn-wa:hover{transform:scale(1.03);box-shadow:0 0 30px rgba(37,211,102,1)}
 .btn-home{background:#1e3a8a;color:#fff;padding:12px 25px;border-radius:10px;text-decoration:none;display:inline-block;margin:20px auto;text-align:center}
 footer{text-align:center;padding:30px;color:#555;font-size:12px}
+.order-popup{position:fixed;bottom:20px;right:20px;background:#111;border:1px solid #25D366;border-radius:15px;padding:12px 16px;display:flex;align-items:center;gap:12px;z-index:2000;transform:translateX(400px);transition:0.5s;max-width:320px;box-shadow:0 0 20px rgba(37,211,102,0.4)}
+.order-popup.show{transform:translateX(0)}
+.order-popup img{width:50px;height:50px;border-radius:10px;object-fit:cover;background:#000}
+.order-popup-text{flex:1}.order-popup-text b{color:#25D366;font-size:13px;display:block}.order-popup-text small{color:#aaa;font-size:11px}
+.order-popup-close{color:#666;cursor:pointer;font-size:16px}
+[dir="ltr"].order-popup{right:auto;left:20px;transform:translateX(-400px)}[dir="ltr"].order-popup.show{transform:translateX(0)}
 </style>
 </head>
 <body>
@@ -49,52 +55,81 @@ footer{text-align:center;padding:30px;color:#555;font-size:12px}
 <div class="overlay" id="overlay" onclick="closeMenu()"></div>
 <div class="sidebar" id="sidebar"><button class="close-btn" onclick="closeMenu()">×</button><h3 id="menu_title" style="color:#00bfff;text-align:center;margin-bottom:20px;">القائمة</h3><a href="index.html" id="menu_home">الرئيسية</a><a href="products.html" id="menu_products">المنتجات</a><a href="calculator.html" id="menu_calc">الحاسبة</a></div>
 <div class="container"><div class="logo"><img src="logo.png" alt="RBooSH"></div><h1 id="page_title">منتجاتنا ⚡</h1><p style="text-align:center;color:#aaa;" id="page_desc">جميع المنتجات مكفولة من RBooSH™ - 11 منتج</p>
-<div class="visitor-counter" id="mainCounter">
-<div class="live-dot"></div>
-<span id="counterText">🔥 187 شخص يشاهدون الآن - 34 طلب اليوم من محافظات سوريا</span>
-</div>
-<div class="install-banner" id="banner_box">
-<h2 id="banner_title">🎥 خدمة التركيب المجاني مع أبو سليمان</h2>
-<p id="banner_text">اشتريت وما عرفت تركب؟ افتح كاميرا واتساب وأنا أركب معك خطوة بخطوة مجاناً - مكالمة وحدة وكلشي تمام!</p>
-<a class="btn-call" id="banner_btn" href="https://wa.me/4915216839609?text=مرحبا ابو سليمان، بدي مساعدة بتركيب القطعة 🎥" target="_blank">📹 اتصل فيديو الآن</a>
-</div>
+<div class="visitor-counter"><div class="live-dot"></div><span id="counterText">🔥 187 شخص يشاهدون الآن</span></div>
+<div class="install-banner"><h2 id="banner_title">🎥 خدمة التركيب المجاني مع أبو سليمان</h2><p id="banner_text">اشتريت وما عرفت تركب؟ افتح كاميرا واتساب وأنا أركب معك خطوة بخطوة مجاناً!</p><a class="btn-call" id="banner_btn" href="https://wa.me/4915216839609?text=مرحبا ابو سليمان، بدي مساعدة بتركيب القطعة 🎥" target="_blank">📹 اتصل فيديو الآن</a></div>
 <div class="products-grid" id="productsGrid"></div><div style="text-align:center;"><a href="index.html" class="btn-home" id="back_btn">⬅️ رجوع للرئيسية</a></div><footer>© 2026 RBooSH™ - Abu Sulaiman Group</footer></div>
+
+<div class="order-popup" id="orderPopup">
+<img id="popupImg" src="">
+<div class="order-popup-text"><b id="popupTitle"></b><small id="popupDesc"></small></div>
+<span class="order-popup-close" onclick="document.getElementById('orderPopup').classList.remove('show')">×</span>
+</div>
+
 <script>
 let currentLang='ar';
 const products=[
-{name_ar:"حماية ذكية WiFi Pollux ATVP163",name_en:"Pollux Smart WiFi Protector ATVP163",name_ku:"Parastina Jîr WiFi Pollux",desc_ar:"حماية ذكية شاملة مع WiFi، تحكم بالموبايل.",desc_en:"Smart WiFi protection, mobile app control.",desc_ku:"Parastina jîr bi WiFi, kontrol bi mobilê.",price_ar:"سعر خاص",price_en:"Special Price",price_ku:"Bihayê Taybet",badge_ar:"ذكي WiFi",badge_en:"Smart WiFi",badge_ku:"Jîr WiFi",image:"https://i.postimg.cc/KYjDpfyj/IMG-20260902-WA0081.jpg"},
-{name_ar:"قاطع ذكي Smart Switch RBooSH",name_en:"RBooSH Smart Switch - WiFi",name_ku:"Smart Switch RBooSH",desc_ar:"قاطع ذكي واي فاي، تحكم وقياس استهلاك.",desc_en:"Smart WiFi breaker, energy metering.",desc_ku:"Şalterê jîr WiFi, pîvana xerckirinê.",price_ar:"سعر خاص",price_en:"Special Price",price_ku:"Bihayê Taybet",badge_ar:"ذكي 🔥",badge_en:"Smart 🔥",badge_ku:"Jîr 🔥",image:"https://i.postimg.cc/qvkLy0bm/IMG-20260902-WA0020.jpg"},
-{name_ar:"كشاف طاقة شمسية Pollux - إنارة ذكية",name_en:"Pollux Solar Street Light - Smart",name_ku:"Ronahiya Rojê Pollux",desc_ar:"إنارة شمسية ذكية، طاقة مستدامة، كفالة عالية.",desc_en:"Smart solar light, sustainable energy.",desc_ku:"Ronahiya rojê ya jîr, enerjiya domdar.",price_ar:"سعر خاص",price_en:"Special Price",price_ku:"Bihayê Taybet",badge_ar:"شمسي ☀️",badge_en:"Solar ☀️",badge_ku:"Rojê ☀️",image:"https://i.postimg.cc/zfGxZ5TS/IMG-20260827-WA0002.jpg"},
-{name_ar:"قاطع MCCB صناعي - حماية عالية",name_en:"MCCB Circuit Breaker - Industrial",name_ku:"Şalter MCCB Pîşesazî",desc_ar:"قاطع صناعي MCCB، حماية عالية للمصانع.",desc_en:"Industrial MCCB, high protection.",desc_ku:"Şalterê MCCB pîşesazî, parastina bilind.",price_ar:"سعر خاص",price_en:"Special Price",price_ku:"Bihayê Taybet",badge_ar:"صناعي ⚡",badge_en:"Industrial ⚡",badge_ku:"Pîşesazî ⚡",image:"https://i.postimg.cc/PvdzN16d/IMG-20260828-WA0002-1.jpg"},
-{name_ar:"مانع صواعق Pollux - حماية فائقة",name_en:"Pollux Surge Protector - SPD",name_ku:"Parastina Birûskê Pollux",desc_ar:"حماية من الصواعق وارتفاع الجهد المفاجئ.",desc_en:"Lightning & surge protection.",desc_ku:"Parastina ji birûsk û bilindbûna voltajê.",price_ar:"سعر خاص",price_en:"Special Price",price_ku:"Bihayê Taybet",badge_ar:"حماية ⚡",badge_en:"Protection ⚡",badge_ku:"Parastin ⚡",image:"https://i.postimg.cc/NjYNDRMd/IMG-20260724-WA0003.jpg"},
-{name_ar:"قاطع تحويل ATS أوتوماتيك 4P",name_en:"ATS Automatic Transfer Switch 4P",name_ku:"Guherker ATS 4P",desc_ar:"تحويل أوتوماتيك بين الشبكة والمولد، 4 أقطاب.",desc_en:"Auto transfer Grid/Generator, 4P.",desc_ku:"Guherîna otomatîk şebeke/jenerator.",price_ar:"سعر خاص",price_en:"Special Price",price_ku:"Bihayê Taybet",badge_ar:"ATS ⚡",badge_en:"ATS ⚡",badge_ku:"ATS ⚡",image:"https://i.postimg.cc/J4j6jpRv/IMG-20260722-WA0043-3.jpg"},
-{name_ar:"كشاف CLAY 50W - IP66 قوي",name_en:"CLAY Floodlight 50W IP66",name_ku:"Projektor CLAY 50W",desc_ar:"كشاف قوي 50W، ضد الماء IP66، إضاءة عالية.",desc_en:"Powerful 50W floodlight, IP66 waterproof.",desc_ku:"Projektor bihêz 50W, IP66 dij av.",price_ar:"سعر خاص",price_en:"Special Price",price_ku:"Bihayê Taybet",badge_ar:"قوي 💡",badge_en:"Powerful 💡",badge_ku:"Bihêz 💡",image:"https://i.postimg.cc/SQB1XBb1/IMG-20260719-WA0018.jpg"},
-{name_ar:"منظم جهد RBooSH 2000VA - قوة وحماية",name_en:"RBooSH Stabilizer 2000VA",name_ku:"Rêkxer Voltaj 2000VA",desc_ar:"منظم جهد 2000VA، قوة وحماية لبرادك.",desc_en:"2000VA voltage stabilizer, power & protection.",desc_ku:"Rêkxerê voltaj 2000VA, hêz û parastin.",price_ar:"سعر خاص",price_en:"Special Price",price_ku:"Bihayê Taybet",badge_ar:"قوة 💪",badge_en:"Power 💪",badge_ku:"Hêz 💪",image:"https://i.postimg.cc/Yj7xXwpC/IMG-20260717-WA0011.jpg"},
-{name_ar:"حماية فاز ديجيتال Pollux - 3 فاز",name_en:"Pollux Digital Phase Protector",name_ku:"Parastina Faz Pollux",desc_ar:"حماية من ارتفاع وانخفاض الجهد، شاشة ديجيتال.",desc_en:"Over/under voltage protection, digital display.",desc_ku:"Parastina voltaj, dîmendera dîjîtal.",price_ar:"سعر خاص",price_en:"Special Price",price_ku:"Bihayê Taybet",badge_ar:"حماية ⚡",badge_en:"Protection ⚡",badge_ku:"Parastin ⚡",image:"https://i.postimg.cc/0zY46NQ8/IMG-20260902-WA0091.jpg"},
-{name_ar:"فلتر الموجة الجيبية - Sine Wave Filter",name_en:"Sine Wave Filter - Industrial",name_ku:"Fîltera Pêla Sînus",desc_ar:"يحمي المحركات والمضخات، موجة جيبية نقية.",desc_en:"Protects motors & pumps, pure sine wave.",desc_ku:"Motoran diparêze, pêla sînus pak.",price_ar:"سعر خاص",price_en:"Special Price",price_ku:"Bihayê Taybet",badge_ar:"جديد ⚡",badge_en:"New ⚡",badge_ku:"Nû ⚡",image:"https://i.postimg.cc/m2LXNbJh/IMG-20260917-WA0018.jpg"},
-{name_ar:"قاطع DC التاج Altech 2*63A",name_en:"Altech Crown DC Breaker 2*63A",name_ku:"Şalter DC Altech 2*63A",desc_ar:"قاطع DC أصلي هندي، 10KA للطاقة الشمسية.",desc_en:"Original Indian DC breaker, 10KA for solar.",desc_ku:"Şalter DC Hindî orjînal, 10KA.",price_ar:"سعر خاص",price_en:"Special Price",price_ku:"Bihayê Taybet",badge_ar:"الأصلي 🔥",badge_en:"Original 🔥",badge_ku:"Orjînal 🔥",image:"https://i.postimg.cc/KksCDstS/Picsart-26-09-23-23-51-15-827.jpg"}
+{name_ar:"حماية ذكية WiFi Pollux ATVP163",name_en:"Pollux Smart WiFi Protector",name_ku:"Parastina Jîr WiFi Pollux",image:"https://i.postimg.cc/KYjDpfyj/IMG-20260902-WA0081.jpg",desc_ar:"حماية ذكية شاملة مع WiFi",desc_en:"Smart WiFi protection",desc_ku:"Parastina jîr bi WiFi",price_ar:"سعر خاص",price_en:"Special Price",price_ku:"Bihayê Taybet",badge_ar:"ذكي WiFi",badge_en:"Smart WiFi",badge_ku:"Jîr WiFi"},
+{name_ar:"قاطع ذكي Smart Switch RBooSH",name_en:"RBooSH Smart Switch",name_ku:"Smart Switch RBooSH",image:"https://i.postimg.cc/qvkLy0bm/IMG-20260902-WA0020.jpg",desc_ar:"قاطع ذكي واي فاي",desc_en:"Smart WiFi breaker",desc_ku:"Şalterê jîr WiFi",price_ar:"سعر خاص",price_en:"Special Price",price_ku:"Bihayê Taybet",badge_ar:"ذكي 🔥",badge_en:"Smart 🔥",badge_ku:"Jîr 🔥"},
+{name_ar:"كشاف طاقة شمسية Pollux",name_en:"Pollux Solar Light",name_ku:"Ronahiya Rojê Pollux",image:"https://i.postimg.cc/zfGxZ5TS/IMG-20260827-WA0002.jpg",desc_ar:"إنارة شمسية ذكية",desc_en:"Smart solar light",desc_ku:"Ronahiya rojê ya jîr",price_ar:"سعر خاص",price_en:"Special Price",price_ku:"Bihayê Taybet",badge_ar:"شمسي ☀️",badge_en:"Solar ☀️",badge_ku:"Rojê ☀️"},
+{name_ar:"قاطع MCCB صناعي",name_en:"MCCB Industrial Breaker",name_ku:"Şalter MCCB Pîşesazî",image:"https://i.postimg.cc/PvdzN16d/IMG-20260828-WA0002-1.jpg",desc_ar:"قاطع صناعي MCCB",desc_en:"Industrial MCCB",desc_ku:"Şalterê MCCB",price_ar:"سعر خاص",price_en:"Special Price",price_ku:"Bihayê Taybet",badge_ar:"صناعي ⚡",badge_en:"Industrial ⚡",badge_ku:"Pîşesazî ⚡"},
+{name_ar:"مانع صواعق Pollux",name_en:"Pollux Surge Protector",name_ku:"Parastina Birûskê Pollux",image:"https://i.postimg.cc/NjYNDRMd/IMG-20260724-WA0003.jpg",desc_ar:"حماية من الصواعق",desc_en:"Lightning protection",desc_ku:"Parastina birûskê",price_ar:"سعر خاص",price_en:"Special Price",price_ku:"Bihayê Taybet",badge_ar:"حماية ⚡",badge_en:"Protection ⚡",badge_ku:"Parastin ⚡"},
+{name_ar:"قاطع تحويل ATS 4P",name_en:"ATS Switch 4P",name_ku:"Guherker ATS 4P",image:"https://i.postimg.cc/J4j6jpRv/IMG-20260722-WA0043-3.jpg",desc_ar:"تحويل أوتوماتيك",desc_en:"Auto transfer",desc_ku:"Guherîna otomatîk",price_ar:"سعر خاص",price_en:"Special Price",price_ku:"Bihayê Taybet",badge_ar:"ATS ⚡",badge_en:"ATS ⚡",badge_ku:"ATS ⚡"},
+{name_ar:"كشاف CLAY 50W",name_en:"CLAY Floodlight 50W",name_ku:"Projektor CLAY 50W",image:"https://i.postimg.cc/SQB1XBb1/IMG-20260719-WA0018.jpg",desc_ar:"كشاف قوي IP66",desc_en:"Powerful IP66",desc_ku:"Projektor bihêz",price_ar:"سعر خاص",price_en:"Special Price",price_ku:"Bihayê Taybet",badge_ar:"قوي 💡",badge_en:"Powerful 💡",badge_ku:"Bihêz 💡"},
+{name_ar:"منظم جهد 5000VA",name_en:"Stabilizer 5000VA",name_ku:"Rêkxer Voltaj 5000VA",image:"https://i.postimg.cc/Yj7xXwpC/IMG-20260717-WA0011.jpg",desc_ar:"منظم جهد 5000VA",desc_en:"5000VA stabilizer",desc_ku:"Rêkxer 5000VA",price_ar:"سعر خاص",price_en:"Special Price",price_ku:"Bihayê Taybet",badge_ar:"قوة 💪",badge_en:"Power 💪",badge_ku:"Hêz 💪"},
+{name_ar:"حماية فاز ديجيتال",name_en:"Digital Phase Protector",name_ku:"Parastina Faz Dîjîtal",image:"https://i.postimg.cc/0zY46NQ8/IMG-20260902-WA0091.jpg",desc_ar:"حماية من الجهد",desc_en:"Voltage protection",desc_ku:"Parastina voltaj",price_ar:"سعر خاص",price_en:"Special Price",price_ku:"Bihayê Taybet",badge_ar:"حماية ⚡",badge_en:"Protection ⚡",badge_ku:"Parastin ⚡"},
+{name_ar:"فلتر الموجة الجيبية",name_en:"Sine Wave Filter",name_ku:"Fîltera Pêla Sînus",image:"https://i.postimg.cc/m2LXNbJh/IMG-20260917-WA0018.jpg",desc_ar:"يحمي المحركات",desc_en:"Protects motors",desc_ku:"Motoran diparêze",price_ar:"سعر خاص",price_en:"Special Price",price_ku:"Bihayê Taybet",badge_ar:"جديد ⚡",badge_en:"New ⚡",badge_ku:"Nû ⚡"},
+{name_ar:"قاطع DC التاج 63A",name_en:"Altech DC Breaker 63A",name_ku:"Şalter DC Altech 63A",image:"https://i.postimg.cc/KksCDstS/Picsart-26-09-23-23-51-15-827.jpg",desc_ar:"قاطع DC أصلي",desc_en:"Original DC breaker",desc_ku:"Şalter DC orjînal",price_ar:"سعر خاص",price_en:"Special Price",price_ku:"Bihayê Taybet",badge_ar:"الأصلي 🔥",badge_en:"Original 🔥",badge_ku:"Orjînal 🔥"}
 ];
 function render(){const grid=document.getElementById('productsGrid');grid.innerHTML="";products.forEach(p=>{let name=currentLang==='en'?p.name_en:currentLang==='ku'?p.name_ku:p.name_ar;let desc=currentLang==='en'?p.desc_en:currentLang==='ku'?p.desc_ku:p.desc_ar;let price=currentLang==='en'?p.price_en:currentLang==='ku'?p.price_ku:p.price_ar;let badge=currentLang==='en'?p.badge_en:currentLang==='ku'?p.badge_ku:p.badge_ar;let btn=currentLang==='en'?'Order on WhatsApp 📱':currentLang==='ku'?'Li WhatsApp Bixwaze 📱':'اطلب عبر واتساب 📱';let msg=currentLang==='en'?'Hello Sulaiman, I want ':'مرحبا سليمان اريد ';let viewers=Math.floor(Math.random()*40)+8;grid.innerHTML+=`<div class="product-card"><div class="live-view"><i></i> ${viewers} 👀</div><img src="${p.image}" alt="${name}" loading="lazy"><div class="product-body"><span class="product-badge">${badge}</span><h3>${name}</h3><p class="product-desc">${desc}</p><div class="product-price">${price}</div><a class="btn-wa" href="https://wa.me/4915216839609?text=${msg}${encodeURIComponent(name)}" target="_blank">${btn}</a></div></div>`;});}
-const syriaGov=["دمشق","حلب","حمص","الحسكة","اللاذقية","طرطوس","حماة","درعا","دير الزور","السويداء","القنيطرة","إدلب","الرقة","ريف دمشق"];
-const tr={ar:{dir:'rtl',menu_title:'القائمة',menu_home:'الرئيسية',menu_products:'المنتجات',menu_calc:'الحاسبة',page_title:'منتجاتنا ⚡',page_desc:'جميع المنتجات مكفولة من RBooSH™ - 11 منتج',back_btn:'⬅️ رجوع للرئيسية',banner_title:'🎥 خدمة التركيب المجاني مع أبو سليمان',banner_text:'اشتريت وما عرفت تركب؟ افتح كاميرا واتساب وأنا أركب معك خطوة بخطوة مجاناً - مكالمة وحدة وكلشي تمام!',banner_btn:'📹 اتصل فيديو الآن'},en:{dir:'ltr',menu_title:'Menu',menu_home:'Home',menu_products:'Products',menu_calc:'Calculator',page_title:'Our Products ⚡',page_desc:'All products warranted by RBooSH™ - 11 items',back_btn:'⬅️ Back to Home',banner_title:'🎥 Free Installation Support with Abu Sulaiman',banner_text:'Bought it and don\'t know how to install? Open video call and I will guide you step by step for free!',banner_btn:'📹 Video Call Now'},ku:{dir:'ltr',menu_title:'Menu',menu_home:'Mal',menu_products:'Berhem',menu_calc:'Hesabker',page_title:'Berhemên Me ⚡',page_desc:'Hemû berhem bi garantiya RBooSH™ - 11 berhem',back_btn:'⬅️ Vegere Malê',banner_title:'🎥 Xizmeta Girêdanê ya Belaş bi Abu Suleiman re',banner_text:'Te kirî û nizane çawa girêbidî? Vîdyo veke û ez ê gav bi gav alîkariya te bikim belaş!',banner_btn:'📹 Vîdyo Banga Niha'}};
+
+const data={
+ar:{gov:["دمشق","حلب","حمص","الحسكة","اللاذقية","طرطوس","حماة","درعا","دير الزور","السويداء","إدلب","الرقة","القامشلي","ريف دمشق"],names:["أحمد","محمد","علي","خالد","حسن","عمر","يوسف","عبدالله","مصطفى","أبو عمار","سامر","لؤي","سليمان"],ordered:"طلب الآن",ago:"منذ",min:"دقيقة",viewing:"شخص يشاهدون الآن",orders:"طلب اليوم من"},
+en:{gov:["Damascus","Aleppo","Homs","Hasakah","Latakia","Tartus","Hama","Daraa","Deir Ezzor","Suwayda","Idlib","Raqqa","Qamishli"],names:["Ahmad","Mohammad","Ali","Khaled","Hassan","Omar","Youssef","Abdullah","Mustafa","Samer","Louay"],ordered:"just ordered",ago:"ago",min:"min",viewing:"people viewing now",orders:"orders today from"},
+ku:{gov:["Şam","Heleb","Hims","Hesekê","Laziqiye","Tartus","Hama","Dera","Dêrezor","Siweyda","Idlib","Reqqa","Qamişlo"],names:["Ehmed","Mihemed","Elî","Xalid","Hesen","Omer","Yûsif","Ebdullah","Mistefa","Samer","Loay"],ordered:"niha xwest",ago:"berî",min:"deqe",viewing:"kes niha dibînin",orders:"daxwaz îro ji"}
+};
+const tr={
+ar:{dir:'rtl',menu_title:'القائمة',menu_home:'الرئيسية',menu_products:'المنتجات',menu_calc:'الحاسبة',page_title:'منتجاتنا ⚡',page_desc:'جميع المنتجات مكفولة من RBooSH™ - 11 منتج',back_btn:'⬅️ رجوع للرئيسية',banner_title:'🎥 خدمة التركيب المجاني مع أبو سليمان',banner_text:'اشتريت وما عرفت تركب؟ افتح كاميرا واتساب وأنا أركب معك خطوة بخطوة مجاناً!',banner_btn:'📹 اتصل فيديو الآن'},
+en:{dir:'ltr',menu_title:'Menu',menu_home:'Home',menu_products:'Products',menu_calc:'Calculator',page_title:'Our Products ⚡',page_desc:'All products warranted by RBooSH™ - 11 items',back_btn:'⬅️ Back to Home',banner_title:'🎥 Free Installation Support with Abu Sulaiman',banner_text:'Bought it and don\'t know how to install? Open video call and I will guide you step by step for free!',banner_btn:'📹 Video Call Now'},
+ku:{dir:'ltr',menu_title:'Menu',menu_home:'Mal',menu_products:'Berhem',menu_calc:'Hesabker',page_title:'Berhemên Me ⚡',page_desc:'Hemû berhem bi garantiya RBooSH™ - 11 berhem',back_btn:'⬅️ Vegere Malê',banner_title:'🎥 Xizmeta Girêdanê ya Belaş bi Abu Suleiman re',banner_text:'Te kirî û nizane çawa girêbidî? Vîdyo veke û ez ê gav bi gav alîkariya te bikim belaş!',banner_btn:'📹 Vîdyo Banga Niha'}
+};
+
 function setLang(lang){currentLang=lang;let t=tr[lang];document.documentElement.lang=lang;document.documentElement.dir=t.dir;document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');for(let k in t){if(document.getElementById(k))document.getElementById(k).innerHTML=t[k];}render();updateCounter();}
 function openMenu(){document.getElementById('sidebar').classList.add('open');document.getElementById('overlay').classList.add('show');}
 function closeMenu(){document.getElementById('sidebar').classList.remove('open');document.getElementById('overlay').classList.remove('show');}
 function updateCounter(){
 let viewers=Math.floor(Math.random()*80)+120;
 let orders=Math.floor(Math.random()*15)+22;
-let g1=syriaGov[Math.floor(Math.random()*syriaGov.length)];
-let g2=syriaGov[Math.floor(Math.random()*syriaGov.length)];
-let g3=syriaGov[Math.floor(Math.random()*syriaGov.length)];
-if(currentLang==='ar'){
-document.getElementById('counterText').innerHTML=`🔥 ${viewers} شخص يشاهدون الآن - ${orders} طلب اليوم من ${g1}، ${g2} و ${g3}`;
-}else if(currentLang==='en'){
-document.getElementById('counterText').innerHTML=`🔥 ${viewers} viewing now - ${orders} orders today from ${g1}, ${g2} & all Syrian governorates`;
-}else{
-document.getElementById('counterText').innerHTML=`🔥 ${viewers} kes niha dibînin - ${orders} daxwaz îro ji parêzgehên Sûriyê`;
-}
+let g1=data[currentLang].gov[Math.floor(Math.random()*data[currentLang].gov.length)];
+let g2=data[currentLang].gov[Math.floor(Math.random()*data[currentLang].gov.length)];
+if(currentLang==='ar') document.getElementById('counterText').innerHTML=`🔥 ${viewers} ${data.ar.viewing} - ${orders} ${data.ar.orders} ${g1}، ${g2} و باقي المحافظات`;
+else if(currentLang==='en') document.getElementById('counterText').innerHTML=`🔥 ${viewers} ${data.en.viewing} - ${orders} ${data.en.orders} ${g1}, ${g2} & other govs`;
+else document.getElementById('counterText').innerHTML=`🔥 ${viewers} ${data.ku.viewing} - ${orders} ${data.ku.orders} ${g1}, ${g2} û parêzgehên din`;
 }
 setInterval(updateCounter,4000);
+
+function showPopup(){
+let p=products[Math.floor(Math.random()*products.length)];
+let d=data[currentLang];
+let n=d.names[Math.floor(Math.random()*d.names.length)];
+let g=d.gov[Math.floor(Math.random()*d.gov.length)];
+let mins=Math.floor(Math.random()*8)+1;
+let pName=currentLang==='en'?p.name_en:currentLang==='ku'?p.name_ku:p.name_ar;
+document.getElementById('popupImg').src=p.image;
+if(currentLang==='ar'){
+document.getElementById('popupTitle').innerHTML=`✅ ${n} من ${g} ${d.ordered}`;
+document.getElementById('popupDesc').innerHTML=`${pName} - ${d.ago} ${mins} ${d.min} ✅`;
+}else if(currentLang==='en'){
+document.getElementById('popupTitle').innerHTML=`✅ ${n} from ${g} ${d.ordered}`;
+document.getElementById('popupDesc').innerHTML=`${pName} - ${mins} ${d.min} ${d.ago} ✅`;
+}else{
+document.getElementById('popupTitle').innerHTML=`✅ ${n} ji ${g} ${d.ordered}`;
+document.getElementById('popupDesc').innerHTML=`${pName} - ${d.ago} ${mins} ${d.min} ✅`;
+}
+document.getElementById('orderPopup').classList.add('show');
+setTimeout(()=>{document.getElementById('orderPopup').classList.remove('show');},4500);
+}
+setTimeout(showPopup,3000);
+setInterval(showPopup,8500);
 render();updateCounter();
 </script>
 </body>
