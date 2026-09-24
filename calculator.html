@@ -17,16 +17,14 @@ body{background:#000;color:#fff;line-height:1.8}
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);display:none;z-index:1000}.overlay.show{display:block}
 
 .container{max-width:650px;margin:30px auto;padding:20px;padding-top:85px}
+.logo{text-align:center;margin:10px 0 20px 0}.logo img{max-width:280px;width:100%;filter:drop-shadow(0 0 15px rgba(0,191,255,0.4))}
 .calculator{background:#111;padding:30px;border-radius:16px;border:2px solid #1e3a8a;box-shadow:0 0 25px rgba(0,191,255,0.15)}
 h2{color:#00bfff;margin-bottom:10px;text-align:center;font-size:22px}
 .subtitle{text-align:center;color:#aaa;font-size:14px;margin-bottom:25px}
-
-/* عداد الزوار الجديد */
 .visitor-counter{background:#111;border:1px dashed #00bfff;border-radius:12px;padding:12px 18px;margin:0 auto 20px auto;text-align:center;max-width:550px;display:flex;align-items:center;justify-content:center;gap:10px}
 .live-dot{width:10px;height:10px;background:#ff0000;border-radius:50%;animation:livePulse 1s infinite}
 @keyframes livePulse{0%{box-shadow:0 0 0 0 rgba(255,0,0,0.7)}70%{box-shadow:0 0 0 8px rgba(255,0,0,0)}100%{box-shadow:0 0 0 0 rgba(255,0,0,0)}}
 .visitor-counter span{font-size:14px;color:#00ff88;font-weight:bold}
-
 .calc-form{display:flex;flex-direction:column;gap:18px}
 .calc-form label{font-size:14px;color:#aaa;text-align:right}[dir="ltr"].calc-form label{text-align:left}
 .calc-form input,.calc-form select{padding:14px;border-radius:10px;border:1px solid #333;background:#0a0a0a;color:#fff;font-size:16px;width:100%;text-align:right}
@@ -37,15 +35,12 @@ h2{color:#00bfff;margin-bottom:10px;text-align:center;font-size:22px}
 .calc-form button.whatsapp::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent);animation:shine 2.5s infinite}
 @keyframes whatsappGlow{from{box-shadow:0 0 10px rgba(37,211,102,0.5)}to{box-shadow:0 0 20px rgba(37,211,102,0.9),0 0 35px rgba(37,211,102,0.6)}}
 @keyframes shine{0%{left:-100%}100%{left:100%}}
-
 .calc-result{background:#0a0a0a;border:1px solid #1e3a8a;padding:20px;border-radius:12px;margin-top:20px;text-align:right}
 [dir="ltr"].calc-result{text-align:left}
 .calc-result h4{color:#00bfff;margin-bottom:10px}
 .calc-result p{margin:6px 0}
 .contact-section{border-top:1px dashed #333;padding-top:20px;margin-top:20px}
 footer{text-align:center;padding:20px;color:#555;font-size:12px}
-
-/* إشعارات الطلبات الحية */
 .order-popup{position:fixed;bottom:20px;right:20px;background:#111;border:1px solid #25D366;border-radius:15px;padding:12px 16px;display:flex;align-items:center;gap:12px;z-index:2000;transform:translateX(400px);transition:0.5s;max-width:320px;box-shadow:0 0 20px rgba(37,211,102,0.4)}
 .order-popup.show{transform:translateX(0)}
 .order-popup img{width:50px;height:50px;border-radius:10px;object-fit:cover;background:#000}
@@ -61,7 +56,10 @@ footer{text-align:center;padding:20px;color:#555;font-size:12px}
 <div class="sidebar" id="sidebar"><button class="close-btn" onclick="closeMenu()">×</button><h3 id="menu_title" style="color:#00bfff;text-align:center;margin-bottom:20px;">القائمة</h3><a href="index.html" id="menu_home">الرئيسية</a><a href="products.html" id="menu_products">المنتجات</a><a href="calculator.html" id="menu_calc">الحاسبة</a></div>
 
 <div class="container">
-  <div class="visitor-counter"><div class="live-dot"></div><span id="counterText">🔥 187 شخص يحسبون الآن - 34 حسبة اليوم من محافظات سوريا</span></div>
+  <!-- الشعار هون يا أبو سليمان -->
+  <div class="logo"><img src="logo.png" alt="RBooSH™"></div>
+
+  <div class="visitor-counter"><div class="live-dot"></div><span id="counterText">🔥 122 شخص يحسبون الآن - 34 حسبة اليوم من الحسكة، ريف دمشق و باقي المحافظات</span></div>
 
   <div class="calculator">
     <h2 id="title">حاسبة تقدير المواد الكهربائية</h2>
@@ -109,17 +107,12 @@ footer{text-align:center;padding:20px;color:#555;font-size:12px}
 <script>
 let currentLang = 'ar';
 let lastCalc = {};
-
-const productsImg=[
-"https://i.postimg.cc/KYjDpfyj/IMG-20260902-WA0081.jpg","https://i.postimg.cc/qvkLy0bm/IMG-20260902-WA0020.jpg","https://i.postimg.cc/PvdzN16d/IMG-20260828-WA0002-1.jpg"
-];
-
+const productsImg=["https://i.postimg.cc/KYjDpfyj/IMG-20260902-WA0081.jpg","https://i.postimg.cc/qvkLy0bm/IMG-20260902-WA0020.jpg","https://i.postimg.cc/PvdzN16d/IMG-20260828-WA0002-1.jpg"];
 const data={
 ar:{gov:["دمشق","حلب","حمص","الحسكة","اللاذقية","طرطوس","حماة","درعا","دير الزور","السويداء","إدلب","الرقة","القامشلي","ريف دمشق"],names:["أحمد","محمد","علي","خالد","حسن","عمر","يوسف","عبدالله","مصطفى","سامر"],ordered:"حسب الآن",calc:"حسب",ago:"منذ",min:"دقيقة",viewing:"شخص يحسبون الآن",orders:"حسبة اليوم من"},
 en:{gov:["Damascus","Aleppo","Homs","Hasakah","Latakia","Tartus","Hama","Daraa","Deir Ezzor","Idlib","Raqqa","Qamishli"],names:["Ahmad","Mohammad","Ali","Khaled","Hassan","Omar","Youssef"],ordered:"calculated now",calc:"estimated",ago:"ago",min:"min",viewing:"people calculating now",orders:"calculations today from"},
 ku:{gov:["Şam","Heleb","Hims","Hesekê","Laziqiye","Tartus","Hama","Dera","Reqqa","Qamişlo"],names:["Ehmed","Mihemed","Elî","Xalid","Hesen","Omer"],ordered:"niha hesab kir",calc:"texmîn kir",ago:"berî",min:"deqe",viewing:"kes niha dihejmêrin",orders:"hesab îro ji"}
 };
-
 const translations = {
   ar: {
     dir: 'rtl', menu_title:'القائمة', menu_home:'الرئيسية', menu_products:'المنتجات', menu_calc:'الحاسبة',
@@ -193,7 +186,6 @@ function setLang(lang){
 }
 function openMenu(){document.getElementById('sidebar').classList.add('open');document.getElementById('overlay').classList.add('show');}
 function closeMenu(){document.getElementById('sidebar').classList.remove('open');document.getElementById('overlay').classList.remove('show');}
-
 function calcOnly(){
   const t = translations[currentLang];
   let place = document.getElementById('place_type').value;
@@ -225,20 +217,18 @@ function calcOnly(){
   `;
   document.getElementById('contactBox').style.display = 'block';
 }
-
 function sendToWhatsApp(){
   const t = translations[currentLang];
   let name = document.getElementById('c_name').value;
   let phone = document.getElementById('c_phone').value;
   if(!name ||!phone){ alert(t.alert2); return; }
   let message = t.whatsapp_msg
- .replace('%NAME%', name).replace('%PHONE%', phone).replace('%PLACE%', lastCalc.placeName)
- .replace('%AREA%', lastCalc.area).replace('%ROOMS%', lastCalc.rooms)
- .replace('%C25%', lastCalc.cable2_5).replace('%C4%', lastCalc.cable4).replace('%C6%', lastCalc.cable6)
- .replace('%BR%', lastCalc.breaker).replace('%SO%', lastCalc.sockets).replace('%SW%', lastCalc.switches).replace('%PA%', lastCalc.panels);
+.replace('%NAME%', name).replace('%PHONE%', phone).replace('%PLACE%', lastCalc.placeName)
+.replace('%AREA%', lastCalc.area).replace('%ROOMS%', lastCalc.rooms)
+.replace('%C25%', lastCalc.cable2_5).replace('%C4%', lastCalc.cable4).replace('%C6%', lastCalc.cable6)
+.replace('%BR%', lastCalc.breaker).replace('%SO%', lastCalc.sockets).replace('%SW%', lastCalc.switches).replace('%PA%', lastCalc.panels);
   window.open(`https://wa.me/4915216839609?text=${message}`, '_blank');
 }
-
 function updateCounter(){
 let viewers=Math.floor(Math.random()*80)+120;
 let orders=Math.floor(Math.random()*15)+22;
@@ -249,7 +239,6 @@ else if(currentLang==='en') document.getElementById('counterText').innerHTML=`�
 else document.getElementById('counterText').innerHTML=`🔥 ${viewers} ${data.ku.viewing} - ${orders} ${data.ku.orders} ${g1}, ${g2} û yên din`;
 }
 setInterval(updateCounter,4000);
-
 function showPopup(){
 let d=data[currentLang];
 let n=d.names[Math.floor(Math.random()*d.names.length)];
