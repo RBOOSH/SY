@@ -22,11 +22,11 @@ h1{color:var(--blue);text-align:center;margin:20px 0;text-shadow:0 0 15px rgba(0
 .close-btn{background:none;border:none;color:var(--text);font-size:24px;float:left;cursor:pointer}
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);display:none;z-index:1000}.overlay.show{display:block}
 .filter-bar{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:20px 0}
-.filter-btn{background:var(--card);border:1px solid var(--border);color:var(--text2);padding:10px 18px;border-radius:25px;cursor:pointer;font-weight:bold;font-size:13px}
+.filter-btn{background:var(--card);border:1px solid var(--border);color:var(--text2);padding:10px 18px;border-radius:25px;cursor:pointer;font-weight:bold;transition:0.3s;font-size:13px}
 .filter-btn.active,.filter-btn:hover{background:var(--blue);color:#000;border-color:var(--blue);box-shadow:0 0 20px rgba(0,191,255,0.8)}
 .install-banner{background:linear-gradient(135deg,var(--blue2),var(--blue));border-radius:15px;padding:20px;margin:25px 0;text-align:center;border:2px solid var(--blue);animation:glow 2s infinite alternate}
 @keyframes glow{from{box-shadow:0 0 10px var(--blue2),0 0 20px rgba(0,191,255,0.2)}to{box-shadow:0 0 25px var(--blue),0 0 40px rgba(0,191,255,0.6)}}
-.visitor-counter{background:var(--card);border:1px dashed var(--blue);border-radius:12px;padding:12px 18px;margin:0 auto 20px auto;text-align:center;max-width:550px;display:flex;align-items:center;justify-content:center;gap:10px}
+.visitor-counter{background:var(--card);border:1px dashed var(--blue);border-radius:12px;padding:12px 18px;margin:0 auto 20px auto;text-align:center;max-width:550px;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 0 15px rgba(0,191,255,0.2)}
 .live-dot{width:10px;height:10px;background:#ff0000;border-radius:50%;animation:livePulse 1s infinite}
 @keyframes livePulse{0%{box-shadow:0 0 0 0 rgba(255,0,0,0.7)}70%{box-shadow:0 0 0 8px rgba(255,0,0,0)}100%{box-shadow:0 0 0 0 rgba(255,0,0,0)}}
 .visitor-counter span{font-size:14px;color:#00ff88;font-weight:bold}
@@ -123,14 +123,19 @@ filtered.forEach(p=>{
 let name=currentLang=='en'?p.name_en:currentLang=='ku'?p.name_ku:p.name_ar;
 let desc=currentLang=='en'?p.desc_en:currentLang=='ku'?p.desc_ku:p.desc_ar;
 let badge=currentLang=='en'?p.badge_en:currentLang=='ku'?p.badge_ku:p.badge_ar;
-let viewers=Math.floor(Math.random()*40)+8;
+let viewers=Math.floor(Math.random()*55)+45;
 let waMsg=currentLang=='en'?'Hello Sulaiman, I want ':'مرحبا سليمان اريد ';if(currentLang=='ku') waMsg='Merheba Silêman, ez dixwazim ';
 grid.innerHTML+=`<div class="product-card"><div class="live-view"><i></i> ${viewers} 👀</div><img src="${p.image}" alt="${name}" loading="lazy"><div class="product-body"><span class="product-badge">${badge}</span><h3>${name}</h3><p class="product-desc">${desc}</p><div class="product-price">${BRAND}</div><a class="btn-wa" href="https://wa.me/4915216839609?text=${waMsg}${encodeURIComponent(name)}" target="_blank">${t.btn_wa}</a></div></div>`;
 });
 }
 function openMenu(){document.getElementById('sidebar').classList.add('open');document.getElementById('overlay').classList.add('show');}
 function closeMenu(){document.getElementById('sidebar').classList.remove('open');document.getElementById('overlay').classList.remove('show');}
-function updateCounter(){let viewers=Math.floor(Math.random()*80)+120;let d=fakeData[currentLang];document.getElementById('counterText').innerText=`🔥 ${viewers} ${d.viewing}`;}
+function updateCounter(){
+  let base = products.length * 40 + 120;
+  let viewers = base + Math.floor(Math.random()*120);
+  let d=fakeData[currentLang];
+  document.getElementById('counterText').innerText=`🔥 ${viewers} ${d.viewing}`;
+}
 function showPopup(){
 let p=products[Math.floor(Math.random()*products.length)];let d=fakeData[currentLang];let n=d.names[Math.floor(Math.random()*d.names.length)];let g=d.gov[Math.floor(Math.random()*d.gov.length)];let mins=Math.floor(Math.random()*8)+1;
 let pName=currentLang=='en'?p.name_en:currentLang=='ku'?p.name_ku:p.name_ar;
