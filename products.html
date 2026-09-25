@@ -11,8 +11,21 @@ body{background:var(--bg);color:var(--text);line-height:1.8;transition:0.4s}
 .container{max-width:1100px;margin:0 auto;padding:20px;padding-top:80px}
 .logo{text-align:center;margin:20px 0}.logo img{max-width:250px;width:100%;filter:drop-shadow(0 0 20px rgba(0,191,255,0.5))}
 h1{color:var(--blue);text-align:center;margin:20px 0;text-shadow:0 0 15px rgba(0,191,255,0.6)}
-.header-top{position:fixed;top:0;left:0;right:0;background:var(--bg);border-bottom:2px solid var(--blue2);padding:12px 15px;z-index:1000;display:flex;justify-content:space-between;align-items:center}
+.header-top{position:fixed;top:0;left:0;right:0;background:var(--bg);border-bottom:2px solid var(--blue2);padding:10px 12px;z-index:1000;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.header-left{display:flex;align-items:center;gap:12px}
 .menu-btn{font-size:28px;background:none;border:none;color:var(--blue);cursor:pointer}
+.clock-wrap{display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--border);border-radius:25px;padding:4px 10px 4px 6px}
+.analog-clock{width:42px;height:42px;border:2px solid var(--blue);border-radius:50%;position:relative;background:radial-gradient(circle, var(--card) 60%, var(--bg));box-shadow:0 0 10px rgba(0,191,255,0.5);flex-shrink:0}
+.clock-center{position:absolute;top:50%;left:50%;width:6px;height:6px;background:var(--blue);border-radius:50%;transform:translate(-50%,-50%);z-index:10}
+.hand{position:absolute;bottom:50%;left:50%;transform-origin:50% 100%;border-radius:3px}
+.hour-hand{width:3px;height:12px;background:var(--text);margin-left:-1.5px}
+.minute-hand{width:2px;height:16px;background:var(--text);margin-left:-1px}
+.second-hand{width:1px;height:18px;background:#ff0000;margin-left:-0.5px}
+.clock-marks{position:absolute;inset:0}
+.clock-marks span{position:absolute;font-size:5px;color:var(--text2);left:50%;top:50%}
+.date-info{display:flex;flex-direction:column;line-height:1.2;text-align:center}
+.date-info.day-name{font-size:11px;font-weight:bold;color:var(--blue)}
+.date-info.date-num{font-size:10px;color:var(--text2)}
 .header-actions{display:flex;gap:8px;align-items:center}
 .theme-btn{background:var(--card);border:1px solid var(--border);color:var(--text);width:38px;height:38px;border-radius:10px;cursor:pointer;font-size:18px}
 .lang-switch{display:flex;gap:6px}.lang-btn{background:var(--card);color:var(--text2);border:1px solid var(--border);padding:6px 12px;border-radius:8px;cursor:pointer;font-weight:bold;font-size:12px}.lang-btn.active{background:var(--blue);color:#000}
@@ -65,7 +78,24 @@ footer{text-align:center;padding:30px;color:#777;font-size:12px}
 </style>
 </head>
 <body>
-<div class="header-top"><button class="menu-btn" onclick="openMenu()">☰</button><div class="header-actions"><button class="theme-btn" id="themeBtn" onclick="toggleTheme()">☀️</button><div class="lang-switch"><button class="lang-btn active" onclick="setLang('ar')">AR</button><button class="lang-btn" onclick="setLang('en')">EN</button><button class="lang-btn" onclick="setLang('ku')">KU</button></div></div></div>
+<div class="header-top">
+  <div class="header-left">
+    <button class="menu-btn" onclick="openMenu()">☰</button>
+    <div class="clock-wrap">
+      <div class="analog-clock" id="analogClock">
+        <div class="hand hour-hand" id="hourHand"></div>
+        <div class="hand minute-hand" id="minuteHand"></div>
+        <div class="hand second-hand" id="secondHand"></div>
+        <div class="clock-center"></div>
+      </div>
+      <div class="date-info">
+        <span class="day-name" id="dayName">السبت</span>
+        <span class="date-num" id="dateNum">26 أيلول</span>
+      </div>
+    </div>
+  </div>
+  <div class="header-actions"><button class="theme-btn" id="themeBtn" onclick="toggleTheme()">☀️</button><div class="lang-switch"><button class="lang-btn active" onclick="setLang('ar')">AR</button><button class="lang-btn" onclick="setLang('en')">EN</button><button class="lang-btn" onclick="setLang('ku')">KU</button></div></div>
+</div>
 <div class="overlay" id="overlay" onclick="closeMenu()"></div>
 <div class="sidebar" id="sidebar"><button style="background:none;border:none;color:var(--text);font-size:24px;float:left;cursor:pointer" onclick="closeMenu()">×</button><h3 id="menu_title" style="color:var(--blue);text-align:center;margin-bottom:20px;">القائمة</h3><a href="index.html" id="menu_home">الرئيسية</a><a href="products.html" id="menu_products">المنتجات</a><a href="calculator.html" id="menu_calc">الحاسبة</a></div>
 <div class="container">
@@ -110,13 +140,12 @@ const products=[
 {name_ar:"قاطع DC التاج 63A",name_en:"Altech DC Breaker 63A",name_ku:"Şalter DC Altech 63A",cat:"protection",image:"https://i.postimg.cc/KksCDstS/Picsart-26-09-23-23-51-15-827.jpg",desc_ar:"قاطع DC أصلي",desc_en:"Original DC breaker",desc_ku:"Şalter DC orjînal",badge_ar:"الأصلي 🔥",badge_en:"Original 🔥",badge_ku:"Orjînal 🔥"}
 ];
 const tr={
-ar:{dir:'rtl',menu_title:'القائمة',menu_home:'الرئيسية',menu_products:'المنتجات',menu_calc:'الحاسبة',page_title:'منتجاتنا ⚡',page_desc:'جميع المنتجات RBooSH™ - 20 منتج',banner_title:'🎥 خدمة التركيب المجاني مع أبو سليمان',banner_text:'اشتريت وما عرفت تركب؟ افتح كاميرا واتساب وأنا أركب معك خطوة بخطوة مجاناً!',banner_btn:'📹 اتصل فيديو الآن',f_all:'الكل (20)',f_smart:'ذكي WiFi 📶',f_solar:'طاقة شمسية ☀️',f_ind:'صناعي ⚡',f_pro:'حماية 🛡️',btn_wa:'اطلب عبر واتساب 📱',search_ph:'🔍 ابحث عن منتج... كشاف، قاطع، كابل',best_title:'🔥 الأكثر مبيعاً هذا الأسبوع',best_badge:'الأكثر طلباً 🔥',rev:'تقييم'},
-en:{dir:'ltr',menu_title:'Menu',menu_home:'Home',menu_products:'Products',menu_calc:'Calculator',page_title:'Our Products ⚡',page_desc:'All RBooSH™ Products - 20 items',banner_title:'🎥 Free Installation Support',banner_text:'Bought it and don\'t know how to install? Open video call and I will guide you step by step for free!',banner_btn:'📹 Video Call Now',f_all:'All (20)',f_smart:'Smart WiFi 📶',f_solar:'Solar ☀️',f_ind:'Industrial ⚡',f_pro:'Protection 🛡️',btn_wa:'Order on WhatsApp 📱',search_ph:'🔍 Search product...',best_title:'🔥 Best Sellers This Week',best_badge:'Most Requested 🔥',rev:'reviews'},
-ku:{dir:'ltr',menu_title:'Menu',menu_home:'Mal',menu_products:'Berhem',menu_calc:'Hesabker',page_title:'Berhemên Me ⚡',page_desc:'Hemû Berhemên RBooSH™ - 20 berhem',banner_title:'🎥 Xizmeta Girêdanê ya Belaş',banner_text:'Te kirî û nizane çawa girêbidî? Vîdyo veke û ez ê alîkariya te bikim belaş!',banner_btn:'📹 Vîdyo Banga Niha',f_all:'Hemû (20)',f_smart:'Jîr WiFi 📶',f_solar:'Rojê ☀️',f_ind:'Pîşesazî ⚡',f_pro:'Parastin 🛡️',btn_wa:'Li WhatsApp Bixwaze 📱',search_ph:'🔍 Li berhemê bigere...',best_title:'🔥 Herî zêde tê firotin vê hefteyê',best_badge:'Herî daxwazkirî 🔥',rev:'nirxandin'}
+ar:{dir:'rtl',menu_title:'القائمة',menu_home:'الرئيسية',menu_products:'المنتجات',menu_calc:'الحاسبة',page_title:'منتجاتنا ⚡',page_desc:'جميع المنتجات RBooSH™ - 20 منتج',banner_title:'🎥 خدمة التركيب المجاني مع أبو سليمان',banner_text:'اشتريت وما عرفت تركب؟ افتح كاميرا واتساب وأنا أركب معك خطوة بخطوة مجاناً!',banner_btn:'📹 اتصل فيديو الآن',f_all:'الكل (20)',f_smart:'ذكي WiFi 📶',f_solar:'طاقة شمسية ☀️',f_ind:'صناعي ⚡',f_pro:'حماية 🛡️',btn_wa:'اطلب عبر واتساب 📱',search_ph:'🔍 ابحث عن منتج... كشاف، قاطع، كابل',best_title:'🔥 الأكثر مبيعاً هذا الأسبوع',best_badge:'الأكثر طلباً 🔥',rev:'تقييم',days:["الأحد","الاثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت"],months:["كانون الثاني","شباط","آذار","نيسان","أيار","حزيران","تموز","آب","أيلول","تشرين الأول","تشرين الثاني","كانون الأول"]},
+en:{dir:'ltr',menu_title:'Menu',menu_home:'Home',menu_products:'Products',menu_calc:'Calculator',page_title:'Our Products ⚡',page_desc:'All RBooSH™ Products - 20 items',banner_title:'🎥 Free Installation Support',banner_text:'Bought it and don\'t know how to install? Open video call and I will guide you step by step for free!',banner_btn:'📹 Video Call Now',f_all:'All (20)',f_smart:'Smart WiFi 📶',f_solar:'Solar ☀️',f_ind:'Industrial ⚡',f_pro:'Protection 🛡️',btn_wa:'Order on WhatsApp 📱',search_ph:'🔍 Search product...',best_title:'🔥 Best Sellers This Week',best_badge:'Most Requested 🔥',rev:'reviews',days:["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],months:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]},
+ku:{dir:'ltr',menu_title:'Menu',menu_home:'Mal',menu_products:'Berhem',menu_calc:'Hesabker',page_title:'Berhemên Me ⚡',page_desc:'Hemû Berhemên RBooSH™ - 20 berhem',banner_title:'🎥 Xizmeta Girêdanê ya Belaş',banner_text:'Te kirî û nizane çawa girêbidî? Vîdyo veke û ez ê alîkariya te bikim belaş!',banner_btn:'📹 Vîdyo Banga Niha',f_all:'Hemû (20)',f_smart:'Jîr WiFi 📶',f_solar:'Rojê ☀️',f_ind:'Pîşesazî ⚡',f_pro:'Parastin 🛡️',btn_wa:'Li WhatsApp Bixwaze 📱',search_ph:'🔍 Li berhemê bigere...',best_title:'🔥 Herî zêde tê firotin vê hefteyê',best_badge:'Herî daxwazkirî 🔥',rev:'nirxandin',days:["Yekşem","Duşem","Sêşem","Çarşem","Pêncşem","În","Şemî"],months:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]}
 };
 const fakeData={ar:{gov:["دمشق","حلب","الحسكة","القامشلي","حمص","إدلب"],names:["أحمد","محمد","علي","خالد","سليمان","عمر"],ordered:"طلب الآن",ago:"منذ",min:"دقيقة",viewing:"شخص يشاهدون الآن"},en:{gov:["Damascus","Aleppo","Hasakah"],names:["Ahmad","Ali","Khaled"],ordered:"just ordered",ago:"ago",min:"min",viewing:"people viewing now"},ku:{gov:["Şam","Hesekê","Qamişlo"],names:["Ehmed","Elî","Xalid"],ordered:"niha xwest",ago:"berî",min:"deqe",viewing:"kes niha dibînin"}};
 
-// تقييم ثابت لكل منتج - نفس الرقم في كل مكان
 function getRating(idx){
   let seed = Math.abs(Math.sin(idx*17.7 + 5.3))*1000;
   let rating = 4.5 + (seed % 0.5);
@@ -129,7 +158,24 @@ function starsHtml(rate){
   for(let i=0;i<5;i++){html+= i<full? '★' : '☆';}
   return `<span class="stars">${html}</span>`;
 }
-function setLang(lang){currentLang=lang;let t=tr[lang];document.documentElement.lang=lang;document.documentElement.dir=t.dir;document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');document.getElementById('menu_title').innerText=t.menu_title;document.getElementById('menu_home').innerText=t.menu_home;document.getElementById('menu_products').innerText=t.menu_products;document.getElementById('menu_calc').innerText=t.menu_calc;document.getElementById('page_title').innerText=t.page_title;document.getElementById('page_desc').innerText=t.page_desc;document.getElementById('banner_title').innerText=t.banner_title;document.getElementById('banner_text').innerText=t.banner_text;document.getElementById('banner_btn').innerText=t.banner_btn;document.getElementById('searchInput').placeholder=t.search_ph;document.getElementById('best_title').innerText=t.best_title;render();updateCounter();renderBest();}
+
+// ===== الساعة التناظرية الحقيقية =====
+function updateClock(){
+  let now=new Date();
+  let h=now.getHours()%12;let m=now.getMinutes();let s=now.getSeconds();
+  let hDeg=(h + m/60)*30;let mDeg=m*6;let sDeg=s*6;
+  document.getElementById('hourHand').style.transform=`translateX(-50%) rotate(${hDeg}deg)`;
+  document.getElementById('minuteHand').style.transform=`translateX(-50%) rotate(${mDeg}deg)`;
+  document.getElementById('secondHand').style.transform=`translateX(-50%) rotate(${sDeg}deg)`;
+  let t=tr[currentLang];
+  let dayName=t.days[now.getDay()];
+  let monthName=t.months[now.getMonth()];
+  let dayNum=now.getDate();
+  document.getElementById('dayName').innerText=dayName;
+  document.getElementById('dateNum').innerText=dayNum+" "+monthName;
+}
+
+function setLang(lang){currentLang=lang;let t=tr[lang];document.documentElement.lang=lang;document.documentElement.dir=t.dir;document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');document.getElementById('menu_title').innerText=t.menu_title;document.getElementById('menu_home').innerText=t.menu_home;document.getElementById('menu_products').innerText=t.menu_products;document.getElementById('menu_calc').innerText=t.menu_calc;document.getElementById('page_title').innerText=t.page_title;document.getElementById('page_desc').innerText=t.page_desc;document.getElementById('banner_title').innerText=t.banner_title;document.getElementById('banner_text').innerText=t.banner_text;document.getElementById('banner_btn').innerText=t.banner_btn;document.getElementById('searchInput').placeholder=t.search_ph;document.getElementById('best_title').innerText=t.best_title;updateClock();render();updateCounter();renderBest();}
 function filterProducts(cat){currentFilter=cat;render();}
 function getBestSellers(){
   const KEY='rboosh_bestsellers';const TIME_KEY='rboosh_bestsellers_time';const DURATION=48*60*60*1000;
@@ -144,7 +190,7 @@ function renderBest(){
   bestIndices.forEach(idx=>{
     let p=products[idx];let name=currentLang=='en'?p.name_en:currentLang=='ku'?p.name_ku:p.name_ar;let desc=currentLang=='en'?p.desc_en:currentLang=='ku'?p.desc_ku:p.desc_ar;
     let viewers=Math.floor(Math.random()*175)+100;let waMsg=currentLang=='en'?'Hello Sulaiman, I want ':'مرحبا سليمان اريد ';if(currentLang=='ku') waMsg='Merheba Silêman, ez dixwazim ';
-    let rat=getRating(idx); // نفس التقييم تماما بدون أي زيادة
+    let rat=getRating(idx);
     grid.innerHTML+=`<div class="product-card" style="border-color:#ff6a00;box-shadow:0 0 15px rgba(255,106,0,0.3)"><div class="live-view"><i></i> ${viewers} 👀</div><img src="${p.image}" alt="${name}" loading="lazy"><div class="product-body"><span class="product-badge badge-hot">${t.best_badge}</span><h3>${name}</h3><div class="rating">${starsHtml(rat.rate)}<span class="rating-num">${rat.rate}</span><span class="rating-count">(${rat.count} ${t.rev})</span></div><p class="product-desc">${desc}</p><div class="product-price">${BRAND}</div><a class="btn-wa" href="https://wa.me/4915216839609?text=${waMsg}${encodeURIComponent(name)}" target="_blank">${t.btn_wa}</a></div></div>`;
   });
 }
@@ -170,6 +216,7 @@ function openMenu(){document.getElementById('sidebar').classList.add('open');doc
 function closeMenu(){document.getElementById('sidebar').classList.remove('open');document.getElementById('overlay').classList.remove('show');}
 function updateCounter(){let extra = products.length * 12;let base = 300 + extra;let maxAdd = 700 - base;if(maxAdd < 50) maxAdd = 50;let viewers = base + Math.floor(Math.random()*(maxAdd+1));if(viewers > 700) viewers = 700;if(viewers < 300) viewers = 300;let d=fakeData[currentLang];document.getElementById('counterText').innerText=`🔥 ${viewers} ${d.viewing} ( +${extra} )`;}
 function showPopup(){let p=products[Math.floor(Math.random()*products.length)];let d=fakeData[currentLang];let n=d.names[Math.floor(Math.random()*d.names.length)];let g=d.gov[Math.floor(Math.random()*d.gov.length)];let mins=Math.floor(Math.random()*8)+1;let pName=currentLang=='en'?p.name_en:currentLang=='ku'?p.name_ku:p.name_ar;document.getElementById('popupImg').src=p.image;if(currentLang=='ar'){document.getElementById('popupTitle').innerHTML=`✅ ${n} من ${g} ${d.ordered}`;document.getElementById('popupDesc').innerHTML=`${pName.substring(0,30)}... - ${d.ago} ${mins} ${d.min} ✅`;}else if(currentLang=='en'){document.getElementById('popupTitle').innerHTML=`✅ ${n} from ${g} ${d.ordered}`;document.getElementById('popupDesc').innerHTML=`${pName.substring(0,30)}... - ${mins} ${d.min} ${d.ago} ✅`;}else{document.getElementById('popupTitle').innerHTML=`✅ ${n} ji ${g} ${d.ordered}`;document.getElementById('popupDesc').innerHTML=`${pName.substring(0,30)}... - ${d.ago} ${mins} ${d.min} ✅`;}document.getElementById('orderPopup').classList.add('show');setTimeout(()=>{document.getElementById('orderPopup').classList.remove('show');},4500);}
+setInterval(updateClock,1000);updateClock();
 setTimeout(showPopup,3000);setInterval(showPopup,8500);render();renderBest();updateCounter();setInterval(updateCounter,4000);
 </script>
 </body>
