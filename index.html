@@ -11,12 +11,12 @@ body{background:var(--bg);color:var(--text);line-height:1.8;transition:0.4s}
 .container{max-width:900px;margin:0 auto;padding:20px;padding-top:80px}
 .logo{text-align:center;margin:20px 0}.logo img{max-width:350px;width:100%;filter:drop-shadow(0 0 20px rgba(0,191,255,0.5))}
 h2{color:var(--blue);text-align:center;font-size:26px;margin-bottom:15px;text-shadow:0 0 15px rgba(0,191,255,0.6)}
-.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:25px;margin:20px 0;transition:0.4s}.card:hover{border-color:var(--blue);box-shadow:0 0 20px rgba(0,191,255,0.4),0 0 40px rgba(0,191,255,0.15);transform:translateY(-4px)}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:25px;margin:20px 0;transition:0.4s}
 .header-top{position:fixed;top:0;left:0;right:0;background:var(--bg);border-bottom:2px solid var(--blue2);padding:12px 15px;z-index:1000;display:flex;justify-content:space-between;align-items:center}
 .menu-btn{font-size:28px;background:none;border:none;color:var(--blue);cursor:pointer}
 .header-actions{display:flex;gap:8px;align-items:center}
 .theme-btn{background:var(--card);border:1px solid var(--border);color:var(--text);width:38px;height:38px;border-radius:10px;cursor:pointer;font-size:18px}
-.lang-switch{display:flex;gap:6px}.lang-btn{background:var(--card);color:var(--text2);border:1px solid var(--border);padding:6px 12px;border-radius:8px;cursor:pointer;font-weight:bold;font-size:12px}.lang-btn.active{background:var(--blue);color:#000;box-shadow:0 0 15px rgba(0,191,255,0.6)}
+.lang-switch{display:flex;gap:6px}.lang-btn{background:var(--card);color:var(--text2);border:1px solid var(--border);padding:6px 12px;border-radius:8px;cursor:pointer;font-weight:bold;font-size:12px}.lang-btn.active{background:var(--blue);color:#000}
 .sidebar{position:fixed;top:0;right:-300px;width:280px;height:100%;background:var(--card);border-left:2px solid var(--blue2);z-index:1001;transition:0.3s;padding:20px}.sidebar.open{right:0}[dir="ltr"].sidebar{right:auto;left:-300px;border-right:2px solid var(--blue2)}[dir="ltr"].sidebar.open{left:0}
 .sidebar a{display:block;padding:14px;color:var(--text);text-decoration:none;border-bottom:1px solid var(--border)}
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);display:none;z-index:1000}.overlay.show{display:block}
@@ -25,30 +25,46 @@ h2{color:var(--blue);text-align:center;font-size:26px;margin-bottom:15px;text-sh
 .btn-whatsapp::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent);animation:shine 2.5s infinite}
 @keyframes whatsappGlow{from{box-shadow:0 0 10px rgba(37,211,102,0.5)}to{box-shadow:0 0 20px rgba(37,211,102,0.9)}}
 @keyframes shine{0%{left:-100%}100%{left:100%}}
-.btn-fb{background:#1877F2;color:#fff;box-shadow:0 0 15px rgba(24,119,242,0.5)}
+.btn-fb{background:#1877F2;color:#fff}
 .btn-calc{background:linear-gradient(135deg,var(--blue2),var(--blue));color:#fff;padding:16px 35px;display:inline-block;border-radius:25px;animation:btnPulse 1.5s infinite;box-shadow:0 0 20px rgba(0,191,255,0.5);text-decoration:none;font-weight:bold}
 @keyframes btnPulse{0%{transform:scale(1)}50%{transform:scale(1.05)}100%{transform:scale(1)}}
-.payment-item,.why-item{border:1px solid var(--blue2);padding:15px;border-radius:10px;margin:10px 0;text-align:center;background:var(--card2);transition:0.4s}
-.payment-item:hover,.why-item:hover{border-color:var(--blue);box-shadow:0 0 15px rgba(0,191,255,0.3);transform:translateY(-3px)}
-.visitor-counter{background:var(--card);border:1px dashed var(--blue);border-radius:12px;padding:12px 18px;margin:0 auto 20px auto;text-align:center;max-width:650px;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 0 15px rgba(0,191,255,0.2);animation:counterGlow 2s infinite alternate}
-@keyframes counterGlow{from{box-shadow:0 0 10px rgba(0,191,255,0.2)}to{box-shadow:0 0 20px rgba(0,191,255,0.4)}}
+.payment-item,.why-item{border:1px solid var(--blue2);padding:15px;border-radius:10px;margin:10px 0;text-align:center;background:var(--card2)}
+.visitor-counter{background:var(--card);border:1px dashed var(--blue);border-radius:12px;padding:12px 18px;margin:0 auto 20px auto;text-align:center;max-width:650px;display:flex;align-items:center;justify-content:center;gap:10px}
 .live-dot{width:10px;height:10px;background:#ff0000;border-radius:50%;animation:livePulse 1s infinite}
 @keyframes livePulse{0%{box-shadow:0 0 0 0 rgba(255,0,0,0.7)}70%{box-shadow:0 0 0 8px rgba(255,0,0,0)}100%{box-shadow:0 0 0 0 rgba(255,0,0,0)}}
 .calc-banner{background:linear-gradient(135deg,var(--blue2),var(--blue));border-radius:15px;padding:25px;margin:25px 0;text-align:center;border:2px solid var(--blue);animation:glow 2s infinite alternate}
 @keyframes glow{from{box-shadow:0 0 10px var(--blue2)}to{box-shadow:0 0 25px var(--blue)}}
-.order-popup{position:fixed;bottom:20px;right:20px;background:var(--card);border:1px solid #25D366;border-radius:15px;padding:12px 16px;display:flex;align-items:center;gap:12px;z-index:2000;transform:translateX(400px);transition:0.5s;max-width:320px;box-shadow:0 0 20px rgba(37,211,102,0.4)}
+.order-popup{position:fixed;bottom:20px;right:20px;background:var(--card);border:1px solid #25D366;border-radius:15px;padding:12px 16px;display:flex;align-items:center;gap:12px;z-index:2000;transform:translateX(400px);transition:0.5s;max-width:320px}
 .order-popup.show{transform:translateX(0)}[dir="ltr"].order-popup{right:auto;left:20px;transform:translateX(-400px)}[dir="ltr"].order-popup.show{transform:translateX(0)}
 .order-popup img{width:50px;height:50px;border-radius:10px;object-fit:cover}
-.visitor-counter span{font-size:14px;color:#00ff88;font-weight:bold;-webkit-text-stroke:0.35px #000;paint-order:stroke fill;text-shadow:0.5px 0.5px 0 #000,-0.5px 0.5px 0 #000,0.5px -0.5px 0 #000,-0.5px -0.5px 0 #000,0 0 8px rgba(0,255,136,0.6);animation:softGlow 2.5s infinite alternate}
-@keyframes softGlow{from{text-shadow:0.5px 0.5px 0 #000,-0.5px 0.5px 0 #000,0.5px -0.5px 0 #000,-0.5px -0.5px 0 #000,0 0 5px rgba(0,255,136,0.4)}to{text-shadow:0.5px 0.5px 0 #000,-0.5px 0.5px 0 #000,0.5px -0.5px 0 #000,-0.5px -0.5px 0 #000,0 0 9px rgba(0,255,136,0.7),0 0 14px rgba(0,255,136,0.35)}}
-/* ✅ الشريط البطيء - مقروء + بدون فراغ */
-.brands-bar{width:100%;background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:15px auto;padding:14px 0;box-shadow:0 0 15px rgba(0,191,255,0.08);direction:ltr}
+.visitor-counter span{font-size:14px;color:#00ff88;font-weight:bold;-webkit-text-stroke:0.35px #000;paint-order:stroke fill;text-shadow:0.5px 0.5px 0 #000,-0.5px 0.5px 0 #000,0.5px -0.5px 0 #000,-0.5px -0.5px 0 #000,0 0 8px rgba(0,255,136,0.6)}
+
+/* ✅ شريط الشركات - الوان اصلية + بطيء + بدون فراغ */
+.brands-bar{width:100%;background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:15px auto;padding:14px 0;direction:ltr}
 .brands-track{display:flex;width:max-content;animation:scrollBrands 60s linear infinite}
 .brands-bar:hover.brands-track{animation-play-state:paused}
 .brands-group{display:flex;flex-shrink:0;align-items:center}
-.brands-group span{font-size:14px;font-weight:bold;color:var(--text2);padding:0 24px;white-space:nowrap;position:relative}
-.brands-group span::after{content:'•';position:absolute;right:-2px;color:var(--blue);opacity:0.4;font-size:10px}
-.brands-group span.rboosh{color:var(--blue);font-weight:900;text-shadow:0 0 8px rgba(0,191,255,0.3)}
+.brands-group span{font-size:14px;font-weight:900;padding:0 24px;white-space:nowrap;position:relative;-webkit-text-stroke:0.3px #000;paint-order:stroke fill;text-shadow:0.5px 0.5px 0 #000}
+.brands-group span::after{content:'•';position:absolute;right:-2px;color:#fff;opacity:0.3;font-size:10px}
+
+/* الألوان الأصلية للشركات */
+.c-ls{color:#E60012} /* LS أحمر */
+.c-schneider{color:#3DCD58} /* Schneider أخضر */
+.c-chint{color:#005BAC} /* CHINT أزرق */
+.c-tense{color:#FF0000} /* TENSE أحمر */
+.c-givis{color:#0072BC} /* GIVIS أزرق */
+.c-pollux{color:#FF6600} /* POLLUX برتقالي */
+.c-rboosh{color:#00bfff;text-shadow:0 0 10px rgba(0,191,255,0.8),0.5px 0.5px 0 #000!important}
+.c-altech{color:#FFCC00} /* Altech أصفر/ذهبي */
+.c-hyundai{color:#002C5F} /* HYUNDAI أزرق غامق - بالنهاري يبين */
+.c-clay{color:#FF6A00} /* CLAY برتقالي */
+.c-unal{color:#CC0000} /* ÜNAL أحمر */
+.c-ako{color:#E30613} /* AKO أحمر */
+
+body.light.brands-group span{ -webkit-text-stroke:0; text-shadow:none; font-weight:900}
+body.light.c-hyundai{color:#002C5F}
+body.light.c-ls{color:#CC0000}
+
 @keyframes scrollBrands{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 </style>
 </head>
@@ -62,12 +78,12 @@ h2{color:var(--blue);text-align:center;font-size:26px;margin-bottom:15px;text-sh
 <div class="brands-bar">
   <div class="brands-track">
     <div class="brands-group">
-      <span>LS</span><span>Schneider</span><span>CHINT</span><span>TENSE</span><span>GIVIS</span><span>POLLUX</span><span class="rboosh">RBooSH™</span><span>Altech</span><span>HYUNDAI</span><span>CLAY</span><span>ÜNAL KABLO</span><span>AKO</span>
-      <span>LS</span><span>Schneider</span><span>CHINT</span><span>TENSE</span><span>GIVIS</span><span>POLLUX</span><span class="rboosh">RBooSH™</span><span>Altech</span><span>HYUNDAI</span><span>CLAY</span><span>ÜNAL KABLO</span><span>AKO</span>
+      <span class="c-ls">LS</span><span class="c-schneider">Schneider</span><span class="c-chint">CHINT</span><span class="c-tense">TENSE</span><span class="c-givis">GIVIS</span><span class="c-pollux">POLLUX</span><span class="c-rboosh">RBooSH™</span><span class="c-altech">Altech</span><span class="c-hyundai">HYUNDAI</span><span class="c-clay">CLAY</span><span class="c-unal">ÜNAL KABLO</span><span class="c-ako">AKO</span>
+      <span class="c-ls">LS</span><span class="c-schneider">Schneider</span><span class="c-chint">CHINT</span><span class="c-tense">TENSE</span><span class="c-givis">GIVIS</span><span class="c-pollux">POLLUX</span><span class="c-rboosh">RBooSH™</span><span class="c-altech">Altech</span><span class="c-hyundai">HYUNDAI</span><span class="c-clay">CLAY</span><span class="c-unal">ÜNAL KABLO</span><span class="c-ako">AKO</span>
     </div>
     <div class="brands-group" aria-hidden="true">
-      <span>LS</span><span>Schneider</span><span>CHINT</span><span>TENSE</span><span>GIVIS</span><span>POLLUX</span><span class="rboosh">RBooSH™</span><span>Altech</span><span>HYUNDAI</span><span>CLAY</span><span>ÜNAL KABLO</span><span>AKO</span>
-      <span>LS</span><span>Schneider</span><span>CHINT</span><span>TENSE</span><span>GIVIS</span><span>POLLUX</span><span class="rboosh">RBooSH™</span><span>Altech</span><span>HYUNDAI</span><span>CLAY</span><span>ÜNAL KABLO</span><span>AKO</span>
+      <span class="c-ls">LS</span><span class="c-schneider">Schneider</span><span class="c-chint">CHINT</span><span class="c-tense">TENSE</span><span class="c-givis">GIVIS</span><span class="c-pollux">POLLUX</span><span class="c-rboosh">RBooSH™</span><span class="c-altech">Altech</span><span class="c-hyundai">HYUNDAI</span><span class="c-clay">CLAY</span><span class="c-unal">ÜNAL KABLO</span><span class="c-ako">AKO</span>
+      <span class="c-ls">LS</span><span class="c-schneider">Schneider</span><span class="c-chint">CHINT</span><span class="c-tense">TENSE</span><span class="c-givis">GIVIS</span><span class="c-pollux">POLLUX</span><span class="c-rboosh">RBooSH™</span><span class="c-altech">Altech</span><span class="c-hyundai">HYUNDAI</span><span class="c-clay">CLAY</span><span class="c-unal">ÜNAL KABLO</span><span class="c-ako">AKO</span>
     </div>
   </div>
 </div>
