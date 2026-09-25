@@ -9,12 +9,15 @@ body.light{--bg:#f5f7fb;--card:#ffffff;--card2:#eef2ff;--text:#111827;--text2:#6
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Tahoma',sans-serif}
 body{background:var(--bg);color:var(--text);transition:0.4s}
 .container{max-width:1100px;margin:0 auto;padding:20px;padding-top:80px}
-.logo{text-align:center;margin:10px 0}.logo img{max-width:300px;width:100%;filter:drop-shadow(0 0 20px rgba(0,191,255,0.5))}
+.logo{text-align:center;margin:20px 0}.logo img{max-width:350px;width:100%;filter:drop-shadow(0 0 20px rgba(0,191,255,0.5))}
+h2{color:var(--blue);text-align:center;font-size:26px;margin-bottom:15px;text-shadow:0 0 15px rgba(0,191,255,0.5)}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:25px;margin:20px 0;transition:0.4s}
+.card:hover{border-color:var(--blue);box-shadow:0 0 20px rgba(0,191,255,0.35),0 0 40px rgba(0,191,255,0.1),0 8px 25px rgba(0,0,0,0.15);transform:translateY(-4px)}
 .header-top{position:fixed;top:0;left:0;right:0;background:var(--bg);border-bottom:2px solid var(--blue2);padding:12px 15px;z-index:1000;display:flex;justify-content:space-between;align-items:center}
 .menu-btn{font-size:28px;background:none;border:none;color:var(--blue);cursor:pointer}
 .header-actions{display:flex;gap:8px;align-items:center}
 .theme-btn{background:var(--card);border:1px solid var(--border);color:var(--text);width:38px;height:38px;border-radius:10px;cursor:pointer;font-size:18px;transition:0.3s}
-.theme-btn:hover{border-color:var(--blue);box-shadow:0 0 15px rgba(0,191,255,0.4)}
+.theme-btn:hover{border-color:var(--blue);box-shadow:0 0 15px rgba(0,191,255,0.4);transform:scale(1.05)}
 .lang-switch{display:flex;gap:6px}.lang-btn{background:var(--card);color:var(--text2);border:1px solid var(--border);padding:6px 12px;border-radius:8px;cursor:pointer;font-weight:bold;font-size:12px}.lang-btn.active{background:var(--blue);color:#000;box-shadow:0 0 15px rgba(0,191,255,0.6)}
 .sidebar{position:fixed;top:0;right:-300px;width:280px;height:100%;background:var(--card);border-left:2px solid var(--blue2);z-index:1001;transition:0.3s;padding:20px}.sidebar.open{right:0}
 [dir="ltr"].sidebar{right:auto;left:-300px;border-left:none;border-right:2px solid var(--blue2)}[dir="ltr"].sidebar.open{left:0}
@@ -22,13 +25,13 @@ body{background:var(--bg);color:var(--text);transition:0.4s}
 .close-btn{background:none;border:none;color:var(--text);font-size:24px;float:left;cursor:pointer}
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);display:none;z-index:1000}.overlay.show{display:block}
 .search-bar{display:flex;gap:10px;margin:20px 0}.search-bar input{flex:1;padding:14px;background:var(--card);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:16px}
-.filter-bar{display:flex;gap:8px;overflow-x:auto;padding-bottom:10px;margin-bottom:20px}.filter-btn{background:var(--card);border:1px solid var(--border);color:var(--text2);padding:8px 16px;border-radius:20px;cursor:pointer;white-space:nowrap}.filter-btn.active{background:var(--blue);color:#000;border-color:var(--blue)}
+.filter-bar{display:flex;gap:8px;overflow-x:auto;padding-bottom:10px;margin-bottom:20px}.filter-btn{background:var(--card);border:1px solid var(--border);color:var(--text2);padding:8px 16px;border-radius:20px;cursor:pointer;white-space:nowrap;transition:0.3s}.filter-btn.active{background:var(--blue);color:#000;border-color:var(--blue);box-shadow:0 0 15px rgba(0,191,255,0.5)}
 .products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
 .product-card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:0.4s;position:relative}
 .product-card:hover{border-color:var(--blue);box-shadow:0 0 20px rgba(0,191,255,0.35),0 0 40px rgba(0,191,255,0.1);transform:translateY(-5px)}
-.product-card img{width:100%;height:200px;object-fit:cover;background:var(--bg)}
+.product-card img{width:100%;height:220px;object-fit:contain;background:#fff;padding:10px}
 .badge{position:absolute;top:10px;right:10px;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;padding:4px 10px;border-radius:15px;font-size:11px;font-weight:bold;box-shadow:0 0 10px rgba(37,211,102,0.6)}
-.product-info{padding:14px}.product-info h3{font-size:15px;margin-bottom:6px;color:var(--text)}.product-info p{font-size:12px;color:var(--text2);min-height:36px}
+.product-info{padding:14px}.product-info h3{font-size:15px;margin-bottom:6px;color:var(--text)}.product-info p{font-size:12px;color:var(--text2);min-height:42px}
 .product-actions{display:flex;gap:8px;margin-top:10px}.btn-order{flex:1;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;text-align:center;padding:10px;border-radius:8px;text-decoration:none;font-weight:bold;font-size:13px;box-shadow:0 0 15px rgba(37,211,102,0.5);position:relative;overflow:hidden}
 .btn-order::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent);animation:shine 2.5s infinite}
 @keyframes shine{0%{left:-100%}100%{left:100%}}
@@ -37,11 +40,11 @@ body{background:var(--bg);color:var(--text);transition:0.4s}
 <body>
 <div class="header-top"><button class="menu-btn" onclick="openMenu()">☰</button><div class="header-actions"><button class="theme-btn" id="themeBtn" onclick="toggleTheme()">☀️</button><div class="lang-switch"><button class="lang-btn active" onclick="setLang('ar')">AR</button><button class="lang-btn" onclick="setLang('en')">EN</button><button class="lang-btn" onclick="setLang('ku')">KU</button></div></div></div>
 <div class="overlay" id="overlay" onclick="closeMenu()"></div>
-<div class="sidebar" id="sidebar"><button class="close-btn" onclick="closeMenu()">×</button><h3 id="menu_title">القائمة</h3><a href="index.html" id="menu_home">الرئيسية</a><a href="products.html" id="menu_products">المنتجات 🛒</a><a href="calculator.html" id="menu_calc">الحاسبة</a></div>
+<div class="sidebar" id="sidebar"><button class="close-btn" onclick="closeMenu()">×</button><h3 id="menu_title">القائمة</h3><a href="index.html" id="menu_home">الرئيسية</a><a href="products.html" id="menu_products">المنتجات 🛒</a><a href="calculator.html" id="menu_calc">الحاسبة</a><a href="index.html#contact" id="menu_contact">اتصال</a></div>
 
 <div class="container">
 <div class="logo"><img src="logo.png" alt="RBooSH"></div>
-<h2 style="text-align:center;color:var(--blue);margin:20px 0" id="page_title">منتجات RBooSH™</h2>
+<h2 id="page_title">منتجات RBooSH™ ⚡</h2>
 
 <div class="search-bar"><input type="text" id="search" placeholder="ابحث عن منتج..." onkeyup="renderProducts()"></div>
 <div class="filter-bar">
@@ -62,15 +65,15 @@ function openMenu(){document.getElementById('sidebar').classList.add('open');doc
 function closeMenu(){document.getElementById('sidebar').classList.remove('open');document.getElementById('overlay').classList.remove('show');}
 
 const products=[
-{name_ar:"بطارية ليثيوم FOX BTS 3.84KW - 300Ah - RBooSH™",name_en:"FOX BTS Lithium Battery 3.84KW 300Ah - RBooSH™",name_ku:"Pîlê Lîtyûm FOX BTS 3.84KW 300Ah - RBooSH™",cat:"solar",image:"https://i.postimg.cc/632jqxcP/IMG-20260809-WA0084.jpg",desc_ar:"MTL-12300 | 12.8V 300Ah 3.84KW LiFePO4 | خلايا Grade A+ جديدة | بلوتوث + شاشة FOX | وزن 29كغ | قاعدة تثبيت | Charge 14.6V/100Ah",desc_en:"MTL-12300 | 12.8V 300Ah 3.84KW LiFePO4 | Grade A+ New Cells | Bluetooth + FOX Display | 29KG | Safe Home",desc_ku:"MTL-12300 | 12.8V 300Ah 3.84KW LiFePO4 | Grade A+ | Bluetooth + Display | 29KG",badge_ar:"FOX 3.84KW 🔋 جديد",badge_en:"FOX 3.84KW 🔋 New",badge_ku:"FOX 3.84KW 🔋 Nû"},
-{name_ar:"انفرتر شمسي 5KW - RBooSH™",name_en:"Solar Inverter 5KW - RBooSH™",name_ku:"Inverter Rojê 5KW - RBooSH™",cat:"solar",image:"https://i.postimg.cc/KYjDpfyj/IMG-20260902-WA0081.jpg",desc_ar:"انفرتر هجين 5 كيلو - شاحن MPPT مدمج",desc_en:"Hybrid inverter 5KW - Built-in MPPT charger",desc_ku:"Inverter hybrid 5KW - MPPT charger",badge_ar:"الأكثر مبيعاً 🔥",badge_en:"Bestseller 🔥",badge_ku:"Herî firotin 🔥"},
-{name_ar:"لوحة توزيع 24 خط - RBooSH™",name_en:"Distribution Panel 24 Way - RBooSH™",name_ku:"Tabloya Belavkirinê 24 - RBooSH™",cat:"panels",image:"https://i.postimg.cc/qvkLy0bm/IMG-20260902-WA0020.jpg",desc_ar:"لوحة معدنية مقاومة للصدأ - 24 قاطع",desc_en:"Rustproof metal panel - 24 breakers",desc_ku:"Tabloya metal - 24 sîgorte",badge_ar:"جودة عالية ⭐",badge_en:"High Quality ⭐",badge_ku:"Kalîte ⭐"},
-{name_ar:"كابل نحاس 4x10mm",name_en:"Copper Cable 4x10mm",name_ku:"Kabloya Sifir 4x10mm",cat:"cables",image:"https://i.postimg.cc/PvdzN16d/IMG-20260828-WA0002-1.jpg",desc_ar:"كابل مرن معزول - للطاقة الصناعية",desc_en:"Flexible insulated cable - Industrial power",desc_ku:"Kabloya nerm - Hêza pîşesazî",badge_ar:"نحاس صافي",badge_en:"Pure Copper",badge_ku:"Sifirê paqij"},
-{name_ar:"قاطع MCCB 100A",name_en:"MCCB Breaker 100A",name_ku:"Sîgorteya MCCB 100A",cat:"breakers",image:"https://i.postimg.cc/zfGxZ5TS/IMG-20260827-WA0002.jpg",desc_ar:"قاطع حماية صناعي 100 أمبير",desc_en:"Industrial protection breaker 100A",desc_ku:"Sîgorteya parastinê 100A",badge_ar:"صناعي",badge_en:"Industrial",badge_ku:"Pîşesazî"}
+{name_ar:"بطارية ليثيوم FOX BTS 3.84KW - MTL-12300 - RBooSH™",name_en:"FOX BTS Lithium Battery 3.84KW MTL-12300 - RBooSH™",name_ku:"Pîlê Lîtyûm FOX BTS 3.84KW MTL-12300",cat:"solar",image:"https://i.postimg.cc/632jqxcP/IMG-20260809-WA0084.jpg",desc_ar:"12.8V 300Ah 3.84KW LiFePO4 | خلايا Grade A+ جديدة | بلوتوث + شاشة FOX | وزن 29كغ | قاعدة تثبيت | شحن 14.6V/100Ah",desc_en:"12.8V 300Ah 3.84KW LiFePO4 | Grade A+ New Cells | Bluetooth + FOX Display | 29KG | Charge 14.6V/100Ah",desc_ku:"12.8V 300Ah 3.84KW LiFePO4 | Grade A+ | Bluetooth + Display | 29KG",badge_ar:"FOX 3.84KW 🔋 جديد",badge_en:"FOX 3.84KW 🔋 New",badge_ku:"FOX 3.84KW 🔋 Nû"},
+{name_ar:"انفرتر شمسي 5KW - RBooSH™",name_en:"Solar Inverter 5KW - RBooSH™",name_ku:"Inverter Rojê 5KW - RBooSH™",cat:"solar",image:"https://i.postimg.cc/KYjDpfyj/IMG-20260902-WA0081.jpg",desc_ar:"انفرتر هجين 5 كيلو - شاحن MPPT مدمج",desc_en:"Hybrid inverter 5KW - Built-in MPPT charger",desc_ku:"Inverter hybrid 5KW",badge_ar:"الأكثر مبيعاً 🔥",badge_en:"Bestseller 🔥",badge_ku:"Herî firotin 🔥"},
+{name_ar:"لوحة توزيع 24 خط - RBooSH™",name_en:"Distribution Panel 24 Way - RBooSH™",name_ku:"Tabloya Belavkirinê 24",cat:"panels",image:"https://i.postimg.cc/qvkLy0bm/IMG-20260902-WA0020.jpg",desc_ar:"لوحة معدنية مقاومة للصدأ - 24 قاطع",desc_en:"Rustproof metal panel - 24 breakers",desc_ku:"Tabloya metal - 24 sîgorte",badge_ar:"جودة عالية ⭐",badge_en:"High Quality ⭐",badge_ku:"Kalîte ⭐"},
+{name_ar:"كابل نحاس 4x10mm",name_en:"Copper Cable 4x10mm",name_ku:"Kabloya Sifir 4x10mm",cat:"cables",image:"https://i.postimg.cc/PvdzN16d/IMG-20260828-WA0002-1.jpg",desc_ar:"كابل مرن معزول - للطاقة الصناعية",desc_en:"Flexible insulated cable - Industrial",desc_ku:"Kabloya nerm - Pîşesazî",badge_ar:"نحاس صافي",badge_en:"Pure Copper",badge_ku:"Sifir"},
+{name_ar:"قاطع MCCB 100A",name_en:"MCCB Breaker 100A",name_ku:"Sîgorteya MCCB 100A",cat:"breakers",image:"https://i.postimg.cc/zfGxZ5TS/IMG-20260827-WA0002.jpg",desc_ar:"قاطع حماية صناعي 100 أمبير",desc_en:"Industrial protection breaker 100A",desc_ku:"Sîgorteya 100A",badge_ar:"صناعي",badge_en:"Industrial",badge_ku:"Pîşesazî"}
 ];
 
 let currentCat='all'; let currentLang='ar';
-const trans={ar:{dir:'rtl',menu_title:'القائمة',menu_home:'الرئيسية',menu_products:'المنتجات 🛒',menu_calc:'الحاسبة',page_title:'منتجات RBooSH™',cat_all:'الكل',cat_solar:'طاقة شمسية',cat_panels:'لوحات',cat_cables:'كابلات',cat_breakers:'قواطع',search:'ابحث عن منتج...',order:'اطلب واتساب'},en:{dir:'ltr',menu_title:'Menu',menu_home:'Home',menu_products:'Products 🛒',menu_calc:'Calculator',page_title:'RBooSH™ Products',cat_all:'All',cat_solar:'Solar',cat_panels:'Panels',cat_cables:'Cables',cat_breakers:'Breakers',search:'Search product...',order:'Order WhatsApp'},ku:{dir:'ltr',menu_title:'Menu',menu_home:'Mal',menu_products:'Berhem 🛒',menu_calc:'Hesabker',page_title:'Berhemên RBooSH™',cat_all:'Hemû',cat_solar:'Rojê',cat_panels:'Tablo',cat_cables:'Kablo',cat_breakers:'Sîgorte',search:'Li berhemê bigere...',order:'Bi WhatsApp bixwaze'}};
+const trans={ar:{dir:'rtl',menu_title:'القائمة',menu_home:'الرئيسية',menu_products:'المنتجات 🛒',menu_calc:'الحاسبة',menu_contact:'اتصال',page_title:'منتجات RBooSH™ ⚡',cat_all:'الكل',cat_solar:'طاقة شمسية',cat_panels:'لوحات',cat_cables:'كابلات',cat_breakers:'قواطع',search:'ابحث عن منتج...',order:'اطلب واتساب'},en:{dir:'ltr',menu_title:'Menu',menu_home:'Home',menu_products:'Products 🛒',menu_calc:'Calculator',menu_contact:'Contact',page_title:'RBooSH™ Products ⚡',cat_all:'All',cat_solar:'Solar',cat_panels:'Panels',cat_cables:'Cables',cat_breakers:'Breakers',search:'Search product...',order:'Order WhatsApp'},ku:{dir:'ltr',menu_title:'Menu',menu_home:'Mal',menu_products:'Berhem 🛒',menu_calc:'Hesabker',menu_contact:'Têkilî',page_title:'Berhemên RBooSH™ ⚡',cat_all:'Hemû',cat_solar:'Rojê',cat_panels:'Tablo',cat_cables:'Kablo',cat_breakers:'Sîgorte',search:'Li berhemê bigere...',order:'Bi WhatsApp bixwaze'}};
 
 function setLang(l){currentLang=l;let t=trans[l];document.documentElement.lang=l;document.documentElement.dir=t.dir;document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));document.querySelector(`.lang-btn[onclick="setLang('${l}')"]`).classList.add('active');for(let k in t){if(document.getElementById(k))document.getElementById(k).innerText=t[k];}document.getElementById('search').placeholder=t.search;renderProducts();}
 function setCat(c){currentCat=c;document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));document.querySelector(`.filter-btn[data-cat="${c}"]`).classList.add('active');renderProducts();}
