@@ -44,7 +44,12 @@ h1{color:var(--blue);text-align:center;margin:20px 0;text-shadow:0 0 15px rgba(0
 .product-body{padding:18px;text-align:center}.product-badge{background:var(--blue2);color:#fff;font-size:11px;padding:4px 10px;border-radius:20px;display:inline-block;margin-bottom:10px}
 .badge-hot{background:linear-gradient(135deg,#ff0000,#ff6a00);animation:hotPulse 1.5s infinite}
 @keyframes hotPulse{0%{transform:scale(1)}50%{transform:scale(1.05)}100%{transform:scale(1)}}
-.product-body h3{font-size:15px;margin-bottom:8px;min-height:45px}.product-desc{font-size:13px;color:var(--text2);margin-bottom:10px;min-height:50px}
+.product-body h3{font-size:15px;margin-bottom:6px;min-height:45px}
+.rating{display:flex;align-items:center;justify-content:center;gap:6px;margin:6px 0 8px 0;font-size:12px}
+.stars{color:#FFD700;text-shadow:0 0 8px rgba(255,215,0,0.6);letter-spacing:1px}
+.rating-num{color:var(--text);font-weight:bold}
+.rating-count{color:var(--text2);font-size:11px}
+.product-desc{font-size:13px;color:var(--text2);margin-bottom:10px;min-height:50px}
 .product-price{color:var(--blue);font-weight:900;font-size:17px;margin:12px 0}
 .live-view{position:absolute;top:12px;left:12px;background:rgba(0,0,0,0.8);border:1px solid #00ff88;color:#00ff88;font-size:11px;padding:4px 8px;border-radius:20px;display:flex;align-items:center;gap:5px}
 .live-view i{width:6px;height:6px;background:#00ff88;border-radius:50%;display:inline-block;animation:livePulse 1s infinite}
@@ -65,17 +70,12 @@ footer{text-align:center;padding:30px;color:#777;font-size:12px}
 <div class="sidebar" id="sidebar"><button style="background:none;border:none;color:var(--text);font-size:24px;float:left;cursor:pointer" onclick="closeMenu()">×</button><h3 id="menu_title" style="color:var(--blue);text-align:center;margin-bottom:20px;">القائمة</h3><a href="index.html" id="menu_home">الرئيسية</a><a href="products.html" id="menu_products">المنتجات</a><a href="calculator.html" id="menu_calc">الحاسبة</a></div>
 <div class="container">
 <div class="logo"><img src="logo.png" alt="RBooSH"></div>
-
 <div class="brands-bar"><div class="brands-track"><div class="brands-group"><span class="c-ls">LS</span><span class="c-schneider">Schneider</span><span class="c-chint">CHINT</span><span class="c-tense">TENSE</span><span class="c-givis">GIVIS</span><span class="c-pollux">POLLUX</span><span class="c-rboosh">RBooSH™</span><span class="c-altech">Altech</span><span class="c-hyundai">HYUNDAI</span><span class="c-clay">CLAY</span><span class="c-unal">ÜNAL KABLO</span><span class="c-ako">AKO</span><span class="c-ls">LS</span><span class="c-schneider">Schneider</span><span class="c-chint">CHINT</span><span class="c-tense">TENSE</span><span class="c-givis">GIVIS</span><span class="c-pollux">POLLUX</span><span class="c-rboosh">RBooSH™</span><span class="c-altech">Altech</span></div><div class="brands-group" aria-hidden="true"><span class="c-ls">LS</span><span class="c-schneider">Schneider</span><span class="c-chint">CHINT</span><span class="c-tense">TENSE</span><span class="c-givis">GIVIS</span><span class="c-pollux">POLLUX</span><span class="c-rboosh">RBooSH™</span><span class="c-altech">Altech</span><span class="c-hyundai">HYUNDAI</span><span class="c-clay">CLAY</span><span class="c-unal">ÜNAL KABLO</span><span class="c-ako">AKO</span><span class="c-ls">LS</span><span class="c-schneider">Schneider</span><span class="c-chint">CHINT</span><span class="c-tense">TENSE</span><span class="c-givis">GIVIS</span><span class="c-pollux">POLLUX</span><span class="c-rboosh">RBooSH™</span><span class="c-altech">Altech</span></div></div></div>
-
 <h1 id="page_title">منتجاتنا ⚡</h1><p style="text-align:center;color:var(--text2);" id="page_desc">جميع المنتجات RBooSH™ - 20 منتج</p>
 <div class="visitor-counter"><div class="live-dot"></div><span id="counterText"></span></div>
 <div class="search-box"><input type="text" id="searchInput" placeholder="🔍 ابحث عن منتج... كشاف، قاطع، كابل" oninput="render()"></div>
-
-<!-- قسم الأكثر مبيعا - يتغير كل 48 ساعة -->
 <h2 class="best-title" id="best_title">🔥 الأكثر مبيعاً هذا الأسبوع</h2>
 <div class="products-grid" id="bestGrid"></div>
-
 <div class="filter-bar" id="filterBar"></div>
 <div class="install-banner"><h2 id="banner_title" style="color:#fff">🎥 خدمة التركيب المجاني مع أبو سليمان</h2><p id="banner_text" style="color:#e0f2ff;font-size:14px;margin:8px 0 12px">اشتريت وما عرفت تركب؟ افتح كاميرا واتساب وأنا أركب معك خطوة بخطوة مجاناً!</p><a id="banner_btn" style="background:#fff;color:#1e3a8a;padding:10px 20px;border-radius:25px;text-decoration:none;font-weight:bold;display:inline-block" href="https://wa.me/4915216839609?text=مرحبا ابو سليمان، بدي مساعدة بتركيب القطعة 🎥" target="_blank">📹 اتصل فيديو الآن</a></div>
 <div class="products-grid" id="productsGrid"></div>
@@ -110,48 +110,48 @@ const products=[
 {name_ar:"قاطع DC التاج 63A",name_en:"Altech DC Breaker 63A",name_ku:"Şalter DC Altech 63A",cat:"protection",image:"https://i.postimg.cc/KksCDstS/Picsart-26-09-23-23-51-15-827.jpg",desc_ar:"قاطع DC أصلي",desc_en:"Original DC breaker",desc_ku:"Şalter DC orjînal",badge_ar:"الأصلي 🔥",badge_en:"Original 🔥",badge_ku:"Orjînal 🔥"}
 ];
 const tr={
-ar:{dir:'rtl',menu_title:'القائمة',menu_home:'الرئيسية',menu_products:'المنتجات',menu_calc:'الحاسبة',page_title:'منتجاتنا ⚡',page_desc:'جميع المنتجات RBooSH™ - 20 منتج',banner_title:'🎥 خدمة التركيب المجاني مع أبو سليمان',banner_text:'اشتريت وما عرفت تركب؟ افتح كاميرا واتساب وأنا أركب معك خطوة بخطوة مجاناً!',banner_btn:'📹 اتصل فيديو الآن',f_all:'الكل (20)',f_smart:'ذكي WiFi 📶',f_solar:'طاقة شمسية ☀️',f_ind:'صناعي ⚡',f_pro:'حماية 🛡️',btn_wa:'اطلب عبر واتساب 📱',search_ph:'🔍 ابحث عن منتج... كشاف، قاطع، كابل',best_title:'🔥 الأكثر مبيعاً هذا الأسبوع',best_badge:'الأكثر طلباً 🔥'},
-en:{dir:'ltr',menu_title:'Menu',menu_home:'Home',menu_products:'Products',menu_calc:'Calculator',page_title:'Our Products ⚡',page_desc:'All RBooSH™ Products - 20 items',banner_title:'🎥 Free Installation Support',banner_text:'Bought it and don\'t know how to install? Open video call and I will guide you step by step for free!',banner_btn:'📹 Video Call Now',f_all:'All (20)',f_smart:'Smart WiFi 📶',f_solar:'Solar ☀️',f_ind:'Industrial ⚡',f_pro:'Protection 🛡️',btn_wa:'Order on WhatsApp 📱',search_ph:'🔍 Search product...',best_title:'🔥 Best Sellers This Week',best_badge:'Most Requested 🔥'},
-ku:{dir:'ltr',menu_title:'Menu',menu_home:'Mal',menu_products:'Berhem',menu_calc:'Hesabker',page_title:'Berhemên Me ⚡',page_desc:'Hemû Berhemên RBooSH™ - 20 berhem',banner_title:'🎥 Xizmeta Girêdanê ya Belaş',banner_text:'Te kirî û nizane çawa girêbidî? Vîdyo veke û ez ê alîkariya te bikim belaş!',banner_btn:'📹 Vîdyo Banga Niha',f_all:'Hemû (20)',f_smart:'Jîr WiFi 📶',f_solar:'Rojê ☀️',f_ind:'Pîşesazî ⚡',f_pro:'Parastin 🛡️',btn_wa:'Li WhatsApp Bixwaze 📱',search_ph:'🔍 Li berhemê bigere...',best_title:'🔥 Herî zêde tê firotin vê hefteyê',best_badge:'Herî daxwazkirî 🔥'}
+ar:{dir:'rtl',menu_title:'القائمة',menu_home:'الرئيسية',menu_products:'المنتجات',menu_calc:'الحاسبة',page_title:'منتجاتنا ⚡',page_desc:'جميع المنتجات RBooSH™ - 20 منتج',banner_title:'🎥 خدمة التركيب المجاني مع أبو سليمان',banner_text:'اشتريت وما عرفت تركب؟ افتح كاميرا واتساب وأنا أركب معك خطوة بخطوة مجاناً!',banner_btn:'📹 اتصل فيديو الآن',f_all:'الكل (20)',f_smart:'ذكي WiFi 📶',f_solar:'طاقة شمسية ☀️',f_ind:'صناعي ⚡',f_pro:'حماية 🛡️',btn_wa:'اطلب عبر واتساب 📱',search_ph:'🔍 ابحث عن منتج... كشاف، قاطع، كابل',best_title:'🔥 الأكثر مبيعاً هذا الأسبوع',best_badge:'الأكثر طلباً 🔥',rev:'تقييم'},
+en:{dir:'ltr',menu_title:'Menu',menu_home:'Home',menu_products:'Products',menu_calc:'Calculator',page_title:'Our Products ⚡',page_desc:'All RBooSH™ Products - 20 items',banner_title:'🎥 Free Installation Support',banner_text:'Bought it and don\'t know how to install? Open video call and I will guide you step by step for free!',banner_btn:'📹 Video Call Now',f_all:'All (20)',f_smart:'Smart WiFi 📶',f_solar:'Solar ☀️',f_ind:'Industrial ⚡',f_pro:'Protection 🛡️',btn_wa:'Order on WhatsApp 📱',search_ph:'🔍 Search product...',best_title:'🔥 Best Sellers This Week',best_badge:'Most Requested 🔥',rev:'reviews'},
+ku:{dir:'ltr',menu_title:'Menu',menu_home:'Mal',menu_products:'Berhem',menu_calc:'Hesabker',page_title:'Berhemên Me ⚡',page_desc:'Hemû Berhemên RBooSH™ - 20 berhem',banner_title:'🎥 Xizmeta Girêdanê ya Belaş',banner_text:'Te kirî û nizane çawa girêbidî? Vîdyo veke û ez ê alîkariya te bikim belaş!',banner_btn:'📹 Vîdyo Banga Niha',f_all:'Hemû (20)',f_smart:'Jîr WiFi 📶',f_solar:'Rojê ☀️',f_ind:'Pîşesazî ⚡',f_pro:'Parastin 🛡️',btn_wa:'Li WhatsApp Bixwaze 📱',search_ph:'🔍 Li berhemê bigere...',best_title:'🔥 Herî zêde tê firotin vê hefteyê',best_badge:'Herî daxwazkirî 🔥',rev:'nirxandin'}
 };
 const fakeData={ar:{gov:["دمشق","حلب","الحسكة","القامشلي","حمص","إدلب"],names:["أحمد","محمد","علي","خالد","سليمان","عمر"],ordered:"طلب الآن",ago:"منذ",min:"دقيقة",viewing:"شخص يشاهدون الآن"},en:{gov:["Damascus","Aleppo","Hasakah"],names:["Ahmad","Ali","Khaled"],ordered:"just ordered",ago:"ago",min:"min",viewing:"people viewing now"},ku:{gov:["Şam","Hesekê","Qamişlo"],names:["Ehmed","Elî","Xalid"],ordered:"niha xwest",ago:"berî",min:"deqe",viewing:"kes niha dibînin"}};
+
+// تقييمات ثابتة لكل منتج (ما بتتغير)
+function getRating(idx){
+  let seed = Math.abs(Math.sin(idx*17.7 + 5.3))*1000;
+  let rating = 4.5 + (seed % 0.5); // 4.5 - 5.0
+  if(rating>5) rating=5;
+  let count = 35 + Math.floor((seed*1.3) % 215); // 35-250
+  return {rate: rating.toFixed(1), count: count};
+}
+function starsHtml(rate){
+  let r=parseFloat(rate);
+  let full=Math.floor(r);
+  let html='';
+  for(let i=0;i<5;i++){html+= i<full? '★' : '☆';}
+  return `<span class="stars">${html}</span>`;
+}
 
 function setLang(lang){currentLang=lang;let t=tr[lang];document.documentElement.lang=lang;document.documentElement.dir=t.dir;document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');document.getElementById('menu_title').innerText=t.menu_title;document.getElementById('menu_home').innerText=t.menu_home;document.getElementById('menu_products').innerText=t.menu_products;document.getElementById('menu_calc').innerText=t.menu_calc;document.getElementById('page_title').innerText=t.page_title;document.getElementById('page_desc').innerText=t.page_desc;document.getElementById('banner_title').innerText=t.banner_title;document.getElementById('banner_text').innerText=t.banner_text;document.getElementById('banner_btn').innerText=t.banner_btn;document.getElementById('searchInput').placeholder=t.search_ph;document.getElementById('best_title').innerText=t.best_title;render();updateCounter();renderBest();}
 function filterProducts(cat){currentFilter=cat;render();}
 
-// ===== قسم الأكثر مبيعا - يتغير كل 48 ساعة =====
 function getBestSellers(){
-  const KEY = 'rboosh_bestsellers';
-  const TIME_KEY = 'rboosh_bestsellers_time';
-  const DURATION = 48*60*60*1000; // 48 ساعة
-  let saved = localStorage.getItem(KEY);
-  let savedTime = localStorage.getItem(TIME_KEY);
-  let now = Date.now();
-  if(saved && savedTime && (now - parseInt(savedTime) < DURATION)){
-    return JSON.parse(saved);
-  }else{
-    let indices = [...Array(products.length).keys()];
-    indices.sort(()=>0.5-Math.random());
-    let selected = indices.slice(0,4);
-    localStorage.setItem(KEY, JSON.stringify(selected));
-    localStorage.setItem(TIME_KEY, now.toString());
-    return selected;
+  const KEY='rboosh_bestsellers';const TIME_KEY='rboosh_bestsellers_time';const DURATION=48*60*60*1000;
+  let saved=localStorage.getItem(KEY);let savedTime=localStorage.getItem(TIME_KEY);let now=Date.now();
+  if(saved && savedTime && (now-parseInt(savedTime) < DURATION)){return JSON.parse(saved);}else{
+    let indices=[...Array(products.length).keys()];indices.sort(()=>0.5-Math.random());let selected=indices.slice(0,4);
+    localStorage.setItem(KEY,JSON.stringify(selected));localStorage.setItem(TIME_KEY,now.toString());return selected;
   }
 }
 function renderBest(){
-  let t=tr[currentLang];
-  let bestIndices = getBestSellers();
-  let grid=document.getElementById('bestGrid');grid.innerHTML="";
+  let t=tr[currentLang];let bestIndices=getBestSellers();let grid=document.getElementById('bestGrid');grid.innerHTML="";
   bestIndices.forEach(idx=>{
-    let p=products[idx];
-    let name=currentLang=='en'?p.name_en:currentLang=='ku'?p.name_ku:p.name_ar;
-    let desc=currentLang=='en'?p.desc_en:currentLang=='ku'?p.desc_ku:p.desc_ar;
-    let viewers=Math.floor(Math.random()*175)+100;
-    let waMsg=currentLang=='en'?'Hello Sulaiman, I want ':'مرحبا سليمان اريد ';if(currentLang=='ku') waMsg='Merheba Silêman, ez dixwazim ';
-    grid.innerHTML+=`<div class="product-card" style="border-color:#ff6a00;box-shadow:0 0 15px rgba(255,106,0,0.3)"><div class="live-view"><i></i> ${viewers} 👀</div><img src="${p.image}" alt="${name}" loading="lazy"><div class="product-body"><span class="product-badge badge-hot">${t.best_badge}</span><h3>${name}</h3><p class="product-desc">${desc}</p><div class="product-price">${BRAND}</div><a class="btn-wa" href="https://wa.me/4915216839609?text=${waMsg}${encodeURIComponent(name)}" target="_blank">${t.btn_wa}</a></div></div>`;
+    let p=products[idx];let name=currentLang=='en'?p.name_en:currentLang=='ku'?p.name_ku:p.name_ar;let desc=currentLang=='en'?p.desc_en:currentLang=='ku'?p.desc_ku:p.desc_ar;
+    let viewers=Math.floor(Math.random()*175)+100;let waMsg=currentLang=='en'?'Hello Sulaiman, I want ':'مرحبا سليمان اريد ';if(currentLang=='ku') waMsg='Merheba Silêman, ez dixwazim ';
+    let rat=getRating(idx);rat.rate=(parseFloat(rat.rate)+0.1).toFixed(1);if(parseFloat(rat.rate)>5) rat.rate="5.0"; rat.count+=50;
+    grid.innerHTML+=`<div class="product-card" style="border-color:#ff6a00;box-shadow:0 0 15px rgba(255,106,0,0.3)"><div class="live-view"><i></i> ${viewers} 👀</div><img src="${p.image}" alt="${name}" loading="lazy"><div class="product-body"><span class="product-badge badge-hot">${t.best_badge}</span><h3>${name}</h3><div class="rating">${starsHtml(rat.rate)}<span class="rating-num">${rat.rate}</span><span class="rating-count">(${rat.count} ${t.rev})</span></div><p class="product-desc">${desc}</p><div class="product-price">${BRAND}</div><a class="btn-wa" href="https://wa.me/4915216839609?text=${waMsg}${encodeURIComponent(name)}" target="_blank">${t.btn_wa}</a></div></div>`;
   });
 }
-
 function render(){
 let t=tr[currentLang];let search=document.getElementById('searchInput').value.toLowerCase();
 let fb=document.getElementById('filterBar');
@@ -160,12 +160,14 @@ const grid=document.getElementById('productsGrid');grid.innerHTML="";
 let filtered = currentFilter=='all'? products : products.filter(p=>p.cat==currentFilter);
 if(search) filtered = filtered.filter(p=> (p.name_ar+p.name_en+p.desc_ar).toLowerCase().includes(search));
 filtered.forEach(p=>{
+let realIdx=products.indexOf(p);
 let name=currentLang=='en'?p.name_en:currentLang=='ku'?p.name_ku:p.name_ar;
 let desc=currentLang=='en'?p.desc_en:currentLang=='ku'?p.desc_ku:p.desc_ar;
 let badge=currentLang=='en'?p.badge_en:currentLang=='ku'?p.badge_ku:p.badge_ar;
 let viewers=Math.floor(Math.random()*175)+25;
 let waMsg=currentLang=='en'?'Hello Sulaiman, I want ':'مرحبا سليمان اريد ';if(currentLang=='ku') waMsg='Merheba Silêman, ez dixwazim ';
-grid.innerHTML+=`<div class="product-card"><div class="live-view"><i></i> ${viewers} 👀</div><img src="${p.image}" alt="${name}" loading="lazy"><div class="product-body"><span class="product-badge">${badge}</span><h3>${name}</h3><p class="product-desc">${desc}</p><div class="product-price">${BRAND}</div><a class="btn-wa" href="https://wa.me/4915216839609?text=${waMsg}${encodeURIComponent(name)}" target="_blank">${t.btn_wa}</a></div></div>`;
+let rat=getRating(realIdx);
+grid.innerHTML+=`<div class="product-card"><div class="live-view"><i></i> ${viewers} 👀</div><img src="${p.image}" alt="${name}" loading="lazy"><div class="product-body"><span class="product-badge">${badge}</span><h3>${name}</h3><div class="rating">${starsHtml(rat.rate)}<span class="rating-num">${rat.rate}</span><span class="rating-count">(${rat.count} ${t.rev})</span></div><p class="product-desc">${desc}</p><div class="product-price">${BRAND}</div><a class="btn-wa" href="https://wa.me/4915216839609?text=${waMsg}${encodeURIComponent(name)}" target="_blank">${t.btn_wa}</a></div></div>`;
 });
 }
 function openMenu(){document.getElementById('sidebar').classList.add('open');document.getElementById('overlay').classList.add('show');}
