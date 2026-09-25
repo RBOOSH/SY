@@ -41,54 +41,15 @@ h2{color:var(--blue);text-align:center;font-size:26px;margin-bottom:15px;text-sh
 .order-popup img{width:50px;height:50px;border-radius:10px;object-fit:cover}
 .visitor-counter span{font-size:14px;color:#00ff88;font-weight:bold;-webkit-text-stroke:0.35px #000;paint-order:stroke fill;text-shadow:0.5px 0.5px 0 #000,-0.5px 0.5px 0 #000,0.5px -0.5px 0 #000,-0.5px -0.5px 0 #000,0 0 8px rgba(0,255,136,0.6);animation:softGlow 2.5s infinite alternate}
 @keyframes softGlow{from{text-shadow:0.5px 0.5px 0 #000,-0.5px 0.5px 0 #000,0.5px -0.5px 0 #000,-0.5px -0.5px 0 #000,0 0 5px rgba(0,255,136,0.4)}to{text-shadow:0.5px 0.5px 0 #000,-0.5px 0.5px 0 #000,0.5px -0.5px 0 #000,-0.5px -0.5px 0 #000,0 0 9px rgba(0,255,136,0.7),0 0 14px rgba(0,255,136,0.35)}}
-
-/* ✅ الشريط المتصل - بدون فراغ ابداً + الوان متناسقة */
-.brands-bar{
-  width:100%;
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:12px;
-  overflow:hidden;
-  margin:15px auto;
-  padding:12px 0;
-  box-shadow:0 0 15px rgba(0,191,255,0.08);
-  direction:ltr;
-}
-.brands-track{
-  display:flex;
-  width:max-content;
-  animation:scrollBrands 25s linear infinite;
-}
-.brands-group{
-  display:flex;
-  flex-shrink:0;
-  align-items:center;
-}
-.brands-group span{
-  font-size:13px;
-  font-weight:bold;
-  color:var(--text2);
-  padding:0 22px;
-  white-space:nowrap;
-  position:relative;
-}
-.brands-group span::after{
-  content:'•';
-  position:absolute;
-  right:-2px;
-  color:var(--blue);
-  opacity:0.4;
-  font-size:10px;
-}
-.brands-group span.rboosh{
-  color:var(--blue);
-  font-weight:900;
-  text-shadow:0 0 8px rgba(0,191,255,0.3);
-}
-@keyframes scrollBrands{
-  0%{transform:translateX(0)}
-  100%{transform:translateX(-50%)}
-}
+/* ✅ الشريط البطيء - مقروء + بدون فراغ */
+.brands-bar{width:100%;background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:15px auto;padding:14px 0;box-shadow:0 0 15px rgba(0,191,255,0.08);direction:ltr}
+.brands-track{display:flex;width:max-content;animation:scrollBrands 60s linear infinite}
+.brands-bar:hover.brands-track{animation-play-state:paused}
+.brands-group{display:flex;flex-shrink:0;align-items:center}
+.brands-group span{font-size:14px;font-weight:bold;color:var(--text2);padding:0 24px;white-space:nowrap;position:relative}
+.brands-group span::after{content:'•';position:absolute;right:-2px;color:var(--blue);opacity:0.4;font-size:10px}
+.brands-group span.rboosh{color:var(--blue);font-weight:900;text-shadow:0 0 8px rgba(0,191,255,0.3)}
+@keyframes scrollBrands{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 </style>
 </head>
 <body>
@@ -98,7 +59,6 @@ h2{color:var(--blue);text-align:center;font-size:26px;margin-bottom:15px;text-sh
 <div class="container">
 <div class="logo"><img src="logo.png" alt="RBooSH"></div>
 
-<!-- ✅ شريط شركات - متواصل بدون انقطاع -->
 <div class="brands-bar">
   <div class="brands-track">
     <div class="brands-group">
