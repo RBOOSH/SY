@@ -13,22 +13,13 @@ h1{color:#00bfff;text-align:center;margin:20px 0}
 .menu-btn{font-size:28px;background:none;border:none;color:#00bfff;cursor:pointer}
 .lang-switch{display:flex;gap:6px}.lang-btn{background:#222;color:#aaa;border:1px solid #333;padding:6px 12px;border-radius:8px;cursor:pointer;font-weight:bold;font-size:12px}.lang-btn.active{background:#00bfff;color:#000}
 .sidebar{position:fixed;top:0;right:-300px;width:280px;height:100%;background:#111;border-left:2px solid #1e3a8a;z-index:1001;transition:0.3s;padding:20px}.sidebar.open{right:0}
-[dir="ltr"].sidebar{right:auto;left:-300px;border-right:2px solid #1e3a8a}[dir="ltr"].sidebar.open{left:0}
 .sidebar a{display:block;padding:14px;color:#fff;text-decoration:none;border-bottom:1px solid #222}
 .close-btn{background:none;border:none;color:#fff;font-size:24px;float:left;cursor:pointer}
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);display:none;z-index:1000}.overlay.show{display:block}
-
-/* الفلتر الجديد */
 .filter-bar{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:20px 0}
 .filter-btn{background:#111;border:1px solid #333;color:#aaa;padding:10px 18px;border-radius:25px;cursor:pointer;font-weight:bold;transition:0.3s}
 .filter-btn.active,.filter-btn:hover{background:#00bfff;color:#000;border-color:#00bfff;box-shadow:0 0 15px rgba(0,191,255,0.5)}
-
-.install-banner{background:linear-gradient(135deg,#1e3a8a,#00bfff);border-radius:15px;padding:20px;margin:25px 0;text-align:center;border:2px solid #00bfff;animation:glow 2s infinite alternate}
-@keyframes glow{from{box-shadow:0 0 10px #1e3a8a}to{box-shadow:0 0 25px #00bfff}}
-.install-banner h2{font-size:18px;margin-bottom:8px}
-.install-banner p{font-size:14px;color:#e0f2ff;margin-bottom:12px}
-.btn-call{background:#fff;color:#1e3a8a;padding:10px 20px;border-radius:25px;text-decoration:none;font-weight:bold;display:inline-block;animation:btnPulse 1.5s infinite}
-@keyframes btnPulse{0%{transform:scale(1)}50%{transform:scale(1.05)}100%{transform:scale(1)}}
+.install-banner{background:linear-gradient(135deg,#1e3a8a,#00bfff);border-radius:15px;padding:20px;margin:25px 0;text-align:center;border:2px solid #00bfff}
 .visitor-counter{background:#111;border:1px dashed #00bfff;border-radius:12px;padding:12px 18px;margin:0 auto 20px auto;text-align:center;max-width:550px;display:flex;align-items:center;justify-content:center;gap:10px}
 .live-dot{width:10px;height:10px;background:#ff0000;border-radius:50%;animation:livePulse 1s infinite}
 @keyframes livePulse{0%{box-shadow:0 0 0 0 rgba(255,0,0,0.7)}70%{box-shadow:0 0 0 8px rgba(255,0,0,0)}100%{box-shadow:0 0 0 0 rgba(255,0,0,0)}}
@@ -38,33 +29,32 @@ h1{color:#00bfff;text-align:center;margin:20px 0}
 .product-card img{width:100%;height:280px;object-fit:contain;background:#000;padding:15px}
 .product-body{padding:18px}.product-badge{background:#1e3a8a;color:#fff;font-size:11px;padding:4px 10px;border-radius:20px;display:inline-block;margin-bottom:10px}
 .product-body h3{font-size:15px;margin-bottom:8px;color:#fff;min-height:45px}.product-desc{font-size:13px;color:#aaa;margin-bottom:10px;min-height:35px}
-.product-price{color:#00bfff;font-weight:bold;font-size:15px;margin:10px 0}
+/* ستايل RBooSH الجديد */
+.product-price{color:#00bfff;font-weight:900;font-size:17px;margin:12px 0;letter-spacing:1px}
+.product-price sup{font-size:9px;vertical-align:super;margin-left:2px;color:#aaa}
+.product-price .check{color:#25D366;font-size:16px;margin-right:4px}
 .live-view{position:absolute;top:12px;left:12px;background:rgba(0,0,0,0.8);border:1px solid #00ff88;color:#00ff88;font-size:11px;padding:4px 8px;border-radius:20px;display:flex;align-items:center;gap:5px}
 .live-view i{width:6px;height:6px;background:#00ff88;border-radius:50%;display:inline-block;animation:livePulse 1s infinite}
-.btn-wa{background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;text-align:center;padding:14px;border-radius:12px;display:block;text-decoration:none;font-weight:bold;margin-top:10px;font-size:15px;box-shadow:0 0 15px rgba(37,211,102,0.6),0 4px 15px rgba(0,0,0,0.3);border:1px solid #25D366;animation:whatsappGlow 2s infinite alternate;position:relative;overflow:hidden}
-.btn-wa::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent);animation:shine 2.5s infinite}
+.btn-wa{background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;text-align:center;padding:14px;border-radius:12px;display:block;text-decoration:none;font-weight:bold;margin-top:10px;font-size:15px;box-shadow:0 0 15px rgba(37,211,102,0.6);border:1px solid #25D366;animation:whatsappGlow 2s infinite alternate;position:relative;overflow:hidden}
 @keyframes whatsappGlow{from{box-shadow:0 0 10px rgba(37,211,102,0.5)}to{box-shadow:0 0 20px rgba(37,211,102,0.9)}}
-@keyframes shine{0%{left:-100%}100%{left:100%}}
 footer{text-align:center;padding:30px;color:#555;font-size:12px}
-.order-popup{position:fixed;bottom:20px;right:20px;background:#111;border:1px solid #25D366;border-radius:15px;padding:12px 16px;display:flex;align-items:center;gap:12px;z-index:2000;transform:translateX(400px);transition:0.5s;max-width:320px;box-shadow:0 0 20px rgba(37,211,102,0.4)}
+.order-popup{position:fixed;bottom:20px;right:20px;background:#111;border:1px solid #25D366;border-radius:15px;padding:12px 16px;display:flex;align-items:center;gap:12px;z-index:2000;transform:translateX(400px);transition:0.5s;max-width:320px}
 .order-popup.show{transform:translateX(0)}
 .order-popup img{width:50px;height:50px;border-radius:10px;object-fit:cover;background:#000}
 .order-popup-text{flex:1}.order-popup-text b{color:#25D366;font-size:13px;display:block}.order-popup-text small{color:#aaa;font-size:11px}
-[dir="ltr"].order-popup{right:auto;left:20px;transform:translateX(-400px)}[dir="ltr"].order-popup.show{transform:translateX(0)}
 </style>
 </head>
 <body>
-<div class="header-top"><button class="menu-btn" onclick="openMenu()">☰</button><div class="lang-switch"><button class="lang-btn active" onclick="setLang('ar')">AR</button><button class="lang-btn" onclick="setLang('en')">EN</button><button class="lang-btn" onclick="setLang('ku')">KU</button></div></div>
+<div class="header-top"><button class="menu-btn" onclick="openMenu()">☰</button><div class="lang-switch"><button class="lang-btn active">AR</button><button class="lang-btn">EN</button><button class="lang-btn">KU</button></div></div>
 <div class="overlay" id="overlay" onclick="closeMenu()"></div>
-<div class="sidebar" id="sidebar"><button class="close-btn" onclick="closeMenu()">×</button><h3 id="menu_title" style="color:#00bfff;text-align:center;margin-bottom:20px;">القائمة</h3><a href="index.html">الرئيسية</a><a href="products.html">المنتجات</a><a href="calculator.html">الحاسبة</a></div>
+<div class="sidebar" id="sidebar"><button class="close-btn" onclick="closeMenu()">×</button><h3 style="color:#00bfff;text-align:center;margin-bottom:20px;">القائمة</h3><a href="index.html">الرئيسية</a><a href="products.html">المنتجات</a><a href="calculator.html">الحاسبة</a></div>
 
 <div class="container">
 <div class="logo"><img src="logo.png" alt="RBooSH"></div>
 <h1>منتجاتنا ⚡</h1>
-
 <div class="visitor-counter"><div class="live-dot"></div><span id="counterText">🔥 187 شخص يشاهدون الآن</span></div>
 
-<div class="filter-bar" id="filterBar">
+<div class="filter-bar">
 <button class="filter-btn active" onclick="filterProducts('all')" id="f_all">الكل (11)</button>
 <button class="filter-btn" onclick="filterProducts('smart')" id="f_smart">ذكي WiFi 📶</button>
 <button class="filter-btn" onclick="filterProducts('solar')" id="f_solar">طاقة شمسية ☀️</button>
@@ -72,7 +62,7 @@ footer{text-align:center;padding:30px;color:#555;font-size:12px}
 <button class="filter-btn" onclick="filterProducts('protection')" id="f_pro">حماية 🛡️</button>
 </div>
 
-<div class="install-banner"><h2>🎥 خدمة التركيب المجاني مع أبو سليمان</h2><p>اشتريت وما عرفت تركب؟ افتح كاميرا واتساب وأنا أركب معك خطوة بخطوة مجاناً!</p><a class="btn-call" href="https://wa.me/4915216839609?text=مرحبا ابو سليمان، بدي مساعدة بتركيب القطعة 🎥" target="_blank">📹 اتصل فيديو الآن</a></div>
+<div class="install-banner"><h2>🎥 خدمة التركيب المجاني مع أبو سليمان</h2><p>اشتريت وما عرفت تركب؟ افتح كاميرا واتساب وأنا أركب معك خطوة بخطوة مجاناً!</p><a style="background:#fff;color:#1e3a8a;padding:10px 20px;border-radius:25px;text-decoration:none;font-weight:bold;display:inline-block" href="https://wa.me/4915216839609?text=مرحبا ابو سليمان، بدي مساعدة بتركيب القطعة 🎥" target="_blank">📹 اتصل فيديو الآن</a></div>
 
 <div class="products-grid" id="productsGrid"></div>
 <footer>© 2026 RBooSH™ - Abu Sulaiman Group</footer>
@@ -81,20 +71,20 @@ footer{text-align:center;padding:30px;color:#555;font-size:12px}
 <div class="order-popup" id="orderPopup"><img id="popupImg" src=""><div class="order-popup-text"><b id="popupTitle"></b><small id="popupDesc"></small></div><span style="color:#666;cursor:pointer" onclick="document.getElementById('orderPopup').classList.remove('show')">×</span></div>
 
 <script>
-let currentLang='ar';
 let currentFilter='all';
+const BRAND = "RBooSH<sup>™</sup> <span class='check'>✓</span>";
 const products=[
-{name_ar:"حماية ذكية WiFi Pollux ATVP163",cat:"smart",image:"https://i.postimg.cc/KYjDpfyj/IMG-20260902-WA0081.jpg",desc_ar:"حماية ذكية شاملة مع WiFi",price_ar:"سعر خاص",badge_ar:"ذكي WiFi"},
-{name_ar:"قاطع ذكي Smart Switch RBooSH",cat:"smart",image:"https://i.postimg.cc/qvkLy0bm/IMG-20260902-WA0020.jpg",desc_ar:"قاطع ذكي واي فاي",price_ar:"سعر خاص",badge_ar:"ذكي 🔥"},
-{name_ar:"كشاف طاقة شمسية Pollux",cat:"solar",image:"https://i.postimg.cc/zfGxZ5TS/IMG-20260827-WA0002.jpg",desc_ar:"إنارة شمسية ذكية",price_ar:"سعر خاص",badge_ar:"شمسي ☀️"},
-{name_ar:"قاطع MCCB صناعي",cat:"industrial",image:"https://i.postimg.cc/PvdzN16d/IMG-20260828-WA0002-1.jpg",desc_ar:"قاطع صناعي MCCB",price_ar:"سعر خاص",badge_ar:"صناعي ⚡"},
-{name_ar:"مانع صواعق Pollux",cat:"protection",image:"https://i.postimg.cc/NjYNDRMd/IMG-20260724-WA0003.jpg",desc_ar:"حماية من الصواعق",price_ar:"سعر خاص",badge_ar:"حماية ⚡"},
-{name_ar:"قاطع تحويل ATS 4P",cat:"industrial",image:"https://i.postimg.cc/J4j6jpRv/IMG-20260722-WA0043-3.jpg",desc_ar:"تحويل أوتوماتيك",price_ar:"سعر خاص",badge_ar:"ATS ⚡"},
-{name_ar:"كشاف CLAY 50W",cat:"solar",image:"https://i.postimg.cc/SQB1XBb1/IMG-20260719-WA0018.jpg",desc_ar:"كشاف قوي IP66",price_ar:"سعر خاص",badge_ar:"قوي 💡"},
-{name_ar:"منظم جهد 5000VA",cat:"industrial",image:"https://i.postimg.cc/Yj7xXwpC/IMG-20260717-WA0011.jpg",desc_ar:"منظم جهد 5000VA",price_ar:"سعر خاص",badge_ar:"قوة 💪"},
-{name_ar:"حماية فاز ديجيتال",cat:"protection",image:"https://i.postimg.cc/0zY46NQ8/IMG-20260902-WA0091.jpg",desc_ar:"حماية من الجهد",price_ar:"سعر خاص",badge_ar:"حماية ⚡"},
-{name_ar:"فلتر الموجة الجيبية",cat:"industrial",image:"https://i.postimg.cc/m2LXNbJh/IMG-20260917-WA0018.jpg",desc_ar:"يحمي المحركات",price_ar:"سعر خاص",badge_ar:"جديد ⚡"},
-{name_ar:"قاطع DC التاج 63A",cat:"protection",image:"https://i.postimg.cc/KksCDstS/Picsart-26-09-23-23-51-15-827.jpg",desc_ar:"قاطع DC أصلي",price_ar:"سعر خاص",badge_ar:"الأصلي 🔥"}
+{name:"حماية ذكية WiFi Pollux ATVP163",cat:"smart",image:"https://i.postimg.cc/KYjDpfyj/IMG-20260902-WA0081.jpg",desc:"حماية ذكية شاملة مع WiFi",badge:"ذكي WiFi"},
+{name:"قاطع ذكي Smart Switch RBooSH",cat:"smart",image:"https://i.postimg.cc/qvkLy0bm/IMG-20260902-WA0020.jpg",desc:"قاطع ذكي واي فاي",badge:"ذكي 🔥"},
+{name:"كشاف طاقة شمسية Pollux",cat:"solar",image:"https://i.postimg.cc/zfGxZ5TS/IMG-20260827-WA0002.jpg",desc:"إنارة شمسية ذكية",badge:"شمسي ☀️"},
+{name:"قاطع MCCB صناعي",cat:"industrial",image:"https://i.postimg.cc/PvdzN16d/IMG-20260828-WA0002-1.jpg",desc:"قاطع صناعي MCCB",badge:"صناعي ⚡"},
+{name:"مانع صواعق Pollux",cat:"protection",image:"https://i.postimg.cc/NjYNDRMd/IMG-20260724-WA0003.jpg",desc:"حماية من الصواعق",badge:"حماية ⚡"},
+{name:"قاطع تحويل ATS 4P",cat:"industrial",image:"https://i.postimg.cc/J4j6jpRv/IMG-20260722-WA0043-3.jpg",desc:"تحويل أوتوماتيك",badge:"ATS ⚡"},
+{name:"كشاف CLAY 50W",cat:"solar",image:"https://i.postimg.cc/SQB1XBb1/IMG-20260719-WA0018.jpg",desc:"كشاف قوي IP66",badge:"قوي 💡"},
+{name:"منظم جهد 5000VA",cat:"industrial",image:"https://i.postimg.cc/Yj7xXwpC/IMG-20260717-WA0011.jpg",desc:"منظم جهد 5000VA",badge:"قوة 💪"},
+{name:"حماية فاز ديجيتال",cat:"protection",image:"https://i.postimg.cc/0zY46NQ8/IMG-20260902-WA0091.jpg",desc:"حماية من الجهد",badge:"حماية ⚡"},
+{name:"فلتر الموجة الجيبية",cat:"industrial",image:"https://i.postimg.cc/m2LXNbJh/IMG-20260917-WA0018.jpg",desc:"يحمي المحركات",badge:"جديد ⚡"},
+{name:"قاطع DC التاج 63A",cat:"protection",image:"https://i.postimg.cc/KksCDstS/Picsart-26-09-23-23-51-15-827.jpg",desc:"قاطع DC أصلي",badge:"الأصلي 🔥"}
 ];
 
 function filterProducts(cat){
@@ -103,20 +93,16 @@ document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active')
 document.getElementById('f_'+(cat=='all'?'all':cat=='smart'?'smart':cat=='solar'?'solar':cat=='industrial'?'ind':'pro')).classList.add('active');
 render();
 }
-
 function render(){
 const grid=document.getElementById('productsGrid');grid.innerHTML="";
 let filtered = currentFilter=='all' ? products : products.filter(p=>p.cat==currentFilter);
 filtered.forEach(p=>{
 let viewers=Math.floor(Math.random()*40)+8;
-grid.innerHTML+=`<div class="product-card"><div class="live-view"><i></i> ${viewers} 👀</div><img src="${p.image}" alt="${p.name_ar}" loading="lazy"><div class="product-body"><span class="product-badge">${p.badge_ar}</span><h3>${p.name_ar}</h3><p class="product-desc" style="font-size:13px;color:#aaa">${p.desc_ar}</p><div class="product-price">${p.price_ar}</div><a class="btn-wa" href="https://wa.me/4915216839609?text=مرحبا سليمان اريد ${encodeURIComponent(p.name_ar)}" target="_blank">اطلب عبر واتساب 📱</a></div></div>`;
+grid.innerHTML+=`<div class="product-card"><div class="live-view"><i></i> ${viewers} 👀</div><img src="${p.image}" alt="${p.name}" loading="lazy"><div class="product-body"><span class="product-badge">${p.badge}</span><h3>${p.name}</h3><p class="product-desc">${p.desc}</p><div class="product-price">${BRAND}</div><a class="btn-wa" href="https://wa.me/4915216839609?text=مرحبا سليمان اريد ${encodeURIComponent(p.name)}" target="_blank">اطلب عبر واتساب 📱</a></div></div>`;
 });
-if(filtered.length==0) grid.innerHTML="<p style='text-align:center;color:#666'>لا يوجد منتجات بهذا القسم حالياً</p>";
 }
-
 function openMenu(){document.getElementById('sidebar').classList.add('open');document.getElementById('overlay').classList.add('show');}
 function closeMenu(){document.getElementById('sidebar').classList.remove('open');document.getElementById('overlay').classList.remove('show');}
-function setLang(l){currentLang=l;document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));event.target.classList.add('active');render();}
 render();
 </script>
 </body>
