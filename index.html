@@ -39,9 +39,18 @@ h2{color:var(--blue);text-align:center;font-size:26px;margin-bottom:15px;text-sh
 .order-popup{position:fixed;bottom:20px;right:20px;background:var(--card);border:1px solid #25D366;border-radius:15px;padding:12px 16px;display:flex;align-items:center;gap:12px;z-index:2000;transform:translateX(400px);transition:0.5s;max-width:320px;box-shadow:0 0 20px rgba(37,211,102,0.4)}
 .order-popup.show{transform:translateX(0)}[dir="ltr"].order-popup{right:auto;left:20px;transform:translateX(-400px)}[dir="ltr"].order-popup.show{transform:translateX(0)}
 .order-popup img{width:50px;height:50px;border-radius:10px;object-fit:cover}
-/* ✨ حواف سوداء رفيعة جداً + لمعان خفيف مقروء */
+/* ✨ نص واضح : حواف سوداء رفيعة */
 .visitor-counter span{font-size:14px;color:#00ff88;font-weight:bold;-webkit-text-stroke:0.35px #000;paint-order:stroke fill;text-shadow:0.5px 0.5px 0 #000,-0.5px 0.5px 0 #000,0.5px -0.5px 0 #000,-0.5px -0.5px 0 #000,0 0 8px rgba(0,255,136,0.6);animation:softGlow 2.5s infinite alternate}
 @keyframes softGlow{from{text-shadow:0.5px 0.5px 0 #000,-0.5px 0.5px 0 #000,0.5px -0.5px 0 #000,-0.5px -0.5px 0 #000,0 0 5px rgba(0,255,136,0.4)}to{text-shadow:0.5px 0.5px 0 #000,-0.5px 0.5px 0 #000,0.5px -0.5px 0 #000,-0.5px -0.5px 0 #000,0 0 9px rgba(0,255,136,0.7),0 0 14px rgba(0,255,136,0.35)}}
+
+/* ✅ المستطيل الرفيع المتحرك للشركات */
+.brands-bar{width:100%;background:linear-gradient(90deg,#0a0a0a,#111);border:1px solid var(--blue2);border-left:3px solid var(--blue);border-right:3px solid var(--blue);border-radius:8px;overflow:hidden;white-space:nowrap;margin:15px auto;padding:10px 0;box-shadow:0 0 15px rgba(0,191,255,0.15);position:relative}
+.brands-track{display:inline-block;animation:scrollBrands 25s linear infinite;will-change:transform}
+.brands-track span{font-size:13px;font-weight:bold;color:#aaa;margin:0 18px;letter-spacing:0.5px;transition:0.3s}
+.brands-track span:hover{color:var(--blue);text-shadow:0 0 8px var(--blue)}
+.brands-track.highlight{color:#00ff88;-webkit-text-stroke:0.3px #000;text-shadow:0 0 6px rgba(0,255,136,0.5)}
+@keyframes scrollBrands{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.brands-bar:hover.brands-track{animation-play-state:paused}
 </style>
 </head>
 <body>
@@ -50,6 +59,15 @@ h2{color:var(--blue);text-align:center;font-size:26px;margin-bottom:15px;text-sh
 <div class="sidebar" id="sidebar"><button style="background:none;border:none;color:var(--text);font-size:24px;float:left;cursor:pointer" onclick="closeMenu()">×</button><h3 id="menu_title" style="color:var(--blue);text-align:center;margin-bottom:20px;">القائمة</h3><a href="index.html" id="menu_home">الرئيسية</a><a href="products.html" id="menu_products">المنتجات 🛒</a><a href="calculator.html" id="menu_calc">الحاسبة</a><a href="#contact" id="menu_contact">اتصال</a></div>
 <div class="container">
 <div class="logo"><img src="logo.png" alt="RBooSH"></div>
+
+<!-- ✅ شريط الشركات المتحرك الجديد -->
+<div class="brands-bar">
+<div class="brands-track">
+<span>LS</span> • <span>Schneider</span> • <span>CHINT</span> • <span>TENSE</span> • <span>GIVIS</span> • <span>POLLUX</span> • <span class="highlight">RBooSH™</span> • <span>Altech</span> • <span>HYUNDAI</span> • <span>CLAY</span> • <span>ÜNAL KABLO</span> • <span>AKO</span> •
+<span>LS</span> • <span>Schneider</span> • <span>CHINT</span> • <span>TENSE</span> • <span>GIVIS</span> • <span>POLLUX</span> • <span class="highlight">RBooSH™</span> • <span>Altech</span> • <span>HYUNDAI</span> • <span>CLAY</span> • <span>ÜNAL KABLO</span> • <span>AKO</span> •
+</div>
+</div>
+
 <div class="visitor-counter"><div class="live-dot"></div><span id="counterText"></span></div>
 <div style="text-align:center;margin:30px 0;"><h2 id="main_title">RBooSH™ مجموعة ابو سليمان ⚡ للتجارة الكهربائية</h2><p id="main_desc">متخصصون في توريد وتجارة المعدات الكهربائية، خدمات التركيب، واستشارات الطاقة الكهربائية</p></div>
 <div class="calc-banner"><h2 id="banner_calc_title" style="color:#fff">🧮 حاسبة RBooSH™ المجانية</h2><p id="banner_calc_desc" style="color:#e0f2ff;font-size:14px;margin-bottom:15px">احسب احتياجات بيتك أو محلك في 30 ثانية وأرسلها لنا على الواتساب فوراً!</p><a id="banner_calc_btn" href="calculator.html" class="btn-calc">⚡ افتح الحاسبة الآن - مجاناً</a></div>
