@@ -16,8 +16,8 @@ h1{color:var(--blue);text-align:center;margin:20px 0;text-shadow:0 0 15px rgba(0
 .menu-btn{font-size:28px;background:none;border:none;color:var(--blue);cursor:pointer}
 .clock-wrap{display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--border);border-radius:28px;padding:5px 12px 5px 7px}
 .analog-clock{width:52px;height:52px;border:2.5px solid var(--blue);border-radius:50%;position:relative;background:#fff;box-shadow:0 0 12px rgba(0,191,255,0.7);flex-shrink:0;overflow:hidden}
-.clock-logo{position:absolute;left:50%;top:72%;width:48px;height:18px;transform:translate(-50%,-50%);opacity:1;object-fit:contain;pointer-events:none;z-index:2}
-.clock-center{position:absolute;top:50%;left:50%;width:8px;height:8px;background:#00bfff;border-radius:50%;transform:translate(-50%,-50%);z-index:10;border:1.5px solid #fff;box-shadow:0 0 8px #00bfff}
+.clock-logo{position:absolute;left:50%;top:72%;width:48px;height:18px;transform:translate(-50%,-50%);object-fit:contain;pointer-events:none;z-index:2}
+.clock-center{position:absolute;top:50%;left:50%;width:8px;height:8px;background:#00bfff;border-radius:50%;transform:translate(-50%,-50%);z-index:10;border:1.5px solid #fff}
 .hand{position:absolute;bottom:50%;left:50%;transform-origin:50% 100%;border-radius:3px;z-index:5}
 .hour-hand{width:3px;height:13px;background:#111;margin-left:-1.5px}
 .minute-hand{width:2.2px;height:17px;background:#111;margin-left:-1.1px}
@@ -25,18 +25,34 @@ h1{color:var(--blue);text-align:center;margin:20px 0;text-shadow:0 0 15px rgba(0
 .date-info{display:flex;flex-direction:column;line-height:1.2;text-align:center}
 .day-name{font-size:12px;font-weight:900;color:var(--blue)}
 .date-num{font-size:11px;color:var(--text2);font-weight:bold}
+
+/* SIDEBAR CLOCK BIG */
+.sidebar{position:fixed;top:0;right:-300px;width:280px;height:100%;background:var(--card);border-left:2px solid var(--blue2);z-index:1001;transition:0.3s;padding:20px;overflow-y:auto}.sidebar.open{right:0}[dir="ltr"].sidebar{right:auto;left:-300px;border-right:2px solid var(--blue2)}[dir="ltr"].sidebar.open{left:0}
+.sidebar-clock-section{text-align:center;padding:15px 0 10px 0}
+.analog-clock-large{width:180px;height:180px;border:4px solid var(--blue);border-radius:50%;position:relative;background:#fff;box-shadow:0 0 25px rgba(0,191,255,0.9);margin:0 auto;overflow:hidden}
+.clock-logo-large{position:absolute;left:50%;top:73%;width:140px;height:50px;transform:translate(-50%,-50%);object-fit:contain;pointer-events:none;z-index:2}
+.clock-center-large{position:absolute;top:50%;left:50%;width:14px;height:14px;background:var(--blue);border-radius:50%;transform:translate(-50%,-50%);z-index:10;border:2px solid #fff;box-shadow:0 0 10px var(--blue)}
+.hand-large{position:absolute;bottom:50%;left:50%;transform-origin:50% 100%;border-radius:4px;z-index:5}
+.hour-hand-large{width:6px;height:45px;background:#111;margin-left:-3px}
+.minute-hand-large{width:5px;height:65px;background:#111;margin-left:-2.5px}
+.second-hand-large{width:2px;height:75px;background:#ff0000;margin-left:-1px}
+.sidebar-date{margin-top:15px;display:flex;flex-direction:column;gap:4px}
+.sidebar-day{font-size:18px;font-weight:900;color:var(--blue)}
+.sidebar-date-num{font-size:15px;color:var(--text2);font-weight:bold}
+.sidebar-divider{height:2px;background:linear-gradient(90deg,transparent,var(--blue),transparent);margin:15px 0;border:none}
+.sidebar-title{color:var(--blue);text-align:center;margin:10px 0 15px 0;font-size:18px}
+.sidebar a{display:block;padding:14px;color:var(--text);text-decoration:none;border-bottom:1px solid var(--border)}
+
 .header-actions{display:flex;gap:8px;align-items:center}
 .theme-btn{background:var(--card);border:1px solid var(--border);color:var(--text);width:38px;height:38px;border-radius:10px;cursor:pointer;font-size:18px}
 .lang-switch{display:flex;gap:6px}.lang-btn{background:var(--card);color:var(--text2);border:1px solid var(--border);padding:6px 12px;border-radius:8px;cursor:pointer;font-weight:bold;font-size:12px}.lang-btn.active{background:var(--blue);color:#000}
-.sidebar{position:fixed;top:0;right:-300px;width:280px;height:100%;background:var(--card);border-left:2px solid var(--blue2);z-index:1001;transition:0.3s;padding:20px}.sidebar.open{right:0}[dir="ltr"].sidebar{right:auto;left:-300px;border-right:2px solid var(--blue2)}[dir="ltr"].sidebar.open{left:0}
-.sidebar a{display:block;padding:14px;color:var(--text);text-decoration:none;border-bottom:1px solid var(--border)}
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);display:none;z-index:1000}.overlay.show{display:block}
 .search-box{max-width:500px;margin:20px auto;display:flex;gap:8px}
 .search-box input{flex:1;background:var(--card);border:2px solid var(--blue);border-radius:25px;padding:12px 18px;color:var(--text);outline:none;text-align:center}
 .filter-bar{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:20px 0}
 .filter-btn{background:var(--card);border:1px solid var(--border);color:var(--text2);padding:10px 18px;border-radius:25px;cursor:pointer;font-weight:bold;font-size:13px}
 .filter-btn.active,.filter-btn:hover{background:var(--blue);color:#000;border-color:var(--blue);box-shadow:0 0 20px rgba(0,191,255,0.8)}
-.brands-bar{width:100%;background:var(--card);border:2px solid var(--blue);border-radius:12px;overflow:hidden;margin:15px auto;padding:14px 0;direction:ltr;box-shadow:0 0 12px rgba(0,191,255,0.4)}
+.brands-bar{width:100%;background:var(--card);border:2px solid var(--blue);border-radius:12px;overflow:hidden;margin:15px auto;padding:14px 0;direction:ltr}
 .brands-track{display:flex;width:max-content;animation:scrollBrands 60s linear infinite}
 .brands-group{display:flex;flex-shrink:0;align-items:center}
 .brands-group span{font-size:14px;font-weight:900;padding:0 24px;white-space:nowrap}
@@ -89,7 +105,32 @@ footer{text-align:center;padding:30px;color:#777;font-size:12px}
   <div class="header-actions"><button class="theme-btn" id="themeBtn" onclick="toggleTheme()">☀️</button><div class="lang-switch"><button class="lang-btn active" onclick="setLang('ar')">AR</button><button class="lang-btn" onclick="setLang('en')">EN</button><button class="lang-btn" onclick="setLang('ku')">KU</button></div></div>
 </div>
 <div class="overlay" id="overlay" onclick="closeMenu()"></div>
-<div class="sidebar" id="sidebar"><button style="background:none;border:none;color:var(--text);font-size:24px;float:left;cursor:pointer" onclick="closeMenu()">×</button><h3 id="menu_title" style="color:var(--blue);text-align:center;margin-bottom:20px;">القائمة</h3><a href="index.html" id="menu_home">الرئيسية</a><a href="products.html" id="menu_products">المنتجات</a><a href="calculator.html" id="menu_calc">الحاسبة</a></div>
+
+<div class="sidebar" id="sidebar">
+  <button style="background:none;border:none;color:var(--text);font-size:28px;float:left;cursor:pointer" onclick="closeMenu()">×</button>
+
+  <div class="sidebar-clock-section">
+    <div class="analog-clock-large">
+      <img src="logo.png" alt="RBooSH" class="clock-logo-large">
+      <div class="hand-large hour-hand-large" id="hourHandLarge"></div>
+      <div class="hand-large minute-hand-large" id="minuteHandLarge"></div>
+      <div class="hand-large second-hand-large" id="secondHandLarge"></div>
+      <div class="clock-center-large"></div>
+    </div>
+    <div class="sidebar-date">
+      <span class="sidebar-day" id="sidebarDay">السبت</span>
+      <span class="sidebar-date-num" id="sidebarDate">26 أيلول 2026</span>
+    </div>
+  </div>
+
+  <hr class="sidebar-divider">
+
+  <h3 class="sidebar-title" id="menu_title">القائمة</h3>
+  <a href="index.html" id="menu_home">الرئيسية</a>
+  <a href="products.html" id="menu_products">المنتجات</a>
+  <a href="calculator.html" id="menu_calc">الحاسبة</a>
+</div>
+
 <div class="container">
 <div class="logo"><img src="logo.png" alt="RBooSH"></div>
 <div class="brands-bar"><div class="brands-track"><div class="brands-group"><span class="c-ls">LS</span><span class="c-schneider">Schneider</span><span class="c-chint">CHINT</span><span class="c-tense">TENSE</span><span class="c-givis">GIVIS</span><span class="c-pollux">POLLUX</span><span class="c-rboosh">RBooSH™</span><span class="c-altech">Altech</span><span class="c-hyundai">HYUNDAI</span><span class="c-clay">CLAY</span><span class="c-unal">ÜNAL KABLO</span><span class="c-ako">AKO</span></div><div class="brands-group" aria-hidden="true"><span class="c-ls">LS</span><span class="c-schneider">Schneider</span><span class="c-chint">CHINT</span><span class="c-tense">TENSE</span><span class="c-givis">GIVIS</span><span class="c-pollux">POLLUX</span><span class="c-rboosh">RBooSH™</span><span class="c-altech">Altech</span><span class="c-hyundai">HYUNDAI</span><span class="c-clay">CLAY</span><span class="c-unal">ÜNAL KABLO</span><span class="c-ako">AKO</span></div></div></div>
@@ -139,7 +180,22 @@ ku:{dir:'ltr',menu_title:'Menu',menu_home:'Mal',menu_products:'Berhem',menu_calc
 const fakeData={ar:{gov:["دمشق","حلب","الحسكة","القامشلي","حمص","إدلب"],names:["أحمد","محمد","علي","خالد","سليمان","عمر"],ordered:"طلب الآن",ago:"منذ",min:"دقيقة",viewing:"شخص يشاهدون الآن"},en:{gov:["Damascus","Aleppo","Hasakah"],names:["Ahmad","Ali","Khaled"],ordered:"just ordered",ago:"ago",min:"min",viewing:"people viewing now"},ku:{gov:["Şam","Hesekê","Qamişlo"],names:["Ehmed","Elî","Xalid"],ordered:"niha xwest",ago:"berî",min:"deqe",viewing:"kes niha dibînin"}};
 function getRating(idx){let seed=Math.abs(Math.sin(idx*17.7+5.3))*1000;let rating=4.5+(seed%0.5);if(rating>5)rating=5;let count=35+Math.floor((seed*1.3)%215);return{rate:rating.toFixed(1),count:count};}
 function starsHtml(rate){let r=parseFloat(rate);let full=Math.floor(r);let html='';for(let i=0;i<5;i++){html+=i<full?'★':'☆';}return `<span class="stars">${html}</span>`;}
-function updateClock(){let now=new Date();let h=now.getHours()%12;let m=now.getMinutes();let s=now.getSeconds();document.getElementById('hourHand').style.transform=`translateX(-50%) rotate(${(h+m/60)*30}deg)`;document.getElementById('minuteHand').style.transform=`translateX(-50%) rotate(${m*6}deg)`;document.getElementById('secondHand').style.transform=`translateX(-50%) rotate(${s*6}deg)`;let t=tr[currentLang];document.getElementById('dayName').innerText=t.days[now.getDay()];document.getElementById('dateNum').innerText=now.getDate()+" "+t.months[now.getMonth()];}
+function updateClock(){
+let now=new Date();let h=now.getHours()%12;let m=now.getMinutes();let s=now.getSeconds();
+// small clock
+document.getElementById('hourHand').style.transform=`translateX(-50%) rotate(${(h+m/60)*30}deg)`;
+document.getElementById('minuteHand').style.transform=`translateX(-50%) rotate(${m*6}deg)`;
+document.getElementById('secondHand').style.transform=`translateX(-50%) rotate(${s*6}deg)`;
+// large clock
+document.getElementById('hourHandLarge').style.transform=`translateX(-50%) rotate(${(h+m/60)*30}deg)`;
+document.getElementById('minuteHandLarge').style.transform=`translateX(-50%) rotate(${m*6}deg)`;
+document.getElementById('secondHandLarge').style.transform=`translateX(-50%) rotate(${s*6}deg)`;
+let t=tr[currentLang];
+document.getElementById('dayName').innerText=t.days[now.getDay()];
+document.getElementById('dateNum').innerText=now.getDate()+" "+t.months[now.getMonth()];
+document.getElementById('sidebarDay').innerText=t.days[now.getDay()];
+document.getElementById('sidebarDate').innerText=now.getDate()+" "+t.months[now.getMonth()]+" "+now.getFullYear();
+}
 function setLang(lang){currentLang=lang;let t=tr[lang];document.documentElement.lang=lang;document.documentElement.dir=t.dir;document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');document.getElementById('menu_title').innerText=t.menu_title;document.getElementById('menu_home').innerText=t.menu_home;document.getElementById('menu_products').innerText=t.menu_products;document.getElementById('menu_calc').innerText=t.menu_calc;document.getElementById('page_title').innerText=t.page_title;document.getElementById('page_desc').innerText=t.page_desc;document.getElementById('banner_title').innerText=t.banner_title;document.getElementById('banner_text').innerText=t.banner_text;document.getElementById('banner_btn').innerText=t.banner_btn;document.getElementById('searchInput').placeholder=t.search_ph;document.getElementById('best_title').innerText=t.best_title;updateClock();render();updateCounter();renderBest();}
 function filterProducts(cat){currentFilter=cat;render();}
 function getBestSellers(){const KEY='rboosh_bestsellers';const TIME_KEY='rboosh_bestsellers_time';const DURATION=48*60*60*1000;let saved=localStorage.getItem(KEY);let savedTime=localStorage.getItem(TIME_KEY);let now=Date.now();if(saved&&savedTime&&(now-parseInt(savedTime)<DURATION)){return JSON.parse(saved);}else{let indices=[...Array(products.length).keys()];indices.sort(()=>0.5-Math.random());let selected=indices.slice(0,4);localStorage.setItem(KEY,JSON.stringify(selected));localStorage.setItem(TIME_KEY,now.toString());return selected;}}
