@@ -2,142 +2,80 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>منتجاتنا - RBooSH™</title>
+<title>المنتجات - RBooSH™</title>
 <style>
 :root{--bg:#000;--card:#111;--card2:#0a0a0a;--text:#fff;--text2:#aaa;--border:#222;--blue:#00bfff;--blue2:#1e3a8a}
-body.light{--bg:#f5f7fb;--card:#fff;--card2:#eef2ff;--text:#111;--text2:#555;--border:#dbe3ff}
+body.light{--bg:#f5f7fb;--card:#ffffff;--card2:#eef2ff;--text:#111827;--text2:#6b7280;--border:#dbe3ff}
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Tahoma',sans-serif}
-body{background:var(--bg);color:var(--text);line-height:1.8;transition:0.4s}
+body{background:var(--bg);color:var(--text);transition:0.4s}
 .container{max-width:1100px;margin:0 auto;padding:20px;padding-top:80px}
-.logo{text-align:center;margin:20px 0}.logo img{max-width:250px;width:100%;filter:drop-shadow(0 0 20px rgba(0,191,255,0.5))}
-h1{color:var(--blue);text-align:center;margin:20px 0;text-shadow:0 0 15px rgba(0,191,255,0.6)}
-.header-top{position:fixed;top:0;left:0;right:0;background:var(--bg);border-bottom:2px solid var(--blue2);padding:12px 15px;z-index:1000;display:flex;justify-content:space-between;align-items:center;transition:0.4s}
+.logo{text-align:center;margin:10px 0}.logo img{max-width:300px;width:100%;filter:drop-shadow(0 0 20px rgba(0,191,255,0.5))}
+.header-top{position:fixed;top:0;left:0;right:0;background:var(--bg);border-bottom:2px solid var(--blue2);padding:12px 15px;z-index:1000;display:flex;justify-content:space-between;align-items:center}
 .menu-btn{font-size:28px;background:none;border:none;color:var(--blue);cursor:pointer}
 .header-actions{display:flex;gap:8px;align-items:center}
 .theme-btn{background:var(--card);border:1px solid var(--border);color:var(--text);width:38px;height:38px;border-radius:10px;cursor:pointer;font-size:18px;transition:0.3s}
-.theme-btn:hover{border-color:var(--blue);box-shadow:0 0 15px rgba(0,191,255,0.4);transform:scale(1.05)}
-.lang-switch{display:flex;gap:6px}.lang-btn{background:var(--card);color:var(--text2);border:1px solid var(--border);padding:6px 12px;border-radius:8px;cursor:pointer;font-weight:bold;font-size:12px;transition:0.3s}.lang-btn.active{background:var(--blue);color:#000;box-shadow:0 0 15px rgba(0,191,255,0.6)}
+.theme-btn:hover{border-color:var(--blue);box-shadow:0 0 15px rgba(0,191,255,0.4)}
+.lang-switch{display:flex;gap:6px}.lang-btn{background:var(--card);color:var(--text2);border:1px solid var(--border);padding:6px 12px;border-radius:8px;cursor:pointer;font-weight:bold;font-size:12px}.lang-btn.active{background:var(--blue);color:#000;box-shadow:0 0 15px rgba(0,191,255,0.6)}
 .sidebar{position:fixed;top:0;right:-300px;width:280px;height:100%;background:var(--card);border-left:2px solid var(--blue2);z-index:1001;transition:0.3s;padding:20px}.sidebar.open{right:0}
 [dir="ltr"].sidebar{right:auto;left:-300px;border-left:none;border-right:2px solid var(--blue2)}[dir="ltr"].sidebar.open{left:0}
-.sidebar a{display:block;padding:14px;color:var(--text);text-decoration:none;border-bottom:1px solid var(--border)}
+.sidebar h3{color:var(--blue);margin-bottom:20px;text-align:center}.sidebar a{display:block;padding:14px;color:var(--text);text-decoration:none;border-bottom:1px solid var(--border)}.sidebar a:hover{background:var(--blue2);border-radius:8px;color:#fff}
 .close-btn{background:none;border:none;color:var(--text);font-size:24px;float:left;cursor:pointer}
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);display:none;z-index:1000}.overlay.show{display:block}
-.filter-bar{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:20px 0}
-.filter-btn{background:var(--card);border:1px solid var(--border);color:var(--text2);padding:10px 18px;border-radius:25px;cursor:pointer;font-weight:bold;transition:0.3s;font-size:13px}
-.filter-btn.active,.filter-btn:hover{background:var(--blue);color:#000;border-color:var(--blue);box-shadow:0 0 20px rgba(0,191,255,0.8)}
-.install-banner{background:linear-gradient(135deg,var(--blue2),var(--blue));border-radius:15px;padding:20px;margin:25px 0;text-align:center;border:2px solid var(--blue);animation:glow 2s infinite alternate}
-@keyframes glow{from{box-shadow:0 0 10px var(--blue2),0 0 20px rgba(0,191,255,0.2)}to{box-shadow:0 0 25px var(--blue),0 0 40px rgba(0,191,255,0.6)}}
-.visitor-counter{background:var(--card);border:1px dashed var(--blue);border-radius:12px;padding:12px 18px;margin:0 auto 20px auto;text-align:center;max-width:550px;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 0 15px rgba(0,191,255,0.2)}
-.live-dot{width:10px;height:10px;background:#ff0000;border-radius:50%;animation:livePulse 1s infinite}
-@keyframes livePulse{0%{box-shadow:0 0 0 0 rgba(255,0,0,0.7)}70%{box-shadow:0 0 0 8px rgba(255,0,0,0)}100%{box-shadow:0 0 0 0 rgba(255,0,0,0)}}
-.visitor-counter span{font-size:14px;color:#00ff88;font-weight:bold}
-.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;margin-top:20px}
-.product-card{background:var(--card);border:1px solid var(--border);border-radius:15px;overflow:hidden;transition:0.4s;position:relative}
-.product-card:hover{border-color:var(--blue);transform:translateY(-6px);box-shadow:0 0 20px rgba(0,191,255,0.5),0 10px 30px rgba(0,0,0,0.2)}
-.product-card img{width:100%;height:280px;object-fit:contain;background:var(--bg);padding:15px;transition:0.4s}
-.product-card:hover img{transform:scale(1.03)}
-.product-body{padding:18px}.product-badge{background:var(--blue2);color:#fff;font-size:11px;padding:4px 10px;border-radius:20px;display:inline-block;margin-bottom:10px;box-shadow:0 0 10px rgba(30,58,138,0.5)}
-.product-body h3{font-size:15px;margin-bottom:8px;color:var(--text);min-height:45px}.product-desc{font-size:13px;color:var(--text2);margin-bottom:10px;min-height:35px}
-.product-price{color:var(--blue);font-weight:900;font-size:17px;margin:12px 0;letter-spacing:1px;text-shadow:0 0 10px rgba(0,191,255,0.6)}
-.product-price sup{font-size:9px;vertical-align:super;margin-left:2px;color:var(--text2)}
-.product-price.check{color:#25D366;text-shadow:0 0 8px #25D366;font-size:16px;margin-right:4px}
-.live-view{position:absolute;top:12px;left:12px;background:rgba(0,0,0,0.8);border:1px solid #00ff88;color:#00ff88;font-size:11px;padding:4px 8px;border-radius:20px;display:flex;align-items:center;gap:5px}
-.live-view i{width:6px;height:6px;background:#00ff88;border-radius:50%;display:inline-block;animation:livePulse 1s infinite}
-.btn-wa{background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;text-align:center;padding:14px;border-radius:12px;display:block;text-decoration:none;font-weight:bold;margin-top:10px;font-size:15px;box-shadow:0 0 15px rgba(37,211,102,0.6),0 4px 15px rgba(0,0,0,0.3);border:1px solid #25D366;animation:whatsappGlow 2s infinite alternate;position:relative;overflow:hidden}
-.btn-wa::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent);animation:shine 2.5s infinite}
-@keyframes whatsappGlow{from{box-shadow:0 0 10px rgba(37,211,102,0.5)}to{box-shadow:0 0 25px rgba(37,211,102,0.9),0 0 40px rgba(37,211,102,0.4)}}
+.search-bar{display:flex;gap:10px;margin:20px 0}.search-bar input{flex:1;padding:14px;background:var(--card);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:16px}
+.filter-bar{display:flex;gap:8px;overflow-x:auto;padding-bottom:10px;margin-bottom:20px}.filter-btn{background:var(--card);border:1px solid var(--border);color:var(--text2);padding:8px 16px;border-radius:20px;cursor:pointer;white-space:nowrap}.filter-btn.active{background:var(--blue);color:#000;border-color:var(--blue)}
+.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
+.product-card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:0.4s;position:relative}
+.product-card:hover{border-color:var(--blue);box-shadow:0 0 20px rgba(0,191,255,0.35),0 0 40px rgba(0,191,255,0.1);transform:translateY(-5px)}
+.product-card img{width:100%;height:200px;object-fit:cover;background:var(--bg)}
+.badge{position:absolute;top:10px;right:10px;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;padding:4px 10px;border-radius:15px;font-size:11px;font-weight:bold;box-shadow:0 0 10px rgba(37,211,102,0.6)}
+.product-info{padding:14px}.product-info h3{font-size:15px;margin-bottom:6px;color:var(--text)}.product-info p{font-size:12px;color:var(--text2);min-height:36px}
+.product-actions{display:flex;gap:8px;margin-top:10px}.btn-order{flex:1;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;text-align:center;padding:10px;border-radius:8px;text-decoration:none;font-weight:bold;font-size:13px;box-shadow:0 0 15px rgba(37,211,102,0.5);position:relative;overflow:hidden}
+.btn-order::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent);animation:shine 2.5s infinite}
 @keyframes shine{0%{left:-100%}100%{left:100%}}
-footer{text-align:center;padding:30px;color:#777;font-size:12px}
-.order-popup{position:fixed;bottom:20px;right:20px;background:var(--card);border:1px solid #25D366;border-radius:15px;padding:12px 16px;display:flex;align-items:center;gap:12px;z-index:2000;transform:translateX(400px);transition:0.5s;max-width:320px;box-shadow:0 0 20px rgba(37,211,102,0.4)}
-.order-popup.show{transform:translateX(0)}
-.order-popup img{width:50px;height:50px;border-radius:10px;object-fit:cover;background:var(--bg)}
-[dir="ltr"].order-popup{right:auto;left:20px;transform:translateX(-400px)}[dir="ltr"].order-popup.show{transform:translateX(0)}
 </style>
 </head>
 <body>
 <div class="header-top"><button class="menu-btn" onclick="openMenu()">☰</button><div class="header-actions"><button class="theme-btn" id="themeBtn" onclick="toggleTheme()">☀️</button><div class="lang-switch"><button class="lang-btn active" onclick="setLang('ar')">AR</button><button class="lang-btn" onclick="setLang('en')">EN</button><button class="lang-btn" onclick="setLang('ku')">KU</button></div></div></div>
 <div class="overlay" id="overlay" onclick="closeMenu()"></div>
-<div class="sidebar" id="sidebar"><button class="close-btn" onclick="closeMenu()">×</button><h3 id="menu_title" style="color:var(--blue);text-align:center;margin-bottom:20px;">القائمة</h3><a href="index.html" id="menu_home">الرئيسية</a><a href="products.html" id="menu_products">المنتجات</a><a href="calculator.html" id="menu_calc">الحاسبة</a></div>
+<div class="sidebar" id="sidebar"><button class="close-btn" onclick="closeMenu()">×</button><h3 id="menu_title">القائمة</h3><a href="index.html" id="menu_home">الرئيسية</a><a href="products.html" id="menu_products">المنتجات 🛒</a><a href="calculator.html" id="menu_calc">الحاسبة</a></div>
 
 <div class="container">
 <div class="logo"><img src="logo.png" alt="RBooSH"></div>
-<h1 id="page_title">منتجاتنا ⚡</h1><p style="text-align:center;color:var(--text2);" id="page_desc">جميع المنتجات RBooSH™ - 11 منتج</p>
-<div class="visitor-counter"><div class="live-dot"></div><span id="counterText"></span></div>
-<div class="filter-bar" id="filterBar"></div>
-<div class="install-banner"><h2 id="banner_title" style="color:#fff">🎥 خدمة التركيب المجاني مع أبو سليمان</h2><p id="banner_text" style="color:#e0f2ff;font-size:14px;margin:8px 0 12px">اشتريت وما عرفت تركب؟ افتح كاميرا واتساب وأنا أركب معك خطوة بخطوة مجاناً!</p><a id="banner_btn" style="background:#fff;color:#1e3a8a;padding:10px 20px;border-radius:25px;text-decoration:none;font-weight:bold;display:inline-block" href="https://wa.me/4915216839609?text=مرحبا ابو سليمان، بدي مساعدة بتركيب القطعة 🎥" target="_blank">📹 اتصل فيديو الآن</a></div>
-<div class="products-grid" id="productsGrid"></div>
-<footer>© 2026 RBooSH™ - Abu Sulaiman Group</footer>
+<h2 style="text-align:center;color:var(--blue);margin:20px 0" id="page_title">منتجات RBooSH™</h2>
+
+<div class="search-bar"><input type="text" id="search" placeholder="ابحث عن منتج..." onkeyup="renderProducts()"></div>
+<div class="filter-bar">
+<button class="filter-btn active" data-cat="all" onclick="setCat('all')" id="cat_all">الكل</button>
+<button class="filter-btn" data-cat="solar" onclick="setCat('solar')" id="cat_solar">طاقة شمسية</button>
+<button class="filter-btn" data-cat="panels" onclick="setCat('panels')" id="cat_panels">لوحات</button>
+<button class="filter-btn" data-cat="cables" onclick="setCat('cables')" id="cat_cables">كابلات</button>
+<button class="filter-btn" data-cat="breakers" onclick="setCat('breakers')" id="cat_breakers">قواطع</button>
 </div>
 
-<div class="order-popup" id="orderPopup"><img id="popupImg" src=""><div style="flex:1"><b id="popupTitle" style="color:#25D366;font-size:13px;display:block"></b><small id="popupDesc" style="color:var(--text2);font-size:11px"></small></div><span style="color:#777;cursor:pointer" onclick="document.getElementById('orderPopup').classList.remove('show')">×</span></div>
+<div class="products-grid" id="grid"></div>
+</div>
 
 <script>
-function toggleTheme(){document.body.classList.toggle('light');let l=document.body.classList.contains('light');localStorage.setItem('rboosh_theme',l?'light':'dark');document.getElementById('themeBtn').innerText=l?'🌙':'☀️';}
+function toggleTheme(){document.body.classList.toggle('light');let isLight=document.body.classList.contains('light');localStorage.setItem('rboosh_theme',isLight?'light':'dark');document.getElementById('themeBtn').innerText=isLight?'🌙':'☀️';}
 (function(){let s=localStorage.getItem('rboosh_theme');if(s==='light'){document.body.classList.add('light');document.getElementById('themeBtn').innerText='🌙';}else{document.getElementById('themeBtn').innerText='☀️';}})();
-
-let currentLang='ar';let currentFilter='all';
-const BRAND = "RBooSH<sup>™</sup> <span class='check'>✓</span>";
-const products=[
-{name_ar:"حماية ذكية WiFi Pollux ATVP163",name_en:"Pollux Smart WiFi Protector",name_ku:"Parastina Jîr WiFi Pollux",cat:"smart",image:"https://i.postimg.cc/KYjDpfyj/IMG-20260902-WA0081.jpg",desc_ar:"حماية ذكية شاملة مع WiFi",desc_en:"Smart WiFi protection",desc_ku:"Parastina jîr bi WiFi",badge_ar:"ذكي WiFi",badge_en:"Smart WiFi",badge_ku:"Jîr WiFi"},
-{name_ar:"قاطع ذكي Smart Switch RBooSH",name_en:"RBooSH Smart Switch",name_ku:"Smart Switch RBooSH",cat:"smart",image:"https://i.postimg.cc/qvkLy0bm/IMG-20260902-WA0020.jpg",desc_ar:"قاطع ذكي واي فاي",desc_en:"Smart WiFi breaker",desc_ku:"Şalterê jîr WiFi",badge_ar:"ذكي 🔥",badge_en:"Smart 🔥",badge_ku:"Jîr 🔥"},
-{name_ar:"كشاف طاقة شمسية Pollux",name_en:"Pollux Solar Light",name_ku:"Ronahiya Rojê Pollux",cat:"solar",image:"https://i.postimg.cc/zfGxZ5TS/IMG-20260827-WA0002.jpg",desc_ar:"إنارة شمسية ذكية",desc_en:"Smart solar light",desc_ku:"Ronahiya rojê ya jîr",badge_ar:"شمسي ☀️",badge_en:"Solar ☀️",badge_ku:"Rojê ☀️"},
-{name_ar:"قاطع MCCB صناعي",name_en:"MCCB Industrial Breaker",name_ku:"Şalter MCCB Pîşesazî",cat:"industrial",image:"https://i.postimg.cc/PvdzN16d/IMG-20260828-WA0002-1.jpg",desc_ar:"قاطع صناعي MCCB",desc_en:"Industrial MCCB",desc_ku:"Şalterê MCCB",badge_ar:"صناعي ⚡",badge_en:"Industrial ⚡",badge_ku:"Pîşesazî ⚡"},
-{name_ar:"مانع صواعق Pollux",name_en:"Pollux Surge Protector",name_ku:"Parastina Birûskê Pollux",cat:"protection",image:"https://i.postimg.cc/NjYNDRMd/IMG-20260724-WA0003.jpg",desc_ar:"حماية من الصواعق",desc_en:"Lightning protection",desc_ku:"Parastina birûskê",badge_ar:"حماية ⚡",badge_en:"Protection ⚡",badge_ku:"Parastin ⚡"},
-{name_ar:"قاطع تحويل ATS 4P",name_en:"ATS Switch 4P",name_ku:"Guherker ATS 4P",cat:"industrial",image:"https://i.postimg.cc/J4j6jpRv/IMG-20260722-WA0043-3.jpg",desc_ar:"تحويل أوتوماتيك",desc_en:"Auto transfer",desc_ku:"Guherîna otomatîk",badge_ar:"ATS ⚡",badge_en:"ATS ⚡",badge_ku:"ATS ⚡"},
-{name_ar:"كشاف CLAY 50W",name_en:"CLAY Floodlight 50W",name_ku:"Projektor CLAY 50W",cat:"solar",image:"https://i.postimg.cc/SQB1XBb1/IMG-20260719-WA0018.jpg",desc_ar:"كشاف قوي IP66",desc_en:"Powerful IP66",desc_ku:"Projektor bihêz",badge_ar:"قوي 💡",badge_en:"Powerful 💡",badge_ku:"Bihêz 💡"},
-{name_ar:"منظم جهد 5000VA",name_en:"Stabilizer 5000VA",name_ku:"Rêkxer Voltaj 5000VA",cat:"industrial",image:"https://i.postimg.cc/Yj7xXwpC/IMG-20260717-WA0011.jpg",desc_ar:"منظم جهد 5000VA",desc_en:"5000VA stabilizer",desc_ku:"Rêkxer 5000VA",badge_ar:"قوة 💪",badge_en:"Power 💪",badge_ku:"Hêz 💪"},
-{name_ar:"حماية فاز ديجيتال",name_en:"Digital Phase Protector",name_ku:"Parastina Faz Dîjîtal",cat:"protection",image:"https://i.postimg.cc/0zY46NQ8/IMG-20260902-WA0091.jpg",desc_ar:"حماية من الجهد",desc_en:"Voltage protection",desc_ku:"Parastina voltaj",badge_ar:"حماية ⚡",badge_en:"Protection ⚡",badge_ku:"Parastin ⚡"},
-{name_ar:"فلتر الموجة الجيبية",name_en:"Sine Wave Filter",name_ku:"Fîltera Pêla Sînus",cat:"industrial",image:"https://i.postimg.cc/m2LXNbJh/IMG-20260917-WA0018.jpg",desc_ar:"يحمي المحركات",desc_en:"Protects motors",desc_ku:"Motoran diparêze",badge_ar:"جديد ⚡",badge_en:"New ⚡",badge_ku:"Nû ⚡"},
-{name_ar:"قاطع DC التاج 63A",name_en:"Altech DC Breaker 63A",name_ku:"Şalter DC Altech 63A",cat:"protection",image:"https://i.postimg.cc/KksCDstS/Picsart-26-09-23-23-51-15-827.jpg",desc_ar:"قاطع DC أصلي",desc_en:"Original DC breaker",desc_ku:"Şalter DC orjînal",badge_ar:"الأصلي 🔥",badge_en:"Original 🔥",badge_ku:"Orjînal 🔥"}
-];
-const tr={
-ar:{dir:'rtl',menu_title:'القائمة',menu_home:'الرئيسية',menu_products:'المنتجات',menu_calc:'الحاسبة',page_title:'منتجاتنا ⚡',page_desc:'جميع المنتجات RBooSH™ - 11 منتج',banner_title:'🎥 خدمة التركيب المجاني مع أبو سليمان',banner_text:'اشتريت وما عرفت تركب؟ افتح كاميرا واتساب وأنا أركب معك خطوة بخطوة مجاناً!',banner_btn:'📹 اتصل فيديو الآن',f_all:'الكل (11)',f_smart:'ذكي WiFi 📶',f_solar:'طاقة شمسية ☀️',f_ind:'صناعي ⚡',f_pro:'حماية 🛡️',btn_wa:'اطلب عبر واتساب 📱'},
-en:{dir:'ltr',menu_title:'Menu',menu_home:'Home',menu_products:'Products',menu_calc:'Calculator',page_title:'Our Products ⚡',page_desc:'All RBooSH™ Products - 11 items',banner_title:'🎥 Free Installation Support',banner_text:'Bought it and don\'t know how to install? Open video call and I will guide you step by step for free!',banner_btn:'📹 Video Call Now',f_all:'All (11)',f_smart:'Smart WiFi 📶',f_solar:'Solar ☀️',f_ind:'Industrial ⚡',f_pro:'Protection 🛡️',btn_wa:'Order on WhatsApp 📱'},
-ku:{dir:'ltr',menu_title:'Menu',menu_home:'Mal',menu_products:'Berhem',menu_calc:'Hesabker',page_title:'Berhemên Me ⚡',page_desc:'Hemû Berhemên RBooSH™ - 11 berhem',banner_title:'🎥 Xizmeta Girêdanê ya Belaş',banner_text:'Te kirî û nizane çawa girêbidî? Vîdyo veke û ez ê alîkariya te bikim belaş!',banner_btn:'📹 Vîdyo Banga Niha',f_all:'Hemû (11)',f_smart:'Jîr WiFi 📶',f_solar:'Rojê ☀️',f_ind:'Pîşesazî ⚡',f_pro:'Parastin 🛡️',btn_wa:'Li WhatsApp Bixwaze 📱'}
-};
-const fakeData={
-ar:{gov:["دمشق","حلب","الحسكة","القامشلي"],names:["أحمد","محمد","علي","خالد"],ordered:"طلب الآن",ago:"منذ",min:"دقيقة",viewing:"شخص يشاهدون الآن"},
-en:{gov:["Damascus","Aleppo","Hasakah"],names:["Ahmad","Ali","Khaled"],ordered:"just ordered",ago:"ago",min:"min",viewing:"people viewing now"},
-ku:{gov:["Şam","Hesekê","Qamişlo"],names:["Ehmed","Elî","Xalid"],ordered:"niha xwest",ago:"berî",min:"deqe",viewing:"kes niha dibînin"}
-};
-function setLang(lang){
-currentLang=lang;let t=tr[lang];
-document.documentElement.lang=lang;document.documentElement.dir=t.dir;
-document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
-document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
-document.getElementById('menu_title').innerText=t.menu_title;document.getElementById('menu_home').innerText=t.menu_home;document.getElementById('menu_products').innerText=t.menu_products;document.getElementById('menu_calc').innerText=t.menu_calc;
-document.getElementById('page_title').innerText=t.page_title;document.getElementById('page_desc').innerText=t.page_desc;document.getElementById('banner_title').innerText=t.banner_title;document.getElementById('banner_text').innerText=t.banner_text;document.getElementById('banner_btn').innerText=t.banner_btn;
-render();updateCounter();
-}
-function filterProducts(cat){currentFilter=cat;render();}
-function render(){
-let t=tr[currentLang];
-let fb=document.getElementById('filterBar');
-fb.innerHTML=`<button class="filter-btn ${currentFilter=='all'?'active':''}" onclick="filterProducts('all')">${t.f_all}</button><button class="filter-btn ${currentFilter=='smart'?'active':''}" onclick="filterProducts('smart')">${t.f_smart}</button><button class="filter-btn ${currentFilter=='solar'?'active':''}" onclick="filterProducts('solar')">${t.f_solar}</button><button class="filter-btn ${currentFilter=='industrial'?'active':''}" onclick="filterProducts('industrial')">${t.f_ind}</button><button class="filter-btn ${currentFilter=='protection'?'active':''}" onclick="filterProducts('protection')">${t.f_pro}</button>`;
-const grid=document.getElementById('productsGrid');grid.innerHTML="";
-let filtered = currentFilter=='all'? products : products.filter(p=>p.cat==currentFilter);
-filtered.forEach(p=>{
-let name=currentLang=='en'?p.name_en:currentLang=='ku'?p.name_ku:p.name_ar;
-let desc=currentLang=='en'?p.desc_en:currentLang=='ku'?p.desc_ku:p.desc_ar;
-let badge=currentLang=='en'?p.badge_en:currentLang=='ku'?p.badge_ku:p.badge_ar;
-let viewers=Math.floor(Math.random()*40)+8;
-let waMsg=currentLang=='en'?'Hello Sulaiman, I want ':'مرحبا سليمان اريد ';if(currentLang=='ku') waMsg='Merheba Silêman, ez dixwazim ';
-grid.innerHTML+=`<div class="product-card"><div class="live-view"><i></i> ${viewers} 👀</div><img src="${p.image}" alt="${name}" loading="lazy"><div class="product-body"><span class="product-badge">${badge}</span><h3>${name}</h3><p class="product-desc">${desc}</p><div class="product-price">${BRAND}</div><a class="btn-wa" href="https://wa.me/4915216839609?text=${waMsg}${encodeURIComponent(name)}" target="_blank">${t.btn_wa}</a></div></div>`;
-});
-}
 function openMenu(){document.getElementById('sidebar').classList.add('open');document.getElementById('overlay').classList.add('show');}
 function closeMenu(){document.getElementById('sidebar').classList.remove('open');document.getElementById('overlay').classList.remove('show');}
-function updateCounter(){let viewers=Math.floor(Math.random()*80)+120;let d=fakeData[currentLang];document.getElementById('counterText').innerText=`🔥 ${viewers} ${d.viewing}`;}
-function showPopup(){
-let p=products[Math.floor(Math.random()*products.length)];let d=fakeData[currentLang];let n=d.names[Math.floor(Math.random()*d.names.length)];let g=d.gov[Math.floor(Math.random()*d.gov.length)];let mins=Math.floor(Math.random()*8)+1;
-let pName=currentLang=='en'?p.name_en:currentLang=='ku'?p.name_ku:p.name_ar;
-document.getElementById('popupImg').src=p.image;
-if(currentLang=='ar'){document.getElementById('popupTitle').innerHTML=`✅ ${n} من ${g} ${d.ordered}`;document.getElementById('popupDesc').innerHTML=`${pName} - ${d.ago} ${mins} ${d.min} ✅`;}
-else if(currentLang=='en'){document.getElementById('popupTitle').innerHTML=`✅ ${n} from ${g} ${d.ordered}`;document.getElementById('popupDesc').innerHTML=`${pName} - ${mins} ${d.min} ${d.ago} ✅`;}
-else{document.getElementById('popupTitle').innerHTML=`✅ ${n} ji ${g} ${d.ordered}`;document.getElementById('popupDesc').innerHTML=`${pName} - ${d.ago} ${mins} ${d.min} ✅`;}
-document.getElementById('orderPopup').classList.add('show');setTimeout(()=>{document.getElementById('orderPopup').classList.remove('show');},4500);
-}
-setTimeout(showPopup,3000);setInterval(showPopup,8500);render();updateCounter();setInterval(updateCounter,4000);
+
+const products=[
+{name_ar:"بطارية ليثيوم FOX BTS 3.84KW - 300Ah - RBooSH™",name_en:"FOX BTS Lithium Battery 3.84KW 300Ah - RBooSH™",name_ku:"Pîlê Lîtyûm FOX BTS 3.84KW 300Ah - RBooSH™",cat:"solar",image:"https://i.postimg.cc/632jqxcP/IMG-20260809-WA0084.jpg",desc_ar:"MTL-12300 | 12.8V 300Ah 3.84KW LiFePO4 | خلايا Grade A+ جديدة | بلوتوث + شاشة FOX | وزن 29كغ | قاعدة تثبيت | Charge 14.6V/100Ah",desc_en:"MTL-12300 | 12.8V 300Ah 3.84KW LiFePO4 | Grade A+ New Cells | Bluetooth + FOX Display | 29KG | Safe Home",desc_ku:"MTL-12300 | 12.8V 300Ah 3.84KW LiFePO4 | Grade A+ | Bluetooth + Display | 29KG",badge_ar:"FOX 3.84KW 🔋 جديد",badge_en:"FOX 3.84KW 🔋 New",badge_ku:"FOX 3.84KW 🔋 Nû"},
+{name_ar:"انفرتر شمسي 5KW - RBooSH™",name_en:"Solar Inverter 5KW - RBooSH™",name_ku:"Inverter Rojê 5KW - RBooSH™",cat:"solar",image:"https://i.postimg.cc/KYjDpfyj/IMG-20260902-WA0081.jpg",desc_ar:"انفرتر هجين 5 كيلو - شاحن MPPT مدمج",desc_en:"Hybrid inverter 5KW - Built-in MPPT charger",desc_ku:"Inverter hybrid 5KW - MPPT charger",badge_ar:"الأكثر مبيعاً 🔥",badge_en:"Bestseller 🔥",badge_ku:"Herî firotin 🔥"},
+{name_ar:"لوحة توزيع 24 خط - RBooSH™",name_en:"Distribution Panel 24 Way - RBooSH™",name_ku:"Tabloya Belavkirinê 24 - RBooSH™",cat:"panels",image:"https://i.postimg.cc/qvkLy0bm/IMG-20260902-WA0020.jpg",desc_ar:"لوحة معدنية مقاومة للصدأ - 24 قاطع",desc_en:"Rustproof metal panel - 24 breakers",desc_ku:"Tabloya metal - 24 sîgorte",badge_ar:"جودة عالية ⭐",badge_en:"High Quality ⭐",badge_ku:"Kalîte ⭐"},
+{name_ar:"كابل نحاس 4x10mm",name_en:"Copper Cable 4x10mm",name_ku:"Kabloya Sifir 4x10mm",cat:"cables",image:"https://i.postimg.cc/PvdzN16d/IMG-20260828-WA0002-1.jpg",desc_ar:"كابل مرن معزول - للطاقة الصناعية",desc_en:"Flexible insulated cable - Industrial power",desc_ku:"Kabloya nerm - Hêza pîşesazî",badge_ar:"نحاس صافي",badge_en:"Pure Copper",badge_ku:"Sifirê paqij"},
+{name_ar:"قاطع MCCB 100A",name_en:"MCCB Breaker 100A",name_ku:"Sîgorteya MCCB 100A",cat:"breakers",image:"https://i.postimg.cc/zfGxZ5TS/IMG-20260827-WA0002.jpg",desc_ar:"قاطع حماية صناعي 100 أمبير",desc_en:"Industrial protection breaker 100A",desc_ku:"Sîgorteya parastinê 100A",badge_ar:"صناعي",badge_en:"Industrial",badge_ku:"Pîşesazî"}
+];
+
+let currentCat='all'; let currentLang='ar';
+const trans={ar:{dir:'rtl',menu_title:'القائمة',menu_home:'الرئيسية',menu_products:'المنتجات 🛒',menu_calc:'الحاسبة',page_title:'منتجات RBooSH™',cat_all:'الكل',cat_solar:'طاقة شمسية',cat_panels:'لوحات',cat_cables:'كابلات',cat_breakers:'قواطع',search:'ابحث عن منتج...',order:'اطلب واتساب'},en:{dir:'ltr',menu_title:'Menu',menu_home:'Home',menu_products:'Products 🛒',menu_calc:'Calculator',page_title:'RBooSH™ Products',cat_all:'All',cat_solar:'Solar',cat_panels:'Panels',cat_cables:'Cables',cat_breakers:'Breakers',search:'Search product...',order:'Order WhatsApp'},ku:{dir:'ltr',menu_title:'Menu',menu_home:'Mal',menu_products:'Berhem 🛒',menu_calc:'Hesabker',page_title:'Berhemên RBooSH™',cat_all:'Hemû',cat_solar:'Rojê',cat_panels:'Tablo',cat_cables:'Kablo',cat_breakers:'Sîgorte',search:'Li berhemê bigere...',order:'Bi WhatsApp bixwaze'}};
+
+function setLang(l){currentLang=l;let t=trans[l];document.documentElement.lang=l;document.documentElement.dir=t.dir;document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));document.querySelector(`.lang-btn[onclick="setLang('${l}')"]`).classList.add('active');for(let k in t){if(document.getElementById(k))document.getElementById(k).innerText=t[k];}document.getElementById('search').placeholder=t.search;renderProducts();}
+function setCat(c){currentCat=c;document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));document.querySelector(`.filter-btn[data-cat="${c}"]`).classList.add('active');renderProducts();}
+function renderProducts(){let q=document.getElementById('search').value.toLowerCase();let grid=document.getElementById('grid');grid.innerHTML='';products.filter(p=>{let matchCat=currentCat==='all'||p.cat===currentCat;let name=p[`name_${currentLang}`].toLowerCase();let desc=p[`desc_${currentLang}`].toLowerCase();let matchQ=name.includes(q)||desc.includes(q);return matchCat&&matchQ;}).forEach(p=>{let name=p[`name_${currentLang}`];let desc=p[`desc_${currentLang}`];let badge=p[`badge_${currentLang}`];let orderText=trans[currentLang].order;let waMsg=encodeURIComponent(`مرحبا RBooSH™ اريد ${name} - ${desc}`);grid.innerHTML+=`<div class="product-card"><span class="badge">${badge}</span><img src="${p.image}" loading="lazy"><div class="product-info"><h3>${name}</h3><p>${desc}</p><div class="product-actions"><a href="https://wa.me/963966436341?text=${waMsg}" target="_blank" class="btn-order">📱 ${orderText}</a></div></div></div>`;});}
+renderProducts();
 </script>
 </body>
 </html>
