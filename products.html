@@ -4,18 +4,18 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>منتجاتنا - RBooSH™</title>
 <style>
-:root{--bg:#000;--card:#111;--card2:#0a0a0a;--text:#fff;--text2:#aaa;--border:#222;--blue:#00bfff;--blue2:#1e3a8a}
-body.light{--bg:#f5f7fb;--card:#fff;--card2:#eef2ff;--text:#111;--text2:#555;--border:#dbe3ff}
+:root{--bg:#000;--card:#111;--text:#fff;--text2:#aaa;--border:#222;--blue:#00bfff;--blue2:#1e3a8a}
+body.light{--bg:#f5f7fb;--card:#fff;--text:#111;--text2:#555;--border:#dbe3ff}
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Tahoma',sans-serif}
 body{background:var(--bg);color:var(--text);line-height:1.8;transition:0.4s}
 .container{max-width:1100px;margin:0 auto;padding:20px;padding-top:80px}
 .logo{text-align:center;margin:20px 0}.logo img{max-width:250px;width:100%;filter:drop-shadow(0 0 20px rgba(0,191,255,0.5))}
 h1{color:var(--blue);text-align:center;margin:20px 0;text-shadow:0 0 15px rgba(0,191,255,0.6)}
-.header-top{position:fixed;top:0;left:0;right:0;background:var(--bg);border-bottom:2px solid var(--blue2);padding:12px 15px;z-index:1000;display:flex;justify-content:space-between;align-items:center;transition:0.4s}
+.header-top{position:fixed;top:0;left:0;right:0;background:var(--bg);border-bottom:2px solid var(--blue2);padding:12px 15px;z-index:1000;display:flex;justify-content:space-between;align-items:center}
 .menu-btn{font-size:28px;background:none;border:none;color:var(--blue);cursor:pointer}
 .header-actions{display:flex;gap:8px;align-items:center}
 .theme-btn{background:var(--card);border:1px solid var(--border);color:var(--text);width:38px;height:38px;border-radius:10px;cursor:pointer;font-size:18px}
-.lang-switch{display:flex;gap:6px}.lang-btn{background:var(--card);color:var(--text2);border:1px solid var(--border);padding:6px 12px;border-radius:8px;cursor:pointer;font-weight:bold;font-size:12px}.lang-btn.active{background:var(--blue);color:#000;box-shadow:0 0 15px rgba(0,191,255,0.6)}
+.lang-switch{display:flex;gap:6px}.lang-btn{background:var(--card);color:var(--text2);border:1px solid var(--border);padding:6px 12px;border-radius:8px;cursor:pointer;font-weight:bold;font-size:12px}.lang-btn.active{background:var(--blue);color:#000}
 .sidebar{position:fixed;top:0;right:-300px;width:280px;height:100%;background:var(--card);border-left:2px solid var(--blue2);z-index:1001;transition:0.3s;padding:20px}.sidebar.open{right:0}
 [dir="ltr"].sidebar{right:auto;left:-300px;border-left:none;border-right:2px solid var(--blue2)}[dir="ltr"].sidebar.open{left:0}
 .sidebar a{display:block;padding:14px;color:var(--text);text-decoration:none;border-bottom:1px solid var(--border)}
@@ -25,18 +25,17 @@ h1{color:var(--blue);text-align:center;margin:20px 0;text-shadow:0 0 15px rgba(0
 .filter-btn{background:var(--card);border:1px solid var(--border);color:var(--text2);padding:10px 18px;border-radius:25px;cursor:pointer;font-weight:bold;font-size:13px}
 .filter-btn.active,.filter-btn:hover{background:var(--blue);color:#000;border-color:var(--blue);box-shadow:0 0 20px rgba(0,191,255,0.8)}
 .install-banner{background:linear-gradient(135deg,var(--blue2),var(--blue));border-radius:15px;padding:20px;margin:25px 0;text-align:center;border:2px solid var(--blue);animation:glow 2s infinite alternate}
-@keyframes glow{from{box-shadow:0 0 10px var(--blue2),0 0 20px rgba(0,191,255,0.2)}to{box-shadow:0 0 25px var(--blue),0 0 40px rgba(0,191,255,0.6)}}
+@keyframes glow{from{box-shadow:0 0 10px var(--blue2)}to{box-shadow:0 0 25px var(--blue)}}
 .visitor-counter{background:var(--card);border:1px dashed var(--blue);border-radius:12px;padding:12px 18px;margin:0 auto 20px auto;text-align:center;max-width:550px;display:flex;align-items:center;justify-content:center;gap:10px}
 .live-dot{width:10px;height:10px;background:#ff0000;border-radius:50%;animation:livePulse 1s infinite}
 @keyframes livePulse{0%{box-shadow:0 0 0 0 rgba(255,0,0,0.7)}70%{box-shadow:0 0 0 8px rgba(255,0,0,0)}100%{box-shadow:0 0 0 0 rgba(255,0,0,0)}}
 .visitor-counter span{font-size:14px;color:#00ff88;font-weight:bold}
 .products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;margin-top:20px}
 .product-card{background:var(--card);border:1px solid var(--border);border-radius:15px;overflow:hidden;transition:0.4s;position:relative}
-.product-card:hover{border-color:var(--blue);transform:translateY(-6px);box-shadow:0 0 20px rgba(0,191,255,0.5),0 10px 30px rgba(0,0,0,0.2)}
-.product-card img{width:100%;height:280px;object-fit:contain;background:var(--bg);padding:15px;transition:0.4s}
-.product-card:hover img{transform:scale(1.03)}
+.product-card:hover{border-color:var(--blue);transform:translateY(-6px);box-shadow:0 0 20px rgba(0,191,255,0.5)}
+.product-card img{width:100%;height:280px;object-fit:contain;background:var(--bg);padding:15px}
 .product-body{padding:18px}.product-badge{background:var(--blue2);color:#fff;font-size:11px;padding:4px 10px;border-radius:20px;display:inline-block;margin-bottom:10px}
-.product-body h3{font-size:15px;margin-bottom:8px;color:var(--text);min-height:45px}.product-desc{font-size:13px;color:var(--text2);margin-bottom:10px;min-height:35px}
+.product-body h3{font-size:15px;margin-bottom:8px;min-height:45px}.product-desc{font-size:13px;color:var(--text2);margin-bottom:10px;min-height:50px}
 .product-price{color:var(--blue);font-weight:900;font-size:17px;margin:12px 0}
 .live-view{position:absolute;top:12px;left:12px;background:rgba(0,0,0,0.8);border:1px solid #00ff88;color:#00ff88;font-size:11px;padding:4px 8px;border-radius:20px;display:flex;align-items:center;gap:5px}
 .live-view i{width:6px;height:6px;background:#00ff88;border-radius:50%;display:inline-block;animation:livePulse 1s infinite}
@@ -45,7 +44,7 @@ h1{color:var(--blue);text-align:center;margin:20px 0;text-shadow:0 0 15px rgba(0
 @keyframes whatsappGlow{from{box-shadow:0 0 10px rgba(37,211,102,0.5)}to{box-shadow:0 0 25px rgba(37,211,102,0.9)}}
 @keyframes shine{0%{left:-100%}100%{left:100%}}
 footer{text-align:center;padding:30px;color:#777;font-size:12px}
-.order-popup{position:fixed;bottom:20px;right:20px;background:var(--card);border:1px solid #25D366;border-radius:15px;padding:12px 16px;display:flex;align-items:center;gap:12px;z-index:2000;transform:translateX(400px);transition:0.5s;max-width:320px;box-shadow:0 0 20px rgba(37,211,102,0.4)}
+.order-popup{position:fixed;bottom:20px;right:20px;background:var(--card);border:1px solid #25D366;border-radius:15px;padding:12px 16px;display:flex;align-items:center;gap:12px;z-index:2000;transform:translateX(400px);transition:0.5s;max-width:320px}
 .order-popup.show{transform:translateX(0)}
 .order-popup img{width:50px;height:50px;border-radius:10px;object-fit:cover;background:var(--bg)}
 [dir="ltr"].order-popup{right:auto;left:20px;transform:translateX(-400px)}[dir="ltr"].order-popup.show{transform:translateX(0)}
@@ -55,7 +54,6 @@ footer{text-align:center;padding:30px;color:#777;font-size:12px}
 <div class="header-top"><button class="menu-btn" onclick="openMenu()">☰</button><div class="header-actions"><button class="theme-btn" id="themeBtn" onclick="toggleTheme()">☀️</button><div class="lang-switch"><button class="lang-btn active" onclick="setLang('ar')">AR</button><button class="lang-btn" onclick="setLang('en')">EN</button><button class="lang-btn" onclick="setLang('ku')">KU</button></div></div></div>
 <div class="overlay" id="overlay" onclick="closeMenu()"></div>
 <div class="sidebar" id="sidebar"><button class="close-btn" onclick="closeMenu()">×</button><h3 id="menu_title" style="color:var(--blue);text-align:center;margin-bottom:20px;">القائمة</h3><a href="index.html" id="menu_home">الرئيسية</a><a href="products.html" id="menu_products">المنتجات</a><a href="calculator.html" id="menu_calc">الحاسبة</a></div>
-
 <div class="container">
 <div class="logo"><img src="logo.png" alt="RBooSH"></div>
 <h1 id="page_title">منتجاتنا ⚡</h1><p style="text-align:center;color:var(--text2);" id="page_desc">جميع المنتجات RBooSH™ - 17 منتج</p>
@@ -65,24 +63,20 @@ footer{text-align:center;padding:30px;color:#777;font-size:12px}
 <div class="products-grid" id="productsGrid"></div>
 <footer>© 2026 RBooSH™ - Abu Sulaiman Group</footer>
 </div>
-
 <div class="order-popup" id="orderPopup"><img id="popupImg" src=""><div style="flex:1"><b id="popupTitle" style="color:#25D366;font-size:13px;display:block"></b><small id="popupDesc" style="color:var(--text2);font-size:11px"></small></div><span style="color:#777;cursor:pointer" onclick="document.getElementById('orderPopup').classList.remove('show')">×</span></div>
-
 <script>
 function toggleTheme(){document.body.classList.toggle('light');let l=document.body.classList.contains('light');localStorage.setItem('rboosh_theme',l?'light':'dark');document.getElementById('themeBtn').innerText=l?'🌙':'☀️';}
 (function(){let s=localStorage.getItem('rboosh_theme');if(s==='light'){document.body.classList.add('light');document.getElementById('themeBtn').innerText='🌙';}else{document.getElementById('themeBtn').innerText='☀️';}})();
-
 let currentLang='ar';let currentFilter='all';
 const BRAND = "RBooSH<sup>™</sup> ✓";
 const products=[
-// ===== المنتجات الجديدة - الأحدث أولاً دائماً =====
-{name_ar:"بطارية FOX BTS 3.84KW - المواصفات الخلفية والباركود - RBooSH™",name_en:"FOX BTS Battery 3.84KW - Back Label & Barcode - RBooSH™",name_ku:"Pîla FOX BTS 3.84KW - Etîketa Paş û Barkod - RBooSH™",cat:"solar",image:"https://i.postimg.cc/MThX11S9/IMG-20260809-WA0022.jpg",desc_ar:"FOX 8+ 15.5 FOX | MTL-12300 | 12.8V 300Ah 3.84KWh | LiFePO4 خلايا أصلية | RBooSH™ - الصورة الخلفية بالمواصفات",desc_en:"FOX 8+ 15.5 FOX | MTL-12300 | 12.8V 300Ah 3.84KWh | Original LiFePO4 Cells | RBooSH™ - Back View Specs",desc_ku:"FOX 8+ 15.5 FOX | MTL-12300 | 12.8V 300Ah 3.84KWh | Hucreyên Orjînal | RBooSH™",badge_ar:"FOX BTS 🔋 تفاصيل",badge_en:"FOX BTS 🔋 Details",badge_ku:"FOX BTS 🔋 Hûrgulî"},
-{name_ar:"كشاف NOAS - إضاءة قوية + توفير كبير في الطاقة - RBooSH™",name_en:"NOAS Flood Light - Powerful Light + Energy Saving - RBooSH™",name_ku:"Ronahiya NOAS - Ronahiya Bi Hêz + Teserûfa Enerjiyê - RBooSH™",cat:"solar",image:"https://i.postimg.cc/HLwMYZD9/IMG-20260809-WA0088.jpg",desc_ar:"NOAS إضاءة قوية + توفير كبير في الطاقة | LED FLOOD LIGHT | IP66 مقاوم للماء | كفاءة عالية | RBooSH™",desc_en:"NOAS Flood Light | Powerful Light + Big Energy Saving | IP66 Waterproof | High Efficiency | RBooSH™",desc_ku:"NOAS Ronahiya | Ronahiya Bi Hêz + Teserûfa Enerjiyê | IP66 | Karîgeriya Bilind | RBooSH™",badge_ar:"NOAS 💡 جديد",badge_en:"NOAS 💡 New",badge_ku:"NOAS 💡 Nû"},
-{name_ar:"مانع حريق POTRIC - Potric Fire Suppressor - RBooSH™",name_en:"POTRIC Fire Suppressor - Automatic - RBooSH™",name_ku:"POTRIC Agirvemirandin - Otomatîk - RBooSH™",cat:"protection",image:"https://i.postimg.cc/xdwmYw4H/IMG-20260912-WA0057.jpg",desc_ar:"POTRIC Fire Suppressor من RBooSH™ | حماية أوتوماتيكية ضد الحريق للبطاريات واللوحات | آمن - فعال",desc_en:"POTRIC Fire Suppressor by RBooSH™ | Automatic Fire Protection for Batteries & Panels | Safe - Effective",desc_ku:"POTRIC Fire Suppressor ji RBooSH™ | Parastina Agir Otomatîk | Ewle - Bibandor",badge_ar:"POTRIC 🔥 جديد",badge_en:"POTRIC 🔥 New",badge_ku:"POTRIC 🔥 Nû"},
-{name_ar:"متحكم حرارة TENSE DT-322 - Sıcaklık Kontrol Rölesi - RBooSH™",name_en:"TENSE DT-322 Temperature Controller - RBooSH™",name_ku:"Kontrola Germahiyê TENSE DT-322 - RBooSH™",cat:"industrial",image:"https://i.postimg.cc/gcBMRJQV/IMG-20260912-WA0060.jpg",desc_ar:"TENSE DT-322 Sıcaklık Kontrol Rölesi | متحكم حرارة رقمي دقيق | شاشة LED | تركي أصلي | Precision Control",desc_en:"TENSE DT-322 Temperature Controller | Digital Precision | LED Display | Industrial Original",desc_ku:"TENSE DT-322 Kontrola Germahiyê | Dîjîtal | Display LED | Orjînal",badge_ar:"TENSE DT-322 🌡️ جديد",badge_en:"TENSE DT-322 🌡️ New",badge_ku:"TENSE DT-322 🌡️ Nû"},
-{name_ar:"إضاءة غيفيس GIVIS 200W - القوة والموثوقية للنيوزيلندا - RBooSH™",name_en:"GIVIS 200W Flood Light - Power for NZ - RBooSH™",name_ku:"Ronahiya GIVIS 200W - Ji Bo NZ - RBooSH™",cat:"solar",image:"https://i.postimg.cc/tRhTnZsj/IMG-20260913-WA0003.jpg",desc_ar:"GIVIS 200W MADE FOR NZ | LED FLOOD LIGHT IP66 | WHITE/WARM WHITE | عدسة 120° | كفالة سنتين",desc_en:"GIVIS 200W MADE FOR NZ | LED FLOOD LIGHT IP66 | WHITE/WARM WHITE | 120° Lens | 2Y Warranty",desc_ku:"GIVIS 200W MADE FOR NZ | LED FLOOD LIGHT IP66 | 2 Sal Garantî",badge_ar:"GIVIS 200W 💡 جديد",badge_en:"GIVIS 200W 💡 New",badge_ku:"GIVIS 200W 💡 Nû"},
+// ===== الأحدث أولاً - معلومات من الصور الأصلية =====
+{name_ar:"انفرتر FOX MPPT VM III 6500-48V TWIN هجين 6.5KW BMS رقم 105 - RBooSH™",name_en:"FOX MPPT Solar Inverter VM III 6500-48V TWIN Hybrid 6.5KW BMS No.105 - RBooSH™",name_ku:"Invertera FOX MPPT VM III 6500-48V TWIN Hybrid 6.5KW BMS No.105 - RBooSH™",cat:"solar",image:"https://i.postimg.cc/MThX11S9/IMG-20260809-WA0022.jpg",desc_ar:"FOX MPPT SOLAR INVERTER VM III 6500-48V TWIN HYBRID 6.5KW BMS | 6500VA/6500W | دخل 48VDC 124A | خرج 230VAC 50/60Hz 26.1A 1Φ | شاحن AC 230V 31A خرج 54VDC 100A Default 30A | شمسي 6500W VOC 500V MPPT 60-450V | كفاءة 98% + BMS متكامل + شحن هجين ذكي وموثوق | IP21 OVC III CE RoHS | باركود 96342507312501 | رقم 105 MADE IN CHINA - انفرتر وليس بطارية",desc_en:"FOX MPPT VM III 6500-48V TWIN Hybrid 6.5KW BMS No.105 | 6500VA/6500W | DC 48V 124A | AC 230V 26.1A | Solar 6500W VOC 500V MPPT 60-450V | 98% + BMS | Barcode 96342507312501 No.105",desc_ku:"FOX MPPT VM III 6500-48V TWIN Hybrid 6.5KW BMS No.105 | 6500W 98% BMS",badge_ar:"FOX 6.5KW BMS رقم 105 ☀️ جديد",badge_en:"FOX 6.5KW BMS No.105 ☀️ New",badge_ku:"FOX 6.5KW BMS No.105 ☀️ Nû"},
+{name_ar:"كشاف NOAS 300W - إضاءة قوية توفير 85% في الطاقة - IP66 24000 لومين - RBooSH™",name_en:"NOAS 300W Flood Light - Powerful 85% Saving - IP66 24000lm - RBooSH™",name_ku:"Ronahiya NOAS 300W - 85% Teserûf - IP66 24000lm - RBooSH™",cat:"solar",image:"https://i.postimg.cc/HLwMYZD9/IMG-20260809-WA0088.jpg",desc_ar:"NOAS 300W | إضاءة قوية • توفير 85% في الطاقة | IP66 مقاوم للماء والغبار | 24000 لومين | عمر 50,000 ساعة | 2 سنة ضمان | RBooSH™",desc_en:"NOAS 300W Flood Light | Powerful Light • 85% Energy Saving | IP66 Waterproof | 24000 Lumens | 50,000h Life | 2 Year Warranty",desc_ku:"NOAS 300W | 85% Teserûf | IP66 | 24000 Lumen | 2 Sal Garantî",badge_ar:"NOAS 300W 85% توفير 💡 جديد",badge_en:"NOAS 300W 85% Saving 💡 New",badge_ku:"NOAS 300W 85% Teserûf 💡 Nû"},
+{name_ar:"مانع حريق POTRIC - Potric Fire Suppressor - RBooSH™",name_en:"POTRIC Fire Suppressor - Automatic - RBooSH™",name_ku:"POTRIC Agirvemirandin - Otomatîk - RBooSH™",cat:"protection",image:"https://i.postimg.cc/xdwmYw4H/IMG-20260912-WA0057.jpg",desc_ar:"POTRIC Fire Suppressor من RBooSH™ | حماية أوتوماتيكية ضد الحريق للبطاريات واللوحات | آمن - فعال",desc_en:"POTRIC Fire Suppressor by RBooSH™ | Automatic Fire Protection for Batteries & Panels",desc_ku:"POTRIC Fire Suppressor ji RBooSH™",badge_ar:"POTRIC 🔥 جديد",badge_en:"POTRIC 🔥 New",badge_ku:"POTRIC 🔥 Nû"},
+{name_ar:"متحكم حرارة TENSE DT-322 - Sıcaklık Kontrol Rölesi - RBooSH™",name_en:"TENSE DT-322 Temperature Controller - RBooSH™",name_ku:"Kontrola Germahiyê TENSE DT-322 - RBooSH™",cat:"industrial",image:"https://i.postimg.cc/gcBMRJQV/IMG-20260912-WA0060.jpg",desc_ar:"TENSE DT-322 Sıcaklık Kontrol Rölesi | متحكم حرارة رقمي دقيق | شاشة LED | تركي أصلي | Precision Control",desc_en:"TENSE DT-322 Temperature Controller | Digital Precision | LED Display | Industrial Original",desc_ku:"TENSE DT-322 Kontrola Germahiyê",badge_ar:"TENSE DT-322 🌡️ جديد",badge_en:"TENSE DT-322 🌡️ New",badge_ku:"TENSE DT-322 🌡️ Nû"},
+{name_ar:"إضاءة غيفيس GIVIS 200W - القوة والموثوقية للنيوزيلندا - RBooSH™",name_en:"GIVIS 200W Flood Light - Power for NZ - RBooSH™",name_ku:"Ronahiya GIVIS 200W - Ji Bo NZ - RBooSH™",cat:"solar",image:"https://i.postimg.cc/tRhTnZsj/IMG-20260913-WA0003.jpg",desc_ar:"GIVIS 200W MADE FOR NZ | LED FLOOD LIGHT IP66 | WHITE/WARM WHITE | عدسة 120° | كفالة سنتين",desc_en:"GIVIS 200W MADE FOR NZ | LED FLOOD LIGHT IP66 | 120° Lens | 2Y Warranty",desc_ku:"GIVIS 200W MADE FOR NZ | IP66 | 2 Sal Garantî",badge_ar:"GIVIS 200W 💡 جديد",badge_en:"GIVIS 200W 💡 New",badge_ku:"GIVIS 200W 💡 Nû"},
 {name_ar:"بطارية ليثيوم FOX BTS 3.84KW MTL-12300 - RBooSH™",name_en:"FOX BTS Lithium Battery 3.84KW MTL-12300 - RBooSH™",name_ku:"Pîlê Lîtyûm FOX BTS 3.84KW MTL-12300 - RBooSH™",cat:"solar",image:"https://i.postimg.cc/632jqxcP/IMG-20260809-WA0084.jpg",desc_ar:"12.8V 300Ah 3.84KW LiFePO4 | خلايا Grade A+ جديدة | بلوتوث + شاشة FOX | وزن 29كغ | شحن 14.6V/100Ah",desc_en:"12.8V 300Ah 3.84KW LiFePO4 | Grade A+ New Cells | Bluetooth + FOX Display | 29KG",desc_ku:"12.8V 300Ah 3.84KW LiFePO4 | Grade A+ | Bluetooth + Display | 29KG",badge_ar:"FOX 3.84KW 🔋 جديد",badge_en:"FOX 3.84KW 🔋 New",badge_ku:"FOX 3.84KW 🔋 Nû"},
-// ===== المنتجات القديمة =====
 {name_ar:"حماية ذكية WiFi Pollux ATVP163",name_en:"Pollux Smart WiFi Protector",name_ku:"Parastina Jîr WiFi Pollux",cat:"smart",image:"https://i.postimg.cc/KYjDpfyj/IMG-20260902-WA0081.jpg",desc_ar:"حماية ذكية شاملة مع WiFi",desc_en:"Smart WiFi protection",desc_ku:"Parastina jîr bi WiFi",badge_ar:"ذكي WiFi",badge_en:"Smart WiFi",badge_ku:"Jîr WiFi"},
 {name_ar:"قاطع ذكي Smart Switch RBooSH",name_en:"RBooSH Smart Switch",name_ku:"Smart Switch RBooSH",cat:"smart",image:"https://i.postimg.cc/qvkLy0bm/IMG-20260902-WA0020.jpg",desc_ar:"قاطع ذكي واي فاي",desc_en:"Smart WiFi breaker",desc_ku:"Şalterê jîr WiFi",badge_ar:"ذكي 🔥",badge_en:"Smart 🔥",badge_ku:"Jîr 🔥"},
 {name_ar:"كشاف طاقة شمسية Pollux",name_en:"Pollux Solar Light",name_ku:"Ronahiya Rojê Pollux",cat:"solar",image:"https://i.postimg.cc/zfGxZ5TS/IMG-20260827-WA0002.jpg",desc_ar:"إنارة شمسية ذكية",desc_en:"Smart solar light",desc_ku:"Ronahiya rojê ya jîr",badge_ar:"شمسي ☀️",badge_en:"Solar ☀️",badge_ku:"Rojê ☀️"},
@@ -96,12 +90,12 @@ const products=[
 {name_ar:"قاطع DC التاج 63A",name_en:"Altech DC Breaker 63A",name_ku:"Şalter DC Altech 63A",cat:"protection",image:"https://i.postimg.cc/KksCDstS/Picsart-26-09-23-23-51-15-827.jpg",desc_ar:"قاطع DC أصلي",desc_en:"Original DC breaker",desc_ku:"Şalter DC orjînal",badge_ar:"الأصلي 🔥",badge_en:"Original 🔥",badge_ku:"Orjînal 🔥"}
 ];
 const tr={
-ar:{dir:'rtl',menu_title:'القائمة',menu_home:'الرئيسية',menu_products:'المنتجات',menu_calc:'الحاسبة',page_title:'منتجاتنا ⚡',page_desc:'جميع المنتجات RBooSH™ - 17 منتج',banner_title:'🎥 خدمة التركيب المجاني مع أبو سليمان',banner_text:'اشتريت وما عرفت تركب؟ افتح كاميرا واتساب وأنا أركب معك خطوة بخطوة مجاناً!',banner_btn:'📹 اتصل فيديو الآن',f_all:'الكل (17)',f_smart:'ذكي WiFi 📶',f_solar:'طاقة شمسية ☀️',f_ind:'صناعي ⚡',f_pro:'حماية 🛡️',btn_wa:'اطلب عبر واتساب 📱'},
+ar:{dir:'rtl',menu_title:'القائمة',menu_home:'الرئيسية',menu_products:'المنتجات',menu_calc:'الحاسبة',page_title:'منتجاتنا ⚡',page_desc:'جميع المنتجات RBooSH™ - 17 منتج - معلومات من الصور الأصلية',banner_title:'🎥 خدمة التركيب المجاني مع أبو سليمان',banner_text:'اشتريت وما عرفت تركب؟ افتح كاميرا واتساب وأنا أركب معك خطوة بخطوة مجاناً!',banner_btn:'📹 اتصل فيديو الآن',f_all:'الكل (17)',f_smart:'ذكي WiFi 📶',f_solar:'طاقة شمسية ☀️',f_ind:'صناعي ⚡',f_pro:'حماية 🛡️',btn_wa:'اطلب عبر واتساب 📱'},
 en:{dir:'ltr',menu_title:'Menu',menu_home:'Home',menu_products:'Products',menu_calc:'Calculator',page_title:'Our Products ⚡',page_desc:'All RBooSH™ Products - 17 items',banner_title:'🎥 Free Installation Support',banner_text:'Bought it and don\'t know how to install? Open video call and I will guide you step by step for free!',banner_btn:'📹 Video Call Now',f_all:'All (17)',f_smart:'Smart WiFi 📶',f_solar:'Solar ☀️',f_ind:'Industrial ⚡',f_pro:'Protection 🛡️',btn_wa:'Order on WhatsApp 📱'},
 ku:{dir:'ltr',menu_title:'Menu',menu_home:'Mal',menu_products:'Berhem',menu_calc:'Hesabker',page_title:'Berhemên Me ⚡',page_desc:'Hemû Berhemên RBooSH™ - 17 berhem',banner_title:'🎥 Xizmeta Girêdanê ya Belaş',banner_text:'Te kirî û nizane çawa girêbidî? Vîdyo veke û ez ê alîkariya te bikim belaş!',banner_btn:'📹 Vîdyo Banga Niha',f_all:'Hemû (17)',f_smart:'Jîr WiFi 📶',f_solar:'Rojê ☀️',f_ind:'Pîşesazî ⚡',f_pro:'Parastin 🛡️',btn_wa:'Li WhatsApp Bixwaze 📱'}
 };
 const fakeData={
-ar:{gov:["دمشق","حلب","الحسكة","القامشلي"],names:["أحمد","محمد","علي","خالد"],ordered:"طلب الآن",ago:"منذ",min:"دقيقة",viewing:"شخص يشاهدون الآن"},
+ar:{gov:["دمشق","حلب","الحسكة","القامشلي","حمص","إدلب"],names:["أحمد","محمد","علي","خالد","سليمان","عمر"],ordered:"طلب الآن",ago:"منذ",min:"دقيقة",viewing:"شخص يشاهدون الآن"},
 en:{gov:["Damascus","Aleppo","Hasakah"],names:["Ahmad","Ali","Khaled"],ordered:"just ordered",ago:"ago",min:"min",viewing:"people viewing now"},
 ku:{gov:["Şam","Hesekê","Qamişlo"],names:["Ehmed","Elî","Xalid"],ordered:"niha xwest",ago:"berî",min:"deqe",viewing:"kes niha dibînin"}
 };
@@ -125,7 +119,7 @@ filtered.forEach(p=>{
 let name=currentLang=='en'?p.name_en:currentLang=='ku'?p.name_ku:p.name_ar;
 let desc=currentLang=='en'?p.desc_en:currentLang=='ku'?p.desc_ku:p.desc_ar;
 let badge=currentLang=='en'?p.badge_en:currentLang=='ku'?p.badge_ku:p.badge_ar;
-let viewers=Math.floor(Math.random()*55)+45;
+let viewers=Math.floor(Math.random()*175)+25; // 25-199
 let waMsg=currentLang=='en'?'Hello Sulaiman, I want ':'مرحبا سليمان اريد ';if(currentLang=='ku') waMsg='Merheba Silêman, ez dixwazim ';
 grid.innerHTML+=`<div class="product-card"><div class="live-view"><i></i> ${viewers} 👀</div><img src="${p.image}" alt="${name}" loading="lazy"><div class="product-body"><span class="product-badge">${badge}</span><h3>${name}</h3><p class="product-desc">${desc}</p><div class="product-price">${BRAND}</div><a class="btn-wa" href="https://wa.me/4915216839609?text=${waMsg}${encodeURIComponent(name)}" target="_blank">${t.btn_wa}</a></div></div>`;
 });
@@ -133,10 +127,17 @@ grid.innerHTML+=`<div class="product-card"><div class="live-view"><i></i> ${view
 function openMenu(){document.getElementById('sidebar').classList.add('open');document.getElementById('overlay').classList.add('show');}
 function closeMenu(){document.getElementById('sidebar').classList.remove('open');document.getElementById('overlay').classList.remove('show');}
 function updateCounter(){
-  let base = products.length * 40 + 120;
-  let viewers = base + Math.floor(Math.random()*120);
+  let extra = products.length * 12; // كل صورة +12
+  // العداد من 300 لـ 700
+  let base = 300 + extra; // 300 + (17*12=204) = 504
+  let maxAdd = 700 - base; // 196
+  if(maxAdd < 0) maxAdd = 100;
+  let viewers = base + Math.floor(Math.random()*(maxAdd+1));
+  // تأمين ضمن 300-700
+  if(viewers < 300) viewers = 300 + Math.floor(Math.random()*50);
+  if(viewers > 700) viewers = 700;
   let d=fakeData[currentLang];
-  document.getElementById('counterText').innerText=`🔥 ${viewers} ${d.viewing}`;
+  document.getElementById('counterText').innerText=`🔥 ${viewers} ${d.viewing} ( +${extra} )`;
 }
 function showPopup(){
 let p=products[Math.floor(Math.random()*products.length)];let d=fakeData[currentLang];let n=d.names[Math.floor(Math.random()*d.names.length)];let g=d.gov[Math.floor(Math.random()*d.gov.length)];let mins=Math.floor(Math.random()*8)+1;
