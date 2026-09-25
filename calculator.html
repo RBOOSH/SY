@@ -1,61 +1,48 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RBooSH™ | Calculator</title>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RBooSH™ Abu Suleiman Group</title>
+<link rel="icon" href="./Picsart_26-09-25_20-22-02-165.jpg">
+<link rel="apple-touch-icon" href="./Picsart_26-09-25_20-22-02-165.jpg">
+<meta property="og:image" content="https://rboosh.github.io/SY/Picsart_26-09-25_20-22-02-165.jpg">
+<meta name="theme-color" content="#00bfff">
 <style>
-:root{
-  --bg:#000; --card:#111; --card2:#0a0a0a; --text:#fff; --text2:#aaa; --border:#222; --blue:#00bfff; --blue2:#1e3a8a;
-}
-body.light{
-  --bg:#f5f7fb; --card:#fff; --card2:#eef2ff; --text:#111; --text2:#555; --border:#dbe3ff;
-}
+:root{--bg:#000;--card:#111;--card2:#0a0a0a;--text:#fff;--text2:#aaa;--border:#222;--blue:#00bfff;--blue2:#1e3a8a}
+body.light{--bg:#f5f7fb;--card:#fff;--card2:#eef2ff;--text:#111;--text2:#555;--border:#dbe3ff}
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Tahoma',sans-serif}
 body{background:var(--bg);color:var(--text);line-height:1.8;transition:0.4s}
-.header-top{position:fixed;top:0;left:0;right:0;background:var(--bg);border-bottom:2px solid var(--blue2);padding:12px 15px;z-index:1000;display:flex;justify-content:space-between;align-items:center;transition:0.4s}
+.container{max-width:900px;margin:0 auto;padding:20px;padding-top:80px}
+.logo{text-align:center;margin:20px 0}.logo img{max-width:350px;width:100%;filter:drop-shadow(0 0 20px rgba(0,191,255,0.5))}
+h2{color:var(--blue);text-align:center;font-size:26px;margin-bottom:15px;text-shadow:0 0 15px rgba(0,191,255,0.6)}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:25px;margin:20px 0;transition:0.4s}.card:hover{border-color:var(--blue);box-shadow:0 0 20px rgba(0,191,255,0.4),0 0 40px rgba(0,191,255,0.15);transform:translateY(-4px)}
+.header-top{position:fixed;top:0;left:0;right:0;background:var(--bg);border-bottom:2px solid var(--blue2);padding:12px 15px;z-index:1000;display:flex;justify-content:space-between;align-items:center}
 .menu-btn{font-size:28px;background:none;border:none;color:var(--blue);cursor:pointer}
 .header-actions{display:flex;gap:8px;align-items:center}
-.theme-btn{background:var(--card);border:1px solid var(--border);color:var(--text);width:38px;height:38px;border-radius:10px;cursor:pointer;font-size:18px;transition:0.3s}
-.theme-btn:hover{border-color:var(--blue);box-shadow:0 0 15px rgba(0,191,255,0.4);transform:scale(1.05)}
-.lang-switch{display:flex;gap:6px}.lang-btn{background:var(--card);color:var(--text2);border:1px solid var(--border);padding:6px 12px;border-radius:8px;cursor:pointer;font-weight:bold;font-size:12px;transition:0.3s}.lang-btn.active{background:var(--blue);color:#000;box-shadow:0 0 15px rgba(0,191,255,0.6)}
-.sidebar{position:fixed;top:0;right:-300px;width:280px;height:100%;background:var(--card);border-left:2px solid var(--blue2);z-index:1001;transition:0.3s;padding:20px}.sidebar.open{right:0}
-[dir="ltr"].sidebar{right:auto;left:-300px;border-left:none;border-right:2px solid var(--blue2)}[dir="ltr"].sidebar.open{left:0}
-.sidebar a{display:block;padding:14px;color:var(--text);text-decoration:none;border-bottom:1px solid var(--border)}.sidebar a:hover{background:var(--blue2);border-radius:8px;color:#fff;box-shadow:0 0 15px rgba(30,58,138,0.5)}
-.close-btn{background:none;border:none;color:var(--text);font-size:24px;float:left;cursor:pointer}
+.theme-btn{background:var(--card);border:1px solid var(--border);color:var(--text);width:38px;height:38px;border-radius:10px;cursor:pointer;font-size:18px}
+.lang-switch{display:flex;gap:6px}.lang-btn{background:var(--card);color:var(--text2);border:1px solid var(--border);padding:6px 12px;border-radius:8px;cursor:pointer;font-weight:bold;font-size:12px}.lang-btn.active{background:var(--blue);color:#000;box-shadow:0 0 15px rgba(0,191,255,0.6)}
+.sidebar{position:fixed;top:0;right:-300px;width:280px;height:100%;background:var(--card);border-left:2px solid var(--blue2);z-index:1001;transition:0.3s;padding:20px}.sidebar.open{right:0}[dir="ltr"].sidebar{right:auto;left:-300px;border-right:2px solid var(--blue2)}[dir="ltr"].sidebar.open{left:0}
+.sidebar a{display:block;padding:14px;color:var(--text);text-decoration:none;border-bottom:1px solid var(--border)}
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);display:none;z-index:1000}.overlay.show{display:block}
-
-.container{max-width:650px;margin:30px auto;padding:20px;padding-top:85px}
-.logo{text-align:center;margin:10px 0 20px 0}.logo img{max-width:280px;width:100%;filter:drop-shadow(0 0 20px rgba(0,191,255,0.6))}
-.calculator{background:var(--card);padding:30px;border-radius:16px;border:2px solid var(--blue2);box-shadow:0 0 25px rgba(0,191,255,0.15);animation:calcGlow 2.5s infinite alternate;transition:0.4s}
-.calculator:hover{box-shadow:0 0 30px rgba(0,191,255,0.35);transform:translateY(-3px)}
-@keyframes calcGlow{from{box-shadow:0 0 15px rgba(30,58,138,0.4)}to{box-shadow:0 0 30px rgba(0,191,255,0.3)}}
-h2{color:var(--blue);margin-bottom:10px;text-align:center;font-size:22px;text-shadow:0 0 15px rgba(0,191,255,0.6)}
-.subtitle{text-align:center;color:var(--text2);font-size:14px;margin-bottom:25px}
-.visitor-counter{background:var(--card);border:1px dashed var(--blue);border-radius:12px;padding:12px 18px;margin:0 auto 20px auto;text-align:center;max-width:550px;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 0 15px rgba(0,191,255,0.2);animation:counterGlow 2s infinite alternate}
+.btn{padding:14px 20px;border-radius:10px;text-decoration:none;font-weight:bold;display:block;text-align:center;margin:10px 0}
+.btn-whatsapp{background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;box-shadow:0 0 15px rgba(37,211,102,0.6);border:1px solid #25D366;animation:whatsappGlow 2s infinite alternate;position:relative;overflow:hidden}
+.btn-whatsapp::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent);animation:shine 2.5s infinite}
+@keyframes whatsappGlow{from{box-shadow:0 0 10px rgba(37,211,102,0.5)}to{box-shadow:0 0 20px rgba(37,211,102,0.9)}}
+@keyframes shine{0%{left:-100%}100%{left:100%}}
+.btn-fb{background:#1877F2;color:#fff;box-shadow:0 0 15px rgba(24,119,242,0.5)}
+.btn-calc{background:linear-gradient(135deg,var(--blue2),var(--blue));color:#fff;padding:16px 35px;display:inline-block;border-radius:25px;animation:btnPulse 1.5s infinite;box-shadow:0 0 20px rgba(0,191,255,0.5);text-decoration:none;font-weight:bold}
+@keyframes btnPulse{0%{transform:scale(1)}50%{transform:scale(1.05)}100%{transform:scale(1)}}
+.payment-item,.why-item{border:1px solid var(--blue2);padding:15px;border-radius:10px;margin:10px 0;text-align:center;background:var(--card2);transition:0.4s}
+.payment-item:hover,.why-item:hover{border-color:var(--blue);box-shadow:0 0 15px rgba(0,191,255,0.3);transform:translateY(-3px)}
+.visitor-counter{background:var(--card);border:1px dashed var(--blue);border-radius:12px;padding:12px 18px;margin:0 auto 20px auto;text-align:center;max-width:650px;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 0 15px rgba(0,191,255,0.2);animation:counterGlow 2s infinite alternate}
 @keyframes counterGlow{from{box-shadow:0 0 10px rgba(0,191,255,0.2)}to{box-shadow:0 0 20px rgba(0,191,255,0.4)}}
 .live-dot{width:10px;height:10px;background:#ff0000;border-radius:50%;animation:livePulse 1s infinite}
 @keyframes livePulse{0%{box-shadow:0 0 0 0 rgba(255,0,0,0.7)}70%{box-shadow:0 0 0 8px rgba(255,0,0,0)}100%{box-shadow:0 0 0 0 rgba(255,0,0,0)}}
-.visitor-counter span{font-size:14px;color:#00ff88;font-weight:bold}
-.calc-form{display:flex;flex-direction:column;gap:18px}
-.calc-form label{font-size:14px;color:var(--text2);text-align:right}[dir="ltr"].calc-form label{text-align:left}
-.calc-form input,.calc-form select{padding:14px;border-radius:10px;border:1px solid var(--border);background:var(--card2);color:var(--text);font-size:16px;width:100%;text-align:right;transition:0.3s}
-[dir="ltr"].calc-form input,[dir="ltr"].calc-form select{text-align:left}
-.calc-form input:focus,.calc-form select:focus{outline:none;border-color:var(--blue);box-shadow:0 0 15px rgba(0,191,255,0.4)}
-.calc-form button{background:linear-gradient(135deg,var(--blue2),var(--blue));color:#fff;padding:16px;border:none;border-radius:10px;font-weight:bold;cursor:pointer;font-size:16px;margin-top:5px;transition:0.3s;box-shadow:0 0 15px rgba(0,191,255,0.4)}
-.calc-form button:hover{transform:scale(1.03);box-shadow:0 0 25px rgba(0,191,255,0.7)}
-.calc-form button.whatsapp{background:linear-gradient(135deg,#25D366,#128C7E);box-shadow:0 0 15px rgba(37,211,102,0.6);border:1px solid #25D366;animation:whatsappGlow 2s infinite alternate;position:relative;overflow:hidden}
-.calc-form button.whatsapp::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent);animation:shine 2.5s infinite}
-@keyframes whatsappGlow{from{box-shadow:0 0 10px rgba(37,211,102,0.5)}to{box-shadow:0 0 20px rgba(37,211,102,0.9)}}
-@keyframes shine{0%{left:-100%}100%{left:100%}}
-.calc-result{background:var(--card2);border:1px solid var(--blue2);padding:20px;border-radius:12px;margin-top:20px;text-align:right;animation:resultGlow 2s infinite alternate}
-[dir="ltr"].calc-result{text-align:left}
-.calc-result h4{color:var(--blue);margin-bottom:10px}
-footer{text-align:center;padding:20px;color:#777;font-size:12px}
+.calc-banner{background:linear-gradient(135deg,var(--blue2),var(--blue));border-radius:15px;padding:25px;margin:25px 0;text-align:center;border:2px solid var(--blue);animation:glow 2s infinite alternate}
+@keyframes glow{from{box-shadow:0 0 10px var(--blue2)}to{box-shadow:0 0 25px var(--blue)}}
 .order-popup{position:fixed;bottom:20px;right:20px;background:var(--card);border:1px solid #25D366;border-radius:15px;padding:12px 16px;display:flex;align-items:center;gap:12px;z-index:2000;transform:translateX(400px);transition:0.5s;max-width:320px;box-shadow:0 0 20px rgba(37,211,102,0.4)}
-.order-popup.show{transform:translateX(0)}
+.order-popup.show{transform:translateX(0)}[dir="ltr"].order-popup{right:auto;left:20px;transform:translateX(-400px)}[dir="ltr"].order-popup.show{transform:translateX(0)}
 .order-popup img{width:50px;height:50px;border-radius:10px;object-fit:cover}
-[dir="ltr"].order-popup{right:auto;left:20px;transform:translateX(-400px)}[dir="ltr"].order-popup.show{transform:translateX(0)}
 </style>
 </head>
 <body>
