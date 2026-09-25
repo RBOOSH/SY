@@ -38,10 +38,11 @@ h2{color:var(--blue);text-align:center;font-size:26px;margin-bottom:15px;text-sh
 .order-popup.show{transform:translateX(0)}[dir="ltr"].order-popup{right:auto;left:20px;transform:translateX(-400px)}[dir="ltr"].order-popup.show{transform:translateX(0)}
 .order-popup img{width:50px;height:50px;border-radius:10px;object-fit:cover}
 .visitor-counter span{font-size:14px;color:#00ff88;font-weight:bold;-webkit-text-stroke:0.35px #000;paint-order:stroke fill;text-shadow:0.5px 0.5px 0 #000,-0.5px 0.5px 0 #000,0.5px -0.5px 0 #000,-0.5px -0.5px 0 #000,0 0 8px rgba(0,255,136,0.6)}
-.brands-bar{width:100%;background:var(--card);border:2px solid var(--blue);border-radius:12px;overflow:hidden;margin:15px auto;padding:14px 0;direction:ltr;box-shadow:0 0 12px rgba(0,191,255,0.4),0 0 25px rgba(0,191,255,0.2),inset 0 0 10px rgba(0,191,255,0.05);animation:borderGlow 2s infinite alternate;position:relative}
-@keyframes borderGlow{from{box-shadow:0 0 10px rgba(0,191,255,0.4),0 0 20px rgba(0,191,255,0.15);border-color:#00bfff}to{box-shadow:0 0 18px rgba(0,191,255,0.8),0 0 35px rgba(0,191,255,0.35),inset 0 0 12px rgba(0,191,255,0.1);border-color:#33d1ff}}
+
+/* شريط الشركات - لامع + بطيء */
+.brands-bar{width:100%;background:var(--card);border:2px solid var(--blue);border-radius:12px;overflow:hidden;margin:15px auto;padding:14px 0;direction:ltr;box-shadow:0 0 12px rgba(0,191,255,0.4),0 0 25px rgba(0,191,255,0.2);animation:borderGlow 2s infinite alternate}
+@keyframes borderGlow{from{box-shadow:0 0 10px rgba(0,191,255,0.4),0 0 20px rgba(0,191,255,0.15);border-color:#00bfff}to{box-shadow:0 0 18px rgba(0,191,255,0.8),0 0 35px rgba(0,191,255,0.35);border-color:#33d1ff}}
 .brands-track{display:flex;width:max-content;animation:scrollBrands 60s linear infinite}
-.brands-bar:hover.brands-track{animation-play-state:paused}
 .brands-group{display:flex;flex-shrink:0;align-items:center}
 .brands-group span{font-size:14px;font-weight:900;padding:0 24px;white-space:nowrap;position:relative;-webkit-text-stroke:0.3px #000;paint-order:stroke fill;text-shadow:0.5px 0.5px 0 #000}
 .brands-group span::after{content:'•';position:absolute;right:-2px;color:var(--blue);opacity:0.5;font-size:10px}
@@ -72,17 +73,21 @@ h2{color:var(--blue);text-align:center;font-size:26px;margin-bottom:15px;text-sh
 <div class="visitor-counter"><div class="live-dot"></div><span id="counterText"></span></div>
 <div style="text-align:center;margin:30px 0;"><h2 id="main_title">RBooSH™ مجموعة ابو سليمان ⚡ للتجارة الكهربائية</h2><p id="main_desc">متخصصون في توريد وتجارة المعدات الكهربائية، خدمات التركيب، واستشارات الطاقة الكهربائية</p></div>
 
-<!-- ✅ نفس المستطيل اللامع - بس صار للمنتجات -->
 <div class="calc-banner"><h2 id="banner_calc_title" style="color:#fff">🛒 منتجات RBooSH™ الأصلية</h2><p id="banner_calc_desc" style="color:#e0f2ff;font-size:14px;margin-bottom:15px">تصفح جميع منتجاتنا من لوحات التوزيع، الكابلات، القواطع، الكونتاكتورات والأجهزة الكهربائية الأصلية بضمان!</p><a id="banner_calc_btn" href="products.html" class="btn-calc">⚡ استكشف المنتجات الآن</a></div>
 
 <div class="card"><h2 id="services_title">خدماتنا</h2><p id="services_desc">بيع لوحات التوزيع، الكابلات، مثبتات الجهد، القواطع، الكونتاكتورات والأجهزة الكهربائية<br>نخدم الشركات الصناعية، المحلات التجارية، والأفراد</p></div>
-<div class="card"><h2 id="branches_title">فروعنا</h2><div style="text-align:right;margin-top:20px;"><p style="margin-bottom:20px;"><b>1.</b> <span id="branch1">المركز الرئيسي - الحسكة</span> ⭐ <br><a href="https://maps.app.goo.gl/9rPCzmoVwEvoYURo6" target="_blank" id="map1" style="color:var(--blue);text-decoration:underline;">عرض على الخريطة</a></p><p><b>2.</b> <span id="branch2">فرع القامشلي</span> <br><a href="https://maps.app.goo.gl/jLjDA49LaaHDywKg8?g_st=ac" target="_blank" id="map2" style="color:var(--blue);text-decoration:underline;">عرض على الخريطة</a></p></div></div>
+<div class="card"><h2 id="branches_title">فروعنا</h2><div style="text-align:center;margin-top:20px;"><p style="margin-bottom:20px;text-align:center;"><b>1.</b> <span id="branch1">المركز الرئيسي - الحسكة</span> ⭐ <br><a href="https://maps.app.goo.gl/9rPCzmoVwEvoYURo6" target="_blank" id="map1" style="color:var(--blue);text-decoration:underline;">عرض على الخريطة</a></p><p style="text-align:center;"><b>2.</b> <span id="branch2">فرع القامشلي</span> <br><a href="https://maps.app.goo.gl/jLjDA49LaaHDywKg8?g_st=ac" target="_blank" id="map2" style="color:var(--blue);text-decoration:underline;">عرض على الخريطة</a></p></div></div>
 <div class="card"><h2 id="payment_title">طرق الدفع</h2><div class="payment-item">💵 <b id="pay1_title">الدفع نقداً</b><br><span id="pay1_desc">الدفع عند الاستلام من اي فرع</span></div><div class="payment-item">📱 <b id="pay2_title">شام كاش</b><br><span id="pay2_desc">الدفع الالكتروني عبر شام كاش</span></div><div class="payment-item">💳 <b id="pay3_title">مساري</b><br><span id="pay3_desc">الدفع الالكتروني عبر مساري</span></div><div class="payment-item">📋 <b id="pay4_title">التقسيط</b><br><span id="pay4_desc">للشركات والمشاريع الكبيرة بشروط ميسرة</span></div><p style="color:#00ff88;text-align:center;margin-top:15px;">✨ <span id="payment_note">اسأل عن العروض والخصومات الخاصة عند الدفع بشام كاش ومساري</span></p></div>
 <div class="card"><h2 id="why_title">لماذا تختارنا</h2><div class="why-item">🏆 <span id="why1">ضمان المنتج</span></div><div class="why-item">📄 <span id="why2">فواتير رسمية</span></div><div class="why-item">⚡ <span id="why3">توصيل سريع</span></div></div>
 <div class="card" id="contact"><h2 id="contact_title">اتصال</h2><a href="https://wa.me/963966436341" class="btn btn-whatsapp">📱 <span id="wa1">واتساب ابو سليمان: +963 966 436 341</span></a><a href="https://wa.me/4915216839609" class="btn btn-whatsapp">📱 <span id="wa2">واتساب سليمان ربوشي: +49 152 16839609</span></a><a href="https://www.facebook.com/share/19CY71w9uo/" target="_blank" class="btn btn-fb">📘 <span id="fb">صفحة الفيسبوك</span></a></div>
-<div class="card"><h2 id="hours_title">اوقات الدوام</h2><p id="hours_desc">السبت - الخميس: 8:00 صباحاً - 7:30 مساءً<br>الجمعة: حالات الطوارئ فقط</p></div>
+
+<!-- ✅ تم التوسيط هنا -->
+<div class="card" style="text-align:center;"><h2 id="hours_title">اوقات الدوام</h2><p id="hours_desc" style="text-align:center;">السبت - الخميس: 8:00 صباحاً - 7:30 مساءً<br>الجمعة: حالات الطوارئ فقط</p></div>
+
 <div class="card" style="text-align:center;"><h2 id="calc_title">احسب احتياجاتك بنفسك</h2><p id="calc_desc">استخدم حاسبة RBooSH™ لتقدير كميات المواد الكهربائية لمشروعك خلال 30 ثانية</p><a id="calc_btn" href="calculator.html" class="btn-calc">افتح الحاسبة الآن</a></div>
-<footer><p style="color:#00ff88;font-weight:bold">RBooSH™ <span id="footer_slogan">نحن نزودك بالطاقة... نحن نضمن الاستمرارية</span></p><p style="color:#777">© 2026 All Rights Reserved - Abu Suleiman Group</p></footer>
+
+<!-- ✅ الفوتر صار بالنص -->
+<footer style="text-align:center;padding:20px 0"><p style="color:#00ff88;font-weight:bold;text-align:center">RBooSH™ <span id="footer_slogan">نحن نزودك بالطاقة... نحن نضمن الاستمرارية</span></p><p style="color:#777;text-align:center">© 2026 All Rights Reserved - Abu Suleiman Group</p></footer>
 </div>
 <div class="order-popup" id="orderPopup"><img id="popupImg" src=""><div style="flex:1"><b id="popupTitle" style="color:#25D366;font-size:13px;display:block"></b><small id="popupDesc" style="color:var(--text2);font-size:11px"></small></div><span style="color:#777;cursor:pointer" onclick="document.getElementById('orderPopup').classList.remove('show')">×</span></div>
 <script>
