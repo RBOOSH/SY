@@ -16,14 +16,21 @@ h1{color:var(--blue);text-align:center;margin:20px 0;text-shadow:0 0 15px rgba(0
 .header-actions{display:flex;gap:8px;align-items:center}
 .theme-btn{background:var(--card);border:1px solid var(--border);color:var(--text);width:38px;height:38px;border-radius:10px;cursor:pointer;font-size:18px}
 .lang-switch{display:flex;gap:6px}.lang-btn{background:var(--card);color:var(--text2);border:1px solid var(--border);padding:6px 12px;border-radius:8px;cursor:pointer;font-weight:bold;font-size:12px}.lang-btn.active{background:var(--blue);color:#000}
-.sidebar{position:fixed;top:0;right:-300px;width:280px;height:100%;background:var(--card);border-left:2px solid var(--blue2);z-index:1001;transition:0.3s;padding:20px}.sidebar.open{right:0}
-[dir="ltr"].sidebar{right:auto;left:-300px;border-left:none;border-right:2px solid var(--blue2)}[dir="ltr"].sidebar.open{left:0}
+.sidebar{position:fixed;top:0;right:-300px;width:280px;height:100%;background:var(--card);border-left:2px solid var(--blue2);z-index:1001;transition:0.3s;padding:20px}.sidebar.open{right:0}[dir="ltr"].sidebar{right:auto;left:-300px;border-right:2px solid var(--blue2)}[dir="ltr"].sidebar.open{left:0}
 .sidebar a{display:block;padding:14px;color:var(--text);text-decoration:none;border-bottom:1px solid var(--border)}
-.close-btn{background:none;border:none;color:var(--text);font-size:24px;float:left;cursor:pointer}
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);display:none;z-index:1000}.overlay.show{display:block}
+.search-box{max-width:500px;margin:20px auto;display:flex;gap:8px}
+.search-box input{flex:1;background:var(--card);border:2px solid var(--blue);border-radius:25px;padding:12px 18px;color:var(--text);outline:none}
 .filter-bar{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:20px 0}
 .filter-btn{background:var(--card);border:1px solid var(--border);color:var(--text2);padding:10px 18px;border-radius:25px;cursor:pointer;font-weight:bold;font-size:13px}
 .filter-btn.active,.filter-btn:hover{background:var(--blue);color:#000;border-color:var(--blue);box-shadow:0 0 20px rgba(0,191,255,0.8)}
+.brands-bar{width:100%;background:var(--card);border:2px solid var(--blue);border-radius:12px;overflow:hidden;margin:15px auto;padding:14px 0;direction:ltr;box-shadow:0 0 12px rgba(0,191,255,0.4),0 0 25px rgba(0,191,255,0.2);animation:borderGlow 2s infinite alternate}
+@keyframes borderGlow{from{box-shadow:0 0 10px rgba(0,191,255,0.4)}to{box-shadow:0 0 18px rgba(0,191,255,0.8)}}
+.brands-track{display:flex;width:max-content;animation:scrollBrands 60s linear infinite}
+.brands-group{display:flex;flex-shrink:0;align-items:center}
+.brands-group span{font-size:14px;font-weight:900;padding:0 24px;white-space:nowrap}
+.c-ls{color:#005BAC}.c-schneider{color:#3DCD58}.c-chint{color:#005BAC}.c-tense{color:#0072BC}.c-givis{color:#0072BC}.c-pollux{color:#FF6600}.c-rboosh{color:#00bfff;text-shadow:0 0 12px rgba(0,191,255,0.9)!important}.c-altech{color:#E30613}.c-hyundai{color:#002C5F}.c-clay{color:#FF6A00}.c-unal{color:#CC0000}.c-ako{color:#E30613}
+@keyframes scrollBrands{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 .install-banner{background:linear-gradient(135deg,var(--blue2),var(--blue));border-radius:15px;padding:20px;margin:25px 0;text-align:center;border:2px solid var(--blue);animation:glow 2s infinite alternate}
 @keyframes glow{from{box-shadow:0 0 10px var(--blue2)}to{box-shadow:0 0 25px var(--blue)}}
 .visitor-counter{background:var(--card);border:1px dashed var(--blue);border-radius:12px;padding:12px 18px;margin:0 auto 20px auto;text-align:center;max-width:550px;display:flex;align-items:center;justify-content:center;gap:10px}
@@ -34,7 +41,7 @@ h1{color:var(--blue);text-align:center;margin:20px 0;text-shadow:0 0 15px rgba(0
 .product-card{background:var(--card);border:1px solid var(--border);border-radius:15px;overflow:hidden;transition:0.4s;position:relative}
 .product-card:hover{border-color:var(--blue);transform:translateY(-6px);box-shadow:0 0 20px rgba(0,191,255,0.5)}
 .product-card img{width:100%;height:280px;object-fit:contain;background:var(--bg);padding:15px}
-.product-body{padding:18px}.product-badge{background:var(--blue2);color:#fff;font-size:11px;padding:4px 10px;border-radius:20px;display:inline-block;margin-bottom:10px}
+.product-body{padding:18px;text-align:center}.product-badge{background:var(--blue2);color:#fff;font-size:11px;padding:4px 10px;border-radius:20px;display:inline-block;margin-bottom:10px}
 .product-body h3{font-size:15px;margin-bottom:8px;min-height:45px}.product-desc{font-size:13px;color:var(--text2);margin-bottom:10px;min-height:50px}
 .product-price{color:var(--blue);font-weight:900;font-size:17px;margin:12px 0}
 .live-view{position:absolute;top:12px;left:12px;background:rgba(0,0,0,0.8);border:1px solid #00ff88;color:#00ff88;font-size:11px;padding:4px 8px;border-radius:20px;display:flex;align-items:center;gap:5px}
@@ -45,19 +52,24 @@ h1{color:var(--blue);text-align:center;margin:20px 0;text-shadow:0 0 15px rgba(0
 @keyframes shine{0%{left:-100%}100%{left:100%}}
 footer{text-align:center;padding:30px;color:#777;font-size:12px}
 .order-popup{position:fixed;bottom:20px;right:20px;background:var(--card);border:1px solid #25D366;border-radius:15px;padding:12px 16px;display:flex;align-items:center;gap:12px;z-index:2000;transform:translateX(400px);transition:0.5s;max-width:320px}
-.order-popup.show{transform:translateX(0)}
-.order-popup img{width:50px;height:50px;border-radius:10px;object-fit:cover;background:var(--bg)}
+.order-popup.show{transform:translateX(0)}.order-popup img{width:50px;height:50px;border-radius:10px;object-fit:cover}
 [dir="ltr"].order-popup{right:auto;left:20px;transform:translateX(-400px)}[dir="ltr"].order-popup.show{transform:translateX(0)}
 </style>
 </head>
 <body>
 <div class="header-top"><button class="menu-btn" onclick="openMenu()">☰</button><div class="header-actions"><button class="theme-btn" id="themeBtn" onclick="toggleTheme()">☀️</button><div class="lang-switch"><button class="lang-btn active" onclick="setLang('ar')">AR</button><button class="lang-btn" onclick="setLang('en')">EN</button><button class="lang-btn" onclick="setLang('ku')">KU</button></div></div></div>
 <div class="overlay" id="overlay" onclick="closeMenu()"></div>
-<div class="sidebar" id="sidebar"><button class="close-btn" onclick="closeMenu()">×</button><h3 id="menu_title" style="color:var(--blue);text-align:center;margin-bottom:20px;">القائمة</h3><a href="index.html" id="menu_home">الرئيسية</a><a href="products.html" id="menu_products">المنتجات</a><a href="calculator.html" id="menu_calc">الحاسبة</a></div>
+<div class="sidebar" id="sidebar"><button style="background:none;border:none;color:var(--text);font-size:24px;float:left;cursor:pointer" onclick="closeMenu()">×</button><h3 id="menu_title" style="color:var(--blue);text-align:center;margin-bottom:20px;">القائمة</h3><a href="index.html" id="menu_home">الرئيسية</a><a href="products.html" id="menu_products">المنتجات</a><a href="calculator.html" id="menu_calc">الحاسبة</a></div>
 <div class="container">
 <div class="logo"><img src="logo.png" alt="RBooSH"></div>
-<h1 id="page_title">منتجاتنا ⚡</h1><p style="text-align:center;color:var(--text2);" id="page_desc">جميع المنتجات RBooSH™ - 20 منتج</p>
+
+<div class="brands-bar"><div class="brands-track"><div class="brands-group"><span class="c-ls">LS</span><span class="c-schneider">Schneider</span><span class="c-chint">CHINT</span><span class="c-tense">TENSE</span><span class="c-givis">GIVIS</span><span class="c-pollux">POLLUX</span><span class="c-rboosh">RBooSH™</span><span class="c-altech">Altech</span><span class="c-hyundai">HYUNDAI</span><span class="c-clay">CLAY</span><span class="c-unal">ÜNAL KABLO</span><span class="c-ako">AKO</span><span class="c-ls">LS</span><span class="c-schneider">Schneider</span><span class="c-chint">CHINT</span><span class="c-tense">TENSE</span><span class="c-givis">GIVIS</span><span class="c-pollux">POLLUX</span><span class="c-rboosh">RBooSH™</span><span class="c-altech">Altech</span></div><div class="brands-group" aria-hidden="true"><span class="c-ls">LS</span><span class="c-schneider">Schneider</span><span class="c-chint">CHINT</span><span class="c-tense">TENSE</span><span class="c-givis">GIVIS</span><span class="c-pollux">POLLUX</span><span class="c-rboosh">RBooSH™</span><span class="c-altech">Altech</span><span class="c-hyundai">HYUNDAI</span><span class="c-clay">CLAY</span><span class="c-unal">ÜNAL KABLO</span><span class="c-ako">AKO</span><span class="c-ls">LS</span><span class="c-schneider">Schneider</span><span class="c-chint">CHINT</span><span class="c-tense">TENSE</span><span class="c-givis">GIVIS</span><span class="c-pollux">POLLUX</span><span class="c-rboosh">RBooSH™</span><span class="c-altech">Altech</span></div></div></div>
+
+<h1 id="page_title">منتجاتنا ⚡</h1><p style="text-align:center;color:var(--text2);" id="page_desc">جميع المنتجات RBooSH™ - 20 منتج - الأحدث كاميرا وهمية 77 LED</p>
 <div class="visitor-counter"><div class="live-dot"></div><span id="counterText"></span></div>
+
+<div class="search-box"><input type="text" id="searchInput" placeholder="🔍 ابحث عن منتج... كشاف، قاطع، كابل" oninput="render()"></div>
+
 <div class="filter-bar" id="filterBar"></div>
 <div class="install-banner"><h2 id="banner_title" style="color:#fff">🎥 خدمة التركيب المجاني مع أبو سليمان</h2><p id="banner_text" style="color:#e0f2ff;font-size:14px;margin:8px 0 12px">اشتريت وما عرفت تركب؟ افتح كاميرا واتساب وأنا أركب معك خطوة بخطوة مجاناً!</p><a id="banner_btn" style="background:#fff;color:#1e3a8a;padding:10px 20px;border-radius:25px;text-decoration:none;font-weight:bold;display:inline-block" href="https://wa.me/4915216839609?text=مرحبا ابو سليمان، بدي مساعدة بتركيب القطعة 🎥" target="_blank">📹 اتصل فيديو الآن</a></div>
 <div class="products-grid" id="productsGrid"></div>
@@ -70,7 +82,6 @@ function toggleTheme(){document.body.classList.toggle('light');let l=document.bo
 let currentLang='ar';let currentFilter='all';
 const BRAND = "RBooSH<sup>™</sup> ✓";
 const products=[
-// ===== الأحدث أولاً - 20 منتج - كشاف كاميرا وهمية الجديد =====
 {name_ar:"كشاف طاقة شمسية على شكل كاميرا مراقبة وهمية 77 LED - حساس حركة - ريموت - RBooSH™",name_en:"Solar Fake Security Camera Light 77 LED - Motion Sensor - Remote - RBooSH™",name_ku:"Ronahiya Rojê Şeklê Kamera 77 LED - Sensor Tevger - Remote - RBooSH™",cat:"solar",image:"https://i.postimg.cc/D0cr57cX/Picsart-26-09-25-17-08-48-610.jpg",desc_ar:"كشاف إضاءة يعمل بالطاقة الشمسية مصمم ليشبه كاميرا المراقبة | مميزات الإضاءة: يحتوي على 77 مصباح LED توفر إضاءة قوية عند اكتشاف الحركة | الوظيفة المزدوجة: يعمل ككشاف إضاءة ومحاكاة لكاميرا أمان وهمية لردع المتسللين | التحكم والتركيب: يأتي مع جهاز تحكم عن بعد (ريموت) لتغيير الأوضاع، مصمم للتركيب الخارجي ومقاوم للعوامل الجوية | RBooSH™",desc_en:"Solar Light Fake Security Camera Design | 77 LED Powerful Light with Motion Detection | Dual Function: Light + Fake Security Camera to Deter Intruders | With Remote Control to Change Modes, Outdoor Waterproof | RBooSH™",desc_ku:"Ronahiya Rojê Şeklê Kamera | 77 LED Ronahiya Bi Hêz bi Sensor Tevger | Dual: Light + Fake Camera | Remote Control",badge_ar:"كاميرا وهمية 77 LED 🔥 جديد",badge_en:"Fake Camera 77 LED 🔥 New",badge_ku:"Fake Camera 77 LED 🔥 Nû"},
 {name_ar:"كشاف CLAY محمول CL-CHL50W 50W LED IP66 مع حامل ومقبض - SMD LED - RBooSH™",name_en:"CLAY CL-CHL50W Portable 50W LED Floodlight IP66 with Stand SMD LED - RBooSH™",name_ku:"Ronahiya CLAY CL-CHL50W 50W Portable IP66 SMD LED - RBooSH™",cat:"solar",image:"https://i.postimg.cc/gjbXf10w/IMG-20260719-WA0018(1).jpg",desc_ar:"كشاف LED محمول بقوة 50 واط وموديل CL-CHL50W من العلامة التجارية CLAY | IP66 مقاوم للغبار والماء القوي | تصميم متين مع إطار أسود ومقبض مدمج | SMD LED إضاءة قوية وساطعة للمساحات المفتوحة | متوفر - RBooSH™",desc_en:"CLAY CL-CHL50W Portable 50W LED Floodlight | IP66 Water & Dust Proof | Durable Black Frame + Handle | SMD LED Powerful Bright Light | Available - RBooSH™",desc_ku:"CLAY CL-CHL50W 50W Portable LED IP66 | Durable Black Frame + Handle | SMD LED",badge_ar:"CLAY 50W محمول IP66 💡 جديد",badge_en:"CLAY 50W Portable IP66 💡 New",badge_ku:"CLAY 50W Portable IP66 💡 Nû"},
 {name_ar:"انفرتر شاحن BTS EP-4200H - 4.2K BMS LITHIUM 12V/24V - MPPT 4000W - RBooSH™",name_en:"BTS Inverter Charger EP-4200H - 4.2K BMS Lithium 12V/24V MPPT 4000W - RBooSH™",name_ku:"Invertera BTS EP-4200H - 4.2K BMS Lithium 12V/24V MPPT 4000W - RBooSH™",cat:"solar",image:"https://i.postimg.cc/3RptT53D/IMG-20260809-WA0043.jpg",desc_ar:"INVERTER CHARGER BTS EP-4200H POWER 4.2K BMS LITHIUM | Max Load 12V-2300W/24V-4200W | Max Battery 12V-192A/24V-175A | AC Output 230VAC 50/60Hz 18.2A | AC Input 230VAC 28.6A Max 100A Default 30A | Solar Rated 4000W Max 100A Nominal 240VDC VOC 500VDC Imax PV 18A MPPT 55~500VDC | IP21 Class I CE RoHS | S/N 042014202508150562 MADE IN CHINA",desc_en:"BTS EP-4200H INVERTER CHARGER 4.2K BMS LITHIUM 12V/24V | Max Load 12V-2300W/24V-4200W | Battery 192A/175A | AC 230V 18.2A | AC Input 28.6A Max 100A | Solar 4000W 100A 240VDC VOC 500V MPPT 55-500V IP21 | S/N 042014202508150562",desc_ku:"BTS EP-4200H 4.2K BMS Lithium 12V/24V MPPT 4000W | VOC 500V MPPT 55-500V | IP21",badge_ar:"BTS EP-4200H 4.2K BMS 🔋 جديد",badge_en:"BTS EP-4200H 4.2K BMS 🔋 New",badge_ku:"BTS EP-4200H 4.2K BMS 🔋 Nû"},
@@ -93,62 +104,33 @@ const products=[
 {name_ar:"قاطع DC التاج 63A",name_en:"Altech DC Breaker 63A",name_ku:"Şalter DC Altech 63A",cat:"protection",image:"https://i.postimg.cc/KksCDstS/Picsart-26-09-23-23-51-15-827.jpg",desc_ar:"قاطع DC أصلي",desc_en:"Original DC breaker",desc_ku:"Şalter DC orjînal",badge_ar:"الأصلي 🔥",badge_en:"Original 🔥",badge_ku:"Orjînal 🔥"}
 ];
 const tr={
-ar:{dir:'rtl',menu_title:'القائمة',menu_home:'الرئيسية',menu_products:'المنتجات',menu_calc:'الحاسبة',page_title:'منتجاتنا ⚡',page_desc:'جميع المنتجات RBooSH™ - 20 منتج - الأحدث كاميرا وهمية 77 LED',banner_title:'🎥 خدمة التركيب المجاني مع أبو سليمان',banner_text:'اشتريت وما عرفت تركب؟ افتح كاميرا واتساب وأنا أركب معك خطوة بخطوة مجاناً!',banner_btn:'📹 اتصل فيديو الآن',f_all:'الكل (20)',f_smart:'ذكي WiFi 📶',f_solar:'طاقة شمسية ☀️',f_ind:'صناعي ⚡',f_pro:'حماية 🛡️',btn_wa:'اطلب عبر واتساب 📱'},
-en:{dir:'ltr',menu_title:'Menu',menu_home:'Home',menu_products:'Products',menu_calc:'Calculator',page_title:'Our Products ⚡',page_desc:'All RBooSH™ Products - 20 items - Latest Fake Camera 77 LED',banner_title:'🎥 Free Installation Support',banner_text:'Bought it and don\'t know how to install? Open video call and I will guide you step by step for free!',banner_btn:'📹 Video Call Now',f_all:'All (20)',f_smart:'Smart WiFi 📶',f_solar:'Solar ☀️',f_ind:'Industrial ⚡',f_pro:'Protection 🛡️',btn_wa:'Order on WhatsApp 📱'},
-ku:{dir:'ltr',menu_title:'Menu',menu_home:'Mal',menu_products:'Berhem',menu_calc:'Hesabker',page_title:'Berhemên Me ⚡',page_desc:'Hemû Berhemên RBooSH™ - 20 berhem',banner_title:'🎥 Xizmeta Girêdanê ya Belaş',banner_text:'Te kirî û nizane çawa girêbidî? Vîdyo veke û ez ê alîkariya te bikim belaş!',banner_btn:'📹 Vîdyo Banga Niha',f_all:'Hemû (20)',f_smart:'Jîr WiFi 📶',f_solar:'Rojê ☀️',f_ind:'Pîşesazî ⚡',f_pro:'Parastin 🛡️',btn_wa:'Li WhatsApp Bixwaze 📱'}
+ar:{dir:'rtl',menu_title:'القائمة',menu_home:'الرئيسية',menu_products:'المنتجات',menu_calc:'الحاسبة',page_title:'منتجاتنا ⚡',page_desc:'جميع المنتجات RBooSH™ - 20 منتج - الأحدث كاميرا وهمية 77 LED',banner_title:'🎥 خدمة التركيب المجاني مع أبو سليمان',banner_text:'اشتريت وما عرفت تركب؟ افتح كاميرا واتساب وأنا أركب معك خطوة بخطوة مجاناً!',banner_btn:'📹 اتصل فيديو الآن',f_all:'الكل (20)',f_smart:'ذكي WiFi 📶',f_solar:'طاقة شمسية ☀️',f_ind:'صناعي ⚡',f_pro:'حماية 🛡️',btn_wa:'اطلب عبر واتساب 📱',search_ph:'🔍 ابحث عن منتج... كشاف، قاطع، كابل'},
+en:{dir:'ltr',menu_title:'Menu',menu_home:'Home',menu_products:'Products',menu_calc:'Calculator',page_title:'Our Products ⚡',page_desc:'All RBooSH™ Products - 20 items',banner_title:'🎥 Free Installation Support',banner_text:'Bought it and don\'t know how to install? Open video call and I will guide you step by step for free!',banner_btn:'📹 Video Call Now',f_all:'All (20)',f_smart:'Smart WiFi 📶',f_solar:'Solar ☀️',f_ind:'Industrial ⚡',f_pro:'Protection 🛡️',btn_wa:'Order on WhatsApp 📱',search_ph:'🔍 Search product... light, breaker, cable'},
+ku:{dir:'ltr',menu_title:'Menu',menu_home:'Mal',menu_products:'Berhem',menu_calc:'Hesabker',page_title:'Berhemên Me ⚡',page_desc:'Hemû Berhemên RBooSH™ - 20 berhem',banner_title:'🎥 Xizmeta Girêdanê ya Belaş',banner_text:'Te kirî û nizane çawa girêbidî? Vîdyo veke û ez ê alîkariya te bikim belaş!',banner_btn:'📹 Vîdyo Banga Niha',f_all:'Hemû (20)',f_smart:'Jîr WiFi 📶',f_solar:'Rojê ☀️',f_ind:'Pîşesazî ⚡',f_pro:'Parastin 🛡️',btn_wa:'Li WhatsApp Bixwaze 📱',search_ph:'🔍 Li berhemê bigere...'}
 };
-const fakeData={
-ar:{gov:["دمشق","حلب","الحسكة","القامشلي","حمص","إدلب"],names:["أحمد","محمد","علي","خالد","سليمان","عمر"],ordered:"طلب الآن",ago:"منذ",min:"دقيقة",viewing:"شخص يشاهدون الآن"},
-en:{gov:["Damascus","Aleppo","Hasakah"],names:["Ahmad","Ali","Khaled"],ordered:"just ordered",ago:"ago",min:"min",viewing:"people viewing now"},
-ku:{gov:["Şam","Hesekê","Qamişlo"],names:["Ehmed","Elî","Xalid"],ordered:"niha xwest",ago:"berî",min:"deqe",viewing:"kes niha dibînin"}
-};
-function setLang(lang){
-currentLang=lang;let t=tr[lang];
-document.documentElement.lang=lang;document.documentElement.dir=t.dir;
-document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
-document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
-document.getElementById('menu_title').innerText=t.menu_title;document.getElementById('menu_home').innerText=t.menu_home;document.getElementById('menu_products').innerText=t.menu_products;document.getElementById('menu_calc').innerText=t.menu_calc;
-document.getElementById('page_title').innerText=t.page_title;document.getElementById('page_desc').innerText=t.page_desc;document.getElementById('banner_title').innerText=t.banner_title;document.getElementById('banner_text').innerText=t.banner_text;document.getElementById('banner_btn').innerText=t.banner_btn;
-render();updateCounter();
-}
+const fakeData={ar:{gov:["دمشق","حلب","الحسكة","القامشلي","حمص","إدلب"],names:["أحمد","محمد","علي","خالد","سليمان","عمر"],ordered:"طلب الآن",ago:"منذ",min:"دقيقة",viewing:"شخص يشاهدون الآن"},en:{gov:["Damascus","Aleppo","Hasakah"],names:["Ahmad","Ali","Khaled"],ordered:"just ordered",ago:"ago",min:"min",viewing:"people viewing now"},ku:{gov:["Şam","Hesekê","Qamişlo"],names:["Ehmed","Elî","Xalid"],ordered:"niha xwest",ago:"berî",min:"deqe",viewing:"kes niha dibînin"}};
+function setLang(lang){currentLang=lang;let t=tr[lang];document.documentElement.lang=lang;document.documentElement.dir=t.dir;document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');document.getElementById('menu_title').innerText=t.menu_title;document.getElementById('menu_home').innerText=t.menu_home;document.getElementById('menu_products').innerText=t.menu_products;document.getElementById('menu_calc').innerText=t.menu_calc;document.getElementById('page_title').innerText=t.page_title;document.getElementById('page_desc').innerText=t.page_desc;document.getElementById('banner_title').innerText=t.banner_title;document.getElementById('banner_text').innerText=t.banner_text;document.getElementById('banner_btn').innerText=t.banner_btn;document.getElementById('searchInput').placeholder=t.search_ph;render();updateCounter();}
 function filterProducts(cat){currentFilter=cat;render();}
 function render(){
-let t=tr[currentLang];
+let t=tr[currentLang];let search=document.getElementById('searchInput').value.toLowerCase();
 let fb=document.getElementById('filterBar');
 fb.innerHTML=`<button class="filter-btn ${currentFilter=='all'?'active':''}" onclick="filterProducts('all')">${t.f_all}</button><button class="filter-btn ${currentFilter=='smart'?'active':''}" onclick="filterProducts('smart')">${t.f_smart}</button><button class="filter-btn ${currentFilter=='solar'?'active':''}" onclick="filterProducts('solar')">${t.f_solar}</button><button class="filter-btn ${currentFilter=='industrial'?'active':''}" onclick="filterProducts('industrial')">${t.f_ind}</button><button class="filter-btn ${currentFilter=='protection'?'active':''}" onclick="filterProducts('protection')">${t.f_pro}</button>`;
 const grid=document.getElementById('productsGrid');grid.innerHTML="";
 let filtered = currentFilter=='all'? products : products.filter(p=>p.cat==currentFilter);
+if(search) filtered = filtered.filter(p=> (p.name_ar+p.name_en+p.desc_ar).toLowerCase().includes(search));
 filtered.forEach(p=>{
 let name=currentLang=='en'?p.name_en:currentLang=='ku'?p.name_ku:p.name_ar;
 let desc=currentLang=='en'?p.desc_en:currentLang=='ku'?p.desc_ku:p.desc_ar;
 let badge=currentLang=='en'?p.badge_en:currentLang=='ku'?p.badge_ku:p.badge_ar;
-let viewers=Math.floor(Math.random()*175)+25; // 25-199
+let viewers=Math.floor(Math.random()*175)+25;
 let waMsg=currentLang=='en'?'Hello Sulaiman, I want ':'مرحبا سليمان اريد ';if(currentLang=='ku') waMsg='Merheba Silêman, ez dixwazim ';
 grid.innerHTML+=`<div class="product-card"><div class="live-view"><i></i> ${viewers} 👀</div><img src="${p.image}" alt="${name}" loading="lazy"><div class="product-body"><span class="product-badge">${badge}</span><h3>${name}</h3><p class="product-desc">${desc}</p><div class="product-price">${BRAND}</div><a class="btn-wa" href="https://wa.me/4915216839609?text=${waMsg}${encodeURIComponent(name)}" target="_blank">${t.btn_wa}</a></div></div>`;
 });
 }
 function openMenu(){document.getElementById('sidebar').classList.add('open');document.getElementById('overlay').classList.add('show');}
 function closeMenu(){document.getElementById('sidebar').classList.remove('open');document.getElementById('overlay').classList.remove('show');}
-function updateCounter(){
-  let extra = products.length * 12; // 20*12=240
-  let base = 300 + extra; // 540
-  let maxAdd = 700 - base; // 160
-  if(maxAdd < 50) maxAdd = 50;
-  let viewers = base + Math.floor(Math.random()*(maxAdd+1));
-  if(viewers > 700) viewers = 700;
-  if(viewers < 300) viewers = 300;
-  let d=fakeData[currentLang];
-  document.getElementById('counterText').innerText=`🔥 ${viewers} ${d.viewing} ( +${extra} )`;
-}
-function showPopup(){
-let p=products[Math.floor(Math.random()*products.length)];let d=fakeData[currentLang];let n=d.names[Math.floor(Math.random()*d.names.length)];let g=d.gov[Math.floor(Math.random()*d.gov.length)];let mins=Math.floor(Math.random()*8)+1;
-let pName=currentLang=='en'?p.name_en:currentLang=='ku'?p.name_ku:p.name_ar;
-document.getElementById('popupImg').src=p.image;
-if(currentLang=='ar'){document.getElementById('popupTitle').innerHTML=`✅ ${n} من ${g} ${d.ordered}`;document.getElementById('popupDesc').innerHTML=`${pName} - ${d.ago} ${mins} ${d.min} ✅`;}
-else if(currentLang=='en'){document.getElementById('popupTitle').innerHTML=`✅ ${n} from ${g} ${d.ordered}`;document.getElementById('popupDesc').innerHTML=`${pName} - ${mins} ${d.min} ${d.ago} ✅`;}
-else{document.getElementById('popupTitle').innerHTML=`✅ ${n} ji ${g} ${d.ordered}`;document.getElementById('popupDesc').innerHTML=`${pName} - ${d.ago} ${mins} ${d.min} ✅`;}
-document.getElementById('orderPopup').classList.add('show');setTimeout(()=>{document.getElementById('orderPopup').classList.remove('show');},4500);
-}
+function updateCounter(){let extra = products.length * 12;let base = 300 + extra;let maxAdd = 700 - base;if(maxAdd < 50) maxAdd = 50;let viewers = base + Math.floor(Math.random()*(maxAdd+1));if(viewers > 700) viewers = 700;if(viewers < 300) viewers = 300;let d=fakeData[currentLang];document.getElementById('counterText').innerText=`🔥 ${viewers} ${d.viewing} ( +${extra} )`;}
+function showPopup(){let p=products[Math.floor(Math.random()*products.length)];let d=fakeData[currentLang];let n=d.names[Math.floor(Math.random()*d.names.length)];let g=d.gov[Math.floor(Math.random()*d.gov.length)];let mins=Math.floor(Math.random()*8)+1;let pName=currentLang=='en'?p.name_en:currentLang=='ku'?p.name_ku:p.name_ar;document.getElementById('popupImg').src=p.image;if(currentLang=='ar'){document.getElementById('popupTitle').innerHTML=`✅ ${n} من ${g} ${d.ordered}`;document.getElementById('popupDesc').innerHTML=`${pName.substring(0,30)}... - ${d.ago} ${mins} ${d.min} ✅`;}else if(currentLang=='en'){document.getElementById('popupTitle').innerHTML=`✅ ${n} from ${g} ${d.ordered}`;document.getElementById('popupDesc').innerHTML=`${pName.substring(0,30)}... - ${mins} ${d.min} ${d.ago} ✅`;}else{document.getElementById('popupTitle').innerHTML=`✅ ${n} ji ${g} ${d.ordered}`;document.getElementById('popupDesc').innerHTML=`${pName.substring(0,30)}... - ${d.ago} ${mins} ${d.min} ✅`;}document.getElementById('orderPopup').classList.add('show');setTimeout(()=>{document.getElementById('orderPopup').classList.remove('show');},4500);}
 setTimeout(showPopup,3000);setInterval(showPopup,8500);render();updateCounter();setInterval(updateCounter,4000);
 </script>
 </body>
