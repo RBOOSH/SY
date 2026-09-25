@@ -39,31 +39,43 @@ h2{color:var(--blue);text-align:center;font-size:26px;margin-bottom:15px;text-sh
 .order-popup img{width:50px;height:50px;border-radius:10px;object-fit:cover}
 .visitor-counter span{font-size:14px;color:#00ff88;font-weight:bold;-webkit-text-stroke:0.35px #000;paint-order:stroke fill;text-shadow:0.5px 0.5px 0 #000,-0.5px 0.5px 0 #000,0.5px -0.5px 0 #000,-0.5px -0.5px 0 #000,0 0 8px rgba(0,255,136,0.6)}
 
-/* ✅ شريط الشركات - الوان اصلية + بطيء + بدون فراغ */
-.brands-bar{width:100%;background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:15px auto;padding:14px 0;direction:ltr}
+/* ✅ شريط مميز - اطار لامع مضيء + الوان معدلة */
+.brands-bar{
+  width:100%;
+  background:var(--card);
+  border:2px solid var(--blue);
+  border-radius:12px;
+  overflow:hidden;
+  margin:15px auto;
+  padding:14px 0;
+  direction:ltr;
+  box-shadow:0 0 12px rgba(0,191,255,0.4),0 0 25px rgba(0,191,255,0.2),inset 0 0 10px rgba(0,191,255,0.05);
+  animation:borderGlow 2s infinite alternate;
+  position:relative;
+}
+@keyframes borderGlow{
+  from{box-shadow:0 0 10px rgba(0,191,255,0.4),0 0 20px rgba(0,191,255,0.15);border-color:#00bfff}
+  to{box-shadow:0 0 18px rgba(0,191,255,0.8),0 0 35px rgba(0,191,255,0.35),inset 0 0 12px rgba(0,191,255,0.1);border-color:#33d1ff}
+}
 .brands-track{display:flex;width:max-content;animation:scrollBrands 60s linear infinite}
 .brands-bar:hover.brands-track{animation-play-state:paused}
 .brands-group{display:flex;flex-shrink:0;align-items:center}
 .brands-group span{font-size:14px;font-weight:900;padding:0 24px;white-space:nowrap;position:relative;-webkit-text-stroke:0.3px #000;paint-order:stroke fill;text-shadow:0.5px 0.5px 0 #000}
-.brands-group span::after{content:'•';position:absolute;right:-2px;color:#fff;opacity:0.3;font-size:10px}
+.brands-group span::after{content:'•';position:absolute;right:-2px;color:var(--blue);opacity:0.5;font-size:10px}
 
-/* الألوان الأصلية للشركات */
-.c-ls{color:#E60012} /* LS أحمر */
-.c-schneider{color:#3DCD58} /* Schneider أخضر */
-.c-chint{color:#005BAC} /* CHINT أزرق */
-.c-tense{color:#FF0000} /* TENSE أحمر */
-.c-givis{color:#0072BC} /* GIVIS أزرق */
-.c-pollux{color:#FF6600} /* POLLUX برتقالي */
-.c-rboosh{color:#00bfff;text-shadow:0 0 10px rgba(0,191,255,0.8),0.5px 0.5px 0 #000!important}
-.c-altech{color:#FFCC00} /* Altech أصفر/ذهبي */
-.c-hyundai{color:#002C5F} /* HYUNDAI أزرق غامق - بالنهاري يبين */
-.c-clay{color:#FF6A00} /* CLAY برتقالي */
-.c-unal{color:#CC0000} /* ÜNAL أحمر */
-.c-ako{color:#E30613} /* AKO أحمر */
-
-body.light.brands-group span{ -webkit-text-stroke:0; text-shadow:none; font-weight:900}
-body.light.c-hyundai{color:#002C5F}
-body.light.c-ls{color:#CC0000}
+/* الألوان الجديدة حسب طلبك */
+.c-ls{color:#005BAC} /* LS أزرق */
+.c-schneider{color:#3DCD58}
+.c-chint{color:#005BAC}
+.c-tense{color:#0072BC} /* TENSE أزرق */
+.c-givis{color:#0072BC}
+.c-pollux{color:#FF6600}
+.c-rboosh{color:#00bfff;text-shadow:0 0 12px rgba(0,191,255,0.9),0.5px 0.5px 0 #000!important}
+.c-altech{color:#E30613} /* Altech أحمر */
+.c-hyundai{color:#002C5F}
+.c-clay{color:#FF6A00}
+.c-unal{color:#CC0000}
+.c-ako{color:#E30613}
 
 @keyframes scrollBrands{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 </style>
