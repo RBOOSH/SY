@@ -39,16 +39,19 @@ h2{color:var(--blue);text-align:center;font-size:26px;margin-bottom:15px;text-sh
 .order-popup{position:fixed;bottom:20px;right:20px;background:var(--card);border:1px solid #25D366;border-radius:15px;padding:12px 16px;display:flex;align-items:center;gap:12px;z-index:2000;transform:translateX(400px);transition:0.5s;max-width:320px;box-shadow:0 0 20px rgba(37,211,102,0.4)}
 .order-popup.show{transform:translateX(0)}[dir="ltr"].order-popup{right:auto;left:20px;transform:translateX(-400px)}[dir="ltr"].order-popup.show{transform:translateX(0)}
 .order-popup img{width:50px;height:50px;border-radius:10px;object-fit:cover}
-/* ✨ نص واضح : حواف سوداء رفيعة */
 .visitor-counter span{font-size:14px;color:#00ff88;font-weight:bold;-webkit-text-stroke:0.35px #000;paint-order:stroke fill;text-shadow:0.5px 0.5px 0 #000,-0.5px 0.5px 0 #000,0.5px -0.5px 0 #000,-0.5px -0.5px 0 #000,0 0 8px rgba(0,255,136,0.6);animation:softGlow 2.5s infinite alternate}
 @keyframes softGlow{from{text-shadow:0.5px 0.5px 0 #000,-0.5px 0.5px 0 #000,0.5px -0.5px 0 #000,-0.5px -0.5px 0 #000,0 0 5px rgba(0,255,136,0.4)}to{text-shadow:0.5px 0.5px 0 #000,-0.5px 0.5px 0 #000,0.5px -0.5px 0 #000,-0.5px -0.5px 0 #000,0 0 9px rgba(0,255,136,0.7),0 0 14px rgba(0,255,136,0.35)}}
 
-/* ✅ المستطيل الرفيع المتحرك للشركات */
-.brands-bar{width:100%;background:linear-gradient(90deg,#0a0a0a,#111);border:1px solid var(--blue2);border-left:3px solid var(--blue);border-right:3px solid var(--blue);border-radius:8px;overflow:hidden;white-space:nowrap;margin:15px auto;padding:10px 0;box-shadow:0 0 15px rgba(0,191,255,0.15);position:relative}
-.brands-track{display:inline-block;animation:scrollBrands 25s linear infinite;will-change:transform}
-.brands-track span{font-size:13px;font-weight:bold;color:#aaa;margin:0 18px;letter-spacing:0.5px;transition:0.3s}
-.brands-track span:hover{color:var(--blue);text-shadow:0 0 8px var(--blue)}
-.brands-track.highlight{color:#00ff88;-webkit-text-stroke:0.3px #000;text-shadow:0 0 6px rgba(0,255,136,0.5)}
+/* ✅ شريط الشركات - متواصل بدون فراغ + متناسق مع الوان الصفحة */
+.brands-bar{width:100%;background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:15px auto;padding:10px 0;box-shadow:0 0 15px rgba(0,191,255,0.1);position:relative}
+.brands-track{display:flex;gap:0;width:max-content;animation:scrollBrands 22s linear infinite}
+.brands-group{display:flex;align-items:center;gap:0;white-space:nowrap}
+.brands-group span{font-size:13px;font-weight:bold;color:var(--text2);padding:0 20px;letter-spacing:0.5px;position:relative}
+.brands-group span::after{content:'•';position:absolute;right:-3px;color:var(--blue);opacity:0.6}
+.brands-group span.rboosh{color:var(--blue);text-shadow:0 0 8px rgba(0,191,255,0.4)}
+body.light.brands-bar{background:#ffffff;border:1px solid #dbe3ff;box-shadow:0 2px 10px rgba(30,58,138,0.08)}
+body.light.brands-group span{color:#555}
+body.light.brands-group span.rboosh{color:#1e3a8a;text-shadow:none}
 @keyframes scrollBrands{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 .brands-bar:hover.brands-track{animation-play-state:paused}
 </style>
@@ -60,11 +63,15 @@ h2{color:var(--blue);text-align:center;font-size:26px;margin-bottom:15px;text-sh
 <div class="container">
 <div class="logo"><img src="logo.png" alt="RBooSH"></div>
 
-<!-- ✅ شريط الشركات المتحرك الجديد -->
+<!-- ✅ شريط شركات متواصل بدون فراغ -->
 <div class="brands-bar">
 <div class="brands-track">
-<span>LS</span> • <span>Schneider</span> • <span>CHINT</span> • <span>TENSE</span> • <span>GIVIS</span> • <span>POLLUX</span> • <span class="highlight">RBooSH™</span> • <span>Altech</span> • <span>HYUNDAI</span> • <span>CLAY</span> • <span>ÜNAL KABLO</span> • <span>AKO</span> •
-<span>LS</span> • <span>Schneider</span> • <span>CHINT</span> • <span>TENSE</span> • <span>GIVIS</span> • <span>POLLUX</span> • <span class="highlight">RBooSH™</span> • <span>Altech</span> • <span>HYUNDAI</span> • <span>CLAY</span> • <span>ÜNAL KABLO</span> • <span>AKO</span> •
+<div class="brands-group">
+<span>LS</span><span>Schneider</span><span>CHINT</span><span>TENSE</span><span>GIVIS</span><span>POLLUX</span><span class="rboosh">RBooSH™</span><span>Altech</span><span>HYUNDAI</span><span>CLAY</span><span>ÜNAL KABLO</span><span>AKO</span>
+</div>
+<div class="brands-group" aria-hidden="true">
+<span>LS</span><span>Schneider</span><span>CHINT</span><span>TENSE</span><span>GIVIS</span><span>POLLUX</span><span class="rboosh">RBooSH™</span><span>Altech</span><span>HYUNDAI</span><span>CLAY</span><span>ÜNAL KABLO</span><span>AKO</span>
+</div>
 </div>
 </div>
 
