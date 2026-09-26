@@ -2,17 +2,20 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RBooSH™ | Calculator</title>
+<title>RBooSH™ الحاسبة</title>
 <style>
 :root{--bg:#000;--card:#111;--card2:#0a0a0a;--text:#fff;--text2:#aaa;--border:#222;--blue:#00bfff;--blue2:#1e3a8a}
 body.light{--bg:#f5f7fb;--card:#fff;--card2:#eef2ff;--text:#111;--text2:#555;--border:#dbe3ff}
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Tahoma',sans-serif}
 body{background:var(--bg);color:var(--text);line-height:1.8;transition:0.4s}
-.header-top{position:fixed;top:0;left:0;right:0;background:var(--bg);border-bottom:2px solid var(--blue2);padding:10px 12px;z-index:1000;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.container{max-width:900px;margin:0 auto;padding:20px;padding-top:80px}
+h2{color:var(--blue);text-align:center;font-size:26px;margin-bottom:15px;text-shadow:0 0 15px rgba(0,191,255,0.6)}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:25px;margin:20px 0}
+.header-top{position:fixed;top:0;left:0;right:0;background:var(--bg);border-bottom:2px solid var(--blue2);padding:10px 12px;z-index:1000;display:flex;justify-content:space-between;align-items:center}
 .header-left{display:flex;align-items:center;gap:12px}
 .menu-btn{font-size:28px;background:none;border:none;color:var(--blue);cursor:pointer}
 .clock-wrap{display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--border);border-radius:28px;padding:5px 12px 5px 7px}
-.analog-clock{width:52px;height:52px;border:2.5px solid var(--blue);border-radius:50%;position:relative;background:#fff;box-shadow:0 0 12px rgba(0,191,255,0.7);flex-shrink:0;overflow:hidden}
+.analog-clock{width:52px;height:52px;border:2.5px solid var(--blue);border-radius:50%;position:relative;background:#fff;flex-shrink:0;overflow:hidden}
 .clock-logo{position:absolute;left:50%;top:72%;width:48px;height:18px;transform:translate(-50%,-50%);object-fit:contain;pointer-events:none;z-index:2}
 .clock-center{position:absolute;top:50%;left:50%;width:8px;height:8px;background:#00bfff;border-radius:50%;transform:translate(-50%,-50%);z-index:10;border:1.5px solid #fff}
 .hand{position:absolute;bottom:50%;left:50%;transform-origin:50% 100%;border-radius:3px;z-index:5}
@@ -25,109 +28,130 @@ body{background:var(--bg);color:var(--text);line-height:1.8;transition:0.4s}
 .header-actions{display:flex;gap:8px;align-items:center}
 .theme-btn{background:var(--card);border:1px solid var(--border);color:var(--text);width:38px;height:38px;border-radius:10px;cursor:pointer;font-size:18px}
 .lang-switch{display:flex;gap:6px}.lang-btn{background:var(--card);color:var(--text2);border:1px solid var(--border);padding:6px 12px;border-radius:8px;cursor:pointer;font-weight:bold;font-size:12px}.lang-btn.active{background:var(--blue);color:#000}
-.sidebar{position:fixed;top:0;right:-300px;width:280px;height:100%;background:var(--card);border-left:2px solid var(--blue2);z-index:1001;transition:0.3s;padding:20px;overflow-y:auto}.sidebar.open{right:0}[dir="ltr"].sidebar{right:auto;left:-300px;border-right:2px solid var(--blue2)}[dir="ltr"].sidebar.open{left:0}
-.sidebar-clock-section{text-align:center;padding:15px 0 10px 0}
-.analog-clock-large{width:180px;height:180px;border:4px solid var(--blue);border-radius:50%;position:relative;background:#fff;box-shadow:0 0 25px rgba(0,191,255,0.9);margin:0 auto;overflow:hidden}
-.clock-logo-large{position:absolute;left:50%;top:73%;width:175px;height:58px;transform:translate(-50%,-50%);object-fit:contain;pointer-events:none;z-index:2}
-.clock-center-large{position:absolute;top:50%;left:50%;width:14px;height:14px;background:var(--blue);border-radius:50%;transform:translate(-50%,-50%);z-index:10;border:2px solid #fff}
-.hand-large{position:absolute;bottom:50%;left:50%;transform-origin:50% 100%;border-radius:4px;z-index:5}
-.hour-hand-large{width:6px;height:45px;background:#111;margin-left:-3px}
-.minute-hand-large{width:5px;height:65px;background:#111;margin-left:-2.5px}
-.second-hand-large{width:2px;height:75px;background:#ff0000;margin-left:-1px}
-.sidebar-date{margin-top:15px;display:flex;flex-direction:column;gap:4px}
-.sidebar-day{font-size:18px;font-weight:900;color:var(--blue)}
-.sidebar-date-num{font-size:15px;color:var(--text2);font-weight:bold}
-.sidebar-divider{height:2px;background:linear-gradient(90deg,transparent,var(--blue),transparent);margin:15px 0;border:none}
-.sidebar-title{color:var(--blue);text-align:center;margin:10px 0 15px 0;font-size:18px}
-.sidebar a{display:block;padding:14px;color:var(--text);text-decoration:none;border-bottom:1px solid var(--border)}
+.sidebar{position:fixed;top:0;right:-300px;width:280px;height:100%;background:var(--card);border-left:2px solid var(--blue2);z-index:1001;transition:0.3s;padding:20px}.sidebar.open{right:0}[dir="ltr"].sidebar{right:auto;left:-300px}[dir="ltr"].sidebar.open{left:0}
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);display:none;z-index:1000}.overlay.show{display:block}
-.container{max-width:650px;margin:30px auto;padding:20px;padding-top:85px}
-.logo{text-align:center;margin:10px 0 20px 0}.logo img{max-width:280px;width:100%;filter:drop-shadow(0 0 20px rgba(0,191,255,0.6))}
-.calculator{background:var(--card);padding:30px;border-radius:16px;border:2px solid var(--blue2);box-shadow:0 0 25px rgba(0,191,255,0.15)}
-h2{color:var(--blue);margin-bottom:10px;text-align:center;font-size:22px;text-shadow:0 0 15px rgba(0,191,255,0.6)}
-.subtitle{text-align:center;color:var(--text2);font-size:14px;margin-bottom:25px}
-.visitor-counter{background:var(--card);border:1px dashed var(--blue);border-radius:12px;padding:12px 18px;margin:0 auto 20px auto;text-align:center;max-width:550px;display:flex;align-items:center;justify-content:center;gap:10px}
-.live-dot{width:10px;height:10px;background:#ff0000;border-radius:50%;animation:livePulse 1s infinite}
-@keyframes livePulse{0%{box-shadow:0 0 0 0 rgba(255,0,0,0.7)}70%{box-shadow:0 0 0 8px rgba(255,0,0,0)}100%{box-shadow:0 0 0 0 rgba(255,0,0,0)}}
-.visitor-counter span{font-size:14px;color:#00ff88;font-weight:bold}
-.calc-form{display:flex;flex-direction:column;gap:18px}
-.calc-form label{font-size:14px;color:var(--text2);text-align:right}[dir="ltr"].calc-form label{text-align:left}
-.calc-form input,.calc-form select{padding:14px;border-radius:10px;border:1px solid var(--border);background:var(--card2);color:var(--text);font-size:16px;width:100%;text-align:right}
-[dir="ltr"].calc-form input,[dir="ltr"].calc-form select{text-align:left}
-.calc-form button{background:linear-gradient(135deg,var(--blue2),var(--blue));color:#fff;padding:16px;border:none;border-radius:10px;font-weight:bold;cursor:pointer;font-size:16px;margin-top:5px}
-.calc-form button.whatsapp{background:linear-gradient(135deg,#25D366,#128C7E);border:1px solid #25D366}
-.calc-result{background:var(--card2);border:1px solid var(--blue2);padding:20px;border-radius:12px;margin-top:20px;text-align:right}
-[dir="ltr"].calc-result{text-align:left}
-.calc-result h4{color:var(--blue);margin-bottom:10px}
-footer{text-align:center;padding:20px;color:#777;font-size:12px}
-.order-popup{position:fixed;bottom:20px;right:20px;background:var(--card);border:1px solid #25D366;border-radius:15px;padding:12px 16px;display:flex;align-items:center;gap:12px;z-index:2000;transform:translateX(400px);transition:0.5s;max-width:320px}
-.order-popup.show{transform:translateX(0)}.order-popup img{width:50px;height:50px;border-radius:10px;object-fit:cover}
-[dir="ltr"].order-popup{right:auto;left:20px;transform:translateX(-400px)}[dir="ltr"].order-popup.show{transform:translateX(0)}
+.btn-calc{background:linear-gradient(135deg,var(--blue2),var(--blue));color:#fff;padding:14px 25px;border-radius:25px;border:none;cursor:pointer;font-weight:bold;width:100%;margin-top:10px;box-shadow:0 0 15px rgba(0,191,255,0.4)}
+/* Tabs */
+.tabs{display:flex;gap:8px;margin:20px 0;justify-content:center;flex-wrap:wrap}
+.tab-btn{background:var(--card);border:1px solid var(--border);color:var(--text2);padding:10px 18px;border-radius:25px;cursor:pointer;font-weight:bold;font-size:13px;transition:0.3s}
+.tab-btn.active{background:var(--blue);color:#000;border-color:var(--blue);box-shadow:0 0 12px rgba(0,191,255,0.5)}
+.tab-content{display:none}
+.tab-content.active{display:block}
+.input-group{margin:12px 0}
+.input-group label{display:block;font-size:13px;color:var(--text2);margin-bottom:6px;font-weight:bold}
+.input-group input,.input-group select{width:100%;background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:12px;color:var(--text);font-size:14px}
+.input-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:600px){.input-row{grid-template-columns:1fr}}
+.result-box{background:var(--card2);border:1px dashed var(--blue);border-radius:12px;padding:18px;margin-top:15px;text-align:center}
+.result-box b{color:var(--blue);font-size:20px}
+.result-box small{display:block;color:var(--text2);font-size:11px;margin-top:6px}
+.badge-ok{background:rgba(0,255,136,0.15);border:1px solid #00ff88;color:#00ff88;padding:6px 12px;border-radius:20px;font-size:12px;display:inline-block;margin-top:10px}
+.badge-bad{background:rgba(255,60,60,0.15);border:1px solid #ff3c3c;color:#ff3c3c;padding:6px 12px;border-radius:20px;font-size:12px;display:inline-block;margin-top:10px}
 </style>
 </head>
 <body>
 <div class="header-top">
-<div class="header-left">
-<button class="menu-btn" onclick="openMenu()">☰</button>
-<div class="clock-wrap">
-<div class="analog-clock"><img src="logo.png" alt="RBooSH" class="clock-logo"><div class="hand hour-hand" id="hourHand"></div><div class="hand minute-hand" id="minuteHand"></div><div class="hand second-hand" id="secondHand"></div><div class="clock-center"></div></div>
-<div class="date-info"><span class="day-name" id="dayName">السبت</span><span class="date-num" id="dateNum">26 أيلول</span></div>
-</div>
-</div>
-<div class="header-actions"><button class="theme-btn" id="themeBtn" onclick="toggleTheme()">☀️</button><div class="lang-switch"><button class="lang-btn active" onclick="setLang('ar')">AR</button><button class="lang-btn" onclick="setLang('en')">EN</button><button class="lang-btn" onclick="setLang('ku')">KU</button></div></div>
+  <div class="header-left">
+    <button class="menu-btn" onclick="openMenu()">☰</button>
+    <div class="clock-wrap">
+      <div class="analog-clock"><img src="logo.png" class="clock-logo"><div class="hand hour-hand" id="hourHand"></div><div class="hand minute-hand" id="minuteHand"></div><div class="hand second-hand" id="secondHand"></div><div class="clock-center"></div></div>
+      <div class="date-info"><span class="day-name" id="dayName">السبت</span><span class="date-num" id="dateNum">26 أيلول</span></div>
+    </div>
+  </div>
+  <div class="header-actions"><button class="theme-btn" id="themeBtn" onclick="toggleTheme()">☀️</button><div class="lang-switch"><button class="lang-btn active" onclick="setLang('ar')">AR</button><button class="lang-btn" onclick="setLang('en')">EN</button><button class="lang-btn" onclick="setLang('ku')">KU</button></div></div>
 </div>
 <div class="overlay" id="overlay" onclick="closeMenu()"></div>
 <div class="sidebar" id="sidebar">
-<button style="background:none;border:none;color:var(--text);font-size:28px;float:left;cursor:pointer" onclick="closeMenu()">×</button>
-<div class="sidebar-clock-section">
-<div class="analog-clock-large"><img src="logo.png" alt="RBooSH" class="clock-logo-large"><div class="hand-large hour-hand-large" id="hourHandLarge"></div><div class="hand-large minute-hand-large" id="minuteHandLarge"></div><div class="hand-large second-hand-large" id="secondHandLarge"></div><div class="clock-center-large"></div></div>
-<div class="sidebar-date"><span class="sidebar-day" id="sidebarDay">السبت</span><span class="sidebar-date-num" id="sidebarDate">26 أيلول 2026</span></div>
+  <button style="background:none;border:none;color:var(--text);font-size:28px;float:left;cursor:pointer" onclick="closeMenu()">×</button>
+  <h3 style="color:var(--blue);text-align:center;margin:40px 0 15px 0">القائمة</h3>
+  <a href="index.html" style="display:block;padding:14px;color:var(--text);text-decoration:none;border-bottom:1px solid var(--border)">الرئيسية</a>
+  <a href="products.html" style="display:block;padding:14px;color:var(--text);text-decoration:none;border-bottom:1px solid var(--border)">المنتجات 🛒</a>
+  <a href="calculator.html" style="display:block;padding:14px;color:var(--blue);text-decoration:none;border-bottom:1px solid var(--border)">الحاسبة</a>
 </div>
-<hr class="sidebar-divider">
-<h3 class="sidebar-title" id="menu_title">القائمة</h3>
-<a href="index.html" id="menu_home">الرئيسية</a><a href="products.html" id="menu_products">المنتجات</a><a href="calculator.html" id="menu_calc">الحاسبة</a>
-</div>
+
 <div class="container">
-<div class="logo"><img src="logo.png" alt="RBooSH™"></div>
-<div class="visitor-counter"><div class="live-dot"></div><span id="counterText"></span></div>
-<div class="calculator">
-<h2 id="title">حاسبة تقدير المواد الكهربائية</h2>
-<p class="subtitle" id="subtitle">احسب كمياتك التقريبية وارسلها مباشرة لواتساب سليمان ربوشي</p>
-<div class="calc-form">
-<label id="label_place">نوع المكان</label>
-<select id="place_type"><option value="house" id="opt_house">بيت سكني</option><option value="shop" id="opt_shop">محل تجاري</option><option value="factory" id="opt_factory">معمل / ورشة</option></select>
-<label id="label_area">المساحة بالمتر المربع</label><input type="number" id="area" placeholder="مثال: 150">
-<label id="label_rooms">عدد الغرف / الاقسام</label><input type="number" id="rooms" placeholder="مثال: 4">
-<button onclick="calcOnly()" id="btn_calc">1. احسب الكميات ⚡</button>
-<div id="result" class="calc-result" style="display:none;"></div>
-<div id="contactBox" style="display:none;border-top:1px dashed var(--border);padding-top:20px;margin-top:10px">
-<label id="label_name">اسمك</label><input type="text" id="c_name" placeholder="اكتب اسمك هنا">
-<label id="label_phone">رقم هاتفك</label><input type="tel" id="c_phone" placeholder="09xxxxxxxx">
-<button onclick="sendToWhatsApp()" class="whatsapp" id="btn_send" style="width:100%">2. ارسال التفاصيل لواتساب سليمان ربوشي 📱</button>
+<h2 id="calc_main_title">حاسبات RBooSH™ الهندسية</h2>
+<p style="text-align:center;color:var(--text2);font-size:13px" id="calc_main_desc">احسب احتياجاتك بدقة قبل الشراء - نوفر عليك الوقت والمال</p>
+
+<div class="tabs">
+  <button class="tab-btn active" onclick="openTab(1)" id="tab1_btn">📐 حاسبة الكميات</button>
+  <button class="tab-btn" onclick="openTab(2)" id="tab2_btn">⚡ حاسبة هبوط الجهد</button>
+</div>
+
+<!-- TAB 1 -->
+<div id="tab1" class="tab-content active">
+<div class="card">
+<h2 style="font-size:20px" id="t1_title">حاسبة كميات المواد</h2>
+<div class="input-row">
+  <div class="input-group"><label id="t1_l1">مساحة البيت (م²)</label><input type="number" id="area" value="100" oninput="calc1()"></div>
+  <div class="input-group"><label id="t1_l2">عدد الغرف</label><input type="number" id="rooms" value="3" oninput="calc1()"></div>
+</div>
+<div class="result-box"><div id="res1">سيتم حساب ~ 250 متر كبل 2.5mm و 120 متر 1.5mm</div><small id="t1_note">تقدير مبدئي - يختلف حسب المخطط</small></div>
+<a href="https://wa.me/963966436341" class="btn-calc" style="display:block;text-align:center;text-decoration:none;margin-top:15px" id="t1_btn">اطلب عرض سعر على الواتساب</a>
 </div>
 </div>
+
+<!-- TAB 2 NEW -->
+<div id="tab2" class="tab-content">
+<div class="card">
+<h2 style="font-size:20px" id="t2_title">⚡ حاسبة هبوط الجهد</h2>
+<p style="text-align:center;color:var(--text2);font-size:12px;margin-bottom:15px" id="t2_desc">تأكد من مقطع الكبل قبل ما تمد 50 متر ويصير عندك ضعف كهربا</p>
+
+<div class="input-row">
+  <div class="input-group"><label id="t2_l1">طول الكبل (متر) ذهاب فقط</label><input type="number" id="vd_length" value="30" oninput="calcVD()"></div>
+  <div class="input-group"><label id="t2_l2">التيار (أمبير)</label><input type="number" id="vd_current" value="20" oninput="calcVD()"></div>
+</div>
+<div class="input-row">
+  <div class="input-group"><label id="t2_l3">مقطع الكبل (mm²)</label><select id="vd_section" onchange="calcVD()"><option value="1.5">1.5</option><option value="2.5" selected>2.5</option><option value="4">4</option><option value="6">6</option><option value="10">10</option><option value="16">16</option><option value="25">25</option></select></div>
+  <div class="input-group"><label id="t2_l4">نوع الشبكة</label><select id="vd_phase" onchange="calcVD()"><option value="1" selected>220V سنغل فاز</option><option value="3">380V ثري فاز</option></select></div>
+</div>
+<div class="input-group"><label id="t2_l5">مادة النحاس</label><select id="vd_mat" onchange="calcVD()"><option value="0.0178" selected>نحاس - RBooSH™ أصلي</option><option value="0.0282">ألمنيوم</option></select></div>
+
+<div class="result-box" id="vd_result">
+<b id="vd_value">2.1% هبوط</b>
+<div id="vd_status"><span class="badge-ok">✅ ممتاز - مسموح لحد 3%</span></div>
+<small id="vd_detail">الجهد الضايع: 4.6V - الجهد الواصل: 215.4V</small>
+</div>
+
+<p style="text-align:center;margin-top:15px;font-size:12px;color:var(--text2)" id="t2_footer">الجودة المضمونة هي أساس عملنا في RBooSH™ منذ التأسيس - نحاس حقيقي 100%</p>
+<a href="https://wa.me/963966436341" class="btn-calc" style="display:block;text-align:center;text-decoration:none" id="t2_btn">استشر مهندس RBooSH™ مجاناً</a>
 </div>
 </div>
-<div class="order-popup" id="orderPopup"><img id="popupImg" src=""><div style="flex:1"><b id="popupTitle" style="color:#25D366;font-size:13px;display:block"></b><small id="popupDesc" style="color:var(--text2);font-size:11px"></small></div><span style="color:#777;cursor:pointer" onclick="document.getElementById('orderPopup').classList.remove('show')">×</span></div>
-<footer>© 2026 RBooSH™</footer>
+
+</div>
+
 <script>
-let currentLang='ar';let lastCalc={};
-const productsImg=["https://i.postimg.cc/KYjDpfyj/IMG-20260902-WA0081.jpg","https://i.postimg.cc/qvkLy0bm/IMG-20260902-WA0020.jpg","https://i.postimg.cc/PvdzN16d/IMG-20260828-WA0002-1.jpg"];
-const data={ar:{gov:["دمشق","حلب","حمص","الحسكة","اللاذقية","طرطوس","حماة","درعا","دير الزور","السويداء","إدلب","الرقة","القامشلي","ريف دمشق"],names:["أحمد","محمد","علي","خالد","حسن","عمر","يوسف","عبدالله","مصطفى","سامر"],ordered:"حسب الآن",calc:"حسب",ago:"منذ",min:"دقيقة",viewing:"شخص يحسبون الآن",orders:"حسبة اليوم من"},en:{gov:["Damascus","Aleppo","Homs","Hasakah","Latakia","Tartus","Hama","Daraa","Deir Ezzor","Idlib","Raqqa","Qamishli"],names:["Ahmad","Mohammad","Ali","Khaled","Hassan","Omar","Youssef"],ordered:"calculated now",calc:"estimated",ago:"ago",min:"min",viewing:"people calculating now",orders:"calculations today from"},ku:{gov:["Şam","Heleb","Hims","Hesekê","Laziqiye","Tartus","Hama","Dera","Reqqa","Qamişlo"],names:["Ehmed","Mihemed","Elî","Xalid","Hesen","Omer"],ordered:"niha hesab kir",calc:"texmîn kir",ago:"berî",min:"deqe",viewing:"kes niha dihejmêrin",orders:"hesab îro ji"}};
-const translations={ar:{dir:'rtl',menu_title:'القائمة',menu_home:'الرئيسية',menu_products:'المنتجات',menu_calc:'الحاسبة',title:'حاسبة تقدير المواد الكهربائية',subtitle:'احسب كمياتك التقريبية وارسلها مباشرة لواتساب سليمان ربوشي',place:'نوع المكان',house:'بيت سكني',shop:'محل تجاري',factory:'معمل / ورشة',area:'المساحة بالمتر المربع',area_ph:'مثال: 150',rooms:'عدد الغرف / الاقسام',rooms_ph:'مثال: 4',calc:'1. احسب الكميات ⚡',name:'اسمك',name_ph:'اكتب اسمك هنا',phone:'رقم هاتفك',phone_ph:'09xxxxxxxx',send:'2. ارسال التفاصيل لواتساب سليمان ربوشي 📱',result_title:'التقدير التقريبي لـ',cable:'كابل',breaker:'قواطع',socket:'برايز',switch:'مفاتيح',panel:'لوحات',piece:'حبة',meter:'متر',panel_unit:'لوحة',alert:'الرجاء ادخال المساحة وعدد الغرف',alert2:'الرجاء ادخال الاسم والرقم',days:["الأحد","الاثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت"],months:["كانون الثاني","شباط","آذار","نيسان","أيار","حزيران","تموز","آب","أيلول","تشرين الأول","تشرين الثاني","كانون الأول"],whatsapp_msg:'🔌 طلب تقدير جديد من حاسبة RBooSH%0A%0Aالاسم: %NAME%%0Aالتلفون: %PHONE%%0Aنوع المكان: %PLACE%%0Aالمساحة: %AREA% متر%0Aعدد الغرف: %ROOMS%%0A%0A*الكميات المطلوبة:*%0A- 2.5mm: %C25% متر%0A- 4mm: %C4% متر%0A- 6mm: %C6% متر%0A- قواطع: %BR% حبة%0A- برايز: %SO% حبة%0A- مفاتيح: %SW% حبة%0A- لوحات: %PA% لوحة'},en:{dir:'ltr',menu_title:'Menu',menu_home:'Home',menu_products:'Products',menu_calc:'Calculator',title:'Electrical Materials Estimator',subtitle:'Estimate your materials and send directly to Sulaiman Rbooshi on WhatsApp',place:'Place Type',house:'Residential House',shop:'Commercial Shop',factory:'Workshop / Factory',area:'Area in Square Meters',area_ph:'Ex: 150',rooms:'Number of Rooms / Sections',rooms_ph:'Ex: 4',calc:'1. Calculate Quantities ⚡',name:'Your Name',name_ph:'Enter your name',phone:'Your Phone',phone_ph:'09xxxxxxxx',send:'2. Send Details to Sulaiman on WhatsApp 📱',result_title:'Estimated Materials for',cable:'Cable',breaker:'Breakers',socket:'Sockets',switch:'Switches',panel:'Panels',piece:'pcs',meter:'m',panel_unit:'panel',alert:'Please enter area and number of rooms',alert2:'Please enter name and phone',days:["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],months:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],whatsapp_msg:'🔌 New Estimate Request from RBooSH Calculator%0A%0AName: %NAME%%0APhone: %PHONE%%0APlace Type: %PLACE%%0AArea: %AREA% m2%0ANo. of Rooms: %ROOMS%%0A%0A*Required Materials:*%0A- 2.5mm Cable: %C25% m%0A- 4mm Cable: %C4% m%0A- 6mm Cable: %C6% m%0A- Breakers: %BR% pcs%0A- Sockets: %SO% pcs%0A- Switches: %SW% pcs%0A- Panels: %PA% panel'},ku:{dir:'ltr',menu_title:'Menu',menu_home:'Mal',menu_products:'Berhem',menu_calc:'Hesabker',title:'Hesabkera Texmîna Materyalên Elektrîkê',subtitle:'Materyalên xwe texmîn bikin û rasterast bişînin WhatsApp a Sulaiman Rbooshi',place:'Cureyê Cihê',house:'Xaniyê Niștecihî',shop:'Dûkan',factory:'Kargeh / Atolyê',area:'Rûber bi Metre Çargoşe',area_ph:'Mînak: 150',rooms:'Hejmara Jûran / Beşan',rooms_ph:'Mînak: 4',calc:'1. Hejmaran Hesab Bikin ⚡',name:'Navê Te',name_ph:'Navê xwe binivîse',phone:'Hejmara Telefona Te',phone_ph:'09xxxxxxxx',send:'2. Hûrguliyan bişînin WhatsApp 📱',result_title:'Materyalên Texmînkirî ji bo',cable:'Kablo',breaker:'Sîgorte',socket:'Priz',switch:'Şalter',panel:'Tablo',piece:'danê',meter:'m',panel_unit:'tablo',alert:'Ji kerema xwe rûber û hejmara jûran binivîse',alert2:'Ji kerema xwe nav û telefon binivîse',days:["Yekşem","Duşem","Sêşem","Çarşem","Pêncşem","În","Şemî"],months:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],whatsapp_msg:'🔌 Daxwaza Texmînê ya Nû ji Hesabkera RBooSH%0A%0ANav: %NAME%%0ATelefon: %PHONE%%0ACureyê Cihê: %PLACE%%0ARûber: %AREA% m2%0AHejmara Jûran: %ROOMS%%0A%0A*Materyalên Pêwîst:*%0A- Kablo 2.5mm: %C25% m%0A- Kablo 4mm: %C4% m%0A- Kablo 6mm: %C6% m%0A- Sîgorte: %BR% danê%0A- Priz: %SO% danê%0A- Şalter: %SW% danê%0A- Tablo: %PA% tablo'}};
-function toggleTheme(){document.body.classList.toggle('light');let isLight=document.body.classList.contains('light');localStorage.setItem('rboosh_theme', isLight?'light':'dark');document.getElementById('themeBtn').innerText=isLight?'🌙':'☀️';}
-(function(){let saved=localStorage.getItem('rboosh_theme');if(saved==='light'){document.body.classList.add('light');document.getElementById('themeBtn').innerText='🌙';}else{document.getElementById('themeBtn').innerText='☀️';}})();
-function updateClock(){let now=new Date();let h=now.getHours()%12;let m=now.getMinutes();let s=now.getSeconds();document.getElementById('hourHand').style.transform=`translateX(-50%) rotate(${(h+m/60)*30}deg)`;document.getElementById('minuteHand').style.transform=`translateX(-50%) rotate(${m*6}deg)`;document.getElementById('secondHand').style.transform=`translateX(-50%) rotate(${s*6}deg)`;document.getElementById('hourHandLarge').style.transform=`translateX(-50%) rotate(${(h+m/60)*30}deg)`;document.getElementById('minuteHandLarge').style.transform=`translateX(-50%) rotate(${m*6}deg)`;document.getElementById('secondHandLarge').style.transform=`translateX(-50%) rotate(${s*6}deg)`;let t=translations[currentLang];document.getElementById('dayName').innerText=t.days[now.getDay()];document.getElementById('dateNum').innerText=now.getDate()+" "+t.months[now.getMonth()];document.getElementById('sidebarDay').innerText=t.days[now.getDay()];document.getElementById('sidebarDate').innerText=now.getDate()+" "+t.months[now.getMonth()]+" "+now.getFullYear();}
-function setLang(lang){currentLang=lang;const t=translations[lang];document.documentElement.lang=lang;document.documentElement.dir=t.dir;document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');document.getElementById('menu_title').innerText=t.menu_title;document.getElementById('menu_home').innerText=t.menu_home;document.getElementById('menu_products').innerText=t.menu_products;document.getElementById('menu_calc').innerText=t.menu_calc;document.getElementById('title').innerText=t.title;document.getElementById('subtitle').innerText=t.subtitle;document.getElementById('label_place').innerText=t.place;document.getElementById('opt_house').innerText=t.house;document.getElementById('opt_shop').innerText=t.shop;document.getElementById('opt_factory').innerText=t.factory;document.getElementById('label_area').innerText=t.area;document.getElementById('area').placeholder=t.area_ph;document.getElementById('label_rooms').innerText=t.rooms;document.getElementById('rooms').placeholder=t.rooms_ph;document.getElementById('btn_calc').innerText=t.calc;document.getElementById('label_name').innerText=t.name;document.getElementById('c_name').placeholder=t.name_ph;document.getElementById('label_phone').innerText=t.phone;document.getElementById('c_phone').placeholder=t.phone_ph;document.getElementById('btn_send').innerText=t.send;updateClock();updateCounter();}
+function toggleTheme(){document.body.classList.toggle('light');localStorage.setItem('rboosh_theme',document.body.classList.contains('light')?'light':'dark');document.getElementById('themeBtn').innerText=document.body.classList.contains('light')?'🌙':'☀️';}
+(function(){if(localStorage.getItem('rboosh_theme')==='light'){document.body.classList.add('light');document.getElementById('themeBtn').innerText='🌙';}})();
 function openMenu(){document.getElementById('sidebar').classList.add('open');document.getElementById('overlay').classList.add('show');}
 function closeMenu(){document.getElementById('sidebar').classList.remove('open');document.getElementById('overlay').classList.remove('show');}
-function calcOnly(){const t=translations[currentLang];let place=document.getElementById('place_type').value;let area=document.getElementById('area').value;let rooms=document.getElementById('rooms').value;if(!area||!rooms){alert(t.alert);return;}let factor=place=="factory"?2.2:place=="shop"?1.6:1.3;let placeName=document.getElementById('place_type').options[document.getElementById('place_type').selectedIndex].text;lastCalc={cable2_5:Math.round(area*factor),cable4:Math.round(rooms*30),cable6:Math.round(rooms*15),breaker:Math.ceil(rooms/2)+3,sockets:rooms*(place=="factory"?6:4),switches:rooms*2,panels:place=="factory"?2:1,placeName,area,rooms};document.getElementById('result').style.display='block';document.getElementById('result').innerHTML=`<h4>${t.result_title} ${lastCalc.placeName}:</h4><p>- ${t.cable} 2.5mm: <b>${lastCalc.cable2_5} ${t.meter}</b></p><p>- ${t.cable} 4mm: <b>${lastCalc.cable4} ${t.meter}</b></p><p>- ${t.cable} 6mm: <b>${lastCalc.cable6} ${t.meter}</b></p><p>- ${t.breaker}: <b>${lastCalc.breaker} ${t.piece}</b></p><p>- ${t.socket}: <b>${lastCalc.sockets} ${t.piece}</b></p><p>- ${t.switch}: <b>${lastCalc.switches} ${t.piece}</b></p><p>- ${t.panel}: <b>${lastCalc.panels} ${t.panel_unit}</b></p>`;document.getElementById('contactBox').style.display='block';}
-function sendToWhatsApp(){const t=translations[currentLang];let name=document.getElementById('c_name').value;let phone=document.getElementById('c_phone').value;if(!name||!phone){alert(t.alert2);return;}let message=t.whatsapp_msg.replace('%NAME%',name).replace('%PHONE%',phone).replace('%PLACE%',lastCalc.placeName).replace('%AREA%',lastCalc.area).replace('%ROOMS%',lastCalc.rooms).replace('%C25%',lastCalc.cable2_5).replace('%C4%',lastCalc.cable4).replace('%C6%',lastCalc.cable6).replace('%BR%',lastCalc.breaker).replace('%SO%',lastCalc.sockets).replace('%SW%',lastCalc.switches).replace('%PA%',lastCalc.panels);window.open(`https://wa.me/4915216839609?text=${message}`,'_blank');}
-function updateCounter(){let viewers=Math.floor(Math.random()*80)+120;let orders=Math.floor(Math.random()*15)+22;let g1=data[currentLang].gov[Math.floor(Math.random()*data[currentLang].gov.length)];let g2=data[currentLang].gov[Math.floor(Math.random()*data[currentLang].gov.length)];if(currentLang==='ar') document.getElementById('counterText').innerHTML=`🔥 ${viewers} ${data.ar.viewing} - ${orders} ${data.ar.orders} ${g1}، ${g2} و باقي المحافظات`;else if(currentLang==='en') document.getElementById('counterText').innerHTML=`🔥 ${viewers} ${data.en.viewing} - ${orders} ${data.en.orders} ${g1}, ${g2} & others`;else document.getElementById('counterText').innerHTML=`🔥 ${viewers} ${data.ku.viewing} - ${orders} ${data.ku.orders} ${g1}, ${g2} û yên din`;}
+function updateClock(){let now=new Date();let h=now.getHours()%12,m=now.getMinutes(),s=now.getSeconds();document.getElementById('hourHand').style.transform=`translateX(-50%) rotate(${(h+m/60)*30}deg)`;document.getElementById('minuteHand').style.transform=`translateX(-50%) rotate(${m*6}deg)`;document.getElementById('secondHand').style.transform=`translateX(-50%) rotate(${s*6}deg)`;document.getElementById('dayName').innerText=["الأحد","الاثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت"][now.getDay()];document.getElementById('dateNum').innerText=now.getDate()+" "+["كانون الثاني","شباط","آذار","نيسان","أيار","حزيران","تموز","آب","أيلول","تشرين الأول","تشرين الثاني","كانون الأول"][now.getMonth()];}
 setInterval(updateClock,1000);updateClock();
-setInterval(updateCounter,4000);
-function showPopup(){let d=data[currentLang];let n=d.names[Math.floor(Math.random()*d.names.length)];let g=d.gov[Math.floor(Math.random()*d.gov.length)];let mins=Math.floor(Math.random()*8)+1;let img=productsImg[Math.floor(Math.random()*productsImg.length)];document.getElementById('popupImg').src=img;if(currentLang==='ar'){document.getElementById('popupTitle').innerHTML=`✅ ${n} من ${g} ${d.ordered}`;document.getElementById('popupDesc').innerHTML=`حسب ${Math.floor(Math.random()*200)+50} متر كابل - ${d.ago} ${mins} ${d.min} ✅`;}else if(currentLang==='en'){document.getElementById('popupTitle').innerHTML=`✅ ${n} from ${g} ${d.ordered}`;document.getElementById('popupDesc').innerHTML=`Calculated ${Math.floor(Math.random()*200)+50}m cable - ${mins} ${d.min} ${d.ago} ✅`;}else{document.getElementById('popupTitle').innerHTML=`✅ ${n} ji ${g} ${d.ordered}`;document.getElementById('popupDesc').innerHTML=`${Math.floor(Math.random()*200)+50}m kablo ${d.calc} - ${d.ago} ${mins} ${d.min} ✅`; }document.getElementById('orderPopup').classList.add('show');setTimeout(()=>{document.getElementById('orderPopup').classList.remove('show');},4500);}
-setTimeout(showPopup,3000);setInterval(showPopup,8500);updateCounter();
+
+function openTab(n){document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));document.getElementById('tab'+n).classList.add('active');document.getElementById('tab'+n+'_btn').classList.add('active');}
+
+function calc1(){let a=parseFloat(document.getElementById('area').value)||0;let r=parseFloat(document.getElementById('rooms').value)||0;let c25=Math.round(a*2.2 + r*10);let c15=Math.round(a*1.1 + r*8);document.getElementById('res1').innerHTML=`تحتاج تقريباً <b style="color:var(--blue)">${c25}m</b> كبل 2.5mm و <b style="color:var(--blue)">${c15}m</b> كبل 1.5mm`;}
+calc1();
+
+function calcVD(){
+let L=parseFloat(document.getElementById('vd_length').value)||0;
+let I=parseFloat(document.getElementById('vd_current').value)||0;
+let S=parseFloat(document.getElementById('vd_section').value)||1;
+let rho=parseFloat(document.getElementById('vd_mat').value)||0.0178;
+let phase=parseInt(document.getElementById('vd_phase').value);
+let Vbase= phase===1?220:380;
+let Vdrop = phase===1 ? (2*L*I*rho)/S : (Math.sqrt(3)*L*I*rho)/S;
+let Vpercent = (Vdrop/Vbase)*100;
+let Varrive = Vbase - Vdrop;
+let status = Vpercent <=3 ? `<span class="badge-ok">✅ ممتاز - ضمن المسموح (3%)</span>` : Vpercent <=5 ? `<span class="badge-ok" style="border-color:#ffaa00;color:#ffaa00">⚠️ مقبول لكن يفضل تكبير المقطع</span>` : `<span class="badge-bad">❌ هبوط عالي - كبر المقطع فوراً</span>`;
+document.getElementById('vd_value').innerText= Vpercent.toFixed(2)+"% هبوط";
+document.getElementById('vd_status').innerHTML=status;
+document.getElementById('vd_detail').innerText=`الجهد الضايع: ${Vdrop.toFixed(2)}V - الجهد الواصل: ${Varrive.toFixed(1)}V - كبل RBooSH™ نحاس ${S}mm²`;
+}
+calcVD();
+
+// تحقق اذا الرابط فيه #vd افتح التبويب 2 مباشرة
+if(window.location.hash==="#vd"){openTab(2);}
 </script>
 </body>
 </html>
