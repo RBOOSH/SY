@@ -40,7 +40,6 @@ body{background:var(--bg);color:var(--text);line-height:1.8;transition:0.4s}
 .sidebar-divider{height:2px;background:linear-gradient(90deg,transparent,var(--blue),transparent);margin:15px 0;border:none}
 .sidebar-title{color:var(--blue);text-align:center;margin:10px 0 15px 0;font-size:18px}
 .sidebar a{display:block;padding:14px;color:var(--text);text-decoration:none;border-bottom:1px solid var(--border)}
-/* RADIO */
 .radio-section{margin-top:20px;background:var(--card2);border:1.5px solid var(--blue2);border-radius:14px;padding:16px}
 .radio-title{color:var(--blue);font-size:15px;font-weight:900;text-align:center;margin-bottom:12px;display:flex;align-items:center;justify-content:center;gap:8px}
 .radio-player{display:flex;flex-direction:column;gap:10px}
@@ -94,7 +93,6 @@ footer{text-align:center;padding:20px;color:#777;font-size:12px}
 <h3 class="sidebar-title" id="menu_title">القائمة</h3>
 <a href="index.html" id="menu_home">الرئيسية</a><a href="products.html" id="menu_products">المنتجات</a><a href="calculator.html" id="menu_calc">الحاسبة</a>
 
-<!-- RADIO SECTION -->
 <div class="radio-section">
 <div class="radio-title">📻 <span id="radio_title">الراديو المباشر</span> <div class="radio-eq" id="radioEq"><span></span><span></span><span></span><span></span></div></div>
 <div class="radio-player">
@@ -113,10 +111,9 @@ footer{text-align:center;padding:20px;color:#777;font-size:12px}
 <div class="radio-vol">🔊<input type="range" min="0" max="1" step="0.05" value="0.8" id="volSlider" oninput="setVolume(this.value)"></div>
 </div>
 <div class="radio-status" id="radioStatus">اختر محطة واضغط تشغيل</div>
-<audio id="radioAudio" preload="none"></audio>
+<audio id="radioAudio" preload="none" crossorigin="anonymous"></audio>
 </div>
 </div>
-
 </div>
 
 <div class="container">
@@ -135,34 +132,39 @@ const productsImg=["https://i.postimg.cc/KYjDpfyj/IMG-20260902-WA0081.jpg","http
 const data={ar:{gov:["دمشق","حلب","حمص","الحسكة","اللاذقية","طرطوس","حماة","درعا","دير الزور","السويداء","إدلب","الرقة","القامشلي","ريف دمشق"],names:["أحمد","محمد","علي","خالد","حسن","عمر","يوسف","عبدالله","مصطفى","سامر"],ordered:"طلب الآن",ago:"منذ",min:"دقيقة",viewing:"شخص يشاهدون الآن",orders:"طلب اليوم من"},en:{gov:["Damascus","Aleppo","Homs","Hasakah","Latakia","Tartus","Hama","Daraa","Deir Ezzor","Idlib","Raqqa","Qamishli"],names:["Ahmad","Mohammad","Ali","Khaled","Hassan","Omar","Youssef"],ordered:"ordered now",ago:"ago",min:"min",viewing:"people viewing now",orders:"orders today from"},ku:{gov:["Şam","Heleb","Hims","Hesekê","Laziqiye","Tartus","Hama","Dera","Reqqa","Qamişlo"],names:["Ehmed","Mihemed","Elî","Xalid","Hesen","Omer"],ordered:"niha ferman kir",ago:"berî",min:"deqe",viewing:"kes niha temaşe dikin",orders:"ferman îro ji"}};
 const translations={ar:{dir:'rtl',menu_title:'القائمة',menu_home:'الرئيسية',menu_products:'المنتجات',menu_calc:'الحاسبة',hero_title:'RBooSH™ للمواد الكهربائية',hero_sub:'جودة أوروبية - خدمة سريعة - توصيل لكل سوريا والنمسا',radio_title:'الراديو المباشر',radio_play:'▶️ تشغيل',radio_pause:'⏸️ إيقاف',radio_choose:'اختر محطة واضغط تشغيل',radio_now:'يعمل الآن:',days:["الأحد","الاثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت"],months:["كانون الثاني","شباط","آذار","نيسان","أيار","حزيران","تموز","آب","أيلول","تشرين الأول","تشرين الثاني","كانون الأول"]},en:{dir:'ltr',menu_title:'Menu',menu_home:'Home',menu_products:'Products',menu_calc:'Calculator',hero_title:'RBooSH™ Electrical Materials',hero_sub:'European Quality - Fast Service - Delivery to Syria & Austria',radio_title:'Live Radio',radio_play:'▶️ Play',radio_pause:'⏸️ Pause',radio_choose:'Choose station and press play',radio_now:'Now playing:',days:["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],months:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]},ku:{dir:'ltr',menu_title:'Menu',menu_home:'Mal',menu_products:'Berhem',menu_calc:'Hesabker',hero_title:'RBooSH™ Materyalên Elektrîkê',hero_sub:'Qalîteya Ewropî - Xizmeta Bilez',radio_title:'Radyoya Zindî',radio_play:'▶️ Lêxe',radio_pause:'⏸️ Rawestîne',radio_choose:'Stasyonek hilbijêre',radio_now:'Niha:',days:["Yekşem","Duşem","Sêşem","Çarşem","Pêncşem","În","Şemî"],months:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]}};
 
-// RADIO LOGIC
 const stations=[
-{name:"Life Radio - النمسا",url:"https://liferadio.streamabc.net/lfr-live-mp3-192-8777000"},
-{name:"Arta FM 99.5 - عامودا / الحسكة",url:"https://stream.arta.fm/arta"},
-{name:"شام FM 92.3",url:"https://radioshamfm.grtvstream.com:8400/stream"},
-{name:"المدينة FM 101.5",url:"https://stream.almadinafm.com:8000/stream"},
-{name:"نينار FM 88.3",url:"https://stream.ninarfm.com:8000/stream"},
-{name:"Fuse FM 91.1",url:"https://stream.fuse.fm:8000/stream"},
-{name:"ميلودي FM 97.9",url:"https://stream.melodyfm-syria.com:8000/stream"},
-{name:"أرابيسك FM 102.3",url:"https://stream.arabesquefm.net:8000/stream"}
+{name:"Life Radio - النمسا",urls:["https://liferadio.stream.kapper.net:8000/liferadio","http://stream1.liferadio.at:8000/liferadio","http://liferadio.stream.kapper.net:8000/liferadio"],url:"https://liferadio.stream.kapper.net:8000/liferadio"},
+{name:"Arta FM 99.5 - عامودا / الحسكة",urls:["https://stream.arta.fm/arta","https://arta.luna.ps:8000/arta"],url:"https://stream.arta.fm/arta"},
+{name:"شام FM 92.3",urls:["https://radioshamfm.grtvstream.com:8400/stream","http://radioshamfm.grtvstream.com:8400/stream"],url:"https://radioshamfm.grtvstream.com:8400/stream"},
+{name:"المدينة FM 101.5",urls:["https://stream.almadinafm.com:8000/stream"],url:"https://stream.almadinafm.com:8000/stream"},
+{name:"نينار FM 88.3",urls:["https://stream.ninarfm.com:8000/stream"],url:"https://stream.ninarfm.com:8000/stream"},
+{name:"Fuse FM 91.1",urls:["https://stream.fuse.fm:8000/stream"],url:"https://stream.fuse.fm:8000/stream"},
+{name:"ميلودي FM 97.9",urls:["https://stream.melodyfm-syria.com:8000/stream"],url:"https://stream.melodyfm-syria.com:8000/stream"},
+{name:"أرابيسك FM 102.3",urls:["https://stream.arabesquefm.net:8000/stream"],url:"https://stream.arabesquefm.net:8000/stream"}
 ];
 let isPlaying=false;
+let currentUrlIndex=0;
 const audio=document.getElementById('radioAudio');
+function playWithFallback(idx, urlIdx=0){
+ let st=stations[idx];
+ let list=st.urls||[st.url];
+ if(urlIdx>=list.length){document.getElementById('radioStatus').innerText="❌ البث غير متاح حالياً، جرب محطة أخرى";return;}
+ audio.src=list[urlIdx];
+ currentUrlIndex=urlIdx;
+ audio.volume=document.getElementById('volSlider').value;
+ audio.play().then(()=>{
+   isPlaying=true;
+   document.getElementById('playBtn').innerText=translations[currentLang].radio_pause;
+   document.getElementById('playBtn').classList.add('playing');
+   document.getElementById('radioEq').classList.add('active');
+   document.getElementById('radioStatus').innerText=translations[currentLang].radio_now+" "+st.name;
+   localStorage.setItem('rboosh_radio_station',idx);
+ }).catch(()=>{playWithFallback(idx,urlIdx+1);});
+}
 function toggleRadio(){
  if(!isPlaying){
    let idx=document.getElementById('stationSelect').value;
-   audio.src=stations[idx].url;
-   audio.volume=document.getElementById('volSlider').value;
-   audio.play().then(()=>{
-     isPlaying=true;
-     document.getElementById('playBtn').innerText=translations[currentLang].radio_pause;
-     document.getElementById('playBtn').classList.add('playing');
-     document.getElementById('radioEq').classList.add('active');
-     document.getElementById('radioStatus').innerText=translations[currentLang].radio_now+" "+stations[idx].name;
-     localStorage.setItem('rboosh_radio_station',idx);
-   }).catch(()=>{
-     document.getElementById('radioStatus').innerText="❌ البث غير متاح حالياً، جرب محطة أخرى";
-   });
+   playWithFallback(parseInt(idx),0);
  }else{
    audio.pause();
    isPlaying=false;
@@ -173,17 +175,12 @@ function toggleRadio(){
  }
 }
 function changeStation(){
- if(isPlaying){
-   let idx=document.getElementById('stationSelect').value;
-   audio.src=stations[idx].url;
-   audio.play().catch(()=>{document.getElementById('radioStatus').innerText="❌ البث غير متاح حالياً";});
-   document.getElementById('radioStatus').innerText=translations[currentLang].radio_now+" "+stations[idx].name;
-   localStorage.setItem('rboosh_radio_station',idx);
- }else{
-   localStorage.setItem('rboosh_radio_station',document.getElementById('stationSelect').value);
- }
+ let idx=document.getElementById('stationSelect').value;
+ localStorage.setItem('rboosh_radio_station',idx);
+ if(isPlaying) playWithFallback(parseInt(idx),0);
 }
 function setVolume(v){audio.volume=v;}
+audio.addEventListener('error',()=>{if(isPlaying){let idx=document.getElementById('stationSelect').value;playWithFallback(parseInt(idx),currentUrlIndex+1);}});
 audio.addEventListener('ended',()=>{isPlaying=false;document.getElementById('playBtn').innerText=translations[currentLang].radio_play;document.getElementById('playBtn').classList.remove('playing');document.getElementById('radioEq').classList.remove('active');});
 
 function toggleTheme(){document.body.classList.toggle('light');let isLight=document.body.classList.contains('light');localStorage.setItem('rboosh_theme', isLight?'light':'dark');document.getElementById('themeBtn').innerText=isLight?'🌙':'☀️';}
