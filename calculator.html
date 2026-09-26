@@ -62,18 +62,15 @@ h2{color:var(--blue);text-align:center;font-size:26px;margin-bottom:15px;text-sh
 .live-dot{width:8px;height:8px;background:#00ff88;border-radius:50%;display:inline-block;animation:blink 1.2s infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
 .calc-counter{font-size:10px;color:var(--text2);margin-top:8px;text-align:center;opacity:0.8}
-/* نفس النبض تبع الرئيسية */
 .visitor-counter{background:var(--card);border:1px dashed var(--blue);border-radius:12px;padding:12px 18px;margin:0 auto 15px auto;text-align:center;max-width:650px;display:flex;align-items:center;justify-content:center;gap:10px}
-.visitor-counter span{font-size:14px;color:#00ff88;font-weight:bold;-webkit-text-stroke:0.35px #000;paint-order:stroke fill;text-shadow:0.5px 0.5px 0 #000,-0.5px 0.5px 0 #000,0.5px -0.5px 0 #000,-0.5px -0.5px 0 #000,0 0 8px rgba(0,255,136,0.6)}
+.visitor-counter span{font-size:14px;color:#00ff88;font-weight:bold}
 .live-dot-main{width:10px;height:10px;background:#ff0000;border-radius:50%;animation:livePulse 1s infinite}
 @keyframes livePulse{0%{box-shadow:0 0 0 0 rgba(255,0,0,0.7)}70%{box-shadow:0 0 0 8px rgba(255,0,0,0)}100%{box-shadow:0 0 0 0 rgba(255,0,0,0)}}
-.brands-bar{width:100%;background:var(--card);border:2px solid var(--blue);border-radius:12px;overflow:hidden;margin:0 auto 15px auto;padding:14px 0;direction:ltr;box-shadow:0 0 12px rgba(0,191,255,0.4);animation:borderGlow 2s infinite alternate}
-@keyframes borderGlow{from{box-shadow:0 0 10px rgba(0,191,255,0.4)}to{box-shadow:0 0 18px rgba(0,191,255,0.8)}}
+.brands-bar{width:100%;background:var(--card);border:2px solid var(--blue);border-radius:12px;overflow:hidden;margin:0 auto 15px auto;padding:14px 0;direction:ltr;box-shadow:0 0 12px rgba(0,191,255,0.4)}
 .brands-track{display:flex;width:max-content;animation:scrollBrands 60s linear infinite}
 .brands-group{display:flex;flex-shrink:0;align-items:center}
-.brands-group span{font-size:14px;font-weight:900;padding:0 24px;white-space:nowrap;position:relative;-webkit-text-stroke:0.3px #000}
-.brands-group span::after{content:'•';position:absolute;right:-2px;color:var(--blue);opacity:0.5;font-size:10px}
-.c-ls{color:#005BAC}.c-schneider{color:#3DCD58}.c-chint{color:#005BAC}.c-tense{color:#0072BC}.c-givis{color:#0072BC}.c-pollux{color:#FF6600}.c-rboosh{color:#00bfff;text-shadow:0 0 12px rgba(0,191,255,0.9)!important}.c-altech{color:#E30613}.c-hyundai{color:#002C5F}.c-clay{color:#FF6A00}.c-unal{color:#CC0000}.c-ako{color:#E30613}
+.brands-group span{font-size:14px;font-weight:900;padding:0 24px;white-space:nowrap}
+.c-ls{color:#005BAC}.c-schneider{color:#3DCD58}.c-chint{color:#005BAC}.c-tense{color:#0072BC}.c-givis{color:#0072BC}.c-pollux{color:#FF6600}.c-rboosh{color:#00bfff}.c-altech{color:#E30613}.c-hyundai{color:#002C5F}.c-clay{color:#FF6A00}.c-unal{color:#CC0000}.c-ako{color:#E30613}
 @keyframes scrollBrands{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 .order-popup{position:fixed;bottom:20px;right:20px;background:var(--card);border:1px solid #25D366;border-radius:15px;padding:12px 16px;display:flex;align-items:center;gap:12px;z-index:2000;transform:translateX(400px);transition:0.5s;max-width:320px}
 .order-popup.show{transform:translateX(0)}[dir="ltr"].order-popup{right:auto;left:20px;transform:translateX(-400px)}[dir="ltr"].order-popup.show{transform:translateX(0)}
@@ -84,57 +81,128 @@ h2{color:var(--blue);text-align:center;font-size:26px;margin-bottom:15px;text-sh
 <div class="header-top">
   <div class="header-left">
     <button class="menu-btn" onclick="openMenu()">☰</button>
-    <div class="clock-wrap"><div class="analog-clock"><img src="logo.png" alt="RBooSH" class="clock-logo"><div class="hand hour-hand" id="hourHand"></div><div class="hand minute-hand" id="minuteHand"></div><div class="hand second-hand" id="secondHand"></div><div class="clock-center"></div></div><div class="date-info"><span class="day-name" id="dayName">السبت</span><span class="date-num" id="dateNum">26 أيلول</span></div></div>
+    <div class="clock-wrap"><div class="analog-clock"><img src="logo.png" class="clock-logo"><div class="hand hour-hand" id="hourHand"></div><div class="hand minute-hand" id="minuteHand"></div><div class="hand second-hand" id="secondHand"></div><div class="clock-center"></div></div><div class="date-info"><span class="day-name" id="dayName">Saturday</span><span class="date-num" id="dateNum">26 Sep</span></div></div>
   </div>
-  <div class="header-actions"><button class="theme-btn" id="themeBtn" onclick="toggleTheme()">☀️</button><div class="lang-switch"><button class="lang-btn active" id="btn-ar" onclick="setLang('ar')">AR</button><button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button><button class="lang-btn" id="btn-ku" onclick="setLang('ku')">KU</button></div></div>
+  <div class="header-actions"><button class="theme-btn" id="themeBtn" onclick="toggleTheme()">🌙</button><div class="lang-switch"><button class="lang-btn" id="btn-ar" onclick="setLang('ar')">AR</button><button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button><button class="lang-btn" id="btn-ku" onclick="setLang('ku')">KU</button></div></div>
 </div>
 <div class="overlay" id="overlay" onclick="closeMenu()"></div>
-<div class="sidebar" id="sidebar">
-  <button style="background:none;border:none;color:var(--text);font-size:28px;float:left;cursor:pointer" onclick="closeMenu()">×</button>
-  <div class="sidebar-clock-section"><div class="analog-clock-large"><img src="logo.png" alt="RBooSH" class="clock-logo-large"><div class="hand-large hour-hand-large" id="hourHandLarge"></div><div class="hand-large minute-hand-large" id="minuteHandLarge"></div><div class="hand-large second-hand-large" id="secondHandLarge"></div><div class="clock-center-large"></div></div><div class="sidebar-date"><span class="sidebar-day" id="sidebarDay">السبت</span><span class="sidebar-date-num" id="sidebarDate">26 أيلول 2026</span></div></div>
-  <hr class="sidebar-divider"><h3 class="sidebar-title" id="menu_title">القائمة</h3>
-  <a href="index.html" id="menu_home">الرئيسية</a><a href="products.html" id="menu_products">المنتجات 🛒</a><a href="calculator.html" id="menu_calc">الحاسبة</a>
-</div>
+<div class="sidebar" id="sidebar"><button style="background:none;border:none;color:var(--text);font-size:28px;float:left;cursor:pointer" onclick="closeMenu()">×</button><div class="sidebar-clock-section"><div class="analog-clock-large"><img src="logo.png" class="clock-logo-large"><div class="hand-large hour-hand-large" id="hourHandLarge"></div><div class="hand-large minute-hand-large" id="minuteHandLarge"></div><div class="hand-large second-hand-large" id="secondHandLarge"></div><div class="clock-center-large"></div></div><div class="sidebar-date"><span class="sidebar-day" id="sidebarDay">Saturday</span><span class="sidebar-date-num" id="sidebarDate">26 Sep 2026</span></div></div><hr class="sidebar-divider"><h3 class="sidebar-title" id="menu_title">Menu</h3><a href="index.html" id="menu_home">Home</a><a href="products.html" id="menu_products">Products 🛒</a><a href="calculator.html" id="menu_calc">Calculator</a></div>
 
 <div class="container">
 <div class="logo"><img src="logo.png" alt="RBooSH"></div>
 <div class="brands-bar"><div class="brands-track"><div class="brands-group"><span class="c-ls">LS</span><span class="c-schneider">Schneider</span><span class="c-chint">CHINT</span><span class="c-tense">TENSE</span><span class="c-givis">GIVIS</span><span class="c-pollux">POLLUX</span><span class="c-rboosh">RBooSH™</span><span class="c-altech">Altech</span><span class="c-hyundai">HYUNDAI</span><span class="c-clay">CLAY</span><span class="c-unal">ÜNAL KABLO</span><span class="c-ako">AKO</span></div><div class="brands-group" aria-hidden="true"><span class="c-ls">LS</span><span class="c-schneider">Schneider</span><span class="c-chint">CHINT</span><span class="c-tense">TENSE</span><span class="c-givis">GIVIS</span><span class="c-pollux">POLLUX</span><span class="c-rboosh">RBooSH™</span><span class="c-altech">Altech</span><span class="c-hyundai">HYUNDAI</span><span class="c-clay">CLAY</span><span class="c-unal">ÜNAL KABLO</span><span class="c-ako">AKO</span></div></div></div>
-<div class="visitor-counter"><div class="live-dot-main"></div><span id="counterText">🔥 78 شخص يشاهدون الآن</span></div>
+<div class="visitor-counter"><div class="live-dot-main"></div><span id="counterText"></span></div>
 
-<h2 id="calc_main_title">حاسبات RBooSH™ الهندسية</h2>
-<p style="text-align:center;color:var(--text2);font-size:13px" id="calc_main_desc">احسب احتياجاتك بدقة قبل الشراء - نوفر عليك الوقت والمال</p>
-<div class="live-stats"><div class="live-item"><span class="live-dot"></span><span id="viewCount">👁️ 1,247</span> <span id="viewTxt">مشاهدة اليوم</span></div><div class="live-item"><span class="live-dot" style="background:#00bfff"></span><span id="liveCalc">⚡ 78</span> <span id="liveTxt">يحسب الآن</span></div></div>
+<h2 id="calc_main_title">RBooSH™ Engineering Calculators</h2>
+<p style="text-align:center;color:var(--text2);font-size:13px" id="calc_main_desc">Calculate accurately before buying</p>
+<div class="live-stats"><div class="live-item"><span class="live-dot"></span><span id="viewCount"></span> <span id="viewTxt"></span></div><div class="live-item"><span class="live-dot" style="background:#00bfff"></span><span id="liveCalc">⚡ 78</span> <span id="liveTxt"></span></div></div>
 
-<div class="tabs"><button class="tab-btn active" onclick="openTab(1)" id="tab1_btn">📐 حاسبة الكميات</button><button class="tab-btn" onclick="openTab(2)" id="tab2_btn">⚡ حاسبة هبوط الجهد</button></div>
+<div class="tabs"><button class="tab-btn active" onclick="openTab(1)" id="tab1_btn">📐 Quantity Calc</button><button class="tab-btn" onclick="openTab(2)" id="tab2_btn">⚡ Voltage Drop</button></div>
 
-<div id="tab1" class="tab-content active"><div class="card"><h2 style="font-size:20px" id="t1_title">حاسبة كميات المواد</h2><div class="input-row"><div class="input-group"><label id="t1_l1">مساحة البيت (م²)</label><input type="number" id="area" value="200" oninput="calc1()"></div><div class="input-group"><label id="t1_l2">عدد الغرف</label><input type="number" id="rooms" value="6" oninput="calc1()"></div></div><div class="result-box"><div id="res1"></div><small id="t1_note">تقدير مبدئي - يختلف حسب المخطط</small><div id="c1_counter" class="calc-counter"></div></div><a href="https://wa.me/4915216839609" target="_blank" class="btn-calc" style="margin-top:15px" id="t1_btn">اطلب عرض سعر على الواتساب</a></div></div>
+<div id="tab1" class="tab-content active"><div class="card"><h2 style="font-size:20px" id="t1_title">Material Quantity Calculator</h2><div class="input-row"><div class="input-group"><label id="t1_l1">House Area (m²)</label><input type="number" id="area" value="200" oninput="calc1()"></div><div class="input-group"><label id="t1_l2">Rooms Count</label><input type="number" id="rooms" value="6" oninput="calc1()"></div></div><div class="result-box"><div id="res1"></div><small id="t1_note"></small><div id="c1_counter" class="calc-counter"></div></div><a href="https://wa.me/4915216839609" target="_blank" class="btn-calc" style="margin-top:15px" id="t1_btn"></a></div></div>
 
-<div id="tab2" class="tab-content"><div class="card"><h2 style="font-size:20px" id="t2_title">⚡ حاسبة هبوط الجهد</h2><p style="text-align:center;color:var(--text2);font-size:12px;margin-bottom:15px" id="t2_desc">تأكد من مقطع الكبل قبل ما تمد 50 متر ويصير عندك ضعف كهربا</p><div class="input-row"><div class="input-group"><label id="t2_l1">طول الكبل (متر) ذهاب فقط</label><input type="number" id="vd_length" value="50" oninput="calcVD()"></div><div class="input-group"><label id="t2_l2">التيار (أمبير)</label><input type="number" id="vd_current" value="35" oninput="calcVD()"></div></div><div class="input-row"><div class="input-group"><label id="t2_l3">مقطع الكبل (mm²)</label><select id="vd_section" onchange="calcVD()"><option value="1.5">1.5</option><option value="2.5">2.5</option><option value="4">4</option><option value="6">6</option><option value="10" selected>10</option><option value="16">16</option><option value="25">25</option></select></div><div class="input-group"><label id="t2_l4">نوع الشبكة</label><select id="vd_phase" onchange="calcVD()"><option value="1" id="t2_ph1">220V سنغل فاز</option><option value="3" id="t2_ph2">380V ثري فاز</option></select></div></div><div class="input-group"><label id="t2_l5">مادة الكبل</label><select id="vd_mat" onchange="calcVD()"><option value="0.0178" id="t2_mat1">نحاس - RBooSH™ أصلي</option><option value="0.0282" selected id="t2_mat2">ألمنيوم</option></select></div><div class="result-box"><b id="vd_value"></b><div id="vd_status"></div><small id="vd_detail"></small><div id="c2_counter" class="calc-counter"></div></div><p style="text-align:center;margin-top:15px;font-size:12px;color:var(--text2)" id="t2_footer">الجودة المضمونة هي أساس عملنا في RBooSH™ منذ التأسيس</p><a href="https://wa.me/4915216839609" target="_blank" class="btn-calc" id="t2_btn">استشر مهندس RBooSH™ مجاناً</a></div></div>
+<div id="tab2" class="tab-content"><div class="card"><h2 style="font-size:20px" id="t2_title">⚡ Voltage Drop Calculator</h2><p style="text-align:center;color:var(--text2);font-size:12px;margin-bottom:15px" id="t2_desc"></p><div class="input-row"><div class="input-group"><label id="t2_l1"></label><input type="number" id="vd_length" value="50" oninput="calcVD()"></div><div class="input-group"><label id="t2_l2"></label><input type="number" id="vd_current" value="35" oninput="calcVD()"></div></div><div class="input-row"><div class="input-group"><label id="t2_l3"></label><select id="vd_section" onchange="calcVD()"><option value="1.5">1.5</option><option value="2.5">2.5</option><option value="4">4</option><option value="6">6</option><option value="10" selected>10</option><option value="16">16</option><option value="25">25</option></select></div><div class="input-group"><label id="t2_l4"></label><select id="vd_phase" onchange="calcVD()"><option value="1" id="t2_ph1"></option><option value="3" id="t2_ph2"></option></select></div></div><div class="input-group"><label id="t2_l5"></label><select id="vd_mat" onchange="calcVD()"><option value="0.0178" id="t2_mat1"></option><option value="0.0282" selected id="t2_mat2"></option></select></div><div class="result-box"><b id="vd_value"></b><div id="vd_status"></div><small id="vd_detail"></small><div id="c2_counter" class="calc-counter"></div></div><p style="text-align:center;margin-top:15px;font-size:12px;color:var(--text2)" id="t2_footer"></p><a href="https://wa.me/4915216839609" target="_blank" class="btn-calc" id="t2_btn"></a></div></div>
 </div>
-
 <div class="order-popup" id="orderPopup"><img id="popupImg" src=""><div style="flex:1"><b id="popupTitle" style="color:#25D366;font-size:13px;display:block"></b><small id="popupDesc" style="color:var(--text2);font-size:11px"></small></div><span style="color:#777;cursor:pointer" onclick="document.getElementById('orderPopup').classList.remove('show')">×</span></div>
 
 <script>
-const data={ar:{gov:["دمشق","حلب","حمص","الحسكة","اللاذقية","طرطوس","حماة","درعا","دير الزور","السويداء","إدلب","الرقة","القامشلي"],names:["أحمد","محمد","علي","خالد","حسن","عمر","يوسف","عبدالله","مصطفى","أبو عمار","سامر","لؤي"],ordered:"زار موقعنا",viewing:"شخص يشاهدون الآن",orders:"طلب اليوم من"},en:{gov:["Damascus","Aleppo","Homs","Hasakah"],names:["Ahmad","Mohammad","Ali","Khaled"],ordered:"visited",viewing:"people viewing now",orders:"orders today from"},ku:{gov:["Şam","Heleb","Hesekê","Qamişlo"],names:["Ehmed","Mihemed","Elî"],ordered:"serdana me kir",viewing:"kes niha dibînin",orders:"daxwaz îro ji"}};
-const translations={ar:{dir:'rtl',menu_title:'القائمة',menu_home:'الرئيسية',menu_products:'المنتجات 🛒',menu_calc:'الحاسبة',calc_main_title:'حاسبات RBooSH™ الهندسية',calc_main_desc:'احسب احتياجاتك بدقة قبل الشراء - نوفر عليك الوقت والمال',tab1_btn:'📐 حاسبة الكميات',tab2_btn:'⚡ حاسبة هبوط الجهد',t1_title:'حاسبة كميات المواد',t1_l1:'مساحة البيت (م²)',t1_l2:'عدد الغرف',t1_note:'تقدير مبدئي - يختلف حسب المخطط',t1_btn:'اطلب عرض سعر على الواتساب',t2_title:'⚡ حاسبة هبوط الجهد',t2_desc:'تأكد من مقطع الكبل قبل ما تمد 50 متر ويصير عندك ضعف كهربا',t2_l1:'طول الكبل (متر) ذهاب فقط',t2_l2:'التيار (أمبير)',t2_l3:'مقطع الكبل (mm²)',t2_l4:'نوع الشبكة',t2_ph1:'220V سنغل فاز',t2_ph2:'380V ثري فاز',t2_l5:'مادة الكبل',t2_mat1:'نحاس - RBooSH™ أصلي',t2_mat2:'ألمنيوم',t2_footer:'الجودة المضمونة هي أساس عملنا في RBooSH™ منذ التأسيس',t2_btn:'استشر مهندس RBooSH™ مجاناً',days:["الأحد","الاثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت"],months:["كانون الثاني","شباط","آذار","نيسان","أيار","حزيران","تموز","آب","أيلول","تشرين الأول","تشرين الثاني","كانون الأول"]},en:{dir:'ltr',menu_title:'Menu',menu_home:'Home',menu_products:'Products 🛒',menu_calc:'Calculator',calc_main_title:'RBooSH™ Engineering Calculators',calc_main_desc:'Calculate accurately before buying',tab1_btn:'📐 Quantity Calc',tab2_btn:'⚡ Voltage Drop',t1_title:'Material Quantity Calculator',t1_l1:'House Area (m²)',t1_l2:'Rooms Count',t1_note:'Initial estimate',t1_btn:'Request Quote on WhatsApp',t2_title:'⚡ Voltage Drop Calculator',t2_desc:'Check cable size before 50m run',t2_l1:'Cable Length (m)',t2_l2:'Current (A)',t2_l3:'Cable Section (mm²)',t2_l4:'Network Type',t2_ph1:'220V Single Phase',t2_ph2:'380V Three Phase',t2_l5:'Cable Material',t2_mat1:'Copper - RBooSH™ Original',t2_mat2:'Aluminium',t2_footer:'Guaranteed quality is foundation of RBooSH™',t2_btn:'Consult RBooSH™ Engineer Free',days:["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],months:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]},ku:{dir:'ltr',menu_title:'Lîste',menu_home:'Malper',menu_products:'Berhem 🛒',menu_calc:'Hesabker',calc_main_title:'Hesabkerên RBooSH™',calc_main_desc:'Berî kirînê hesab bike',tab1_btn:'📐 Hesaba Mîqdarê',tab2_btn:'⚡ Dakeftina Voltajê',t1_title:'Hesabkera Materyalan',t1_l1:'Rûber (m²)',t1_l2:'Hejmara Odeyan',t1_note:'Texmîna destpêkê',t1_btn:'Bihayê bixwaze',t2_title:'⚡ Dakeftina Voltajê',t2_desc:'Beşa kabloyê piştrast bike',t2_l1:'Dirêjahî (m)',t2_l2:'Hêz (A)',t2_l3:'Beş (mm²)',t2_l4:'Tore',t2_ph1:'220V Yek Qonax',t2_ph2:'380V Sê Qonax',t2_l5:'Materyal',t2_mat1:'Sifir - RBooSH™',t2_mat2:'Elemenyûm',t2_footer:'Kalîteya misoger bingeha RBooSH™',t2_btn:'Bi Endezyar re bişêwire',days:["Yekşem","Duşem","Sêşem","Çarşem","Pêncşem","În","Şemî"],months:["Rêbendan","Sibat","Adar","Nîsan","Gulan","Pûşper","Tîrmeh","Tebax","Îlon","Cotmeh","Mijdar","Kanûn"]}};
-let currentLang='ar';
-let liveNow=78;
-let count1=parseInt(localStorage.getItem('rboosh_c1')||'312');
-let count2=parseInt(localStorage.getItem('rboosh_c2')||'189');
+const data={
+ ar:{gov:["دمشق","حلب","حمص","الحسكة","اللاذقية"],names:["أحمد","محمد","علي","خالد","حسن","عمر"],ordered:"زار موقعنا",viewing:"شخص يشاهدون الآن",browsing:"يتصفح الحاسبة",ago:"منذ",min:"دقيقة",orders:"طلب اليوم من"},
+ en:{gov:["Damascus","Aleppo","Homs","Hasakah","Latakia"],names:["Ali","Ahmad","Mohammad","Khaled","Hassan"],ordered:"visited",viewing:"people viewing now",browsing:"browsing calculator",ago:"ago",min:"min",orders:"orders today from"},
+ ku:{gov:["Şam","Heleb","Hesekê","Qamişlo"],names:["Ehmed","Mihemed","Elî","Xalid"],ordered:"serdana me kir",viewing:"kes niha dibînin",browsing:"hesabkerê dibîne",ago:"berî",min:"deqe",orders:"daxwaz îro ji"}
+};
+const translations={
+ ar:{dir:'rtl',menu_title:'القائمة',menu_home:'الرئيسية',menu_products:'المنتجات 🛒',menu_calc:'الحاسبة',calc_main_title:'حاسبات RBooSH™ الهندسية',calc_main_desc:'احسب احتياجاتك بدقة قبل الشراء - نوفر عليك الوقت والمال',tab1_btn:'📐 حاسبة الكميات',tab2_btn:'⚡ حاسبة هبوط الجهد',t1_title:'حاسبة كميات المواد',t1_l1:'مساحة البيت (م²)',t1_l2:'عدد الغرف',t1_note:'تقدير مبدئي - يختلف حسب المخطط',t1_btn:'اطلب عرض سعر على الواتساب',t2_title:'⚡ حاسبة هبوط الجهد',t2_desc:'تأكد من مقطع الكبل قبل ما تمد 50 متر ويصير عندك ضعف كهربا',t2_l1:'طول الكبل (متر) ذهاب فقط',t2_l2:'التيار (أمبير)',t2_l3:'مقطع الكبل (mm²)',t2_l4:'نوع الشبكة',t2_ph1:'220V سنغل فاز',t2_ph2:'380V ثري فاز',t2_l5:'مادة الكبل',t2_mat1:'نحاس - RBooSH™ أصلي',t2_mat2:'ألمنيوم',t2_footer:'الجودة المضمونة هي أساس عملنا في RBooSH™ منذ التأسيس',t2_btn:'استشر مهندس RBooSH™ مجاناً',viewTxt:'مشاهدة اليوم',liveTxt:'يحسب الآن',c_calc:'تم حسابها',c_live:'مرة • شغالة الآن',result1:'تحتاج تقريباً',cable:'كبل',and:'و',days:["الأحد","الاثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت"],months:["كانون الثاني","شباط","آذار","نيسان","أيار","حزيران","تموز","آب","أيلول","تشرين الأول","تشرين الثاني","كانون الأول"]},
+ en:{dir:'ltr',menu_title:'Menu',menu_home:'Home',menu_products:'Products 🛒',menu_calc:'Calculator',calc_main_title:'RBooSH™ Engineering Calculators',calc_main_desc:'Calculate accurately before buying',tab1_btn:'📐 Quantity Calc',tab2_btn:'⚡ Voltage Drop',t1_title:'Material Quantity Calculator',t1_l1:'House Area (m²)',t1_l2:'Rooms Count',t1_note:'Initial estimate - varies by plan',t1_btn:'Request Quote on WhatsApp',t2_title:'⚡ Voltage Drop Calculator',t2_desc:'Check cable size before 50m run causes weak power',t2_l1:'Cable Length (m) one way',t2_l2:'Current (A)',t2_l3:'Cable Section (mm²)',t2_l4:'Network Type',t2_ph1:'220V Single Phase',t2_ph2:'380V Three Phase',t2_l5:'Cable Material',t2_mat1:'Copper - RBooSH™ Original',t2_mat2:'Aluminium',t2_footer:'Guaranteed quality is the foundation of our work at RBooSH™',t2_btn:'Consult RBooSH™ Engineer Free',viewTxt:'views today',liveTxt:'calculating now',c_calc:'Calculated',c_live:'times • live',result1:'You need approx',cable:'cable',and:'and',days:["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],months:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]},
+ ku:{dir:'ltr',menu_title:'Lîste',menu_home:'Malper',menu_products:'Berhem 🛒',menu_calc:'Hesabker',calc_main_title:'Hesabkerên RBooSH™',calc_main_desc:'Berî kirînê bi duristî hesab bike',tab1_btn:'📐 Hesaba Mîqdarê',tab2_btn:'⚡ Dakeftina Voltajê',t1_title:'Hesabkera Materyalan',t1_l1:'Rûber (m²)',t1_l2:'Hejmara Odeyan',t1_note:'Texmîna destpêkê - li gorî nexşeyê diguhere',t1_btn:'Li ser WhatsAppê bihayê bixwaze',t2_title:'⚡ Hesabkera Voltajê',t2_desc:'Berî 50m kabloyê dirêj bikî beşa wê kontrol bike',t2_l1:'Dirêjahî (m)',t2_l2:'Hêz (A)',t2_l3:'Beş (mm²)',t2_l4:'Cureya Torê',t2_ph1:'220V Yek Qonax',t2_ph2:'380V Sê Qonax',t2_l5:'Materyal',t2_mat1:'Sifir - RBooSH™ Resen',t2_mat2:'Elemenyûm',t2_footer:'Qalîteya misoger bingeha RBooSH™ ye',t2_btn:'Bi Endezyar re bişêwire',viewTxt:'dîtin îro',liveTxt:'niha hesab dike',c_calc:'Car hat hesabkirin',c_live:'• çalak e',result1:'Pêwîstiya te bi nêzîkî',cable:'kablo',and:'û',days:["Yekşem","Duşem","Sêşem","Çarşem","Pêncşem","În","Şemî"],months:["Rêbendan","Sibat","Adar","Nîsan","Gulan","Pûşper","Tîrmeh","Tebax","Îlon","Cotmeh","Mijdar","Kanûn"]}
+};
+let currentLang='en';
+let liveNow=79;
+let count1=312, count2=189;
+
 function toggleTheme(){document.body.classList.toggle('light');let l=document.body.classList.contains('light');localStorage.setItem('rboosh_theme',l?'light':'dark');document.getElementById('themeBtn').innerText=l?'🌙':'☀️';}
 (function(){let s=localStorage.getItem('rboosh_theme');if(s==='light')document.body.classList.add('light');document.getElementById('themeBtn').innerText=document.body.classList.contains('light')?'🌙':'☀️';})();
 function openMenu(){document.getElementById('sidebar').classList.add('open');document.getElementById('overlay').classList.add('show');}
 function closeMenu(){document.getElementById('sidebar').classList.remove('open');document.getElementById('overlay').classList.remove('show');}
 function updateClock(){let now=new Date();let h=now.getHours()%12;let m=now.getMinutes();let s=now.getSeconds();document.getElementById('hourHand').style.transform=`translateX(-50%) rotate(${(h+m/60)*30}deg)`;document.getElementById('minuteHand').style.transform=`translateX(-50%) rotate(${m*6}deg)`;document.getElementById('secondHand').style.transform=`translateX(-50%) rotate(${s*6}deg)`;document.getElementById('hourHandLarge').style.transform=`translateX(-50%) rotate(${(h+m/60)*30}deg)`;document.getElementById('minuteHandLarge').style.transform=`translateX(-50%) rotate(${m*6}deg)`;document.getElementById('secondHandLarge').style.transform=`translateX(-50%) rotate(${s*6}deg)`;let t=translations[currentLang];document.getElementById('dayName').innerText=t.days[now.getDay()];document.getElementById('dateNum').innerText=now.getDate()+" "+t.months[now.getMonth()];document.getElementById('sidebarDay').innerText=t.days[now.getDay()];document.getElementById('sidebarDate').innerText=now.getDate()+" "+t.months[now.getMonth()]+" "+now.getFullYear();}
-function setLang(lang){currentLang=lang;const t=translations[lang];document.documentElement.lang=lang;document.documentElement.dir=t.dir;document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));document.getElementById('btn-'+lang).classList.add('active');for(let k in t){let el=document.getElementById(k);if(el)el.innerText=t[k];}updateClock();updateCounter();calc1();calcVD();}
+function setLang(lang){
+  currentLang=lang;
+  const t=translations[lang];
+  document.documentElement.lang=lang; document.documentElement.dir=t.dir;
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('btn-'+lang).classList.add('active');
+  for(let k in t){let el=document.getElementById(k); if(el) el.innerText=t[k];}
+  updateClock(); updateCounter(); calc1(); calcVD();
+}
 function openTab(n){document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));document.getElementById('tab'+n).classList.add('active');document.getElementById('tab'+n+'_btn').classList.add('active');}
-function calc1(){let a=parseFloat(document.getElementById('area').value)||0;let r=parseFloat(document.getElementById('rooms').value)||0;let c25=Math.round(a*2.2+r*10);let c15=Math.round(a*1.1+r*8);document.getElementById('res1').innerHTML=`تحتاج تقريباً <b>${c25}m</b> كبل 2.5mm و <b>${c15}m</b> كبل 1.5mm`;document.getElementById('c1_counter').innerText=`تم حسابها ${count1} مرة • شغالة`;let msg=`مرحبا RBooSH™ طلب كميات: ${a}م² - ${r} غرف - ${c25}m 2.5mm و ${c15}m 1.5mm`;document.getElementById('t1_btn').href=`https://wa.me/4915216839609?text=${encodeURIComponent(msg)}`;}
-function calcVD(){let L=parseFloat(document.getElementById('vd_length').value)||0;let I=parseFloat(document.getElementById('vd_current').value)||0;let S=parseFloat(document.getElementById('vd_section').value)||1;let rho=parseFloat(document.getElementById('vd_mat').value)||0.0178;let phase=parseInt(document.getElementById('vd_phase').value);let Vbase=phase===1?220:380;let Vdrop=phase===1?(2*L*I*rho)/S:(Math.sqrt(3)*L*I*rho)/S;let Vpercent=(Vdrop/Vbase)*100;document.getElementById('vd_value').innerText=Vpercent.toFixed(2)+"%";document.getElementById('vd_status').innerHTML=Vpercent<=3?`<span class="badge-ok">✅ ممتاز</span>`:Vpercent<=5?`<span class="badge-ok" style="border-color:#ffaa00;color:#ffaa00">⚠️ مقبول</span>`:`<span class="badge-bad">❌ هبوط عالي</span>`;document.getElementById('vd_detail').innerText=`الضائع: ${Vdrop.toFixed(2)}V - الواصل: ${(Vbase-Vdrop).toFixed(1)}V`;document.getElementById('c2_counter').innerText=`تم حسابها ${count2} مرة • شغالة`;let msg=`استشارة هبوط: طول ${L}m تيار ${I}A مقطع ${S}mm² هبوط ${Vpercent.toFixed(2)}%`;document.getElementById('t2_btn').href=`https://wa.me/4915216839609?text=${encodeURIComponent(msg)}`;}
-function updateCounter(){let g1=data[currentLang].gov[Math.floor(Math.random()*data[currentLang].gov.length)];let o=Math.floor(Math.random()*15)+12;if(currentLang==='ar')document.getElementById('counterText').innerHTML=`🔥 ${liveNow} ${data.ar.viewing} - ${o} ${data.ar.orders} ${g1} و باقي المحافظات`;else document.getElementById('counterText').innerHTML=`🔥 ${liveNow} viewing now`;document.getElementById('liveCalc').innerText=`⚡ ${liveNow}`;document.getElementById('viewCount').innerText=`👁️ ${1200+liveNow}`;}
-setInterval(updateClock,1000);updateClock();
-setInterval(()=>{liveNow+=Math.floor(Math.random()*5)-2;if(liveNow<70)liveNow=70;if(liveNow>85)liveNow=85;updateCounter();},2500);
-function showPopup(){let d=data[currentLang];let n=d.names[Math.floor(Math.random()*d.names.length)];let g=d.gov[Math.floor(Math.random()*d.gov.length)];let m=Math.floor(Math.random()*8)+1;let imgs=["https://i.postimg.cc/KYjDpfyj/IMG-20260902-WA0081.jpg","https://i.postimg.cc/qvkLy0bm/IMG-20260902-WA0020.jpg"];document.getElementById('popupImg').src=imgs[Math.floor(Math.random()*imgs.length)];document.getElementById('popupTitle').innerHTML=`✅ ${n} من ${g} ${d.ordered}`;document.getElementById('popupDesc').innerHTML=`يتصفح الحاسبة - منذ ${m} دقيقة`;document.getElementById('orderPopup').classList.add('show');setTimeout(()=>document.getElementById('orderPopup').classList.remove('show'),4500);}setTimeout(showPopup,3000);setInterval(showPopup,9000);
-updateCounter();calc1();calcVD();
+
+function calc1(){
+  let a=parseFloat(document.getElementById('area').value)||0;
+  let r=parseFloat(document.getElementById('rooms').value)||0;
+  let c25=Math.round(a*2.2+r*10);
+  let c15=Math.round(a*1.1+r*8);
+  let t=translations[currentLang];
+  let html='';
+  if(currentLang==='ar') html=`<b style="color:var(--blue)">${c25}m</b> ${t.cable} 2.5mm ${t.and} <b style="color:var(--blue)">${c15}m</b> ${t.cable} 1.5mm<br><span style="font-size:13px">${t.result1}</span>`;
+  else if(currentLang==='ku') html=`<span style="font-size:13px">${t.result1}</span> <b style="color:var(--blue)">${c25}m</b> ${t.cable} 2.5mm ${t.and} <b style="color:var(--blue)">${c15}m</b> ${t.cable} 1.5mm`;
+  else html=`<span style="font-size:13px">${t.result1}</span> <b style="color:var(--blue)">${c25}m</b> ${t.cable} 2.5mm ${t.and} <b style="color:var(--blue)">${c15}m</b> ${t.cable} 1.5mm`;
+  document.getElementById('res1').innerHTML=html;
+  document.getElementById('t1_note').innerText=t.t1_note;
+  document.getElementById('c1_counter').innerText=`${t.c_calc} ${count1} ${t.c_live}`;
+  let msg=`${t.t1_title}: ${a}m² - ${r} rooms - ${c25}m 2.5mm & ${c15}m 1.5mm`;
+  document.getElementById('t1_btn').href=`https://wa.me/4915216839609?text=${encodeURIComponent(msg)}`;
+}
+function calcVD(){
+  let L=parseFloat(document.getElementById('vd_length').value)||0;
+  let I=parseFloat(document.getElementById('vd_current').value)||0;
+  let S=parseFloat(document.getElementById('vd_section').value)||1;
+  let rho=parseFloat(document.getElementById('vd_mat').value)||0.0178;
+  let phase=parseInt(document.getElementById('vd_phase').value);
+  let t=translations[currentLang];
+  let Vbase=phase===1?220:380;
+  let Vdrop=phase===1?(2*L*I*rho)/S:(Math.sqrt(3)*L*I*rho)/S;
+  let Vp=(Vdrop/Vbase)*100;
+  document.getElementById('vd_value').innerText=Vp.toFixed(2)+"%";
+  if(currentLang==='ar') document.getElementById('vd_status').innerHTML=Vp<=3?`<span class="badge-ok">✅ ممتاز - ضمن المسموح (3%)</span>`:Vp<=5?`<span class="badge-ok" style="border-color:#ffaa00;color:#ffaa00">⚠️ مقبول</span>`:`<span class="badge-bad">❌ هبوط عالي</span>`;
+  else if(currentLang==='ku') document.getElementById('vd_status').innerHTML=Vp<=3?`<span class="badge-ok">✅ Bêkêmasî</span>`:Vp<=5?`<span class="badge-ok" style="border-color:#ffaa00;color:#ffaa00">⚠️ Pejirandî</span>`:`<span class="badge-bad">❌ Zêde ye</span>`;
+  else document.getElementById('vd_status').innerHTML=Vp<=3?`<span class="badge-ok">✅ Excellent - within 3%</span>`:Vp<=5?`<span class="badge-ok" style="border-color:#ffaa00;color:#ffaa00">⚠️ Acceptable</span>`:`<span class="badge-bad">❌ High drop</span>`;
+  if(currentLang==='ar') document.getElementById('vd_detail').innerText=`الضائع: ${Vdrop.toFixed(2)}V - الواصل: ${(Vbase-Vdrop).toFixed(1)}V`;
+  else if(currentLang==='ku') document.getElementById('vd_detail').innerText=`Windabûn: ${Vdrop.toFixed(2)}V - Gihîştî: ${(Vbase-Vdrop).toFixed(1)}V`;
+  else document.getElementById('vd_detail').innerText=`Loss: ${Vdrop.toFixed(2)}V - Arrive: ${(Vbase-Vdrop).toFixed(1)}V`;
+  document.getElementById('c2_counter').innerText=`${t.c_calc} ${count2} ${t.c_live}`;
+  let msg=`${t.t2_title}: ${L}m - ${I}A - ${S}mm² - ${Vp.toFixed(2)}%`;
+  document.getElementById('t2_btn').href=`https://wa.me/4915216839609?text=${encodeURIComponent(msg)}`;
+}
+function updateCounter(){
+  let g=data[currentLang].gov[Math.floor(Math.random()*data[currentLang].gov.length)];
+  let o=Math.floor(Math.random()*15)+12;
+  let d=data[currentLang];
+  if(currentLang==='ar') document.getElementById('counterText').innerHTML=`🔥 ${liveNow} ${d.viewing} - ${o} ${d.orders} ${g}`;
+  else if(currentLang==='ku') document.getElementById('counterText').innerHTML=`🔥 ${liveNow} ${d.viewing} - ${o} ${d.orders} ${g}`;
+  else document.getElementById('counterText').innerHTML=`🔥 ${liveNow} ${d.viewing} - ${o} ${d.orders} ${g}`;
+  document.getElementById('viewCount').innerHTML=`👁️ ${1200+liveNow}`;
+  document.getElementById('viewTxt').innerText=translations[currentLang].viewTxt;
+  document.getElementById('liveTxt').innerText=translations[currentLang].liveTxt;
+  document.getElementById('liveCalc').innerText=`⚡ ${liveNow}`;
+}
+setInterval(updateClock,1000); updateClock();
+setInterval(()=>{liveNow+=Math.floor(Math.random()*5)-2; if(liveNow<70)liveNow=70; if(liveNow>85)liveNow=85; updateCounter();},2500);
+function showPopup(){
+  let d=data[currentLang];
+  let n=d.names[Math.floor(Math.random()*d.names.length)];
+  let g=d.gov[Math.floor(Math.random()*d.gov.length)];
+  let m=Math.floor(Math.random()*8)+1;
+  let imgs=["https://i.postimg.cc/KYjDpfyj/IMG-20260902-WA0081.jpg"];
+  document.getElementById('popupImg').src=imgs[0];
+  if(currentLang==='ar') {document.getElementById('popupTitle').innerText=`✅ ${n} من ${g} ${d.ordered}`; document.getElementById('popupDesc').innerText=`${d.browsing} - ${d.ago} ${m} ${d.min}`;}
+  else if(currentLang==='ku') {document.getElementById('popupTitle').innerText=`✅ ${n} ji ${g} ${d.ordered}`; document.getElementById('popupDesc').innerText=`${d.browsing} - ${d.ago} ${m} ${d.min}`;}
+  else {document.getElementById('popupTitle').innerText=`✅ ${n} from ${g} ${d.ordered}`; document.getElementById('popupDesc').innerText=`${d.browsing} - ${m} ${d.min} ${d.ago}`;}
+  document.getElementById('orderPopup').classList.add('show');
+  setTimeout(()=>document.getElementById('orderPopup').classList.remove('show'),4500);
+}
+setTimeout(showPopup,3000); setInterval(showPopup,9000);
+updateCounter(); calc1(); calcVD();
+setLang('en');
 </script>
 </body>
 </html>
