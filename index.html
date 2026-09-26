@@ -71,6 +71,19 @@ h2{color:var(--blue);text-align:center;font-size:26px;margin-bottom:15px;text-sh
 .brands-group span::after{content:'•';position:absolute;right:-2px;color:var(--blue);opacity:0.5;font-size:10px}
 .c-ls{color:#005BAC}.c-schneider{color:#3DCD58}.c-chint{color:#005BAC}.c-tense{color:#0072BC}.c-givis{color:#0072BC}.c-pollux{color:#FF6600}.c-rboosh{color:#00bfff;text-shadow:0 0 12px rgba(0,191,255,0.9),0.5px 0.5px 0 #000!important}.c-altech{color:#E30613}.c-hyundai{color:#002C5F}.c-clay{color:#FF6A00}.c-unal{color:#CC0000}.c-ako{color:#E30613}
 @keyframes scrollBrands{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+/* RADIO - NEW */
+.radio-section{margin-top:20px;background:var(--card2);border:1.5px solid var(--blue2);border-radius:14px;padding:14px}
+.radio-title{color:var(--blue);font-size:14px;font-weight:900;text-align:center;margin-bottom:10px;display:flex;align-items:center;justify-content:center;gap:6px}
+.radio-select{width:100%;padding:10px;border-radius:8px;background:var(--card);color:var(--text);border:1px solid var(--border);font-size:12px}
+.radio-controls{display:flex;gap:8px;margin-top:10px;align-items:center}
+.radio-play{flex:1;background:linear-gradient(135deg,var(--blue2),var(--blue));color:#fff;border:none;padding:9px;border-radius:8px;font-weight:bold;cursor:pointer}
+.radio-play.playing{background:linear-gradient(135deg,#ff4444,#cc0000)}
+.radio-vol{font-size:14px}
+.radio-status{font-size:11px;color:var(--text2);text-align:center;margin-top:8px;min-height:16px}
+.radio-eq{display:flex;gap:3px;height:14px;align-items:end;justify-content:center}
+.radio-eq span{width:3px;background:var(--blue);border-radius:2px;display:none;animation:eq 0.5s infinite alternate}
+.radio-eq.active span{display:block}
+@keyframes eq{from{height:3px}to{height:14px}}
 </style>
 </head>
 <body>
@@ -112,6 +125,28 @@ h2{color:var(--blue);text-align:center;font-size:26px;margin-bottom:15px;text-sh
   <hr class="sidebar-divider">
   <h3 class="sidebar-title" id="menu_title">القائمة</h3>
   <a href="index.html" id="menu_home">الرئيسية</a><a href="products.html" id="menu_products">المنتجات 🛒</a><a href="calculator.html" id="menu_calc">الحاسبة</a><a href="#contact" id="menu_contact">اتصال</a>
+
+  <!-- RADIO SECTION ADDED HERE -->
+  <div class="radio-section">
+    <div class="radio-title">📻 <span id="radio_title">الراديو المباشر</span> <div class="radio-eq" id="radioEq"><span></span><span></span><span></span><span></span></div></div>
+    <select class="radio-select" id="stationSelect" onchange="changeStation()">
+      <option value="0">Life Radio - النمسا</option>
+      <option value="1">Arta FM 99.5 - عامودا / الحسكة</option>
+      <option value="2">شام FM 92.3</option>
+      <option value="3">المدينة FM 101.5</option>
+      <option value="4">نينار FM 88.3</option>
+      <option value="5">Fuse FM 91.1</option>
+      <option value="6">ميلودي FM 97.9</option>
+      <option value="7">أرابيسك FM 102.3</option>
+    </select>
+    <div class="radio-controls">
+      <button class="radio-play" id="playBtn" onclick="toggleRadio()">▶️ تشغيل</button>
+      <span class="radio-vol">🔊<input type="range" id="volSlider" min="0" max="1" step="0.05" value="0.8" oninput="setVolume(this.value)" style="width:60px"></span>
+    </div>
+    <div class="radio-status" id="radioStatus">اختر محطة واضغط تشغيل</div>
+    <audio id="radioAudio" preload="none" crossorigin="anonymous"></audio>
+  </div>
+
 </div>
 <div class="container">
 <div class="logo"><img src="logo.png" alt="RBooSH"></div>
@@ -144,8 +179,53 @@ h2{color:var(--blue);text-align:center;font-size:26px;margin-bottom:15px;text-sh
 function toggleTheme(){document.body.classList.toggle('light');let l=document.body.classList.contains('light');localStorage.setItem('rboosh_theme',l?'light':'dark');document.getElementById('themeBtn').innerText=l?'🌙':'☀️';}
 (function(){let s=localStorage.getItem('rboosh_theme');if(s==='light'){document.body.classList.add('light');document.getElementById('themeBtn').innerText='🌙';}else{document.getElementById('themeBtn').innerText='☀️';}})();
 const data={ar:{gov:["دمشق","حلب","حمص","الحسكة","اللاذقية","طرطوس","حماة","درعا","دير الزور","السويداء","إدلب","الرقة","القامشلي","ريف دمشق"],names:["أحمد","محمد","علي","خالد","حسن","عمر","يوسف","عبدالله","مصطفى","أبو عمار","سامر","لؤي"],ordered:"زار موقعنا",viewing:"شخص يشاهدون الآن",orders:"طلب اليوم من"},en:{gov:["Damascus","Aleppo","Homs","Hasakah","Latakia","Tartus","Hama","Daraa","Deir Ezzor","Suwayda","Idlib","Raqqa","Qamishli"],names:["Ahmad","Mohammad","Ali","Khaled","Hassan","Omar","Youssef","Abdullah"],ordered:"visited our store",viewing:"people viewing now",orders:"orders today from"},ku:{gov:["Şam","Heleb","Hims","Hesekê","Laziqiye","Tartus","Hama","Dera","Dêrezor","Siweyda","Idlib","Reqqa","Qamişlo"],names:["Ehmed","Mihemed","Elî","Xalid","Hesen","Omer","Yûsif"],ordered:"serdana me kir",viewing:"kes niha dibînin",orders:"daxwaz îro ji"}};
-const translations={ar:{dir:'rtl',menu_title:'القائمة',menu_home:'الرئيسية',menu_products:'المنتجات 🛒',menu_calc:'الحاسبة',menu_contact:'اتصال',main_title:'RBooSH™ مجموعة ابو سليمان ⚡ للتجارة الكهربائية',main_desc:'متخصصون في توريد وتجارة المعدات الكهربائية، خدمات التركيب، واستشارات الطاقة الكهربائية',services_title:'خدماتنا',services_desc:'بيع لوحات التوزيع، الكابلات، مثبتات الجهد، القواطع، الكونتاكتورات والأجهزة الكهربائية<br>نخدم الشركات الصناعية، المحلات التجارية، والأفراد',branches_title:'فروعنا',branch1:'المركز الرئيسي - الحسكة',branch2:'فرع القامشلي',map1:'عرض على الخريطة',map2:'عرض على الخريطة',payment_title:'طرق الدفع',pay1_title:'الدفع نقداً',pay1_desc:'الدفع عند الاستلام من اي فرع',pay2_title:'شام كاش',pay2_desc:'الدفع الالكتروني عبر شام كاش',pay3_title:'مساري',pay3_desc:'الدفع الالكتروني عبر مساري',pay4_title:'التقسيط',pay4_desc:'للشركات والمشاريع الكبيرة بشروط ميسرة',payment_note:'اسأل عن العروض والخصومات الخاصة عند الدفع بشام كاش ومساري',why_title:'لماذا تختارنا',why1:'ضمان المنتج',why2:'فواتير رسمية',why3:'توصيل سريع',contact_title:'اتصال',wa1:'واتساب ابو سليمان: +963 966 436 341',wa2:'واتساب سليمان ربوشي: +49 152 16839609',fb:'صفحة الفيسبوك',hours_title:'اوقات الدوام',hours_desc:'السبت - الخميس: 8:00 صباحاً - 7:30 مساءً<br>الجمعة: حالات الطوارئ فقط',calc_title:'احسب احتياجاتك بنفسك',calc_desc:'استخدم حاسبة RBooSH™ لتقدير كميات المواد الكهربائية لمشروعك خلال 30 ثانية',calc_btn:'افتح الحاسبة الآن',footer_slogan:'نحن نزودك بالطاقة... نحن نضمن الاستمرارية',banner_calc_title:'🛒 منتجات RBooSH™ الأصلية',banner_calc_desc:'تصفح جميع منتجاتنا من لوحات التوزيع، الكابلات، القواطع، الكونتاكتورات والأجهزة الكهربائية الأصلية بضمان!',banner_calc_btn:'⚡ استكشف المنتجات الآن',days:["الأحد","الاثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت"],months:["كانون الثاني","شباط","آذار","نيسان","أيار","حزيران","تموز","آب","أيلول","تشرين الأول","تشرين الثاني","كانون الأول"]},en:{dir:'ltr',menu_title:'Menu',menu_home:'Home',menu_products:'Products 🛒',menu_calc:'Calculator',menu_contact:'Contact',main_title:'RBooSH™ Abu Suleiman Group ⚡ Electrical Trading',main_desc:'Specialized in supply and trade of electrical equipment, installation services, and electrical energy consulting',services_title:'Our Services',services_desc:'Sale of distribution panels, cables, stabilizers, circuit breakers, contactors and electrical devices<br>We serve industrial companies, commercial businesses, and individuals',branches_title:'Our Branches',branch1:'Main Center - Al-Hasakah',branch2:'Qamishli Branch',map1:'View on Map',map2:'View on Map',payment_title:'Payment Methods',pay1_title:'Cash Payment',pay1_desc:'Cash on delivery from any branch',pay2_title:'ShamCash',pay2_desc:'Electronic payment via ShamCash',pay3_title:'Masary',pay3_desc:'Electronic payment via Masary',pay4_title:'Installments',pay4_desc:'For companies and large projects with easy terms',payment_note:'Ask about special offers and discounts when paying with ShamCash and Masary',why_title:'Why Choose Us',why1:'Product Warranty',why2:'Official Invoices',why3:'Fast Delivery',contact_title:'Contact',wa1:'WhatsApp Abu Suleiman: +963 966 436 341',wa2:'WhatsApp Sulaiman Rbooshi: +49 152 16839609',fb:'Facebook Page',hours_title:'Working Hours',hours_desc:'Saturday - Thursday: 8:00 AM - 7:30 PM<br>Friday: Emergency cases only',calc_title:'Estimate Your Needs Yourself',calc_desc:'Use the RBooSH™ Calculator to estimate electrical material quantities for your project in 30 seconds',calc_btn:'Open Calculator Now',footer_slogan:'We Power You... We Ensure Continuity',banner_calc_title:'🛒 Original RBooSH™ Products',banner_calc_desc:'Browse all our products - distribution panels, cables, breakers, contactors & original electrical devices with warranty!',banner_calc_btn:'⚡ Explore Products Now',days:["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],months:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]},ku:{dir:'ltr',menu_title:'Menu',menu_home:'Mal',menu_products:'Berhem 🛒',menu_calc:'Hesabker',menu_contact:'Têkilî',main_title:'RBooSH™ Koma Ebu Suleyman ⚡ Bazirganiya Elektrîkê',main_desc:'Em pispor in di dabînkirin û bazirganiya amûrên elektrîkê, karûbarên sazkirinê, û şêwirmendiya enerjiya elektrîkê de',services_title:'Karûbarên Me',services_desc:'Firotina tabloyên belavkirinê, kablo, stabilizer, sîgorte, kontaktor û amûrên elektrîkê<br>Em xizmetê ji pargadanên pîşesazî, bazirganî û kesan re dikin',branches_title:'Şaxên Me',branch1:'Navenda Sereke - Hesîçe',branch2:'Şaxa Qamişlo',map1:'Li ser Nexşeyê Binêre',map2:'Li ser Nexşeyê Binêre',payment_title:'Rêbazên Dayînê',pay1_title:'Dayîna Bi Nakit',pay1_desc:'Dayîn bi dest de ji her şaxekî',pay2_title:'Şam Cash',pay2_desc:'Dayîna elektronîkî bi riya Şam Cash',pay3_title:'Mesari',pay3_desc:'Dayîna elektronîkî bi riya Mesari',pay4_title:'Taksît',pay4_desc:'Ji bo pargadan û projeyên mezin bi şertên hêsan',payment_note:'Derbarê pêşkêşî û daxistinên taybet de dema dayîna bi Şam Cash û Mesari bipirse',why_title:'Çima Em Hilbijêrin',why1:'Temînata Berhemê',why2:'Fatûreyên Fermî',why3:'Radestkirina Lezgîn',contact_title:'Têkilî',wa1:'WhatsApp Ebu Suleyman: +963 966 436 341',wa2:'WhatsApp Sulaiman Rbooshi: +49 152 16839609',fb:'Rûpela Facebookê',hours_title:'Saetên Kar',hours_desc:'Şemî - Pêncşem: 8:00 Sibê - 7:30 Êvarê<br>În: Tenê rewşên acîl',calc_title:'Pêdiviyên Xwe Bi Xwe Hesab Bike',calc_desc:'Hesabkera RBooSH™ bi kar bîne da ku di 30 saniyeyan de mîqdara materyalên elektrîkê yên projeya xwe texmîn bike',calc_btn:'Hesabkerê Veke',footer_slogan:'Em Hêzê Didin Te... Em Domdariyê Misoger Dikin',banner_calc_title:'🛒 Berhemên Orjînal ên RBooSH™',banner_calc_desc:'Hemû berhemên me bibîne - tablo, kablo, sîgorte, kontaktor û amûrên elektrîkê yên orjînal bi garantî!',banner_calc_btn:'⚡ Berheman Naha Bibîne',days:["Yekşem","Duşem","Sêşem","Çarşem","Pêncşem","În","Şemî"],months:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]}};
+const translations={ar:{dir:'rtl',menu_title:'القائمة',menu_home:'الرئيسية',menu_products:'المنتجات 🛒',menu_calc:'الحاسبة',menu_contact:'اتصال',main_title:'RBooSH™ مجموعة ابو سليمان ⚡ للتجارة الكهربائية',main_desc:'متخصصون في توريد وتجارة المعدات الكهربائية، خدمات التركيب، واستشارات الطاقة الكهربائية',services_title:'خدماتنا',services_desc:'بيع لوحات التوزيع، الكابلات، مثبتات الجهد، القواطع، الكونتاكتورات والأجهزة الكهربائية<br>نخدم الشركات الصناعية، المحلات التجارية، والأفراد',branches_title:'فروعنا',branch1:'المركز الرئيسي - الحسكة',branch2:'فرع القامشلي',map1:'عرض على الخريطة',map2:'عرض على الخريطة',payment_title:'طرق الدفع',pay1_title:'الدفع نقداً',pay1_desc:'الدفع عند الاستلام من اي فرع',pay2_title:'شام كاش',pay2_desc:'الدفع الالكتروني عبر شام كاش',pay3_title:'مساري',pay3_desc:'الدفع الالكتروني عبر مساري',pay4_title:'التقسيط',pay4_desc:'للشركات والمشاريع الكبيرة بشروط ميسرة',payment_note:'اسأل عن العروض والخصومات الخاصة عند الدفع بشام كاش ومساري',why_title:'لماذا تختارنا',why1:'ضمان المنتج',why2:'فواتير رسمية',why3:'توصيل سريع',contact_title:'اتصال',wa1:'واتساب ابو سليمان: +963 966 436 341',wa2:'واتساب سليمان ربوشي: +49 152 16839609',fb:'صفحة الفيسبوك',hours_title:'اوقات الدوام',hours_desc:'السبت - الخميس: 8:00 صباحاً - 7:30 مساءً<br>الجمعة: حالات الطوارئ فقط',calc_title:'احسب احتياجاتك بنفسك',calc_desc:'استخدم حاسبة RBooSH™ لتقدير كميات المواد الكهربائية لمشروعك خلال 30 ثانية',calc_btn:'افتح الحاسبة الآن',footer_slogan:'نحن نزودك بالطاقة... نحن نضمن الاستمرارية',banner_calc_title:'🛒 منتجات RBooSH™ الأصلية',banner_calc_desc:'تصفح جميع منتجاتنا من لوحات التوزيع، الكابلات، القواطع، الكونتاكتورات والأجهزة الكهربائية الأصلية بضمان!',banner_calc_btn:'⚡ استكشف المنتجات الآن',radio_title:'الراديو المباشر',days:["الأحد","الاثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت"],months:["كانون الثاني","شباط","آذار","نيسان","أيار","حزيران","تموز","آب","أيلول","تشرين الأول","تشرين الثاني","كانون الأول"]},en:{dir:'ltr',menu_title:'Menu',menu_home:'Home',menu_products:'Products 🛒',menu_calc:'Calculator',menu_contact:'Contact',main_title:'RBooSH™ Abu Suleiman Group ⚡ Electrical Trading',main_desc:'Specialized in supply and trade of electrical equipment, installation services, and electrical energy consulting',services_title:'Our Services',services_desc:'Sale of distribution panels, cables, stabilizers, circuit breakers, contactors and electrical devices<br>We serve industrial companies, commercial businesses, and individuals',branches_title:'Our Branches',branch1:'Main Center - Al-Hasakah',branch2:'Qamishli Branch',map1:'View on Map',map2:'View on Map',payment_title:'Payment Methods',pay1_title:'Cash Payment',pay1_desc:'Cash on delivery from any branch',pay2_title:'ShamCash',pay2_desc:'Electronic payment via ShamCash',pay3_title:'Masary',pay3_desc:'Electronic payment via Masary',pay4_title:'Installments',pay4_desc:'For companies and large projects with easy terms',payment_note:'Ask about special offers and discounts when paying with ShamCash and Masary',why_title:'Why Choose Us',why1:'Product Warranty',why2:'Official Invoices',why3:'Fast Delivery',contact_title:'Contact',wa1:'WhatsApp Abu Suleiman: +963 966 436 341',wa2:'WhatsApp Sulaiman Rbooshi: +49 152 16839609',fb:'Facebook Page',hours_title:'Working Hours',hours_desc:'Saturday - Thursday: 8:00 AM - 7:30 PM<br>Friday: Emergency cases only',calc_title:'Estimate Your Needs Yourself',calc_desc:'Use the RBooSH™ Calculator to estimate electrical material quantities for your project in 30 seconds',calc_btn:'Open Calculator Now',footer_slogan:'We Power You... We Ensure Continuity',banner_calc_title:'🛒 Original RBooSH™ Products',banner_calc_desc:'Browse all our products - distribution panels, cables, breakers, contactors & original electrical devices with warranty!',banner_calc_btn:'⚡ Explore Products Now',radio_title:'Live Radio',days:["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],months:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]},ku:{dir:'ltr',menu_title:'Menu',menu_home:'Mal',menu_products:'Berhem 🛒',menu_calc:'Hesabker',menu_contact:'Têkilî',main_title:'RBooSH™ Koma Ebu Suleyman ⚡ Bazirganiya Elektrîkê',main_desc:'Em pispor in di dabînkirin û bazirganiya amûrên elektrîkê, karûbarên sazkirinê, û şêwirmendiya enerjiya elektrîkê de',services_title:'Karûbarên Me',services_desc:'Firotina tabloyên belavkirinê, kablo, stabilizer, sîgorte, kontaktor û amûrên elektrîkê<br>Em xizmetê ji pargadanên pîşesazî, bazirganî û kesan re dikin',branches_title:'Şaxên Me',branch1:'Navenda Sereke - Hesîçe',branch2:'Şaxa Qamişlo',map1:'Li ser Nexşeyê Binêre',map2:'Li ser Nexşeyê Binêre',payment_title:'Rêbazên Dayînê',pay1_title:'Dayîna Bi Nakit',pay1_desc:'Dayîn bi dest de ji her şaxekî',pay2_title:'Şam Cash',pay2_desc:'Dayîna elektronîkî bi riya Şam Cash',pay3_title:'Mesari',pay3_desc:'Dayîna elektronîkî bi riya Mesari',pay4_title:'Taksît',pay4_desc:'Ji bo pargadan û projeyên mezin bi şertên hêsan',payment_note:'Derbarê pêşkêşî û daxistinên taybet de dema dayîna bi Şam Cash û Mesari bipirse',why_title:'Çima Em Hilbijêrin',why1:'Temînata Berhemê',why2:'Fatûreyên Fermî',why3:'Radestkirina Lezgîn',contact_title:'Têkilî',wa1:'WhatsApp Ebu Suleyman: +963 966 436 341',wa2:'WhatsApp Sulaiman Rbooshi: +49 152 16839609',fb:'Rûpela Facebookê',hours_title:'Saetên Kar',hours_desc:'Şemî - Pêncşem: 8:00 Sibê - 7:30 Êvarê<br>În: Tenê rewşên acîl',calc_title:'Pêdiviyên Xwe Bi Xwe Hesab Bike',calc_desc:'Hesabkera RBooSH™ bi kar bîne da ku di 30 saniyeyan de mîqdara materyalên elektrîkê yên projeya xwe texmîn bike',calc_btn:'Hesabkerê Veke',footer_slogan:'Em Hêzê Didin Te... Em Domdariyê Misoger Dikin',banner_calc_title:'🛒 Berhemên Orjînal ên RBooSH™',banner_calc_desc:'Hemû berhemên me bibîne - tablo, kablo, sîgorte, kontaktor û amûrên elektrîkê yên orjînal bi garantî!',banner_calc_btn:'⚡ Berheman Naha Bibîne',radio_title:'Radyoya Zindî',days:["Yekşem","Duşem","Sêşem","Çarşem","Pêncşem","În","Şemî"],months:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]}};
 let currentLang='ar';
+// RADIO LOGIC - FIXED Life Radio
+const stations=[
+{name:"Life Radio - النمسا",urls:["https://liferadio.stream.kapper.net:8000/liferadio","http://stream1.liferadio.at:8000/liferadio","http://liferadio.stream.kapper.net:8000/liferadio"]},
+{name:"Arta FM 99.5 - عامودا / الحسكة",urls:["https://stream.arta.fm/arta","https://arta.luna.ps:8000/arta"]},
+{name:"شام FM 92.3",urls:["https://radioshamfm.grtvstream.com:8400/stream"]},
+{name:"المدينة FM 101.5",urls:["https://stream.almadinafm.com:8000/stream"]},
+{name:"نينار FM 88.3",urls:["https://stream.ninarfm.com:8000/stream"]},
+{name:"Fuse FM 91.1",urls:["https://stream.fuse.fm:8000/stream"]},
+{name:"ميلودي FM 97.9",urls:["https://stream.melodyfm-syria.com:8000/stream"]},
+{name:"أرابيسك FM 102.3",urls:["https://stream.arabesquefm.net:8000/stream"]}
+];
+let isPlaying=false;let curUrlIdx=0;const audio=document.getElementById('radioAudio');
+function playWithFallback(idx,urlIdx=0){
+ let st=stations[idx];let list=st.urls;if(urlIdx>=list.length){document.getElementById('radioStatus').innerText="❌ البث غير متاح حالياً";return;}
+ audio.src=list[urlIdx];curUrlIdx=urlIdx;audio.volume=document.getElementById('volSlider').value;
+ audio.play().then(()=>{
+   isPlaying=true;
+   document.getElementById('playBtn').innerText="⏸️ إيقاف";
+   document.getElementById('playBtn').classList.add('playing');
+   document.getElementById('radioEq').classList.add('active');
+   document.getElementById('radioStatus').innerText="يعمل الآن: "+st.name;
+   localStorage.setItem('rboosh_radio',idx);
+ }).catch(()=>playWithFallback(idx,urlIdx+1));
+}
+function toggleRadio(){
+ if(!isPlaying){
+   let idx=parseInt(document.getElementById('stationSelect').value);
+   playWithFallback(idx,0);
+ }else{
+   audio.pause();isPlaying=false;
+   document.getElementById('playBtn').innerText="▶️ تشغيل";
+   document.getElementById('playBtn').classList.remove('playing');
+   document.getElementById('radioEq').classList.remove('active');
+   document.getElementById('radioStatus').innerText="اختر محطة واضغط تشغيل";
+ }
+}
+function changeStation(){
+ let idx=parseInt(document.getElementById('stationSelect').value);
+ localStorage.setItem('rboosh_radio',idx);
+ if(isPlaying) playWithFallback(idx,0);
+}
+function setVolume(v){audio.volume=v;}
+audio.addEventListener('error',()=>{if(isPlaying){let idx=parseInt(document.getElementById('stationSelect').value);playWithFallback(idx,curUrlIdx+1);}});
+(function(){let saved=localStorage.getItem('rboosh_radio');if(saved!==null){document.getElementById('stationSelect').value=saved;}})();
+
 function openMenu(){document.getElementById('sidebar').classList.add('open');document.getElementById('overlay').classList.add('show');}
 function closeMenu(){document.getElementById('sidebar').classList.remove('open');document.getElementById('overlay').classList.remove('show');}
 function updateClock(){
@@ -167,6 +247,7 @@ currentLang=lang;const t=translations[lang];document.documentElement.lang=lang;d
 document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
 document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
 for(let k in t){if(document.getElementById(k)){document.getElementById(k).innerHTML=t[k];}}
+if(isPlaying){document.getElementById('radioStatus').innerText="يعمل الآن: "+stations[document.getElementById('stationSelect').value].name;}
 updateClock();updateCounter();
 }
 function updateCounter(){let v=Math.floor(Math.random()*100)+180;let o=Math.floor(Math.random()*20)+30;let g1=data[currentLang].gov[Math.floor(Math.random()*data[currentLang].gov.length)];let g2=data[currentLang].gov[Math.floor(Math.random()*data[currentLang].gov.length)];if(currentLang==='ar') document.getElementById('counterText').innerHTML=`🔥 ${v} ${data.ar.viewing} - ${o} ${data.ar.orders} ${g1}، ${g2} و باقي محافظات سوريا`;else if(currentLang==='en') document.getElementById('counterText').innerHTML=`🔥 ${v} ${data.en.viewing} - ${o} ${data.en.orders} ${g1}, ${g2} & other Syrian govs`;else document.getElementById('counterText').innerHTML=`🔥 ${v} ${data.ku.viewing} - ${o} ${data.ku.orders} ${g1}, ${g2} û parêzgehên din ên Sûriyê`;}
