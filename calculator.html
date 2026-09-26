@@ -130,10 +130,9 @@ h2{color:var(--blue);text-align:center;font-size:26px;margin-bottom:15px;text-sh
 <small id="vd_detail">الجهد الضايع: 9.87V - الجهد الواصل: 210.1V - كبل RBooSH™ ألمنيوم 10mm²</small>
 </div>
 <p style="text-align:center;margin-top:15px;font-size:12px;color:var(--text2)" id="t2_footer">الجودة المضمونة هي أساس عملنا في RBooSH™ منذ التأسيس</p>
-<a href="https://wa.me/4915216839609" class="btn-calc" style="display:block;text-align:center;text-decoration:none" id="t2_btn">استشر مهندس RBooSH™ مجاناً</a>
+<a href="https://wa.me/4915216839609" target="_blank" class="btn-calc" style="display:block;text-align:center;text-decoration:none" id="t2_btn">استشر مهندس RBooSH™ مجاناً</a>
 </div>
 </div>
-
 </div>
 
 <script>
@@ -166,7 +165,7 @@ currentLang=lang;const t=translations[lang];document.documentElement.lang=lang;d
 document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
 document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
 for(let k in t){if(document.getElementById(k)){document.getElementById(k).innerText=t[k];}}
-updateClock();
+updateClock();calcVD();
 }
 function openTab(n){document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));document.getElementById('tab'+n).classList.add('active');document.getElementById('tab'+n+'_btn').classList.add('active');}
 function calc1(){let a=parseFloat(document.getElementById('area').value)||0;let r=parseFloat(document.getElementById('rooms').value)||0;let c25=Math.round(a*2.2 + r*10);let c15=Math.round(a*1.1 + r*8);document.getElementById('res1').innerHTML=`${currentLang==='ar'?`تحتاج تقريباً`:`You need approx`} <b style="color:var(--blue)">${c25}m</b> 2.5mm & <b style="color:var(--blue)">${c15}m</b> 1.5mm`;}
@@ -184,9 +183,14 @@ let Vdrop = phase===1? (2*L*I*rho)/S : (Math.sqrt(3)*L*I*rho)/S;
 let Vpercent = (Vdrop/Vbase)*100;
 let Varrive = Vbase - Vdrop;
 let status = Vpercent <=3? `<span class="badge-ok">✅ ${currentLang==='ar'?'ممتاز - ضمن المسموح (3%)':'Excellent - within 3%'}</span>` : Vpercent <=5? `<span class="badge-ok" style="border-color:#ffaa00;color:#ffaa00">⚠️ ${currentLang==='ar'?'مقبول لكن يفضل تكبير المقطع':'Acceptable but increase size'}</span>` : `<span class="badge-bad">❌ ${currentLang==='ar'?'هبوط عالي - كبر المقطع فوراً':'High drop - increase size'}</span>`;
-document.getElementById('vd_value').innerText= Vpercent.toFixed(2)+"%";
+document.getElementById('vd_value').innerText= Vpercent.toFixed(2)+"% هبوط";
 document.getElementById('vd_status').innerHTML=status;
-document.getElementById('vd_detail').innerText=`${Vdrop.toFixed(2)}V loss - ${Varrive.toFixed(1)}V arrive - RBooSH™ ${matText} ${S}mm²`;
+document.getElementById('vd_detail').innerText=`الجهد الضايع: ${Vdrop.toFixed(2)}V - الجهد الواصل: ${Varrive.toFixed(1)}V - كبل RBooSH™ ${matText} ${S}mm²`;
+
+// بناء رسالة الواتساب بالنتيجة
+let phaseTxt = phase===1? (currentLang==='ar'?'220V سنغل فاز':'220V Single') : (currentLang==='ar'?'380V ثري فاز':'380V Three');
+let msg = `مرحبا مهندس RBooSH™ ⚡\nاستشارة هبوط الجهد:\n- الطول: ${L} متر\n- التيار: ${I} أمبير\n- المقطع: ${S}mm² ${matText}\n- النوع: ${phaseTxt}\n- الهبوط: ${Vpercent.toFixed(2)}% (${Vdrop.toFixed(2)}V)\n- الجهد الواصل: ${Varrive.toFixed(1)}V\n\nشو بتنصحني؟`;
+document.getElementById('t2_btn').href = `https://wa.me/4915216839609?text=${encodeURIComponent(msg)}`;
 }
 setInterval(updateClock,1000);updateClock();
 calc1();calcVD();
