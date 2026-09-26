@@ -44,7 +44,7 @@ h2{color:var(--blue);text-align:center;font-size:26px;margin-bottom:15px;text-sh
 .sidebar-title{color:var(--blue);text-align:center;margin:10px 0 15px 0;font-size:18px}
 .sidebar a{display:block;padding:14px;color:var(--text);text-decoration:none;border-bottom:1px solid var(--border)}
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);display:none;z-index:1000}.overlay.show{display:block}
-.btn-calc{background:linear-gradient(135deg,var(--blue2),var(--blue));color:#fff;padding:14px 25px;border-radius:25px;border:none;cursor:pointer;font-weight:bold;width:100%;margin-top:10px;box-shadow:0 0 15px rgba(0,191,255,0.4)}
+.btn-calc{background:linear-gradient(135deg,var(--blue2),var(--blue));color:#fff;padding:14px 25px;border-radius:25px;border:none;cursor:pointer;font-weight:bold;width:100%;margin-top:10px;box-shadow:0 0 15px rgba(0,191,255,0.4);text-decoration:none;display:block;text-align:center}
 .tabs{display:flex;gap:8px;margin:20px 0;justify-content:center;flex-wrap:wrap}
 .tab-btn{background:var(--card);border:1px solid var(--border);color:var(--text2);padding:10px 18px;border-radius:25px;cursor:pointer;font-weight:bold;font-size:13px;transition:0.3s}
 .tab-btn.active{background:var(--blue);color:#000;border-color:var(--blue);box-shadow:0 0 12px rgba(0,191,255,0.5)}
@@ -80,10 +80,7 @@ h2{color:var(--blue);text-align:center;font-size:26px;margin-bottom:15px;text-sh
       <div class="hand-large second-hand-large" id="secondHandLarge"></div>
       <div class="clock-center-large"></div>
     </div>
-    <div class="sidebar-date">
-      <span class="sidebar-day" id="sidebarDay">السبت</span>
-      <span class="sidebar-date-num" id="sidebarDate">26 أيلول 2026</span>
-    </div>
+    <div class="sidebar-date"><span class="sidebar-day" id="sidebarDay">السبت</span><span class="sidebar-date-num" id="sidebarDate">26 أيلول 2026</span></div>
   </div>
   <hr class="sidebar-divider">
   <h3 class="sidebar-title" id="menu_title">القائمة</h3>
@@ -93,7 +90,6 @@ h2{color:var(--blue);text-align:center;font-size:26px;margin-bottom:15px;text-sh
 <div class="container">
 <h2 id="calc_main_title">حاسبات RBooSH™ الهندسية</h2>
 <p style="text-align:center;color:var(--text2);font-size:13px" id="calc_main_desc">احسب احتياجاتك بدقة قبل الشراء - نوفر عليك الوقت والمال</p>
-
 <div class="tabs">
   <button class="tab-btn active" onclick="openTab(1)" id="tab1_btn">📐 حاسبة الكميات</button>
   <button class="tab-btn" onclick="openTab(2)" id="tab2_btn">⚡ حاسبة هبوط الجهد</button>
@@ -106,8 +102,8 @@ h2{color:var(--blue);text-align:center;font-size:26px;margin-bottom:15px;text-sh
   <div class="input-group"><label id="t1_l1">مساحة البيت (م²)</label><input type="number" id="area" value="100" oninput="calc1()"></div>
   <div class="input-group"><label id="t1_l2">عدد الغرف</label><input type="number" id="rooms" value="3" oninput="calc1()"></div>
 </div>
-<div class="result-box"><div id="res1">سيتم حساب ~ 250 متر كبل 2.5mm و 120 متر 1.5mm</div><small id="t1_note">تقدير مبدئي - يختلف حسب المخطط</small></div>
-<a href="https://wa.me/963966436341" class="btn-calc" style="display:block;text-align:center;text-decoration:none;margin-top:15px" id="t1_btn">اطلب عرض سعر على الواتساب</a>
+<div class="result-box"><div id="res1"></div><small id="t1_note">تقدير مبدئي - يختلف حسب المخطط</small></div>
+<a href="https://wa.me/963966436341" class="btn-calc" style="margin-top:15px" id="t1_btn">اطلب عرض سعر على الواتساب</a>
 </div>
 </div>
 
@@ -125,12 +121,12 @@ h2{color:var(--blue);text-align:center;font-size:26px;margin-bottom:15px;text-sh
 </div>
 <div class="input-group"><label id="t2_l5">مادة النحاس</label><select id="vd_mat" onchange="calcVD()"><option value="0.0178" id="t2_mat1">نحاس - RBooSH™ أصلي</option><option value="0.0282" selected id="t2_mat2">ألمنيوم</option></select></div>
 <div class="result-box" id="vd_result">
-<b id="vd_value">4.49% هبوط</b>
+<b id="vd_value"></b>
 <div id="vd_status"></div>
-<small id="vd_detail">الجهد الضايع: 9.87V - الجهد الواصل: 210.1V - كبل RBooSH™ ألمنيوم 10mm²</small>
+<small id="vd_detail"></small>
 </div>
 <p style="text-align:center;margin-top:15px;font-size:12px;color:var(--text2)" id="t2_footer">الجودة المضمونة هي أساس عملنا في RBooSH™ منذ التأسيس</p>
-<a href="https://wa.me/4915216839609" target="_blank" class="btn-calc" style="display:block;text-align:center;text-decoration:none" id="t2_btn">استشر مهندس RBooSH™ مجاناً</a>
+<a href="https://wa.me/4915216839609" target="_blank" class="btn-calc" id="t2_btn">استشر مهندس RBooSH™ مجاناً</a>
 </div>
 </div>
 </div>
@@ -138,11 +134,46 @@ h2{color:var(--blue);text-align:center;font-size:26px;margin-bottom:15px;text-sh
 <script>
 function toggleTheme(){document.body.classList.toggle('light');let l=document.body.classList.contains('light');localStorage.setItem('rboosh_theme',l?'light':'dark');document.getElementById('themeBtn').innerText=l?'🌙':'☀️';}
 (function(){let s=localStorage.getItem('rboosh_theme');if(s==='light'){document.body.classList.add('light');document.getElementById('themeBtn').innerText='🌙';}else{document.getElementById('themeBtn').innerText='☀️';}})();
+
 const translations={
-ar:{dir:'rtl',menu_title:'القائمة',menu_home:'الرئيسية',menu_products:'المنتجات 🛒',menu_calc:'الحاسبة',calc_main_title:'حاسبات RBooSH™ الهندسية',calc_main_desc:'احسب احتياجاتك بدقة قبل الشراء - نوفر عليك الوقت والمال',tab1_btn:'📐 حاسبة الكميات',tab2_btn:'⚡ حاسبة هبوط الجهد',t1_title:'حاسبة كميات المواد',t1_l1:'مساحة البيت (م²)',t1_l2:'عدد الغرف',t1_note:'تقدير مبدئي - يختلف حسب المخطط',t1_btn:'اطلب عرض سعر على الواتساب',t2_title:'⚡ حاسبة هبوط الجهد',t2_desc:'تأكد من مقطع الكبل قبل ما تمد 50 متر ويصير عندك ضعف كهربا',t2_l1:'طول الكبل (متر) ذهاب فقط',t2_l2:'التيار (أمبير)',t2_l3:'مقطع الكبل (mm²)',t2_l4:'نوع الشبكة',t2_ph1:'220V سنغل فاز',t2_ph2:'380V ثري فاز',t2_l5:'مادة النحاس',t2_mat1:'نحاس - RBooSH™ أصلي',t2_mat2:'ألمنيوم',t2_footer:'الجودة المضمونة هي أساس عملنا في RBooSH™ منذ التأسيس',t2_btn:'استشر مهندس RBooSH™ مجاناً',days:["الأحد","الاثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت"],months:["كانون الثاني","شباط","آذار","نيسان","أيار","حزيران","تموز","آب","أيلول","تشرين الأول","تشرين الثاني","كانون الأول"]},
-en:{dir:'ltr',menu_title:'Menu',menu_home:'Home',menu_products:'Products 🛒',menu_calc:'Calculator',calc_main_title:'RBooSH™ Engineering Calculators',calc_main_desc:'Calculate accurately before buying - save time and money',tab1_btn:'📐 Quantity Calc',tab2_btn:'⚡ Voltage Drop',t1_title:'Material Quantity Calculator',t1_l1:'House Area (m²)',t1_l2:'Rooms Count',t1_note:'Initial estimate - varies by plan',t1_btn:'Request Quote on WhatsApp',t2_title:'⚡ Voltage Drop Calculator',t2_desc:'Check cable size before 50m run causes weak power',t2_l1:'Cable Length (m) one way',t2_l2:'Current (A)',t2_l3:'Cable Section (mm²)',t2_l4:'Network Type',t2_ph1:'220V Single Phase',t2_ph2:'380V Three Phase',t2_l5:'Material',t2_mat1:'Copper - RBooSH™ Original',t2_mat2:'Aluminium',t2_footer:'Guaranteed quality is the foundation of our work at RBooSH™',t2_btn:'Consult RBooSH™ Engineer Free',days:["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],months:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]},
-ku:{dir:'ltr',menu_title:'Menu',menu_home:'Mal',menu_products:'Berhem 🛒',menu_calc:'Hesabker',calc_main_title:'Hesabkerên Endezyariyê yên RBooSH™',calc_main_desc:'Berî kirînê rast hesab bike - dem û pere teserûf bike',tab1_btn:'📐 Hesaba Mîqdarê',tab2_btn:'⚡ Dakeftina Voltajê',t1_title:'Hesabkera Mîqdara Materyalan',t1_l1:'Qada Malê (m²)',t1_l2:'Hejmara Odeyan',t1_note:'Texmîna destpêkê - li gorî planê diguhere',t1_btn:'Nirxê li ser WhatsApp bipirse',t2_title:'⚡ Hesabkera Dakeftina Voltajê',t2_desc:'Berî 50m kablo dirêj bikî beşa kabloyê kontrol bike',t2_l1:'Dirêjahiya Kabloyê (m)',t2_l2:'Hêz (A)',t2_l3:'Beşa Kabloyê (mm²)',t2_l4:'Cureya Torê',t2_ph1:'220V Yek Qonax',t2_ph2:'380V Sê Qonax',t2_l5:'Materyal',t2_mat1:'Sifir - RBooSH™ Orjînal',t2_mat2:'Elemenyûm',t2_footer:'Kalîteya misoger bingeha karê me ye li RBooSH™',t2_btn:'Bi Endezyarê RBooSH™ re Bêpere Bişêwire',days:["Yekşem","Duşem","Sêşem","Çarşem","Pêncşem","În","Şemî"],months:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]}
+ar:{
+dir:'rtl',
+menu_title:'القائمة',menu_home:'الرئيسية',menu_products:'المنتجات 🛒',menu_calc:'الحاسبة',
+calc_main_title:'حاسبات RBooSH™ الهندسية',calc_main_desc:'احسب احتياجاتك بدقة قبل الشراء - نوفر عليك الوقت والمال',
+tab1_btn:'📐 حاسبة الكميات',tab2_btn:'⚡ حاسبة هبوط الجهد',
+t1_title:'حاسبة كميات المواد',t1_l1:'مساحة البيت (م²)',t1_l2:'عدد الغرف',t1_note:'تقدير مبدئي - يختلف حسب المخطط',t1_btn:'اطلب عرض سعر على الواتساب',
+t2_title:'⚡ حاسبة هبوط الجهد',t2_desc:'تأكد من مقطع الكبل قبل ما تمد 50 متر ويصير عندك ضعف كهربا',
+t2_l1:'طول الكبل (متر) ذهاب فقط',t2_l2:'التيار (أمبير)',t2_l3:'مقطع الكبل (mm²)',t2_l4:'نوع الشبكة',t2_ph1:'220V سنغل فاز',t2_ph2:'380V ثري فاز',t2_l5:'مادة الكبل',t2_mat1:'نحاس - RBooSH™ أصلي',t2_mat2:'ألمنيوم',
+t2_footer:'الجودة المضمونة هي أساس عملنا في RBooSH™ منذ التأسيس',t2_btn:'استشر مهندس RBooSH™ مجاناً',
+days:["الأحد","الاثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت"],
+months:["كانون الثاني","شباط","آذار","نيسان","أيار","حزيران","تموز","آب","أيلول","تشرين الأول","تشرين الثاني","كانون الأول"]
+},
+en:{
+dir:'ltr',
+menu_title:'Menu',menu_home:'Home',menu_products:'Products 🛒',menu_calc:'Calculator',
+calc_main_title:'RBooSH™ Engineering Calculators',calc_main_desc:'Calculate accurately before buying - save time and money',
+tab1_btn:'📐 Quantity Calc',tab2_btn:'⚡ Voltage Drop',
+t1_title:'Material Quantity Calculator',t1_l1:'House Area (m²)',t1_l2:'Rooms Count',t1_note:'Initial estimate - varies by plan',t1_btn:'Request Quote on WhatsApp',
+t2_title:'⚡ Voltage Drop Calculator',t2_desc:'Check cable size before 50m run causes weak power',
+t2_l1:'Cable Length (m) one way',t2_l2:'Current (A)',t2_l3:'Cable Section (mm²)',t2_l4:'Network Type',t2_ph1:'220V Single Phase',t2_ph2:'380V Three Phase',t2_l5:'Cable Material',t2_mat1:'Copper - RBooSH™ Original',t2_mat2:'Aluminium',
+t2_footer:'Guaranteed quality is the foundation of our work at RBooSH™',t2_btn:'Consult RBooSH™ Engineer Free',
+days:["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+months:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
+},
+ku:{
+dir:'ltr',
+menu_title:'Lîste',menu_home:'Malper',menu_products:'Berhem 🛒',menu_calc:'Hesabker',
+calc_main_title:'Hesabkerên Endezyariyê yên RBooSH™',calc_main_desc:'Berî kirînê bi duristî hesab bike - dem û pere teserûf bike',
+tab1_btn:'📐 Hesaba Mîqdarê',tab2_btn:'⚡ Dakeftina Voltajê',
+t1_title:'Hesabkera Mîqdara Materyalan',t1_l1:'Rûbera Malê (m²)',t1_l2:'Hejmara Odeyan',t1_note:'Texmîna destpêkê ye - li gorî nexşeyê diguhere',t1_btn:'Li ser WhatsAppê bihayê bixwaze',
+t2_title:'⚡ Hesabkera Dakeftina Voltajê',t2_desc:'Berî ku 50 metre kabloyê dirêj bikî, beşa kabloyê piştrast bike',
+t2_l1:'Dirêjahiya Kabloyê (m) tenê çûn',t2_l2:'Hêz (Amper)',t2_l3:'Beşa Kabloyê (mm²)',t2_l4:'Cureya Torê',t2_ph1:'220V Yek Qonax',t2_ph2:'380V Sê Qonax',t2_l5:'Materyalê Kabloyê',t2_mat1:'Sifir - RBooSH™ Resen',t2_mat2:'Elemenyûm',
+t2_footer:'Qalîteya misoger bingeha karê me ye li RBooSH™ ji damezrandinê ve',t2_btn:'Bêpere bi Endezyarê RBooSH™ re bişêwire',
+days:["Yekşem","Duşem","Sêşem","Çarşem","Pêncşem","Înî","Şemî"],
+months:["Rêbendan","Sibat","Adar","Nîsan","Gulan","Pûşper","Tîrmeh","Tebax","Îlon","Cotmeh","Mijdar","Kanûn"]
+}
 };
+
 let currentLang='ar';
 function openMenu(){document.getElementById('sidebar').classList.add('open');document.getElementById('overlay').classList.add('show');}
 function closeMenu(){document.getElementById('sidebar').classList.remove('open');document.getElementById('overlay').classList.remove('show');}
@@ -165,10 +196,26 @@ currentLang=lang;const t=translations[lang];document.documentElement.lang=lang;d
 document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
 document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
 for(let k in t){if(document.getElementById(k)){document.getElementById(k).innerText=t[k];}}
-updateClock();calcVD();
+updateClock();calc1();calcVD();
 }
 function openTab(n){document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));document.getElementById('tab'+n).classList.add('active');document.getElementById('tab'+n+'_btn').classList.add('active');}
-function calc1(){let a=parseFloat(document.getElementById('area').value)||0;let r=parseFloat(document.getElementById('rooms').value)||0;let c25=Math.round(a*2.2 + r*10);let c15=Math.round(a*1.1 + r*8);document.getElementById('res1').innerHTML=`${currentLang==='ar'?`تحتاج تقريباً`:`You need approx`} <b style="color:var(--blue)">${c25}m</b> 2.5mm & <b style="color:var(--blue)">${c15}m</b> 1.5mm`;}
+
+function calc1(){
+let a=parseFloat(document.getElementById('area').value)||0;
+let r=parseFloat(document.getElementById('rooms').value)||0;
+let c25=Math.round(a*2.2 + r*10);
+let c15=Math.round(a*1.1 + r*8);
+let html="";
+if(currentLang==='ar'){
+html=`تحتاج تقريباً <b style="color:var(--blue)">${c25}m</b> كبل 2.5mm و <b style="color:var(--blue)">${c15}m</b> كبل 1.5mm`;
+}else if(currentLang==='ku'){
+html=`Pêwîstiya te bi nêzîkî <b style="color:var(--blue)">${c25}m</b> kabloya 2.5mm û <b style="color:var(--blue)">${c15}m</b> kabloya 1.5mm heye`;
+}else{
+html=`You need approx <b style="color:var(--blue)">${c25}m</b> cable 2.5mm & <b style="color:var(--blue)">${c15}m</b> cable 1.5mm`;
+}
+document.getElementById('res1').innerHTML=html;
+}
+
 function calcVD(){
 let L=parseFloat(document.getElementById('vd_length').value)||0;
 let I=parseFloat(document.getElementById('vd_current').value)||0;
@@ -182,13 +229,12 @@ let Vbase= phase===1?220:380;
 let Vdrop = phase===1? (2*L*I*rho)/S : (Math.sqrt(3)*L*I*rho)/S;
 let Vpercent = (Vdrop/Vbase)*100;
 let Varrive = Vbase - Vdrop;
-let status = Vpercent <=3? `<span class="badge-ok">✅ ${currentLang==='ar'?'ممتاز - ضمن المسموح (3%)':'Excellent - within 3%'}</span>` : Vpercent <=5? `<span class="badge-ok" style="border-color:#ffaa00;color:#ffaa00">⚠️ ${currentLang==='ar'?'مقبول لكن يفضل تكبير المقطع':'Acceptable but increase size'}</span>` : `<span class="badge-bad">❌ ${currentLang==='ar'?'هبوط عالي - كبر المقطع فوراً':'High drop - increase size'}</span>`;
-document.getElementById('vd_value').innerText= Vpercent.toFixed(2)+"% هبوط";
+let status = Vpercent <=3? `<span class="badge-ok">✅ ${currentLang==='ar'?'ممتاز - ضمن المسموح (3%)':currentLang==='ku'?'Bêkêmasî - di nav 3% de':'Excellent - within 3%'}</span>` : Vpercent <=5? `<span class="badge-ok" style="border-color:#ffaa00;color:#ffaa00">⚠️ ${currentLang==='ar'?'مقبول لكن يفضل تكبير المقطع':currentLang==='ku'?'Pecewandî ye lê baştir e mezintir bikî':'Acceptable but increase size'}</span>` : `<span class="badge-bad">❌ ${currentLang==='ar'?'هبوط عالي - كبر المقطع فوراً':currentLang==='ku'?'Dakeftin zêde ye - tavilê mezintir bike':'High drop - increase size'}</span>`;
+document.getElementById('vd_value').innerText= Vpercent.toFixed(2)+"%";
 document.getElementById('vd_status').innerHTML=status;
-document.getElementById('vd_detail').innerText=`الجهد الضايع: ${Vdrop.toFixed(2)}V - الجهد الواصل: ${Varrive.toFixed(1)}V - كبل RBooSH™ ${matText} ${S}mm²`;
+document.getElementById('vd_detail').innerText=`${currentLang==='ar'?`الجهد الضائع: ${Vdrop.toFixed(2)}V - الجهد الواصل: ${Varrive.toFixed(1)}V - كبل RBooSH™ ${matText} ${S}mm²` : currentLang==='ku'?`Windabûna voltajê: ${Vdrop.toFixed(2)}V - Voltaja gihîştî: ${Varrive.toFixed(1)}V - Kabloya RBooSH™ ${matText} ${S}mm²` : `${Vdrop.toFixed(2)}V loss - ${Varrive.toFixed(1)}V arrive - RBooSH™ ${matText} ${S}mm²`}`;
 
-// بناء رسالة الواتساب بالنتيجة
-let phaseTxt = phase===1? (currentLang==='ar'?'220V سنغل فاز':'220V Single') : (currentLang==='ar'?'380V ثري فاز':'380V Three');
+let phaseTxt = phase===1? (currentLang==='ar'?'220V سنغل فاز':currentLang==='ku'?'220V Yek Qonax':'220V Single') : (currentLang==='ar'?'380V ثري فاز':currentLang==='ku'?'380V Sê Qonax':'380V Three');
 let msg = `مرحبا مهندس RBooSH™ ⚡\nاستشارة هبوط الجهد:\n- الطول: ${L} متر\n- التيار: ${I} أمبير\n- المقطع: ${S}mm² ${matText}\n- النوع: ${phaseTxt}\n- الهبوط: ${Vpercent.toFixed(2)}% (${Vdrop.toFixed(2)}V)\n- الجهد الواصل: ${Varrive.toFixed(1)}V\n\nشو بتنصحني؟`;
 document.getElementById('t2_btn').href = `https://wa.me/4915216839609?text=${encodeURIComponent(msg)}`;
 }
