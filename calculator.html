@@ -111,7 +111,7 @@ h2{color:var(--blue);text-align:center;font-size:26px;margin-bottom:15px;text-sh
 </div>
 
 <p style="text-align:center;margin-top:15px;font-size:12px;color:var(--text2)">الجودة المضمونة هي أساس عملنا في RBooSH™ منذ التأسيس - نحاس حقيقي 100%</p>
-<a href="https://wa.me/963966436341" class="btn-calc" style="display:block;text-align:center;text-decoration:none">استشر مهندس RBooSH™ مجاناً</a>
+<a href="https://wa.me/4915216839609" class="btn-calc" style="display:block;text-align:center;text-decoration:none">استشر مهندس RBooSH™ مجاناً</a>
 </div>
 </div>
 
@@ -124,11 +124,8 @@ function openMenu(){document.getElementById('sidebar').classList.add('open');doc
 function closeMenu(){document.getElementById('sidebar').classList.remove('open');document.getElementById('overlay').classList.remove('show');}
 function updateClock(){let now=new Date();let h=now.getHours()%12,m=now.getMinutes(),s=now.getSeconds();document.getElementById('hourHand').style.transform=`translateX(-50%) rotate(${(h+m/60)*30}deg)`;document.getElementById('minuteHand').style.transform=`translateX(-50%) rotate(${m*6}deg)`;document.getElementById('secondHand').style.transform=`translateX(-50%) rotate(${s*6}deg)`;document.getElementById('dayName').innerText=["الأحد","الاثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت"][now.getDay()];document.getElementById('dateNum').innerText=now.getDate()+" "+["كانون الثاني","شباط","آذار","نيسان","أيار","حزيران","تموز","آب","أيلول","تشرين الأول","تشرين الثاني","كانون الأول"][now.getMonth()];}
 setInterval(updateClock,1000);updateClock();
-
 function openTab(n){document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));document.getElementById('tab'+n).classList.add('active');document.getElementById('tab'+n+'_btn').classList.add('active');}
-
 function calc1(){let a=parseFloat(document.getElementById('area').value)||0;let r=parseFloat(document.getElementById('rooms').value)||0;let c25=Math.round(a*2.2 + r*10);let c15=Math.round(a*1.1 + r*8);document.getElementById('res1').innerHTML=`تحتاج تقريباً <b style="color:var(--blue)">${c25}m</b> كبل 2.5mm و <b style="color:var(--blue)">${c15}m</b> كبل 1.5mm`;}
-
 function calcVD(){
 let L=parseFloat(document.getElementById('vd_length').value)||0;
 let I=parseFloat(document.getElementById('vd_current').value)||0;
@@ -146,7 +143,6 @@ document.getElementById('vd_value').innerText= Vpercent.toFixed(2)+"% هبوط";
 document.getElementById('vd_status').innerHTML=status;
 document.getElementById('vd_detail').innerText=`الجهد الضايع: ${Vdrop.toFixed(2)}V - الجهد الواصل: ${Varrive.toFixed(1)}V - كبل RBooSH™ ${matText} ${S}mm²`;
 }
-
 calc1();calcVD();
 if(window.location.hash==="#vd"){openTab(2);}
 </script>
