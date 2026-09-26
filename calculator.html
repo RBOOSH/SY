@@ -2,15 +2,16 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RBooSH™ الحاسبة</title>
+<title>RBooSH™ Abu Suleiman Group</title>
 <style>
 :root{--bg:#000;--card:#111;--card2:#0a0a0a;--text:#fff;--text2:#aaa;--border:#222;--blue:#00bfff;--blue2:#1e3a8a}
 body.light{--bg:#f5f7fb;--card:#fff;--card2:#eef2ff;--text:#111;--text2:#555;--border:#dbe3ff}
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Tahoma',sans-serif}
 body{background:var(--bg);color:var(--text);line-height:1.8;transition:0.4s}
 .container{max-width:900px;margin:0 auto;padding:20px;padding-top:80px}
+.logo{text-align:center;margin:20px 0}.logo img{max-width:350px;width:100%;filter:drop-shadow(0 0 20px rgba(0,191,255,0.5))}
 h2{color:var(--blue);text-align:center;font-size:26px;margin-bottom:15px;text-shadow:0 0 15px rgba(0,191,255,0.6)}
-.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:25px;margin:20px 0}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:25px;margin:20px 0;transition:0.4s}
 .header-top{position:fixed;top:0;left:0;right:0;background:var(--bg);border-bottom:2px solid var(--blue2);padding:10px 12px;z-index:1000;display:flex;justify-content:space-between;align-items:center;gap:10px}
 .header-left{display:flex;align-items:center;gap:12px}
 .menu-btn{font-size:28px;background:none;border:none;color:var(--blue);cursor:pointer}
@@ -44,23 +45,42 @@ h2{color:var(--blue);text-align:center;font-size:26px;margin-bottom:15px;text-sh
 .sidebar-title{color:var(--blue);text-align:center;margin:10px 0 15px 0;font-size:18px}
 .sidebar a{display:block;padding:14px;color:var(--text);text-decoration:none;border-bottom:1px solid var(--border)}
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);display:none;z-index:1000}.overlay.show{display:block}
-.btn-calc{background:linear-gradient(135deg,var(--blue2),var(--blue));color:#fff;padding:14px 25px;border-radius:25px;border:none;cursor:pointer;font-weight:bold;width:100%;margin-top:10px;box-shadow:0 0 15px rgba(0,191,255,0.4);text-decoration:none;display:block;text-align:center}
-.tabs{display:flex;gap:8px;margin:20px 0;justify-content:center;flex-wrap:wrap}
-.tab-btn{background:var(--card);border:1px solid var(--border);color:var(--text2);padding:10px 18px;border-radius:25px;cursor:pointer;font-weight:bold;font-size:13px;transition:0.3s}
-.tab-btn.active{background:var(--blue);color:#000;border-color:var(--blue);box-shadow:0 0 12px rgba(0,191,255,0.5)}
-.tab-content{display:none}.tab-content.active{display:block}
-.input-group{margin:12px 0}.input-group label{display:block;font-size:13px;color:var(--text2);margin-bottom:6px;font-weight:bold}
-.input-group input,.input-group select{width:100%;background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:12px;color:var(--text);font-size:14px}
-.input-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media(max-width:600px){.input-row{grid-template-columns:1fr}}
-.result-box{background:var(--card2);border:1px dashed var(--blue);border-radius:12px;padding:18px;margin-top:15px;text-align:center}
-.result-box b{color:var(--blue);font-size:20px}.result-box small{display:block;color:var(--text2);font-size:11px;margin-top:6px}
-.badge-ok{background:rgba(0,255,136,0.15);border:1px solid #00ff88;color:#00ff88;padding:6px 12px;border-radius:20px;font-size:12px;display:inline-block;margin-top:10px}
-.badge-bad{background:rgba(255,60,60,0.15);border:1px solid #ff3c3c;color:#ff3c3c;padding:6px 12px;border-radius:20px;font-size:12px;display:inline-block;margin-top:10px}
-.live-stats{display:flex;justify-content:center;gap:10px;margin:14px 0 8px 0;flex-wrap:wrap}
-.live-item{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:6px 14px;font-size:11px;color:var(--text2);display:flex;align-items:center;gap:6px}
-.live-dot{width:8px;height:8px;background:#00ff88;border-radius:50%;display:inline-block;animation:blink 1.2s infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
-.calc-counter{font-size:10px;color:var(--text2);margin-top:8px;text-align:center;opacity:0.8}
+.btn{padding:14px 20px;border-radius:10px;text-decoration:none;font-weight:bold;display:block;text-align:center;margin:10px 0}
+.btn-whatsapp{background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;box-shadow:0 0 15px rgba(37,211,102,0.6);border:1px solid #25D366;animation:whatsappGlow 2s infinite alternate;position:relative;overflow:hidden}
+.btn-whatsapp::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent);animation:shine 2.5s infinite}
+@keyframes whatsappGlow{from{box-shadow:0 0 10px rgba(37,211,102,0.5)}to{box-shadow:0 0 20px rgba(37,211,102,0.9)}}
+@keyframes shine{0%{left:-100%}100%{left:100%}}
+.btn-fb{background:#1877F2;color:#fff}
+.btn-calc{background:linear-gradient(135deg,var(--blue2),var(--blue));color:#fff;padding:16px 35px;display:inline-block;border-radius:25px;animation:btnPulse 1.5s infinite;box-shadow:0 0 20px rgba(0,191,255,0.5);text-decoration:none;font-weight:bold}
+@keyframes btnPulse{0%{transform:scale(1)}50%{transform:scale(1.05)}100%{transform:scale(1)}}
+.payment-item,.why-item{border:1px solid var(--blue2);padding:15px;border-radius:10px;margin:10px 0;text-align:center;background:var(--card2)}
+.visitor-counter{background:var(--card);border:1px dashed var(--blue);border-radius:12px;padding:12px 18px;margin:0 auto 20px auto;text-align:center;max-width:650px;display:flex;align-items:center;justify-content:center;gap:10px}
+.live-dot{width:10px;height:10px;background:#ff0000;border-radius:50%;animation:livePulse 1s infinite}
+@keyframes livePulse{0%{box-shadow:0 0 0 0 rgba(255,0,0,0.7)}70%{box-shadow:0 0 0 8px rgba(255,0,0,0)}100%{box-shadow:0 0 0 0 rgba(255,0,0,0)}}
+.calc-banner{background:linear-gradient(135deg,var(--blue2),var(--blue));border-radius:15px;padding:25px;margin:25px 0;text-align:center;border:2px solid var(--blue);animation:glow 2s infinite alternate}
+@keyframes glow{from{box-shadow:0 0 10px var(--blue2)}to{box-shadow:0 0 25px var(--blue)}}
+.order-popup{position:fixed;bottom:20px;right:20px;background:var(--card);border:1px solid #25D366;border-radius:15px;padding:12px 16px;display:flex;align-items:center;gap:12px;z-index:2000;transform:translateX(400px);transition:0.5s;max-width:320px}
+.order-popup.show{transform:translateX(0)}[dir="ltr"].order-popup{right:auto;left:20px;transform:translateX(-400px)}[dir="ltr"].order-popup.show{transform:translateX(0)}
+.order-popup img{width:50px;height:50px;border-radius:10px;object-fit:cover}
+.visitor-counter span{font-size:14px;color:#00ff88;font-weight:bold;-webkit-text-stroke:0.35px #000;paint-order:stroke fill;text-shadow:0.5px 0.5px 0 #000,-0.5px 0.5px 0 #000,0.5px -0.5px 0 #000,-0.5px -0.5px 0 #000,0 0 8px rgba(0,255,136,0.6)}
+.brands-bar{width:100%;background:var(--card);border:2px solid var(--blue);border-radius:12px;overflow:hidden;margin:15px auto;padding:14px 0;direction:ltr;box-shadow:0 0 12px rgba(0,191,255,0.4),0 0 25px rgba(0,191,255,0.2);animation:borderGlow 2s infinite alternate}
+@keyframes borderGlow{from{box-shadow:0 0 10px rgba(0,191,255,0.4),0 0 20px rgba(0,191,255,0.15);border-color:#00bfff}to{box-shadow:0 0 18px rgba(0,191,255,0.8),0 0 35px rgba(0,191,255,0.35);border-color:#33d1ff}}
+.brands-track{display:flex;width:max-content;animation:scrollBrands 60s linear infinite}
+.brands-group{display:flex;flex-shrink:0;align-items:center}
+.brands-group span{font-size:14px;font-weight:900;padding:0 24px;white-space:nowrap;position:relative;-webkit-text-stroke:0.3px #000;paint-order:stroke fill;text-shadow:0.5px 0.5px 0 #000}
+.brands-group span::after{content:'•';position:absolute;right:-2px;color:var(--blue);opacity:0.5;font-size:10px}
+.c-ls{color:#005BAC}.c-schneider{color:#3DCD58}.c-chint{color:#005BAC}.c-tense{color:#0072BC}.c-givis{color:#0072BC}.c-pollux{color:#FF6600}.c-rboosh{color:#00bfff;text-shadow:0 0 12px rgba(0,191,255,0.9),0.5px 0.5px 0 #000!important}.c-altech{color:#E30613}.c-hyundai{color:#002C5F}.c-clay{color:#FF6A00}.c-unal{color:#CC0000}.c-ako{color:#E30613}
+@keyframes scrollBrands{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.cert-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:15px}
+@media(max-width:600px){.cert-grid{grid-template-columns:1fr}}
+.cert-item{border:1px solid var(--blue2);background:var(--card2);border-radius:12px;padding:18px;text-align:center;transition:0.3s}
+.cert-item:hover{border-color:var(--blue);box-shadow:0 0 15px rgba(0,191,255,0.25);transform:translateY(-2px)}
+.cert-icon{font-size:28px;margin-bottom:8px;display:block}
+.cert-title{color:var(--blue);font-weight:900;font-size:15px;margin-bottom:4px}
+.cert-sub{color:var(--text2);font-size:12px;font-weight:bold;margin-bottom:8px;display:block}
+.cert-desc{color:var(--text2);font-size:12px;line-height:1.6}
+.cert-badge{display:inline-flex;align-items:center;gap:6px;margin-top:10px;background:var(--card);border:1px solid var(--border);border-radius:20px;padding:4px 10px;font-size:11px;color:var(--text2)}
+.cert-dot{width:7px;height:7px;background:#00ff88;border-radius:50%;display:inline-block;animation:livePulse 1.5s infinite}
 </style>
 </head>
 <body>
@@ -72,7 +92,7 @@ h2{color:var(--blue);text-align:center;font-size:26px;margin-bottom:15px;text-sh
       <div class="date-info"><span class="day-name" id="dayName">السبت</span><span class="date-num" id="dateNum">26 أيلول</span></div>
     </div>
   </div>
-  <div class="header-actions"><button class="theme-btn" id="themeBtn" onclick="toggleTheme()">☀️</button><div class="lang-switch"><button class="lang-btn active" id="btn-ar" onclick="setLang('ar')">AR</button><button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button><button class="lang-btn" id="btn-ku" onclick="setLang('ku')">KU</button></div></div>
+  <div class="header-actions"><button class="theme-btn" id="themeBtn" onclick="toggleTheme()">☀️</button><div class="lang-switch"><button class="lang-btn active" onclick="setLang('ar')">AR</button><button class="lang-btn" onclick="setLang('en')">EN</button><button class="lang-btn" onclick="setLang('ku')">KU</button></div></div>
 </div>
 <div class="overlay" id="overlay" onclick="closeMenu()"></div>
 <div class="sidebar" id="sidebar">
@@ -83,66 +103,47 @@ h2{color:var(--blue);text-align:center;font-size:26px;margin-bottom:15px;text-sh
   </div>
   <hr class="sidebar-divider">
   <h3 class="sidebar-title" id="menu_title">القائمة</h3>
-  <a href="index.html" id="menu_home">الرئيسية</a><a href="products.html" id="menu_products">المنتجات 🛒</a><a href="calculator.html" id="menu_calc">الحاسبة</a>
+  <a href="index.html" id="menu_home">الرئيسية</a><a href="products.html" id="menu_products">المنتجات 🛒</a><a href="calculator.html" id="menu_calc">الحاسبة</a><a href="#contact" id="menu_contact">اتصال</a>
 </div>
 <div class="container">
-<h2 id="calc_main_title">حاسبات RBooSH™ الهندسية</h2>
-<p style="text-align:center;color:var(--text2);font-size:13px" id="calc_main_desc">احسب احتياجاتك بدقة قبل الشراء - نوفر عليك الوقت والمال</p>
-<div class="live-stats">
-  <div class="live-item"><span class="live-dot"></span><span id="viewCount">👁️ 1,247</span> <span id="viewTxt">مشاهدة اليوم</span></div>
-  <div class="live-item"><span class="live-dot" style="background:#00bfff"></span><span id="liveCalc">⚡ 78</span> <span id="liveTxt">يحسب الآن</span></div>
+<div class="logo"><img src="logo.png" alt="RBooSH"></div>
+<div class="brands-bar"><div class="brands-track"><div class="brands-group"><span class="c-ls">LS</span><span class="c-schneider">Schneider</span><span class="c-chint">CHINT</span><span class="c-tense">TENSE</span><span class="c-givis">GIVIS</span><span class="c-pollux">POLLUX</span><span class="c-rboosh">RBooSH™</span><span class="c-altech">Altech</span><span class="c-hyundai">HYUNDAI</span><span class="c-clay">CLAY</span><span class="c-unal">ÜNAL KABLO</span><span class="c-ako">AKO</span><span class="c-ls">LS</span><span class="c-schneider">Schneider</span><span class="c-chint">CHINT</span><span class="c-tense">TENSE</span><span class="c-givis">GIVIS</span><span class="c-pollux">POLLUX</span><span class="c-rboosh">RBooSH™</span><span class="c-altech">Altech</span><span class="c-hyundai">HYUNDAI</span><span class="c-clay">CLAY</span><span class="c-unal">ÜNAL KABLO</span><span class="c-ako">AKO</span></div><div class="brands-group" aria-hidden="true"><span class="c-ls">LS</span><span class="c-schneider">Schneider</span><span class="c-chint">CHINT</span><span class="c-tense">TENSE</span><span class="c-givis">GIVIS</span><span class="c-pollux">POLLUX</span><span class="c-rboosh">RBooSH™</span><span class="c-altech">Altech</span><span class="c-hyundai">HYUNDAI</span><span class="c-clay">CLAY</span><span class="c-unal">ÜNAL KABLO</span><span class="c-ako">AKO</span><span class="c-ls">LS</span><span class="c-schneider">Schneider</span><span class="c-chint">CHINT</span><span class="c-tense">TENSE</span><span class="c-givis">GIVIS</span><span class="c-pollux">POLLUX</span><span class="c-rboosh">RBooSH™</span><span class="c-altech">Altech</span><span class="c-hyundai">HYUNDAI</span><span class="c-clay">CLAY</span><span class="c-unal">ÜNAL KABLO</span><span class="c-ako">AKO</span></div></div></div>
+<div class="visitor-counter"><div class="live-dot"></div><span id="counterText"></span></div>
+<div style="text-align:center;margin:30px 0;"><h2 id="main_title">RBooSH™ مجموعة ابو سليمان ⚡ للتجارة الكهربائية</h2><p id="main_desc">متخصصون في توريد وتجارة المعدات الكهربائية، خدمات التركيب، واستشارات الطاقة الكهربائية</p></div>
+<div class="calc-banner"><h2 id="banner_calc_title" style="color:#fff">🛒 منتجات RBooSH™ الأصلية</h2><p id="banner_calc_desc" style="color:#e0f2ff;font-size:14px;margin-bottom:15px">تصفح جميع منتجاتنا من لوحات التوزيع، الكابلات، القواطع، الكونتاكتورات والأجهزة الكهربائية الأصلية بضمان!</p><a id="banner_calc_btn" href="products.html" class="btn-calc">⚡ استكشف المنتجات الآن</a></div>
+<div class="card"><h2 id="services_title">خدماتنا</h2><p id="services_desc">بيع لوحات التوزيع، الكابلات، مثبتات الجهد، القواطع، الكونتاكتورات والأجهزة الكهربائية<br>نخدم الشركات الصناعية، المحلات التجارية، والأفراد</p></div>
+<div class="card"><h2 id="branches_title">فروعنا</h2><div style="text-align:center;margin-top:20px;"><p style="margin-bottom:20px;text-align:center;"><b>1.</b> <span id="branch1">المركز الرئيسي - الحسكة</span> ⭐ <br><a href="https://maps.app.goo.gl/9rPCzmoVwEvoYURo6" target="_blank" id="map1" style="color:var(--blue);text-decoration:underline;">عرض على الخريطة</a></p><p style="text-align:center;"><b>2.</b> <span id="branch2">فرع القامشلي</span> <br><a href="https://maps.app.goo.gl/jLjDA49LaaHDywKg8?g_st=ac" target="_blank" id="map2" style="color:var(--blue);text-decoration:underline;">عرض على الخريطة</a></p></div></div>
+<div class="card"><h2 id="payment_title">طرق الدفع</h2><div class="payment-item">💵 <b id="pay1_title">الدفع نقداً</b><br><span id="pay1_desc">الدفع عند الاستلام من اي فرع</span></div><div class="payment-item">📱 <b id="pay2_title">شام كاش</b><br><span id="pay2_desc">الدفع الالكتروني عبر شام كاش</span></div><div class="payment-item">💳 <b id="pay3_title">مساري</b><br><span id="pay3_desc">الدفع الالكتروني عبر مساري</span></div><div class="payment-item">📋 <b id="pay4_title">التقسيط</b><br><span id="pay4_desc">للشركات والمشاريع الكبيرة بشروط ميسرة</span></div><p style="color:#00ff88;text-align:center;margin-top:15px;">✨ <span id="payment_note">اسأل عن العروض والخصومات الخاصة عند الدفع بشام كاش ومساري</span></p></div>
+<div class="card"><h2 id="why_title">لماذا تختارنا</h2><div class="why-item">🏆 <span id="why1">ضمان المنتج</span></div><div class="why-item">📄 <span id="why2">فواتير رسمية</span></div><div class="why-item">⚡ <span id="why3">توصيل سريع</span></div></div>
+<div class="card" id="certificates_card">
+<h2 id="cert_title">شهاداتنا ومواصفاتنا العالمية</h2>
+<p id="cert_desc" style="text-align:center;color:var(--text2);font-size:13px;margin-bottom:10px">جميع منتجات RBooSH™ مطابقة للمواصفات الدولية - جودة موثقة مو مجرد كلام</p>
+<div class="cert-grid">
+  <div class="cert-item"><span class="cert-icon">🏆</span><div class="cert-title">ISO 9001:2015</div><span class="cert-sub" id="cert1_sub">نظام إدارة الجودة</span><div class="cert-desc" id="cert1_desc">كل قطعة تفحص قبل البيع - جودة ثابتة من أول قاطع لآخر متر كبل</div><div class="cert-badge"><span class="cert-dot"></span><span id="cert1_badge">معتمد وموثق</span></div></div>
+  <div class="cert-item"><span class="cert-icon">🔌</span><div class="cert-title">IEC 60228</div><span class="cert-sub" id="cert2_sub">مواصفات النحاس الحقيقي</span><div class="cert-desc" id="cert2_desc">قطر النحاس 100% حقيقي - كبل 2.5mm يعني نحاس 2.5mm مو تقليد</div><div class="cert-badge"><span class="cert-dot"></span><span id="cert2_badge">فحص مخبري</span></div></div>
+  <div class="cert-item"><span class="cert-icon">🛡️</span><div class="cert-title">ISO 45001</div><span class="cert-sub" id="cert3_sub">سلامة المنتج والمستخدم</span><div class="cert-desc" id="cert3_desc">قواطعنا تفصل بالحرارة والشورت - بتحمي البيت والورشة من الحريق</div><div class="cert-badge"><span class="cert-dot"></span><span id="cert3_badge">آمان عالي</span></div></div>
+  <div class="cert-item"><span class="cert-icon">🇪🇺</span><div class="cert-title">CE</div><span class="cert-sub" id="cert4_sub">مطابق للمواصفات الأوروبية</span><div class="cert-desc" id="cert4_desc">منتجات LS و ÜNAL تدخل أوروبا رسمياً - نفس الجودة بالحسكة</div><div class="cert-badge"><span class="cert-dot"></span><span id="cert4_badge">تصدير أوروبي</span></div></div>
 </div>
-<div class="tabs">
-  <button class="tab-btn active" onclick="openTab(1)" id="tab1_btn">📐 حاسبة الكميات</button>
-  <button class="tab-btn" onclick="openTab(2)" id="tab2_btn">⚡ حاسبة هبوط الجهد</button>
+<p style="text-align:center;margin-top:18px;"><span style="display:inline-flex;align-items:center;gap:8px;background:var(--card2);border:1px solid var(--blue2);border-radius:20px;padding:6px 14px;font-size:12px;color:var(--text2)">✨ <span id="cert_footer">الجودة المضمونة هي أساس عملنا في RBooSH™ منذ التأسيس</span></span></p>
 </div>
-<div id="tab1" class="tab-content active">
-<div class="card">
-<h2 style="font-size:20px" id="t1_title">حاسبة كميات المواد</h2>
-<div class="input-row">
-  <div class="input-group"><label id="t1_l1">مساحة البيت (م²)</label><input type="number" id="area" value="200" oninput="calc1()"></div>
-  <div class="input-group"><label id="t1_l2">عدد الغرف</label><input type="number" id="rooms" value="6" oninput="calc1()"></div>
+<div class="card" id="contact"><h2 id="contact_title">اتصال</h2><a href="https://wa.me/963966436341" class="btn btn-whatsapp">📱 <span id="wa1">واتساب ابو سليمان: +963 966 436 341</span></a><a href="https://wa.me/4915216839609" class="btn btn-whatsapp">📱 <span id="wa2">واتساب سليمان ربوشي: +49 152 16839609</span></a><a href="https://www.facebook.com/share/19CY71w9uo/" target="_blank" class="btn btn-fb">📘 <span id="fb">صفحة الفيسبوك</span></a></div>
+<div class="card" style="text-align:center;"><h2 id="hours_title">اوقات الدوام</h2><p id="hours_desc" style="text-align:center;">السبت - الخميس: 8:00 صباحاً - 7:30 مساءً<br>الجمعة: حالات الطوارئ فقط</p></div>
+<div class="card" style="text-align:center;"><h2 id="calc_title">احسب احتياجاتك بنفسك</h2><p id="calc_desc">استخدم حاسبة RBooSH™ لتقدير كميات المواد الكهربائية لمشروعك خلال 30 ثانية</p><a id="calc_btn" href="calculator.html" class="btn-calc">افتح الحاسبة الآن</a></div>
+<footer style="text-align:center;padding:20px 0"><p style="color:#00ff88;font-weight:bold;text-align:center">RBooSH™ <span id="footer_slogan">نحن نزودك بالطاقة... نحن نضمن الاستمرارية</span></p><p style="color:#777;text-align:center">© 2026 All Rights Reserved - Abu Suleiman Group</p></footer>
 </div>
-<div class="result-box"><div id="res1"></div><small id="t1_note">تقدير مبدئي - يختلف حسب المخطط</small><div id="c1_counter" class="calc-counter"></div></div>
-<a href="https://wa.me/4915216839609" target="_blank" class="btn-calc" style="margin-top:15px" id="t1_btn">اطلب عرض سعر على الواتساب</a>
-</div>
-</div>
-<div id="tab2" class="tab-content">
-<div class="card">
-<h2 style="font-size:20px" id="t2_title">⚡ حاسبة هبوط الجهد</h2>
-<p style="text-align:center;color:var(--text2);font-size:12px;margin-bottom:15px" id="t2_desc">تأكد من مقطع الكبل قبل ما تمد 50 متر ويصير عندك ضعف كهربا</p>
-<div class="input-row">
-  <div class="input-group"><label id="t2_l1">طول الكبل (متر) ذهاب فقط</label><input type="number" id="vd_length" value="50" oninput="calcVD()"></div>
-  <div class="input-group"><label id="t2_l2">التيار (أمبير)</label><input type="number" id="vd_current" value="35" oninput="calcVD()"></div>
-</div>
-<div class="input-row">
-  <div class="input-group"><label id="t2_l3">مقطع الكبل (mm²)</label><select id="vd_section" onchange="calcVD()"><option value="1.5">1.5</option><option value="2.5">2.5</option><option value="4">4</option><option value="6">6</option><option value="10" selected>10</option><option value="16">16</option><option value="25">25</option></select></div>
-  <div class="input-group"><label id="t2_l4">نوع الشبكة</label><select id="vd_phase" onchange="calcVD()"><option value="1" id="t2_ph1">220V سنغل فاز</option><option value="3" id="t2_ph2">380V ثري فاز</option></select></div>
-</div>
-<div class="input-group"><label id="t2_l5">مادة الكبل</label><select id="vd_mat" onchange="calcVD()"><option value="0.0178" id="t2_mat1">نحاس - RBooSH™ أصلي</option><option value="0.0282" selected id="t2_mat2">ألمنيوم</option></select></div>
-<div class="result-box"><b id="vd_value"></b><div id="vd_status"></div><small id="vd_detail"></small><div id="c2_counter" class="calc-counter"></div></div>
-<p style="text-align:center;margin-top:15px;font-size:12px;color:var(--text2)" id="t2_footer">الجودة المضمونة هي أساس عملنا في RBooSH™ منذ التأسيس</p>
-<a href="https://wa.me/4915216839609" target="_blank" class="btn-calc" id="t2_btn">استشر مهندس RBooSH™ مجاناً</a>
-</div>
-</div>
-</div>
+<div class="order-popup" id="orderPopup"><img id="popupImg" src=""><div style="flex:1"><b id="popupTitle" style="color:#25D366;font-size:13px;display:block"></b><small id="popupDesc" style="color:var(--text2);font-size:11px"></small></div><span style="color:#777;cursor:pointer" onclick="document.getElementById('orderPopup').classList.remove('show')">×</span></div>
 <script>
-const translations={
-ar:{dir:'rtl',menu_title:'القائمة',menu_home:'الرئيسية',menu_products:'المنتجات 🛒',menu_calc:'الحاسبة',calc_main_title:'حاسبات RBooSH™ الهندسية',calc_main_desc:'احسب احتياجاتك بدقة قبل الشراء - نوفر عليك الوقت والمال',tab1_btn:'📐 حاسبة الكميات',tab2_btn:'⚡ حاسبة هبوط الجهد',t1_title:'حاسبة كميات المواد',t1_l1:'مساحة البيت (م²)',t1_l2:'عدد الغرف',t1_note:'تقدير مبدئي - يختلف حسب المخطط',t1_btn:'اطلب عرض سعر على الواتساب',t2_title:'⚡ حاسبة هبوط الجهد',t2_desc:'تأكد من مقطع الكبل قبل ما تمد 50 متر ويصير عندك ضعف كهربا',t2_l1:'طول الكبل (متر) ذهاب فقط',t2_l2:'التيار (أمبير)',t2_l3:'مقطع الكبل (mm²)',t2_l4:'نوع الشبكة',t2_ph1:'220V سنغل فاز',t2_ph2:'380V ثري فاز',t2_l5:'مادة الكبل',t2_mat1:'نحاس - RBooSH™ أصلي',t2_mat2:'ألمنيوم',t2_footer:'الجودة المضمونة هي أساس عملنا في RBooSH™ منذ التأسيس',t2_btn:'استشر مهندس RBooSH™ مجاناً',days:["الأحد","الاثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت"],months:["كانون الثاني","شباط","آذار","نيسان","أيار","حزيران","تموز","آب","أيلول","تشرين الأول","تشرين الثاني","كانون الأول"]},
-en:{dir:'ltr',menu_title:'Menu',menu_home:'Home',menu_products:'Products 🛒',menu_calc:'Calculator',calc_main_title:'RBooSH™ Engineering Calculators',calc_main_desc:'Calculate accurately before buying - save time and money',tab1_btn:'📐 Quantity Calc',tab2_btn:'⚡ Voltage Drop',t1_title:'Material Quantity Calculator',t1_l1:'House Area (m²)',t1_l2:'Rooms Count',t1_note:'Initial estimate - varies by plan',t1_btn:'Request Quote on WhatsApp',t2_title:'⚡ Voltage Drop Calculator',t2_desc:'Check cable size before 50m run causes weak power',t2_l1:'Cable Length (m) one way',t2_l2:'Current (A)',t2_l3:'Cable Section (mm²)',t2_l4:'Network Type',t2_ph1:'220V Single Phase',t2_ph2:'380V Three Phase',t2_l5:'Cable Material',t2_mat1:'Copper - RBooSH™ Original',t2_mat2:'Aluminium',t2_footer:'Guaranteed quality is the foundation of our work at RBooSH™',t2_btn:'Consult RBooSH™ Engineer Free',days:["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],months:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]},
-ku:{dir:'ltr',menu_title:'Lîste',menu_home:'Malper',menu_products:'Berhem 🛒',menu_calc:'Hesabker',calc_main_title:'Hesabkerên Endezyariyê yên RBooSH™',calc_main_desc:'Berî kirînê bi duristî hesab bike - dem û pere teserûf bike',tab1_btn:'📐 Hesaba Mîqdarê',tab2_btn:'⚡ Dakeftina Voltajê',t1_title:'Hesabkera Mîqdara Materyalan',t1_l1:'Rûbera Malê (m²)',t1_l2:'Hejmara Odeyan',t1_note:'Texmîna destpêkê ye - li gorî nexşeyê diguhere',t1_btn:'Li ser WhatsAppê bihayê bixwaze',t2_title:'⚡ Hesabkera Dakeftina Voltajê',t2_desc:'Berî ku 50 metre kabloyê dirêj bikî, beşa kabloyê piştrast bike',t2_l1:'Dirêjahiya Kabloyê (m) tenê çûn',t2_l2:'Hêz (Amper)',t2_l3:'Beşa Kabloyê (mm²)',t2_l4:'Cureya Torê',t2_ph1:'220V Yek Qonax',t2_ph2:'380V Sê Qonax',t2_l5:'Materyalê Kabloyê',t2_mat1:'Sifir - RBooSH™ Resen',t2_mat2:'Elemenyûm',t2_footer:'Qalîteya misoger bingeha karê me ye li RBooSH™ ji damezrandinê ve',t2_btn:'Bêpere bi Endezyarê RBooSH™ re bişêwire',days:["Yekşem","Duşem","Sêşem","Çarşem","Pêncşem","Înî","Şemî"],months:["Rêbendan","Sibat","Adar","Nîsan","Gulan","Pûşper","Tîrmeh","Tebax","Îlon","Cotmeh","Mijdar","Kanûn"]}
-};
+function toggleTheme(){document.body.classList.toggle('light');let l=document.body.classList.contains('light');localStorage.setItem('rboosh_theme',l?'light':'dark');document.getElementById('themeBtn').innerText=l?'🌙':'☀️';}
+(function(){let s=localStorage.getItem('rboosh_theme');if(s==='light'){document.body.classList.add('light');document.getElementById('themeBtn').innerText='🌙';}else{document.getElementById('themeBtn').innerText='☀️';}})();
+const data={ar:{gov:["دمشق","حلب","حمص","الحسكة","اللاذقية","طرطوس","حماة","درعا","دير الزور","السويداء","إدلب","الرقة","القامشلي","ريف دمشق"],names:["أحمد","محمد","علي","خالد","حسن","عمر","يوسف","عبدالله","مصطفى","أبو عمار","سامر","لؤي"],ordered:"زار موقعنا",viewing:"شخص يشاهدون الآن",orders:"طلب اليوم من"},en:{gov:["Damascus","Aleppo","Homs","Hasakah","Latakia","Tartus","Hama","Daraa","Deir Ezzor","Suwayda","Idlib","Raqqa","Qamishli"],names:["Ahmad","Mohammad","Ali","Khaled","Hassan","Omar","Youssef","Abdullah"],ordered:"visited our store",viewing:"people viewing now",orders:"orders today from"},ku:{gov:["Şam","Heleb","Hims","Hesekê","Laziqiye","Tartus","Hama","Dera","Dêrezor","Siweyda","Idlib","Reqqa","Qamişlo"],names:["Ehmed","Mihemed","Elî","Xalid","Hesen","Omer","Yûsif"],ordered:"serdana me kir",viewing:"kes niha dibînin",orders:"daxwaz îro ji"}};
+const translations={ar:{dir:'rtl',menu_title:'القائمة',menu_home:'الرئيسية',menu_products:'المنتجات 🛒',menu_calc:'الحاسبة',menu_contact:'اتصال',main_title:'RBooSH™ مجموعة ابو سليمان ⚡ للتجارة الكهربائية',main_desc:'متخصصون في توريد وتجارة المعدات الكهربائية، خدمات التركيب، واستشارات الطاقة الكهربائية',services_title:'خدماتنا',services_desc:'بيع لوحات التوزيع، الكابلات، مثبتات الجهد، القواطع، الكونتاكتورات والأجهزة الكهربائية<br>نخدم الشركات الصناعية، المحلات التجارية، والأفراد',branches_title:'فروعنا',branch1:'المركز الرئيسي - الحسكة',branch2:'فرع القامشلي',map1:'عرض على الخريطة',map2:'عرض على الخريطة',payment_title:'طرق الدفع',pay1_title:'الدفع نقداً',pay1_desc:'الدفع عند الاستلام من اي فرع',pay2_title:'شام كاش',pay2_desc:'الدفع الالكتروني عبر شام كاش',pay3_title:'مساري',pay3_desc:'الدفع الالكتروني عبر مساري',pay4_title:'التقسيط',pay4_desc:'للشركات والمشاريع الكبيرة بشروط ميسرة',payment_note:'اسأل عن العروض والخصومات الخاصة عند الدفع بشام كاش ومساري',why_title:'لماذا تختارنا',why1:'ضمان المنتج',why2:'فواتير رسمية',why3:'توصيل سريع',cert_title:'شهاداتنا ومواصفاتنا العالمية',cert_desc:'جميع منتجات RBooSH™ مطابقة للمواصفات الدولية - جودة موثقة مو مجرد كلام',cert1_sub:'نظام إدارة الجودة',cert1_desc:'كل قطعة تفحص قبل البيع - جودة ثابتة من أول قاطع لآخر متر كبل',cert1_badge:'معتمد وموثق',cert2_sub:'مواصفات النحاس الحقيقي',cert2_desc:'قطر النحاس 100% حقيقي - كبل 2.5mm يعني نحاس 2.5mm مو تقليد',cert2_badge:'فحص مخبري',cert3_sub:'سلامة المنتج والمستخدم',cert3_desc:'قواطعنا تفصل بالحرارة والشورت - بتحمي البيت والورشة من الحريق',cert3_badge:'آمان عالي',cert4_sub:'مطابق للمواصفات الأوروبية',cert4_desc:'منتجات LS و ÜNAL تدخل أوروبا رسمياً - نفس الجودة بالحسكة',cert4_badge:'تصدير أوروبي',cert_footer:'الجودة المضمونة هي أساس عملنا في RBooSH™ منذ التأسيس',contact_title:'اتصال',wa1:'واتساب ابو سليمان: +963 966 436 341',wa2:'واتساب سليمان ربوشي: +49 152 16839609',fb:'صفحة الفيسبوك',hours_title:'اوقات الدوام',hours_desc:'السبت - الخميس: 8:00 صباحاً - 7:30 مساءً<br>الجمعة: حالات الطوارئ فقط',calc_title:'احسب احتياجاتك بنفسك',calc_desc:'استخدم حاسبة RBooSH™ لتقدير كميات المواد الكهربائية لمشروعك خلال 30 ثانية',calc_btn:'افتح الحاسبة الآن',footer_slogan:'نحن نزودك بالطاقة... نحن نضمن الاستمرارية',banner_calc_title:'🛒 منتجات RBooSH™ الأصلية',banner_calc_desc:'تصفح جميع منتجاتنا من لوحات التوزيع، الكابلات، القواطع، الكونتاكتورات والأجهزة الكهربائية الأصلية بضمان!',banner_calc_btn:'⚡ استكشف المنتجات الآن',days:["الأحد","الاثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت"],months:["كانون الثاني","شباط","آذار","نيسان","أيار","حزيران","تموز","آب","أيلول","تشرين الأول","تشرين الثاني","كانون الأول"]},en:{dir:'ltr',menu_title:'Menu',menu_home:'Home',menu_products:'Products 🛒',menu_calc:'Calculator',menu_contact:'Contact',main_title:'RBooSH™ Abu Suleiman Group ⚡ Electrical Trading',main_desc:'Specialized in supply and trade of electrical equipment, installation services, and electrical energy consulting',services_title:'Our Services',services_desc:'Sale of distribution panels, cables, stabilizers, circuit breakers, contactors and electrical devices<br>We serve industrial companies, commercial businesses, and individuals',branches_title:'Our Branches',branch1:'Main Center - Al-Hasakah',branch2:'Qamishli Branch',map1:'View on Map',map2:'View on Map',payment_title:'Payment Methods',pay1_title:'Cash Payment',pay1_desc:'Cash on delivery from any branch',pay2_title:'ShamCash',pay2_desc:'Electronic payment via ShamCash',pay3_title:'Masary',pay3_desc:'Electronic payment via Masary',pay4_title:'Installments',pay4_desc:'For companies and large projects with easy terms',payment_note:'Ask about special offers and discounts when paying with ShamCash and Masary',why_title:'Why Choose Us',why1:'Product Warranty',why2:'Official Invoices',why3:'Fast Delivery',cert_title:'Our International Certificates',cert_desc:'All RBooSH™ products meet international standards - certified quality',cert1_sub:'Quality Management System',cert1_desc:'Each piece inspected before sale - consistent quality from first breaker to last cable',cert1_badge:'Certified',cert2_sub:'Real Copper Specs',cert2_desc:'100% real copper diameter - 2.5mm cable means 2.5mm real copper',cert2_badge:'Lab Tested',cert3_sub:'Safety Standard',cert3_desc:'Breakers trip on heat & short - protect your home from fire',cert3_badge:'High Safety',cert4_sub:'European Standard',cert4_desc:'LS & ÜNAL products officially enter Europe - same quality in Hasakah',cert4_badge:'EU Export',cert_footer:'Guaranteed quality is the foundation of our work at RBooSH™ since establishment',contact_title:'Contact',wa1:'WhatsApp Abu Suleiman: +963 966 436 341',wa2:'WhatsApp Sulaiman Rbooshi: +49 152 16839609',fb:'Facebook Page',hours_title:'Working Hours',hours_desc:'Saturday - Thursday: 8:00 AM - 7:30 PM<br>Friday: Emergency cases only',calc_title:'Estimate Your Needs Yourself',calc_desc:'Use the RBooSH™ Calculator to estimate electrical material quantities for your project in 30 seconds',calc_btn:'Open Calculator Now',footer_slogan:'We Power You... We Ensure Continuity',banner_calc_title:'🛒 Original RBooSH™ Products',banner_calc_desc:'Browse all our products - distribution panels, cables, breakers, contactors & original electrical devices with warranty!',banner_calc_btn:'⚡ Explore Products Now',days:["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],months:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]},ku:{dir:'ltr',menu_title:'Menu',menu_home:'Mal',menu_products:'Berhem 🛒',menu_calc:'Hesabker',menu_contact:'Têkilî',main_title:'RBooSH™ Koma Ebu Suleyman ⚡ Bazirganiya Elektrîkê',main_desc:'Em pispor in di dabînkirin û bazirganiya amûrên elektrîkê, karûbarên sazkirinê, û şêwirmendiya enerjiya elektrîkê de',services_title:'Karûbarên Me',services_desc:'Firotina tabloyên belavkirinê, kablo, stabilizer, sîgorte, kontaktor û amûrên elektrîkê<br>Em xizmetê ji pargadanên pîşesazî, bazirganî û kesan re dikin',branches_title:'Şaxên Me',branch1:'Navenda Sereke - Hesîçe',branch2:'Şaxa Qamişlo',map1:'Li ser Nexşeyê Binêre',map2:'Li ser Nexşeyê Binêre',payment_title:'Rêbazên Dayînê',pay1_title:'Dayîna Bi Nakit',pay1_desc:'Dayîn bi dest de ji her şaxekî',pay2_title:'Şam Cash',pay2_desc:'Dayîna elektronîkî bi riya Şam Cash',pay3_title:'Mesari',pay3_desc:'Dayîna elektronîkî bi riya Mesari',pay4_title:'Taksît',pay4_desc:'Ji bo pargadan û projeyên mezin bi şertên hêsan',payment_note:'Derbarê pêşkêşî û daxistinên taybet de dema dayîna bi Şam Cash û Mesari bipirse',why_title:'Çima Em Hilbijêrin',why1:'Temînata Berhemê',why2:'Fatûreyên Fermî',why3:'Radestkirina Lezgîn',cert_title:'Sertîfîkayên Me yên Navneteweyî',cert_desc:'Hemû berhemên RBooSH™ li gorî standardên navneteweyî ne - kalîteya pejirandî',cert1_sub:'Sîstema Rêvebiriya Kalîteyê',cert1_desc:'Her perçe berî firotanê tê kontrol kirin - kalîteya domdar',cert1_badge:'Pejirandî',cert2_sub:'Taybetmendiyên Sifirê Rastîn',cert2_desc:'100% sifirê rastîn - kabloya 2.5mm tê wateya 2.5mm sifirê rastîn',cert2_badge:'Testa Lab',cert3_sub:'Standarda Ewlehiyê',cert3_desc:'Sîgorte bi germahî û kurt de diqete - mala te ji agir diparêze',cert3_badge:'Ewlehiya Bilind',cert4_sub:'Standarda Ewropî',cert4_desc:'Berhemên LS & ÜNAL bi fermî dikevin Ewropayê - heman kalîte li Hesekê',cert4_badge:'Hinardeya YE',cert_footer:'Kalîteya misoger bingeha karê me ye li RBooSH™ ji damezrandinê ve',contact_title:'Têkilî',wa1:'WhatsApp Ebu Suleyman: +963 966 436 341',wa2:'WhatsApp Sulaiman Rbooshi: +49 152 16839609',fb:'Rûpela Facebookê',hours_title:'Saetên Kar',hours_desc:'Şemî - Pêncşem: 8:00 Sibê - 7:30 Êvarê<br>În: Tenê rewşên acîl',calc_title:'Pêdiviyên Xwe Bi Xwe Hesab Bike',calc_desc:'Hesabkera RBooSH™ bi kar bîne da ku di 30 saniyeyan de mîqdara materyalên elektrîkê yên projeya xwe texmîn bike',calc_btn:'Hesabkerê Veke',footer_slogan:'Em Hêzê Didin Te... Em Domdariyê Misoger Dikin',banner_calc_title:'🛒 Berhemên Orjînal ên RBooSH™',banner_calc_desc:'Hemû berhemên me bibîne - tablo, kablo, sîgorte, kontaktor û amûrên elektrîkê yên orjînal bi garantî!',banner_calc_btn:'⚡ Berheman Naha Bibîne',days:["Yekşem","Duşem","Sêşem","Çarşem","Pêncşem","În","Şemî"],months:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]}};
 let currentLang='ar';
-let count1=parseInt(localStorage.getItem('rboosh_c1')||'312');
-let count2=parseInt(localStorage.getItem('rboosh_c2')||'189');
-function toggleTheme(){document.body.classList.toggle('light');let isLight=document.body.classList.contains('light');localStorage.setItem('rboosh_theme',isLight?'light':'dark');document.getElementById('themeBtn').innerText=isLight?'🌙':'☀️';}
-(function(){let s=localStorage.getItem('rboosh_theme');if(s==='light'){document.body.classList.add('light');}document.getElementById('themeBtn').innerText=document.body.classList.contains('light')?'🌙':'☀️';})();
+let liveNow = 78; // يبدأ من 78 حي
 function openMenu(){document.getElementById('sidebar').classList.add('open');document.getElementById('overlay').classList.add('show');}
 function closeMenu(){document.getElementById('sidebar').classList.remove('open');document.getElementById('overlay').classList.remove('show');}
 function updateClock(){
 let now=new Date();let h=now.getHours()%12;let m=now.getMinutes();let s=now.getSeconds();
-let hh=document.getElementById('hourHand'); if(!hh) return;
-hh.style.transform=`translateX(-50%) rotate(${(h+m/60)*30}deg)`;
+document.getElementById('hourHand').style.transform=`translateX(-50%) rotate(${(h+m/60)*30}deg)`;
 document.getElementById('minuteHand').style.transform=`translateX(-50%) rotate(${m*6}deg)`;
 document.getElementById('secondHand').style.transform=`translateX(-50%) rotate(${s*6}deg)`;
 document.getElementById('hourHandLarge').style.transform=`translateX(-50%) rotate(${(h+m/60)*30}deg)`;
@@ -154,82 +155,32 @@ document.getElementById('dateNum').innerText=now.getDate()+" "+t.months[now.getM
 document.getElementById('sidebarDay').innerText=t.days[now.getDay()];
 document.getElementById('sidebarDate').innerText=now.getDate()+" "+t.months[now.getMonth()]+" "+now.getFullYear();
 }
-function updateLiveTexts(){
-if(currentLang==='ar'){document.getElementById('viewTxt').innerText='مشاهدة اليوم';document.getElementById('liveTxt').innerText='يحسب الآن';}
-else if(currentLang==='ku'){document.getElementById('viewTxt').innerText='dîtin îro';document.getElementById('liveTxt').innerText='niha hesab dike';}
-else{document.getElementById('viewTxt').innerText='views today';document.getElementById('liveTxt').innerText='calculating now';}
-}
 function setLang(lang){
 currentLang=lang;const t=translations[lang];document.documentElement.lang=lang;document.documentElement.dir=t.dir;
 document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
-document.getElementById('btn-'+lang).classList.add('active');
-for(let k in t){let el=document.getElementById(k); if(el) el.innerText=t[k];}
-updateClock();updateLiveTexts();calc1();calcVD();
+document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+for(let k in t){if(document.getElementById(k)){document.getElementById(k).innerHTML=t[k];}}
+updateClock();updateCounter();
 }
-function openTab(n){
-document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
-document.getElementById('tab'+n).classList.add('active');
-document.getElementById('tab'+n+'_btn').classList.add('active');
+function updateCounter(){
+  let o=Math.floor(Math.random()*20)+30;
+  let g1=data[currentLang].gov[Math.floor(Math.random()*data[currentLang].gov.length)];
+  let g2=data[currentLang].gov[Math.floor(Math.random()*data[currentLang].gov.length)];
+  if(currentLang==='ar') document.getElementById('counterText').innerHTML=`🔥 ${liveNow} ${data.ar.viewing} - ${o} ${data.ar.orders} ${g1}، ${g2} و باقي محافظات سوريا`;
+  else if(currentLang==='en') document.getElementById('counterText').innerHTML=`🔥 ${liveNow} ${data.en.viewing} - ${o} ${data.en.orders} ${g1}, ${g2} & other Syrian govs`;
+  else document.getElementById('counterText').innerHTML=`🔥 ${liveNow} ${data.ku.viewing} - ${o} ${data.ku.orders} ${g1}, ${g2} û parêzgehên din ên Sûriyê`;
 }
-function calc1(){
-let a=parseFloat(document.getElementById('area').value)||0;
-let r=parseFloat(document.getElementById('rooms').value)||0;
-let c25=Math.round(a*2.2 + r*10);
-let c15=Math.round(a*1.1 + r*8);
-let html="";
-if(currentLang==='ar'){html=`تحتاج تقريباً <b style="color:var(--blue)">${c25}m</b> كبل 2.5mm و <b style="color:var(--blue)">${c15}m</b> كبل 1.5mm`;}
-else if(currentLang==='ku'){html=`Pêwîstiya te bi nêzîkî <b style="color:var(--blue)">${c25}m</b> kabloya 2.5mm û <b style="color:var(--blue)">${c15}m</b> kabloya 1.5mm heye`;}
-else{html=`You need approx <b style="color:var(--blue)">${c25}m</b> cable 2.5mm & <b style="color:var(--blue)">${c15}m</b> cable 1.5mm`;}
-document.getElementById('res1').innerHTML=html;
-let cc1=document.getElementById('c1_counter');
-if(currentLang==='ar') cc1.innerText=`تم حسابها ${count1} مرة اليوم • شغالة الآن`;
-else if(currentLang==='ku') cc1.innerText=`${count1} car hat hesabkirin îro • çalak e`;
-else cc1.innerText=`Calculated ${count1} times today • live`;
-let msg1=currentLang==='ar'?`مرحبا RBooSH™ 🛒\nطلب عرض سعر كميات:\n- المساحة: ${a} م²\n- عدد الغرف: ${r}\n- النتيجة: ${c25}m كبل 2.5mm و ${c15}m كبل 1.5mm`:currentLang==='ku'?`Merheba RBooSH™ 🛒\n- Rûber: ${a} m²\n- Ode: ${r}\n- Encam: ${c25}m 2.5mm û ${c15}m 1.5mm`:`Hello RBooSH™ 🛒\n- Area: ${a} m²\n- Rooms: ${r}\n- Result: ${c25}m cable 2.5mm & ${c15}m 1.5mm`;
-document.getElementById('t1_btn').href=`https://wa.me/4915216839609?text=${encodeURIComponent(msg1)}`;
-}
-function calcVD(){
-let L=parseFloat(document.getElementById('vd_length').value)||0;
-let I=parseFloat(document.getElementById('vd_current').value)||0;
-let S=parseFloat(document.getElementById('vd_section').value)||1;
-let rho=parseFloat(document.getElementById('vd_mat').value)||0.0178;
-let phase=parseInt(document.getElementById('vd_phase').value);
-let isAlu=document.getElementById('vd_mat').value==="0.0282";
-let matText = currentLang==='ar'? (isAlu?'ألمنيوم':'نحاس') : currentLang==='ku'? (isAlu?'Elemenyûm':'Sifir') : (isAlu?'Aluminium':'Copper');
-let Vbase= phase===1?220:380;
-let Vdrop = phase===1? (2*L*I*rho)/S : (Math.sqrt(3)*L*I*rho)/S;
-let Vpercent = (Vdrop/Vbase)*100;
-let Varrive = Vbase - Vdrop;
-let status = Vpercent <=3? `<span class="badge-ok">✅ ${currentLang==='ar'?'ممتاز - ضمن المسموح (3%)':currentLang==='ku'?'Bêkêmasî - di nav 3% de':'Excellent - within 3%'}</span>` : Vpercent <=5? `<span class="badge-ok" style="border-color:#ffaa00;color:#ffaa00">⚠️ ${currentLang==='ar'?'مقبول لكن يفضل تكبير المقطع':currentLang==='ku'?'Pecewandî ye lê baştir e mezintir bikî':'Acceptable but increase size'}</span>` : `<span class="badge-bad">❌ ${currentLang==='ar'?'هبوط عالي - كبر المقطع فوراً':currentLang==='ku'?'Dakeftin zêde ye - tavilê mezintir bike':'High drop - increase size'}</span>`;
-document.getElementById('vd_value').innerText= Vpercent.toFixed(2)+"%";
-document.getElementById('vd_status').innerHTML=status;
-document.getElementById('vd_detail').innerText=`${currentLang==='ar'?`الجهد الضائع: ${Vdrop.toFixed(2)}V - الجهد الواصل: ${Varrive.toFixed(1)}V - كبل RBooSH™ ${matText} ${S}mm²` : currentLang==='ku'?`Windabûna voltajê: ${Vdrop.toFixed(2)}V - Voltaja gihîştî: ${Varrive.toFixed(1)}V - Kabloya RBooSH™ ${matText} ${S}mm²` : `${Vdrop.toFixed(2)}V loss - ${Varrive.toFixed(1)}V arrive - RBooSH™ ${matText} ${S}mm²`}`;
-let cc2=document.getElementById('c2_counter');
-if(currentLang==='ar') cc2.innerText=`تم حسابها ${count2} مرة اليوم • شغالة الآن`;
-else if(currentLang==='ku') cc2.innerText=`${count2} car hat hesabkirin îro • çalak e`;
-else cc2.innerText=`Calculated ${count2} times today • live`;
-let phaseTxt = phase===1? (currentLang==='ar'?'220V سنغل فاز':currentLang==='ku'?'220V Yek Qonax':'220V Single') : (currentLang==='ar'?'380V ثري فاز':currentLang==='ku'?'380V Sê Qonax':'380V Three');
-let msg = `مرحبا مهندس RBooSH™ ⚡\nاستشارة هبوط الجهد:\n- الطول: ${L} متر\n- التيار: ${I} أمبير\n- المقطع: ${S}mm² ${matText}\n- النوع: ${phaseTxt}\n- الهبوط: ${Vpercent.toFixed(2)}% (${Vdrop.toFixed(2)}V)\n- الجهد الواصل: ${Varrive.toFixed(1)}V`;
-document.getElementById('t2_btn').href = `https://wa.me/4915216839609?text=${encodeURIComponent(msg)}`;
-}
-// ===== العداد الحي يبدأ من 78 =====
-let views = parseInt(localStorage.getItem('rboosh_views')||'1247');
-views += Math.floor(Math.random()*3)+1;
-localStorage.setItem('rboosh_views', views);
-document.getElementById('viewCount').innerText = `👁️ ${views.toLocaleString()}`;
-let liveNow = 78;
-document.getElementById('liveCalc').innerText = `⚡ ${liveNow}`;
+setInterval(updateClock,1000);updateClock();
+// نبض حي من 78
 setInterval(()=>{
-  let change = Math.floor(Math.random()*5)-2; // -2 الى +2
+  let change = Math.floor(Math.random()*5)-2;
   liveNow += change;
   if(liveNow<70) liveNow=70;
   if(liveNow>85) liveNow=85;
-  document.getElementById('liveCalc').innerText = `⚡ ${liveNow}`;
+  updateCounter();
 }, 2500);
-setInterval(updateClock,1000);
-updateClock();updateLiveTexts();calc1();calcVD();
-if(window.location.hash==="#vd"){openTab(2);}
+setInterval(updateCounter, 4000);
+function showPopup(){let d=data[currentLang];let n=d.names[Math.floor(Math.random()*d.names.length)];let g=d.gov[Math.floor(Math.random()*d.gov.length)];let m=Math.floor(Math.random()*8)+1;let imgs=["https://i.postimg.cc/KYjDpfyj/IMG-20260902-WA0081.jpg","https://i.postimg.cc/qvkLy0bm/IMG-20260902-WA0020.jpg","https://i.postimg.cc/PvdzN16d/IMG-20260828-WA0002-1.jpg"];document.getElementById('popupImg').src=imgs[Math.floor(Math.random()*imgs.length)];if(currentLang==='ar'){document.getElementById('popupTitle').innerHTML=`✅ ${n} من ${g} ${d.ordered}`;document.getElementById('popupDesc').innerHTML=`يتصفح المنتجات - منذ ${m} دقيقة`;}else if(currentLang==='en'){document.getElementById('popupTitle').innerHTML=`✅ ${n} from ${g} ${d.ordered}`;document.getElementById('popupDesc').innerHTML=`Browsing products - ${m} min ago`;}else{document.getElementById('popupTitle').innerHTML=`✅ ${n} ji ${g} ${d.ordered}`;document.getElementById('popupDesc').innerHTML=`Berheman dibîne - berî ${m} deqe`;}document.getElementById('orderPopup').classList.add('show');setTimeout(()=>{document.getElementById('orderPopup').classList.remove('show');},4500);}setTimeout(showPopup,3000);setInterval(showPopup,9000);updateCounter();
 </script>
 </body>
 </html>
