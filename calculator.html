@@ -99,11 +99,11 @@ h2{color:var(--blue);text-align:center;font-size:26px;margin-bottom:15px;text-sh
 <div class="card">
 <h2 style="font-size:20px" id="t1_title">حاسبة كميات المواد</h2>
 <div class="input-row">
-  <div class="input-group"><label id="t1_l1">مساحة البيت (م²)</label><input type="number" id="area" value="100" oninput="calc1()"></div>
-  <div class="input-group"><label id="t1_l2">عدد الغرف</label><input type="number" id="rooms" value="3" oninput="calc1()"></div>
+  <div class="input-group"><label id="t1_l1">مساحة البيت (م²)</label><input type="number" id="area" value="200" oninput="calc1()"></div>
+  <div class="input-group"><label id="t1_l2">عدد الغرف</label><input type="number" id="rooms" value="6" oninput="calc1()"></div>
 </div>
 <div class="result-box"><div id="res1"></div><small id="t1_note">تقدير مبدئي - يختلف حسب المخطط</small></div>
-<a href="https://wa.me/963966436341" class="btn-calc" style="margin-top:15px" id="t1_btn">اطلب عرض سعر على الواتساب</a>
+<a href="https://wa.me/4915216839609" target="_blank" class="btn-calc" style="margin-top:15px" id="t1_btn">اطلب عرض سعر على الواتساب</a>
 </div>
 </div>
 
@@ -119,7 +119,7 @@ h2{color:var(--blue);text-align:center;font-size:26px;margin-bottom:15px;text-sh
   <div class="input-group"><label id="t2_l3">مقطع الكبل (mm²)</label><select id="vd_section" onchange="calcVD()"><option value="1.5">1.5</option><option value="2.5">2.5</option><option value="4">4</option><option value="6">6</option><option value="10" selected>10</option><option value="16">16</option><option value="25">25</option></select></div>
   <div class="input-group"><label id="t2_l4">نوع الشبكة</label><select id="vd_phase" onchange="calcVD()"><option value="1" id="t2_ph1">220V سنغل فاز</option><option value="3" id="t2_ph2">380V ثري فاز</option></select></div>
 </div>
-<div class="input-group"><label id="t2_l5">مادة النحاس</label><select id="vd_mat" onchange="calcVD()"><option value="0.0178" id="t2_mat1">نحاس - RBooSH™ أصلي</option><option value="0.0282" selected id="t2_mat2">ألمنيوم</option></select></div>
+<div class="input-group"><label id="t2_l5">مادة الكبل</label><select id="vd_mat" onchange="calcVD()"><option value="0.0178" id="t2_mat1">نحاس - RBooSH™ أصلي</option><option value="0.0282" selected id="t2_mat2">ألمنيوم</option></select></div>
 <div class="result-box" id="vd_result">
 <b id="vd_value"></b>
 <div id="vd_status"></div>
@@ -214,6 +214,17 @@ html=`Pêwîstiya te bi nêzîkî <b style="color:var(--blue)">${c25}m</b> kablo
 html=`You need approx <b style="color:var(--blue)">${c25}m</b> cable 2.5mm & <b style="color:var(--blue)">${c15}m</b> cable 1.5mm`;
 }
 document.getElementById('res1').innerHTML=html;
+
+// رسالة واتساب حاسبة الكميات - رقم الماني
+let msg1="";
+if(currentLang==='ar'){
+msg1=`مرحبا RBooSH™ 🛒\nطلب عرض سعر كميات:\n- المساحة: ${a} م²\n- عدد الغرف: ${r}\n- النتيجة: ${c25}m كبل 2.5mm و ${c15}m كبل 1.5mm\n\nبانتظار عرض السعر`;
+}else if(currentLang==='ku'){
+msg1=`Merheba RBooSH™ 🛒\nDaxwaza bihayê mîqdarê:\n- Rûber: ${a} m²\n- Hejmara odeyan: ${r}\n- Encam: ${c25}m kabloya 2.5mm û ${c15}m kabloya 1.5mm`;
+}else{
+msg1=`Hello RBooSH™ 🛒\nQuantity quote request:\n- Area: ${a} m²\n- Rooms: ${r}\n- Result: ${c25}m cable 2.5mm & ${c15}m cable 1.5mm`;
+}
+document.getElementById('t1_btn').href=`https://wa.me/4915216839609?text=${encodeURIComponent(msg1)}`;
 }
 
 function calcVD(){
