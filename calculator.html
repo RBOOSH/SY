@@ -72,9 +72,8 @@ h2{color:var(--blue);text-align:center;font-size:26px;margin-bottom:15px;text-sh
 .brands-group span{font-size:14px;font-weight:900;padding:0 24px;white-space:nowrap}
 .c-ls{color:#005BAC}.c-schneider{color:#3DCD58}.c-chint{color:#005BAC}.c-tense{color:#0072BC}.c-givis{color:#0072BC}.c-pollux{color:#FF6600}.c-rboosh{color:#00bfff}.c-altech{color:#E30613}.c-hyundai{color:#002C5F}.c-clay{color:#FF6A00}.c-unal{color:#CC0000}.c-ako{color:#E30613}
 @keyframes scrollBrands{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.order-popup{position:fixed;bottom:20px;right:20px;background:var(--card);border:1px solid #25D366;border-radius:15px;padding:12px 16px;display:flex;align-items:center;gap:12px;z-index:2000;transform:translateX(400px);transition:0.5s;max-width:320px}
+.order-popup{position:fixed;bottom:20px;right:20px;background:var(--card);border:1px solid var(--blue);border-radius:15px;padding:12px 16px;display:flex;align-items:center;gap:12px;z-index:2000;transform:translateX(400px);transition:0.5s;max-width:340px;box-shadow:0 0 15px rgba(0,191,255,0.3)}
 .order-popup.show{transform:translateX(0)}[dir="ltr"].order-popup{right:auto;left:20px;transform:translateX(-400px)}[dir="ltr"].order-popup.show{transform:translateX(0)}
-.order-popup img{width:50px;height:50px;border-radius:10px;object-fit:cover}
 </style>
 </head>
 <body>
@@ -103,13 +102,26 @@ h2{color:var(--blue);text-align:center;font-size:26px;margin-bottom:15px;text-sh
 
 <div id="tab2" class="tab-content"><div class="card"><h2 style="font-size:20px" id="t2_title">⚡ حاسبة هبوط الجهد</h2><p style="text-align:center;color:var(--text2);font-size:12px;margin-bottom:15px" id="t2_desc"></p><div class="input-row"><div class="input-group"><label id="t2_l1"></label><input type="number" id="vd_length" value="50" oninput="calcVD()"></div><div class="input-group"><label id="t2_l2"></label><input type="number" id="vd_current" value="35" oninput="calcVD()"></div></div><div class="input-row"><div class="input-group"><label id="t2_l3"></label><select id="vd_section" onchange="calcVD()"><option value="1.5">1.5</option><option value="2.5">2.5</option><option value="4">4</option><option value="6">6</option><option value="10" selected>10</option><option value="16">16</option><option value="25">25</option></select></div><div class="input-group"><label id="t2_l4"></label><select id="vd_phase" onchange="calcVD()"><option value="1" id="t2_ph1"></option><option value="3" id="t2_ph2"></option></select></div></div><div class="input-group"><label id="t2_l5"></label><select id="vd_mat" onchange="calcVD()"><option value="0.0178" id="t2_mat1"></option><option value="0.0282" selected id="t2_mat2"></option></select></div><div class="result-box"><b id="vd_value"></b><div id="vd_status"></div><small id="vd_detail"></small><div id="c2_counter" class="calc-counter"></div></div><p style="text-align:center;margin-top:15px;font-size:12px;color:var(--text2)" id="t2_footer"></p><a href="https://wa.me/4915216839609" target="_blank" class="btn-calc" id="t2_btn"></a></div></div>
 </div>
-<div class="order-popup" id="orderPopup"><img id="popupImg" src=""><div style="flex:1"><b id="popupTitle" style="color:#25D366;font-size:13px;display:block"></b><small id="popupDesc" style="color:var(--text2);font-size:11px"></small></div><span style="color:#777;cursor:pointer" onclick="document.getElementById('orderPopup').classList.remove('show')">×</span></div>
+
+<div class="order-popup" id="orderPopup"><div style="font-size:28px">🧮</div><div style="flex:1"><b id="popupTitle" style="color:var(--blue);font-size:13px;display:block"></b><small id="popupDesc" style="color:var(--text2);font-size:11px"></small></div><span style="color:#777;cursor:pointer" onclick="document.getElementById('orderPopup').classList.remove('show')">×</span></div>
 
 <script>
 const data={
- ar:{gov:["دمشق","حلب","حمص","الحسكة","اللاذقية"],names:["أحمد","محمد","علي","خالد","حسن"],ordered:"زار موقعنا",viewing:"شخص يشاهدون الآن",browsing:"يتصفح الحاسبة",ago:"منذ",min:"دقيقة",orders:"طلب اليوم من"},
- en:{gov:["Damascus","Aleppo","Homs","Hasakah"],names:["Ali","Ahmad","Mohammad","Khaled"],ordered:"visited",viewing:"people viewing now",browsing:"browsing calculator",ago:"ago",min:"min",orders:"orders today from"},
- ku:{gov:["Şam","Heleb","Hesekê"],names:["Ehmed","Mihemed","Elî"],ordered:"serdana me kir",viewing:"kes niha dibînin",browsing:"hesabkerê dibîne",ago:"berî",min:"deqe",orders:"daxwaz îro ji"}
+ ar:{
+  gov:["دمشق","حلب","حمص","الحسكة","اللاذقية","طرطوس","حماة","درعا","دير الزور","السويداء","إدلب","الرقة","القامشلي","ريف دمشق"],
+  names:["أحمد","محمد","علي","خالد","حسن","عمر","يوسف","عبدالله","مصطفى","سامر","لؤي","رامي","فادي","مازن","وسيم","باسل","غسان","زياد","سارة","نور","لين","ريم","هدى","مريم","فاطمة","زينب","شهد","رغد","سلمى","آية","دعاء","ليلى","جنى","أبو سليمان","أبو عمار","أم سليمان"],
+  browsing:"يستخدم حاسبة الكميات", viewAction:"يحسب الآن في الحاسبة", ago:"منذ", min:"دقيقة", viewing:"شخص يشاهدون الحاسبة الآن", orders:"يحسب من"
+ },
+ en:{
+  gov:["Damascus","Aleppo","Homs","Hasakah","Latakia","Tartus","Hama","Daraa","Deir Ezzor"],
+  names:["Ahmad","Mohammad","Ali","Khaled","Hassan","Omar","Youssef","Abdullah","Samer","Rami","Fadi","Sara","Nour","Lynn","Reem","Huda","Mariam","Fatima","Zainab","Shahd","Raghad","Layla","Abu Suleiman"],
+  browsing:"Using quantity calculator", viewAction:"calculating now in calculator", ago:"ago", min:"min", viewing:"people viewing calculator now", orders:"calculating from"
+ },
+ ku:{
+  gov:["Şam","Heleb","Hims","Hesekê","Laziqiye","Tartus","Qamişlo","Dêrezor"],
+  names:["Ehmed","Mihemed","Elî","Xalid","Hesen","Omer","Yûsif","Sara","Nûr","Lîn","Rîm","Huda","Meryem","Fatma","Zeyneb","Şehd","Leyla","Ebu Suleyman"],
+  browsing:"Hesabkerê bikar tîne", viewAction:"niha hesab dike", ago:"berî", min:"deqe", viewing:"kes hesabkerê dibînin", orders:"ji"
+ }
 };
 const translations={
  ar:{dir:'rtl',menu_title:'القائمة',menu_home:'الرئيسية',menu_products:'المنتجات 🛒',menu_calc:'الحاسبة',calc_main_title:'حاسبات RBooSH™ الهندسية',calc_main_desc:'احسب احتياجاتك بدقة قبل الشراء - نوفر عليك الوقت والمال',tab1_btn:'📐 حاسبة الكميات',tab2_btn:'⚡ حاسبة هبوط الجهد',t1_title:'حاسبة كميات المواد',t1_l1:'مساحة البيت (م²)',t1_l2:'عدد الغرف',t1_note:'تقدير مبدئي - يختلف حسب المخطط',t1_btn:'اطلب عرض سعر على الواتساب',t2_title:'⚡ حاسبة هبوط الجهد',t2_desc:'تأكد من مقطع الكبل قبل ما تمد 50 متر ويصير عندك ضعف كهربا',t2_l1:'طول الكبل (متر) ذهاب فقط',t2_l2:'التيار (أمبير)',t2_l3:'مقطع الكبل (mm²)',t2_l4:'نوع الشبكة',t2_ph1:'220V سنغل فاز',t2_ph2:'380V ثري فاز',t2_l5:'مادة الكبل',t2_mat1:'نحاس - RBooSH™ أصلي',t2_mat2:'ألمنيوم',t2_footer:'الجودة المضمونة هي أساس عملنا في RBooSH™ منذ التأسيس',t2_btn:'استشر مهندس RBooSH™ مجاناً',viewTxt:'مشاهدة اليوم',liveTxt:'يحسب الآن',c_calc:'تم حسابها',c_live:'مرة • شغالة الآن',result1:'تحتاج تقريباً',cable:'كبل',and:'و',days:["الأحد","الاثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت"],months:["كانون الثاني","شباط","آذار","نيسان","أيار","حزيران","تموز","آب","أيلول","تشرين الأول","تشرين الثاني","كانون الأول"]},
@@ -117,16 +129,14 @@ const translations={
  ku:{dir:'ltr',menu_title:'Lîste',menu_home:'Malper',menu_products:'Berhem 🛒',menu_calc:'Hesabker',calc_main_title:'Hesabkerên RBooSH™',calc_main_desc:'Berî kirînê bi duristî hesab bike',tab1_btn:'📐 Hesaba Mîqdarê',tab2_btn:'⚡ Dakeftina Voltajê',t1_title:'Hesabkera Materyalan',t1_l1:'Rûber (m²)',t1_l2:'Hejmara Odeyan',t1_note:'Texmîna destpêkê - li gorî nexşeyê diguhere',t1_btn:'Li ser WhatsAppê bihayê bixwaze',t2_title:'⚡ Hesabkera Voltajê',t2_desc:'Berî 50m kabloyê dirêj bikî beşa wê kontrol bike',t2_l1:'Dirêjahî (m)',t2_l2:'Hêz (A)',t2_l3:'Beş (mm²)',t2_l4:'Cureya Torê',t2_ph1:'220V Yek Qonax',t2_ph2:'380V Sê Qonax',t2_l5:'Materyal',t2_mat1:'Sifir - RBooSH™ Resen',t2_mat2:'Elemenyûm',t2_footer:'Qalîteya misoger bingeha RBooSH™ ye',t2_btn:'Bi Endezyar re bişêwire',viewTxt:'dîtin îro',liveTxt:'niha hesab dike',c_calc:'Car hat hesabkirin',c_live:'• çalak e',result1:'Pêwîstiya te bi nêzîkî',cable:'kablo',and:'û',days:["Yekşem","Duşem","Sêşem","Çarşem","Pêncşem","În","Şemî"],months:["Rêbendan","Sibat","Adar","Nîsan","Gulan","Pûşper","Tîrmeh","Tebax","Îlon","Cotmeh","Mijdar","Kanûn"]}
 };
 let currentLang='ar';
-let liveNow=79;
+let liveNow=78;
 let count1=312, count2=189;
 
 function toggleTheme(){document.body.classList.toggle('light');let l=document.body.classList.contains('light');localStorage.setItem('rboosh_theme',l?'light':'dark');document.getElementById('themeBtn').innerText=l?'🌙':'☀️';}
 (function(){let s=localStorage.getItem('rboosh_theme');if(s==='light')document.body.classList.add('light');document.getElementById('themeBtn').innerText=document.body.classList.contains('light')?'🌙':'☀️';})();
-
 function openMenu(){document.getElementById('sidebar').classList.add('open');document.getElementById('overlay').classList.add('show');}
 function closeMenu(){document.getElementById('sidebar').classList.remove('open');document.getElementById('overlay').classList.remove('show');}
 function updateClock(){let now=new Date();let h=now.getHours()%12;let m=now.getMinutes();let s=now.getSeconds();document.getElementById('hourHand').style.transform=`translateX(-50%) rotate(${(h+m/60)*30}deg)`;document.getElementById('minuteHand').style.transform=`translateX(-50%) rotate(${m*6}deg)`;document.getElementById('secondHand').style.transform=`translateX(-50%) rotate(${s*6}deg)`;document.getElementById('hourHandLarge').style.transform=`translateX(-50%) rotate(${(h+m/60)*30}deg)`;document.getElementById('minuteHandLarge').style.transform=`translateX(-50%) rotate(${m*6}deg)`;document.getElementById('secondHandLarge').style.transform=`translateX(-50%) rotate(${s*6}deg)`;let t=translations[currentLang];document.getElementById('dayName').innerText=t.days[now.getDay()];document.getElementById('dateNum').innerText=now.getDate()+" "+t.months[now.getMonth()];document.getElementById('sidebarDay').innerText=t.days[now.getDay()];document.getElementById('sidebarDate').innerText=now.getDate()+" "+t.months[now.getMonth()]+" "+now.getFullYear();}
-
 function setLang(lang){
   currentLang=lang;
   const t=translations[lang];
@@ -137,20 +147,16 @@ function setLang(lang){
   updateClock(); updateCounter(); calc1(); calcVD();
 }
 function openTab(n){document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));document.getElementById('tab'+n).classList.add('active');document.getElementById('tab'+n+'_btn').classList.add('active');}
-
 function calc1(){
   let a=parseFloat(document.getElementById('area').value)||0;
   let r=parseFloat(document.getElementById('rooms').value)||0;
   let c25=Math.round(a*2.2+r*10);
   let c15=Math.round(a*1.1+r*8);
   let t=translations[currentLang];
-  if(currentLang==='ar') document.getElementById('res1').innerHTML=`<b style="color:var(--blue)">${c25}m</b> ${t.cable} 2.5mm ${t.and} <b style="color:var(--blue)">${c15}m</b> ${t.cable} 1.5mm<br><span style="font-size:13px">${t.result1}</span>`;
-  else if(currentLang==='ku') document.getElementById('res1').innerHTML=`<span style="font-size:13px">${t.result1}</span> <b style="color:var(--blue)">${c25}m</b> ${t.cable} 2.5mm ${t.and} <b style="color:var(--blue)">${c15}m</b> ${t.cable} 1.5mm`;
-  else document.getElementById('res1').innerHTML=`<span style="font-size:13px">${t.result1}</span> <b style="color:var(--blue)">${c25}m</b> ${t.cable} 2.5mm ${t.and} <b style="color:var(--blue)">${c15}m</b> ${t.cable} 1.5mm`;
+  if(currentLang==='ar') document.getElementById('res1').innerHTML=`<b>${c25}m</b> ${t.cable} 2.5mm ${t.and} <b>${c15}m</b> ${t.cable} 1.5mm<br><span style="font-size:13px">${t.result1}</span>`;
+  else document.getElementById('res1').innerHTML=`<span style="font-size:13px">${t.result1}</span> <b>${c25}m</b> ${t.cable} 2.5mm ${t.and} <b>${c15}m</b> ${t.cable} 1.5mm`;
   document.getElementById('t1_note').innerText=t.t1_note;
   document.getElementById('c1_counter').innerText=`${t.c_calc} ${count1} ${t.c_live}`;
-  let msg=`${t.t1_title}: ${a}m² - ${r} rooms - ${c25}m 2.5mm & ${c15}m 1.5mm`;
-  document.getElementById('t1_btn').href=`https://wa.me/4915216839609?text=${encodeURIComponent(msg)}`;
 }
 function calcVD(){
   let L=parseFloat(document.getElementById('vd_length').value)||0;
@@ -163,19 +169,17 @@ function calcVD(){
   let Vdrop=phase===1?(2*L*I*rho)/S:(Math.sqrt(3)*L*I*rho)/S;
   let Vp=(Vdrop/Vbase)*100;
   document.getElementById('vd_value').innerText=Vp.toFixed(2)+"%";
-  if(currentLang==='ar') document.getElementById('vd_status').innerHTML=Vp<=3?`<span class="badge-ok">✅ ممتاز - ضمن المسموح (3%)</span>`:Vp<=5?`<span class="badge-ok" style="border-color:#ffaa00;color:#ffaa00">⚠️ مقبول</span>`:`<span class="badge-bad">❌ هبوط عالي</span>`;
+  if(currentLang==='ar') document.getElementById('vd_status').innerHTML=Vp<=3?`<span class="badge-ok">✅ ممتاز</span>`:Vp<=5?`<span class="badge-ok" style="border-color:#ffaa00;color:#ffaa00">⚠️ مقبول</span>`:`<span class="badge-bad">❌ هبوط عالي</span>`;
   else if(currentLang==='ku') document.getElementById('vd_status').innerHTML=Vp<=3?`<span class="badge-ok">✅ Bêkêmasî</span>`:Vp<=5?`<span class="badge-ok" style="border-color:#ffaa00;color:#ffaa00">⚠️ Pejirandî</span>`:`<span class="badge-bad">❌ Zêde ye</span>`;
-  else document.getElementById('vd_status').innerHTML=Vp<=3?`<span class="badge-ok">✅ Excellent - within 3%</span>`:Vp<=5?`<span class="badge-ok" style="border-color:#ffaa00;color:#ffaa00">⚠️ Acceptable</span>`:`<span class="badge-bad">❌ High drop</span>`;
+  else document.getElementById('vd_status').innerHTML=Vp<=3?`<span class="badge-ok">✅ Excellent</span>`:Vp<=5?`<span class="badge-ok" style="border-color:#ffaa00;color:#ffaa00">⚠️ Acceptable</span>`:`<span class="badge-bad">❌ High drop</span>`;
   if(currentLang==='ar') document.getElementById('vd_detail').innerText=`الضائع: ${Vdrop.toFixed(2)}V - الواصل: ${(Vbase-Vdrop).toFixed(1)}V`;
-  else if(currentLang==='ku') document.getElementById('vd_detail').innerText=`Windabûn: ${Vdrop.toFixed(2)}V - Gihîştî: ${(Vbase-Vdrop).toFixed(1)}V`;
+  else if(currentLang==='ku') document.getElementById('vd_detail').innerText=`Windabûn: ${Vdrop.toFixed(2)}V`;
   else document.getElementById('vd_detail').innerText=`Loss: ${Vdrop.toFixed(2)}V - Arrive: ${(Vbase-Vdrop).toFixed(1)}V`;
   document.getElementById('c2_counter').innerText=`${t.c_calc} ${count2} ${t.c_live}`;
-  let msg=`${t.t2_title}: ${L}m - ${I}A - ${S}mm² - ${Vp.toFixed(2)}%`;
-  document.getElementById('t2_btn').href=`https://wa.me/4915216839609?text=${encodeURIComponent(msg)}`;
 }
 function updateCounter(){
   let g=data[currentLang].gov[Math.floor(Math.random()*data[currentLang].gov.length)];
-  let o=Math.floor(Math.random()*15)+12;
+  let o=Math.floor(Math.random()*12)+10;
   let d=data[currentLang];
   document.getElementById('counterText').innerHTML=`🔥 ${liveNow} ${d.viewing} - ${o} ${d.orders} ${g}`;
   document.getElementById('viewCount').innerHTML=`👁️ ${1200+liveNow}`;
@@ -190,17 +194,23 @@ function showPopup(){
   let d=data[currentLang];
   let n=d.names[Math.floor(Math.random()*d.names.length)];
   let g=d.gov[Math.floor(Math.random()*d.gov.length)];
-  let m=Math.floor(Math.random()*8)+1;
-  document.getElementById('popupImg').src="https://i.postimg.cc/KYjDpfyj/IMG-20260902-WA0081.jpg";
-  if(currentLang==='ar') {document.getElementById('popupTitle').innerText=`✅ ${n} من ${g} ${d.ordered}`; document.getElementById('popupDesc').innerText=`${d.browsing} - ${d.ago} ${m} ${d.min}`;}
-  else if(currentLang==='ku') {document.getElementById('popupTitle').innerText=`✅ ${n} ji ${g} ${d.ordered}`; document.getElementById('popupDesc').innerText=`${d.browsing} - ${d.ago} ${m} ${d.min}`;}
-  else {document.getElementById('popupTitle').innerText=`✅ ${n} from ${g} ${d.ordered}`; document.getElementById('popupDesc').innerText=`${d.browsing} - ${m} ${d.min} ${d.ago}`;}
+  let m=Math.floor(Math.random()*5)+1;
+  if(currentLang==='ar'){
+    document.getElementById('popupTitle').innerText=`✅ ${n} من ${g} ${d.viewAction}`;
+    document.getElementById('popupDesc').innerText=`${d.browsing} - ${d.ago} ${m} ${d.min}`;
+  }else if(currentLang==='ku'){
+    document.getElementById('popupTitle').innerText=`✅ ${n} ji ${g} ${d.viewAction}`;
+    document.getElementById('popupDesc').innerText=`${d.browsing} - ${d.ago} ${m} ${d.min}`;
+  }else{
+    document.getElementById('popupTitle').innerText=`✅ ${n} from ${g} ${d.viewAction}`;
+    document.getElementById('popupDesc').innerText=`${d.browsing} - ${m} ${d.min} ${d.ago}`;
+  }
   document.getElementById('orderPopup').classList.add('show');
   setTimeout(()=>document.getElementById('orderPopup').classList.remove('show'),4500);
 }
 setTimeout(showPopup,3000); setInterval(showPopup,9000);
 
-// *** هذا يخليها ترجع عربي كل تحديث ***
+// يرجع عربي مع كل تحديث + تصحيح اللغة
 localStorage.removeItem('rboosh_lang');
 updateCounter(); calc1(); calcVD();
 setLang('ar');
