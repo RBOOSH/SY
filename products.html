@@ -2,178 +2,212 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>منتجات RBooSH™ - Abu Suleiman Group</title>
+<title>منتجاتنا - RBooSH™</title>
 <style>
-:root{--bg:#000;--card:#111;--card2:#0a0a0a;--text:#fff;--text2:#aaa;--border:#222;--blue:#00bfff;--blue2:#1e3a8a}
-body.light{--bg:#f5f7fb;--card:#fff;--card2:#eef2ff;--text:#111;--text2:#555;--border:#dbe3ff}
+:root{--bg:#000;--card:#111;--text:#fff;--text2:#aaa;--border:#222;--blue:#00bfff;--blue2:#1e3a8a}
+body.light{--bg:#f5f7fb;--card:#fff;--text:#111;--text2:#555;--border:#dbe3ff}
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Tahoma',sans-serif}
 body{background:var(--bg);color:var(--text);line-height:1.8;transition:0.4s}
-.container{max-width:1100px;margin:0 auto;padding:20px;padding-top:80px}
-.logo{text-align:center;margin:20px 0}.logo img{max-width:300px;width:100%;filter:drop-shadow(0 0 20px rgba(0,191,255,0.5))}
-h2{color:var(--blue);text-align:center;font-size:26px;margin-bottom:15px;text-shadow:0 0 15px rgba(0,191,255,0.6)}
-.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:25px;margin:20px 0;transition:0.4s}
-.header-top{position:fixed;top:0;left:0;right:0;background:var(--bg);border-bottom:2px solid var(--blue2);padding:12px 15px;z-index:1000;display:flex;justify-content:space-between;align-items:center}
+.container{max-width:1100px;margin:0 auto;padding:20px;padding-top:85px}
+.logo{text-align:center;margin:20px 0}.logo img{max-width:250px;width:100%;filter:drop-shadow(0 0 20px rgba(0,191,255,0.5))}
+h1{color:var(--blue);text-align:center;margin:20px 0;text-shadow:0 0 15px rgba(0,191,255,0.6)}
+.header-top{position:fixed;top:0;left:0;right:0;background:var(--bg);border-bottom:2px solid var(--blue2);padding:10px 12px;z-index:1000;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.header-left{display:flex;align-items:center;gap:12px}
 .menu-btn{font-size:28px;background:none;border:none;color:var(--blue);cursor:pointer}
+.clock-wrap{display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--border);border-radius:28px;padding:5px 12px 5px 7px}
+.analog-clock{width:52px;height:52px;border:2.5px solid var(--blue);border-radius:50%;position:relative;background:#fff;box-shadow:0 0 12px rgba(0,191,255,0.7);flex-shrink:0;overflow:hidden}
+.clock-logo{position:absolute;left:50%;top:72%;width:48px;height:18px;transform:translate(-50%,-50%);object-fit:contain;pointer-events:none;z-index:2}
+.clock-center{position:absolute;top:50%;left:50%;width:8px;height:8px;background:#00bfff;border-radius:50%;transform:translate(-50%,-50%);z-index:10;border:1.5px solid #fff}
+.hand{position:absolute;bottom:50%;left:50%;transform-origin:50% 100%;border-radius:3px;z-index:5}
+.hour-hand{width:3px;height:13px;background:#111;margin-left:-1.5px}
+.minute-hand{width:2.2px;height:17px;background:#111;margin-left:-1.1px}
+.second-hand{width:1.2px;height:19px;background:#ff0000;margin-left:-0.6px}
+.date-info{display:flex;flex-direction:column;line-height:1.2;text-align:center}
+.day-name{font-size:12px;font-weight:900;color:var(--blue)}
+.date-num{font-size:11px;color:var(--text2);font-weight:bold}
+.sidebar{position:fixed;top:0;right:-300px;width:280px;height:100%;background:var(--card);border-left:2px solid var(--blue2);z-index:1001;transition:0.3s;padding:20px;overflow-y:auto}.sidebar.open{right:0}[dir="ltr"].sidebar{right:auto;left:-300px;border-right:2px solid var(--blue2)}[dir="ltr"].sidebar.open{left:0}
+.sidebar-clock-section{text-align:center;padding:15px 0 10px 0}
+.analog-clock-large{width:180px;height:180px;border:4px solid var(--blue);border-radius:50%;position:relative;background:#fff;box-shadow:0 0 25px rgba(0,191,255,0.9);margin:0 auto;overflow:hidden}
+.clock-logo-large{position:absolute;left:50%;top:73%;width:175px;height:58px;transform:translate(-50%,-50%);object-fit:contain;pointer-events:none;z-index:2}
+.clock-center-large{position:absolute;top:50%;left:50%;width:14px;height:14px;background:var(--blue);border-radius:50%;transform:translate(-50%,-50%);z-index:10;border:2px solid #fff;box-shadow:0 0 10px var(--blue)}
+.hand-large{position:absolute;bottom:50%;left:50%;transform-origin:50% 100%;border-radius:4px;z-index:5}
+.hour-hand-large{width:6px;height:45px;background:#111;margin-left:-3px}
+.minute-hand-large{width:5px;height:65px;background:#111;margin-left:-2.5px}
+.second-hand-large{width:2px;height:75px;background:#ff0000;margin-left:-1px}
+.sidebar-date{margin-top:15px;display:flex;flex-direction:column;gap:4px}
+.sidebar-day{font-size:18px;font-weight:900;color:var(--blue)}
+.sidebar-date-num{font-size:15px;color:var(--text2);font-weight:bold}
+.sidebar-divider{height:2px;background:linear-gradient(90deg,transparent,var(--blue),transparent);margin:15px 0;border:none}
+.sidebar-title{color:var(--blue);text-align:center;margin:10px 0 15px 0;font-size:18px}
+.sidebar a{display:block;padding:14px;color:var(--text);text-decoration:none;border-bottom:1px solid var(--border)}
 .header-actions{display:flex;gap:8px;align-items:center}
 .theme-btn{background:var(--card);border:1px solid var(--border);color:var(--text);width:38px;height:38px;border-radius:10px;cursor:pointer;font-size:18px}
-.lang-switch{display:flex;gap:6px}.lang-btn{background:var(--card);color:var(--text2);border:1px solid var(--border);padding:6px 12px;border-radius:8px;cursor:pointer;font-weight:bold;font-size:12px}.lang-btn.active{background:var(--blue);color:#000;box-shadow:0 0 15px rgba(0,191,255,0.6)}
-.sidebar{position:fixed;top:0;right:-300px;width:280px;height:100%;background:var(--card);border-left:2px solid var(--blue2);z-index:1001;transition:0.3s;padding:20px}.sidebar.open{right:0}[dir="ltr"].sidebar{right:auto;left:-300px;border-right:2px solid var(--blue2)}[dir="ltr"].sidebar.open{left:0}
-.sidebar a{display:block;padding:14px;color:var(--text);text-decoration:none;border-bottom:1px solid var(--border)}
+.lang-switch{display:flex;gap:6px}.lang-btn{background:var(--card);color:var(--text2);border:1px solid var(--border);padding:6px 12px;border-radius:8px;cursor:pointer;font-weight:bold;font-size:12px}.lang-btn.active{background:var(--blue);color:#000}
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);display:none;z-index:1000}.overlay.show{display:block}
-.visitor-counter{background:var(--card);border:1px dashed var(--blue);border-radius:12px;padding:12px 18px;margin:0 auto 20px auto;text-align:center;max-width:650px;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 0 15px rgba(0,191,255,0.2)}
+.search-box{max-width:500px;margin:20px auto;display:flex;gap:8px}
+.search-box input{flex:1;background:var(--card);border:2px solid var(--blue);border-radius:25px;padding:12px 18px;color:var(--text);outline:none;text-align:center}
+.filter-bar{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:20px 0}
+.filter-btn{background:var(--card);border:1px solid var(--border);color:var(--text2);padding:10px 18px;border-radius:25px;cursor:pointer;font-weight:bold;font-size:13px}
+.filter-btn.active,.filter-btn:hover{background:var(--blue);color:#000;border-color:var(--blue);box-shadow:0 0 20px rgba(0,191,255,0.8)}
+.brands-bar{width:100%;background:var(--card);border:2px solid var(--blue);border-radius:12px;overflow:hidden;margin:15px auto;padding:14px 0;direction:ltr}
+.brands-track{display:flex;width:max-content;animation:scrollBrands 60s linear infinite}
+.brands-group{display:flex;flex-shrink:0;align-items:center}
+.brands-group span{font-size:14px;font-weight:900;padding:0 24px;white-space:nowrap}
+.c-ls{color:#005BAC}.c-schneider{color:#3DCD58}.c-chint{color:#005BAC}.c-tense{color:#0072BC}.c-givis{color:#0072BC}.c-pollux{color:#FF6600}.c-rboosh{color:#00bfff;text-shadow:0 0 12px rgba(0,191,255,0.9)!important}.c-altech{color:#E30613}.c-hyundai{color:#002C5F}.c-clay{color:#FF6A00}.c-unal{color:#CC0000}.c-ako{color:#E30613}
+@keyframes scrollBrands{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.install-banner{background:linear-gradient(135deg,var(--blue2),var(--blue));border-radius:15px;padding:20px;margin:25px 0;text-align:center;border:2px solid var(--blue)}
+.visitor-counter{background:var(--card);border:1px dashed var(--blue);border-radius:12px;padding:12px 18px;margin:0 auto 20px auto;text-align:center;max-width:550px;display:flex;align-items:center;justify-content:center;gap:10px}
 .live-dot{width:10px;height:10px;background:#ff0000;border-radius:50%;animation:livePulse 1s infinite}
 @keyframes livePulse{0%{box-shadow:0 0 0 0 rgba(255,0,0,0.7)}70%{box-shadow:0 0 0 8px rgba(255,0,0,0)}100%{box-shadow:0 0 0 0 rgba(255,0,0,0)}}
-.order-popup{position:fixed;bottom:20px;right:20px;background:var(--card);border:1px solid #25D366;border-radius:15px;padding:12px 16px;display:flex;align-items:center;gap:12px;z-index:2000;transform:translateX(400px);transition:0.5s;max-width:320px;box-shadow:0 0 20px rgba(37,211,102,0.4)}
-.order-popup.show{transform:translateX(0)}[dir="ltr"].order-popup{right:auto;left:20px;transform:translateX(-400px)}[dir="ltr"].order-popup.show{transform:translateX(0)}
-.order-popup img{width:50px;height:50px;border-radius:10px;object-fit:cover}
-.visitor-counter span{font-size:14px;color:#00ff88;font-weight:bold;-webkit-text-stroke:0.35px #000;paint-order:stroke fill;text-shadow:0.5px 0.5px 0 #000,-0.5px 0.5px 0 #000,0.5px -0.5px 0 #000,-0.5px -0.5px 0 #000,0 0 8px rgba(0,255,136,0.6)}
-
-/* ✅ الشريط الملون متل الفيديو - بطيء 60s */
-.brands-bar{width:100%;background:#ffffff;border:2px solid #00bfff;border-radius:15px;overflow:hidden;margin:15px auto;padding:14px 0;box-shadow:0 0 15px rgba(0,191,255,0.25);direction:ltr;}
-.brands-track{display:flex;width:max-content;animation:scrollBrands 60s linear infinite;}
-.brands-group{display:flex;flex-shrink:0;align-items:center;}
-.brands-group span{font-size:15px;font-weight:900;padding:0 30px;white-space:nowrap;position:relative;letter-spacing:0.3px;}
-.brands-group span::after{content:'•';position:absolute;right:-3px;color:#00bfff;opacity:0.5;font-size:12px;}
-.c-ls{color:#5a7ebf;} .c-schneider{color:#3dcd58;} .c-chint{color:#1e3a8a;} .c-tense{color:#3a7ac1;} .c-givis{color:#3a7ac1;} .c-pollux{color:#ff7a00;} .c-rboosh{color:#00bfff;text-shadow:0 0 10px rgba(0,191,255,0.4);} .c-altech{color:#e30613;} .c-hyundai{color:#002c5f;} .c-clay{color:#ff7a00;} .c-unal{color:#b91c1c;} .c-ako{color:#e30613;}
-@keyframes scrollBrands{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-
-/* ✅ منتجات - التصميم القديم */
-.filter-bar{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:20px 0}
-.filter-btn{background:var(--card);border:1px solid var(--border);color:var(--text2);padding:10px 18px;border-radius:25px;cursor:pointer;font-weight:bold;transition:0.3s}
-.filter-btn.active,.filter-btn:hover{background:var(--blue);color:#000;border-color:var(--blue);box-shadow:0 0 15px rgba(0,191,255,0.5)}
-.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px;margin-top:25px}
-.product-card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:0.3s;position:relative}
-.product-card:hover{border-color:var(--blue);box-shadow:0 0 20px rgba(0,191,255,0.3);transform:translateY(-5px)}
-.product-card img{width:100%;height:200px;object-fit:cover}
-.product-info{padding:15px}
-.product-title{font-weight:bold;font-size:15px;margin-bottom:8px;color:var(--text)}
-.product-brand{font-size:12px;color:var(--blue);margin-bottom:8px}
-.product-price{color:#00ff88;font-weight:bold;font-size:16px;margin:8px 0}
-.btn-order{background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;border:none;width:100%;padding:12px;border-radius:10px;font-weight:bold;cursor:pointer;margin-top:10px}
-.btn{padding:14px 20px;border-radius:10px;text-decoration:none;font-weight:bold;display:block;text-align:center;margin:10px 0}
-.btn-whatsapp{background:linear-gradient(135deg,#25D366,#128C7E);color:#fff}
+.visitor-counter span{font-size:14px;color:#00ff88;font-weight:bold}
+.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;margin-top:20px}
+.product-card{background:var(--card);border:1px solid var(--border);border-radius:15px;overflow:hidden;transition:0.4s;position:relative}
+.product-card:hover{border-color:var(--blue);transform:translateY(-6px);box-shadow:0 0 20px rgba(0,191,255,0.5)}
+.product-card img{width:100%;height:280px;object-fit:contain;background:var(--bg);padding:15px}
+.product-body{padding:18px;text-align:center}.product-badge{background:var(--blue2);color:#fff;font-size:11px;padding:4px 10px;border-radius:20px;display:inline-block;margin-bottom:10px}
+.badge-hot{background:linear-gradient(135deg,#ff0000,#ff6a00)}
+.product-body h3{font-size:15px;margin-bottom:6px;min-height:45px}
+.rating{display:flex;align-items:center;justify-content:center;gap:6px;margin:6px 0 8px 0;font-size:12px}
+.stars{color:#FFD700}.rating-num{color:var(--text);font-weight:bold}.rating-count{color:var(--text2);font-size:11px}
+.product-desc{font-size:13px;color:var(--text2);margin-bottom:10px;min-height:50px}
+.product-price{color:var(--blue);font-weight:900;font-size:17px;margin:12px 0}
+.live-view{position:absolute;top:12px;left:12px;background:rgba(0,0,0,0.8);border:1px solid #00ff88;color:#00ff88;font-size:11px;padding:4px 8px;border-radius:20px;display:flex;align-items:center;gap:5px}
+.live-view i{width:6px;height:6px;background:#00ff88;border-radius:50%;display:inline-block}
+.btn-wa{background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;text-align:center;padding:14px;border-radius:12px;display:block;text-decoration:none;font-weight:bold;margin-top:10px;font-size:15px}
+.best-title{text-align:center;color:#ff6a00;font-size:22px;margin:25px 0 15px 0}
+footer{text-align:center;padding:30px;color:#777;font-size:12px}
+.order-popup{position:fixed;bottom:20px;right:20px;background:var(--card);border:1px solid #25D366;border-radius:15px;padding:12px 16px;display:flex;align-items:center;gap:12px;z-index:2000;transform:translateX(400px);transition:0.5s;max-width:320px}
+.order-popup.show{transform:translateX(0)}.order-popup img{width:50px;height:50px;border-radius:10px;object-fit:cover}
+[dir="ltr"].order-popup{right:auto;left:20px;transform:translateX(-400px)}[dir="ltr"].order-popup.show{transform:translateX(0)}
 </style>
 </head>
 <body>
-<div class="header-top"><button class="menu-btn" onclick="openMenu()">☰</button><div class="header-actions"><button class="theme-btn" id="themeBtn" onclick="toggleTheme()">☀️</button><div class="lang-switch"><button class="lang-btn active" onclick="setLang('ar')">AR</button><button class="lang-btn" onclick="setLang('en')">EN</button><button class="lang-btn" onclick="setLang('ku')">KU</button></div></div></div>
-<div class="overlay" id="overlay" onclick="closeMenu()"></div>
-<div class="sidebar" id="sidebar"><button style="background:none;border:none;color:var(--text);font-size:24px;float:left;cursor:pointer" onclick="closeMenu()">×</button><h3 id="menu_title" style="color:var(--blue);text-align:center;margin-bottom:20px;">القائمة</h3><a href="index.html">الرئيسية</a><a href="products.html">المنتجات 🛒</a><a href="calculator.html">الحاسبة</a><a href="index.html#contact">اتصال</a></div>
-
-<div class="container">
-<div class="logo"><img src="logo.png" alt="RBooSH"></div>
-
-<div class="brands-bar">
-  <div class="brands-track">
-    <div class="brands-group">
-      <span class="c-ls">LS</span><span class="c-schneider">Schneider</span><span class="c-chint">CHINT</span><span class="c-tense">TENSE</span><span class="c-givis">GIVIS</span><span class="c-pollux">POLLUX</span><span class="c-rboosh">RBooSH™</span><span class="c-altech">Altech</span><span class="c-hyundai">HYUNDAI</span><span class="c-clay">CLAY</span><span class="c-unal">ÜNAL KABLO</span><span class="c-ako">AKO</span>
-    </div>
-    <div class="brands-group" aria-hidden="true">
-      <span class="c-ls">LS</span><span class="c-schneider">Schneider</span><span class="c-chint">CHINT</span><span class="c-tense">TENSE</span><span class="c-givis">GIVIS</span><span class="c-pollux">POLLUX</span><span class="c-rboosh">RBooSH™</span><span class="c-altech">Altech</span><span class="c-hyundai">HYUNDAI</span><span class="c-clay">CLAY</span><span class="c-unal">ÜNAL KABLO</span><span class="c-ako">AKO</span>
+<div class="header-top">
+  <div class="header-left">
+    <button class="menu-btn" onclick="openMenu()">☰</button>
+    <div class="clock-wrap">
+      <div class="analog-clock">
+        <img src="logo.png" alt="RBooSH" class="clock-logo">
+        <div class="hand hour-hand" id="hourHand"></div>
+        <div class="hand minute-hand" id="minuteHand"></div>
+        <div class="hand second-hand" id="secondHand"></div>
+        <div class="clock-center"></div>
+      </div>
+      <div class="date-info">
+        <span class="day-name" id="dayName">السبت</span>
+        <span class="date-num" id="dateNum">26 أيلول</span>
+      </div>
     </div>
   </div>
+  <div class="header-actions"><button class="theme-btn" id="themeBtn" onclick="toggleTheme()">☀️</button><div class="lang-switch"><button class="lang-btn active" onclick="setLang('ar')">AR</button><button class="lang-btn" onclick="setLang('en')">EN</button><button class="lang-btn" onclick="setLang('ku')">KU</button></div></div>
 </div>
-
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
+<div class="sidebar" id="sidebar">
+  <button style="background:none;border:none;color:var(--text);font-size:28px;float:left;cursor:pointer" onclick="closeMenu()">×</button>
+  <div class="sidebar-clock-section">
+    <div class="analog-clock-large">
+      <img src="logo.png" alt="RBooSH" class="clock-logo-large">
+      <div class="hand-large hour-hand-large" id="hourHandLarge"></div>
+      <div class="hand-large minute-hand-large" id="minuteHandLarge"></div>
+      <div class="hand-large second-hand-large" id="secondHandLarge"></div>
+      <div class="clock-center-large"></div>
+    </div>
+    <div class="sidebar-date">
+      <span class="sidebar-day" id="sidebarDay">السبت</span>
+      <span class="sidebar-date-num" id="sidebarDate">26 أيلول 2026</span>
+    </div>
+  </div>
+  <hr class="sidebar-divider">
+  <h3 class="sidebar-title" id="menu_title">القائمة</h3>
+  <a href="index.html" id="menu_home">الرئيسية</a>
+  <a href="products.html" id="menu_products">المنتجات</a>
+  <a href="calculator.html" id="menu_calc">الحاسبة</a>
+</div>
+<div class="container">
+<div class="logo"><img src="logo.png" alt="RBooSH"></div>
+<div class="brands-bar"><div class="brands-track"><div class="brands-group"><span class="c-ls">LS</span><span class="c-schneider">Schneider</span><span class="c-chint">CHINT</span><span class="c-tense">TENSE</span><span class="c-givis">GIVIS</span><span class="c-pollux">POLLUX</span><span class="c-rboosh">RBooSH™</span><span class="c-altech">Altech</span><span class="c-hyundai">HYUNDAI</span><span class="c-clay">CLAY</span><span class="c-unal">ÜNAL KABLO</span><span class="c-ako">AKO</span></div><div class="brands-group" aria-hidden="true"><span class="c-ls">LS</span><span class="c-schneider">Schneider</span><span class="c-chint">CHINT</span><span class="c-tense">TENSE</span><span class="c-givis">GIVIS</span><span class="c-pollux">POLLUX</span><span class="c-rboosh">RBooSH™</span><span class="c-altech">Altech</span><span class="c-hyundai">HYUNDAI</span><span class="c-clay">CLAY</span><span class="c-unal">ÜNAL KABLO</span><span class="c-ako">AKO</span></div></div></div>
+<h1 id="page_title">منتجاتنا ⚡</h1><p style="text-align:center;color:var(--text2);" id="page_desc"></p>
 <div class="visitor-counter"><div class="live-dot"></div><span id="counterText"></span></div>
-
-<div style="text-align:center;margin:30px 0;">
-<h2 id="main_title">⚡ منتجات RBooSH™ الأصلية</h2>
-<p>جميع المعدات الكهربائية بضمان RBooSH™ - توصيل لكل سوريا</p>
+<div class="search-box"><input type="text" id="searchInput" placeholder="🔍 ابحث عن منتج..." oninput="render()"></div>
+<h2 class="best-title" id="best_title">🔥 الأكثر مبيعاً هذا الأسبوع</h2>
+<div class="products-grid" id="bestGrid"></div>
+<div class="filter-bar" id="filterBar"></div>
+<div class="install-banner"><h2 id="banner_title" style="color:#fff">🎥 خدمة التركيب المجاني</h2><p id="banner_text" style="color:#e0f2ff;font-size:14px;margin:8px 0 12px">اشتريت وما عرفت تركب؟ افتح كاميرا واتساب وأنا أركب معك خطوة بخطوة مجاناً!</p><a id="banner_btn" style="background:#fff;color:#1e3a8a;padding:10px 20px;border-radius:25px;text-decoration:none;font-weight:bold;display:inline-block" href="https://wa.me/4915216839609?text=مرحبا ابو سليمان" target="_blank">📹 اتصل فيديو الآن</a></div>
+<div class="products-grid" id="productsGrid"></div>
+<footer>© 2026 RBooSH™ - Abu Sulaiman Group</footer>
 </div>
-
-<div class="filter-bar">
-<button class="filter-btn active" onclick="filterProducts('all')">الكل</button>
-<button class="filter-btn" onclick="filterProducts('panel')">لوحات توزيع</button>
-<button class="filter-btn" onclick="filterProducts('breaker')">قواطع</button>
-<button class="filter-btn" onclick="filterProducts('cable')">كابلات</button>
-<button class="filter-btn" onclick="filterProducts('contactor')">كونتاكتورات</button>
-<button class="filter-btn" onclick="filterProducts('stabilizer')">منظمات جهد</button>
-</div>
-
-<div class="products-grid" id="productsGrid">
-<!-- سيتم تعبئتها بالجافاسكربت -->
-</div>
-
-<div class="card" style="text-align:center;margin-top:40px">
-<h2>📦 ما لقيت اللي بدك ياه؟</h2>
-<p>تواصل معنا على الواتساب ونوفرلك أي مادة كهربائية خلال 24 ساعة</p>
-<a href="https://wa.me/963966436341" class="btn btn-whatsapp">📱 واتساب ابو سليمان</a>
-</div>
-
-</div>
-
 <div class="order-popup" id="orderPopup"><img id="popupImg" src=""><div style="flex:1"><b id="popupTitle" style="color:#25D366;font-size:13px;display:block"></b><small id="popupDesc" style="color:var(--text2);font-size:11px"></small></div><span style="color:#777;cursor:pointer" onclick="document.getElementById('orderPopup').classList.remove('show')">×</span></div>
-
 <script>
 function toggleTheme(){document.body.classList.toggle('light');let l=document.body.classList.contains('light');localStorage.setItem('rboosh_theme',l?'light':'dark');document.getElementById('themeBtn').innerText=l?'🌙':'☀️';}
 (function(){let s=localStorage.getItem('rboosh_theme');if(s==='light'){document.body.classList.add('light');document.getElementById('themeBtn').innerText='🌙';}else{document.getElementById('themeBtn').innerText='☀️';}})();
+let currentLang='ar';let currentFilter='all';
+const BRAND = "RBooSH<sup>™</sup> ✓";
+const products=[
+{name_ar:"مولتيميتر ذكي ومحمول UNI-T UT120A - قياس جهد ومقاومة - RBooSH™",name_en:"UNI-T UT120A Smart Portable Multimeter - Voltage Resistance - RBooSH™",name_ku:"Multimeter Jîr UNI-T UT120A - Pîvana Voltaj - RBooSH™",cat:"industrial",image:"https://i.postimg.cc/sDHFKjJh/Picsart-26-09-27-16-32-46-164.jpg",desc_ar:"مولتيميتر ذكي ومحمول UNI-T UT120A | قياس الجهد AC/DC | قياس المقاومة والتردد | خاصية Hold | شاشة ذكية | تصميم محمول - RBooSH™",desc_en:"UNI-T UT120A Smart Multimeter | AC/DC Voltage | Resistance Frequency | HOLD Function | Smart Display - RBooSH™",desc_ku:"UNI-T UT120A Multimeter Jîr | AC/DC Voltage | HOLD - RBooSH™",badge_ar:"UNI-T UT120A 🔥 جديد",badge_en:"UNI-T UT120A 🔥 New",badge_ku:"UNI-T UT120A 🔥 Nû"},
+{name_ar:"كشاف طاقة شمسية على شكل كاميرا مراقبة وهمية 77 LED - حساس حركة - ريموت - RBooSH™",name_en:"Solar Fake Security Camera Light 77 LED - Motion Sensor - Remote - RBooSH™",name_ku:"Ronahiya Rojê Şeklê Kamera 77 LED - Sensor Tevger - Remote - RBooSH™",cat:"solar",image:"https://i.postimg.cc/D0cr57cX/Picsart-26-09-25-17-08-48-610.jpg",desc_ar:"كشاف إضاءة يعمل بالطاقة الشمسية مصمم ليشبه كاميرا المراقبة | 77 LED إضاءة قوية | مزدوج: كشاف + كاميرا وهمية | ريموت | RBooSH™",desc_en:"Solar Light Fake Security Camera Design | 77 LED Powerful Light | Dual Function | Remote | RBooSH™",desc_ku:"Ronahiya Rojê Şeklê Kamera | 77 LED",badge_ar:"كاميرا وهمية 77 LED 🔥 جديد",badge_en:"Fake Camera 77 LED 🔥 New",badge_ku:"Fake Camera 77 LED 🔥 Nû"},
+{name_ar:"كشاف CLAY محمول CL-CHL50W 50W LED IP66 مع حامل ومقبض - SMD LED - RBooSH™",name_en:"CLAY CL-CHL50W Portable 50W LED Floodlight IP66 with Stand SMD LED - RBooSH™",name_ku:"Ronahiya CLAY CL-CHL50W 50W Portable IP66 SMD LED - RBooSH™",cat:"solar",image:"https://i.postimg.cc/gjbXf10w/IMG-20260719-WA0018(1).jpg",desc_ar:"كشاف LED محمول 50 واط CL-CHL50W CLAY | IP66 | SMD LED | متوفر - RBooSH™",desc_en:"CLAY CL-CHL50W Portable 50W LED Floodlight | IP66 | SMD LED",desc_ku:"CLAY CL-CHL50W 50W Portable LED IP66",badge_ar:"CLAY 50W محمول IP66 💡 جديد",badge_en:"CLAY 50W Portable IP66 💡 New",badge_ku:"CLAY 50W Portable IP66 💡 Nû"},
+{name_ar:"انفرتر شاحن BTS EP-4200H - 4.2K BMS LITHIUM 12V/24V - MPPT 4000W - RBooSH™",name_en:"BTS Inverter Charger EP-4200H - 4.2K BMS Lithium 12V/24V MPPT 4000W - RBooSH™",name_ku:"Invertera BTS EP-4200H - 4.2K BMS Lithium 12V/24V MPPT 4000W - RBooSH™",cat:"solar",image:"https://i.postimg.cc/3RptT53D/IMG-20260809-WA0043.jpg",desc_ar:"INVERTER CHARGER BTS EP-4200H POWER 4.2K BMS LITHIUM | MPPT 4000W | VOC 500V",desc_en:"BTS EP-4200H INVERTER CHARGER 4.2K BMS LITHIUM | MPPT 4000W",desc_ku:"BTS EP-4200H 4.2K BMS Lithium MPPT 4000W",badge_ar:"BTS EP-4200H 4.2K BMS 🔋 جديد",badge_en:"BTS EP-4200H 4.2K BMS 🔋 New",badge_ku:"BTS EP-4200H 4.2K BMS 🔋 Nû"},
+{name_ar:"انفرتر FOX MPPT VM III 6500-48V TWIN هجين 6.5KW BMS رقم 105 - RBooSH™",name_en:"FOX MPPT Solar Inverter VM III 6500-48V TWIN Hybrid 6.5KW BMS No.105 - RBooSH™",name_ku:"Invertera FOX MPPT VM III 6500-48V TWIN Hybrid 6.5KW BMS No.105 - RBooSH™",cat:"solar",image:"https://i.postimg.cc/MThX11S9/IMG-20260809-WA0022.jpg",desc_ar:"FOX MPPT VM III 6500-48V TWIN Hybrid 6.5KW BMS رقم 105",desc_en:"FOX MPPT VM III 6500-48V TWIN Hybrid 6.5KW BMS No.105",desc_ku:"FOX MPPT VM III 6500-48V TWIN Hybrid 6.5KW BMS No.105",badge_ar:"FOX 6.5KW BMS رقم 105 ☀️ جديد",badge_en:"FOX 6.5KW BMS No.105 ☀️ New",badge_ku:"FOX 6.5KW BMS No.105 ☀️ Nû"},
+{name_ar:"كشاف NOAS 300W - إضاءة قوية توفير 85% في الطاقة - IP66 24000 لومين - RBooSH™",name_en:"NOAS 300W Flood Light - Powerful 85% Saving - IP66 24000lm - RBooSH™",name_ku:"Ronahiya NOAS 300W - 85% Teserûf - IP66 24000lm - RBooSH™",cat:"solar",image:"https://i.postimg.cc/HLwMYZD9/IMG-20260809-WA0088.jpg",desc_ar:"NOAS 300W | 85% توفير | IP66 | 24000 لومين | 2 سنة ضمان | RBooSH™",desc_en:"NOAS 300W Flood Light | 85% Saving | IP66 | 24000lm | 2 Year Warranty",desc_ku:"NOAS 300W | 85% Teserûf | IP66",badge_ar:"NOAS 300W 85% توفير 💡 جديد",badge_en:"NOAS 300W 85% Saving 💡 New",badge_ku:"NOAS 300W 85% Teserûf 💡 Nû"},
+{name_ar:"مانع حريق POTRIC - Potric Fire Suppressor - RBooSH™",name_en:"POTRIC Fire Suppressor - Automatic - RBooSH™",name_ku:"POTRIC Agirvemirandin - Otomatîk - RBooSH™",cat:"protection",image:"https://i.postimg.cc/xdwmYw4H/IMG-20260912-WA0057.jpg",desc_ar:"POTRIC Fire Suppressor | حماية أوتوماتيكية ضد الحريق",desc_en:"POTRIC Fire Suppressor | Automatic Fire Protection",desc_ku:"POTRIC Fire Suppressor",badge_ar:"POTRIC 🔥 جديد",badge_en:"POTRIC 🔥 New",badge_ku:"POTRIC 🔥 Nû"},
+{name_ar:"متحكم حرارة TENSE DT-322 - RBooSH™",name_en:"TENSE DT-322 Temperature Controller - RBooSH™",name_ku:"Kontrola Germahiyê TENSE DT-322 - RBooSH™",cat:"industrial",image:"https://i.postimg.cc/gcBMRJQV/IMG-20260912-WA0060.jpg",desc_ar:"TENSE DT-322 Sıcaklık Kontrol Rölesi | متحكم حرارة رقمي",desc_en:"TENSE DT-322 Temperature Controller | Digital",desc_ku:"TENSE DT-322 Kontrola Germahiyê",badge_ar:"TENSE DT-322 🌡️ جديد",badge_en:"TENSE DT-322 🌡️ New",badge_ku:"TENSE DT-322 🌡️ Nû"},
+{name_ar:"إضاءة غيفيس GIVIS 200W - RBooSH™",name_en:"GIVIS 200W Flood Light - Power for NZ - RBooSH™",name_ku:"Ronahiya GIVIS 200W - Ji Bo NZ - RBooSH™",cat:"solar",image:"https://i.postimg.cc/tRhTnZsj/IMG-20260913-WA0003.jpg",desc_ar:"GIVIS 200W MADE FOR NZ | LED FLOOD LIGHT IP66 | كفالة سنتين",desc_en:"GIVIS 200W MADE FOR NZ | LED FLOOD LIGHT IP66 | 2Y Warranty",desc_ku:"GIVIS 200W MADE FOR NZ | IP66",badge_ar:"GIVIS 200W 💡 جديد",badge_en:"GIVIS 200W 💡 New",badge_ku:"GIVIS 200W 💡 Nû"},
+{name_ar:"بطارية ليثيوم FOX BTS 3.84KW MTL-12300 - RBooSH™",name_en:"FOX BTS Lithium Battery 3.84KW MTL-12300 - RBooSH™",name_ku:"Pîlê Lîtyûm FOX BTS 3.84KW MTL-12300 - RBooSH™",cat:"solar",image:"https://i.postimg.cc/632jqxcP/IMG-20260809-WA0084.jpg",desc_ar:"12.8V 300Ah 3.84KW LiFePO4 | Grade A+ | بلوتوث + شاشة",desc_en:"12.8V 300Ah 3.84KW LiFePO4 | Grade A+ | Bluetooth + Display",desc_ku:"12.8V 300Ah 3.84KW LiFePO4 | Grade A+",badge_ar:"FOX 3.84KW 🔋 جديد",badge_en:"FOX 3.84KW 🔋 New",badge_ku:"FOX 3.84KW 🔋 Nû"},
+{name_ar:"حماية ذكية WiFi Pollux ATVP163",name_en:"Pollux Smart WiFi Protector",name_ku:"Parastina Jîr WiFi Pollux",cat:"smart",image:"https://i.postimg.cc/KYjDpfyj/IMG-20260902-WA0081.jpg",desc_ar:"حماية ذكية شاملة مع WiFi",desc_en:"Smart WiFi protection",desc_ku:"Parastina jîr bi WiFi",badge_ar:"ذكي WiFi",badge_en:"Smart WiFi",badge_ku:"Jîr WiFi"},
+{name_ar:"قاطع ذكي Smart Switch RBooSH",name_en:"RBooSH Smart Switch",name_ku:"Smart Switch RBooSH",cat:"smart",image:"https://i.postimg.cc/qvkLy0bm/IMG-20260902-WA0020.jpg",desc_ar:"قاطع ذكي واي فاي",desc_en:"Smart WiFi breaker",desc_ku:"Şalterê jîr WiFi",badge_ar:"ذكي 🔥",badge_en:"Smart 🔥",badge_ku:"Jîr 🔥"},
+{name_ar:"كشاف طاقة شمسية Pollux",name_en:"Pollux Solar Light",name_ku:"Ronahiya Rojê Pollux",cat:"solar",image:"https://i.postimg.cc/zfGxZ5TS/IMG-20260827-WA0002.jpg",desc_ar:"إنارة شمسية ذكية",desc_en:"Smart solar light",desc_ku:"Ronahiya rojê ya jîr",badge_ar:"شمسي ☀️",badge_en:"Solar ☀️",badge_ku:"Rojê ☀️"},
+{name_ar:"قاطع MCCB صناعي",name_en:"MCCB Industrial Breaker",name_ku:"Şalter MCCB Pîşesazî",cat:"industrial",image:"https://i.postimg.cc/PvdzN16d/IMG-20260828-WA0002-1.jpg",desc_ar:"قاطع صناعي MCCB",desc_en:"Industrial MCCB",desc_ku:"Şalterê MCCB",badge_ar:"صناعي ⚡",badge_en:"Industrial ⚡",badge_ku:"Pîşesazî ⚡"},
+{name_ar:"مانع صواعق Pollux",name_en:"Pollux Surge Protector",name_ku:"Parastina Birûskê Pollux",cat:"protection",image:"https://i.postimg.cc/NjYNDRMd/IMG-20260724-WA0003.jpg",desc_ar:"حماية من الصواعق",desc_en:"Lightning protection",desc_ku:"Parastina birûskê",badge_ar:"حماية ⚡",badge_en:"Protection ⚡",badge_ku:"Parastin ⚡"},
+{name_ar:"قاطع تحويل ATS 4P",name_en:"ATS Switch 4P",name_ku:"Guherker ATS 4P",cat:"industrial",image:"https://i.postimg.cc/J4j6jpRv/IMG-20260722-WA0043-3.jpg",desc_ar:"تحويل أوتوماتيك",desc_en:"Auto transfer",desc_ku:"Guherîna otomatîk",badge_ar:"ATS ⚡",badge_en:"ATS ⚡",badge_ku:"ATS ⚡"},
+{name_ar:"كشاف CLAY 50W القديم",name_en:"CLAY Floodlight 50W Old",name_ku:"Projektor CLAY 50W",cat:"solar",image:"https://i.postimg.cc/SQB1XBb1/IMG-20260719-WA0018.jpg",desc_ar:"كشاف قوي IP66 - موديل قديم",desc_en:"Powerful IP66 - Old Model",desc_ku:"Projektor bihêz",badge_ar:"قوي 💡",badge_en:"Powerful 💡",badge_ku:"Bihêz 💡"},
+{name_ar:"منظم جهد 5000VA",name_en:"Stabilizer 5000VA",name_ku:"Rêkxer Voltaj 5000VA",cat:"industrial",image:"https://i.postimg.cc/Yj7xXwpC/IMG-20260717-WA0011.jpg",desc_ar:"منظم جهد 5000VA",desc_en:"5000VA stabilizer",desc_ku:"Rêkxer 5000VA",badge_ar:"قوة 💪",badge_en:"Power 💪",badge_ku:"Hêz 💪"},
+{name_ar:"حماية فاز ديجيتال",name_en:"Digital Phase Protector",name_ku:"Parastina Faz Dîjîtal",cat:"protection",image:"https://i.postimg.cc/0zY46NQ8/IMG-20260902-WA0091.jpg",desc_ar:"حماية من الجهد",desc_en:"Voltage protection",desc_ku:"Parastina voltaj",badge_ar:"حماية ⚡",badge_en:"Protection ⚡",badge_ku:"Parastin ⚡"},
+{name_ar:"فلتر الموجة الجيبية",name_en:"Sine Wave Filter",name_ku:"Fîltera Pêla Sînus",cat:"industrial",image:"https://i.postimg.cc/m2LXNbJh/IMG-20260917-WA0018.jpg",desc_ar:"يحمي المحركات",desc_en:"Protects motors",desc_ku:"Motoran diparêze",badge_ar:"جديد ⚡",badge_en:"New ⚡",badge_ku:"Nû ⚡"},
+{name_ar:"قاطع DC التاج 63A",name_en:"Altech DC Breaker 63A",name_ku:"Şalter DC Altech 63A",cat:"protection",image:"https://i.postimg.cc/KksCDstS/Picsart-26-09-23-23-51-15-827.jpg",desc_ar:"قاطع DC أصلي",desc_en:"Original DC breaker",desc_ku:"Şalter DC orjînal",badge_ar:"الأصلي 🔥",badge_en:"Original 🔥",badge_ku:"Orjînal 🔥"}
+];
+const tr={
+ar:{dir:'rtl',menu_title:'القائمة',menu_home:'الرئيسية',menu_products:'المنتجات',menu_calc:'الحاسبة',page_title:'منتجاتنا ⚡',page_desc:'',banner_title:'🎥 خدمة التركيب المجاني',banner_text:'اشتريت وما عرفت تركب؟ افتح كاميرا واتساب وأنا أركب معك خطوة بخطوة مجاناً!',banner_btn:'📹 اتصل فيديو الآن',f_all:'',f_smart:'ذكي WiFi 📶',f_solar:'طاقة شمسية ☀️',f_ind:'صناعي ⚡',f_pro:'حماية 🛡️',btn_wa:'اطلب عبر واتساب 📱',search_ph:'🔍 ابحث عن منتج...',best_title:'🔥 الأكثر مبيعاً هذا الأسبوع',best_badge:'الأكثر طلباً 🔥',rev:'تقييم',days:["الأحد","الاثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت"],months:["كانون الثاني","شباط","آذار","نيسان","أيار","حزيران","تموز","آب","أيلول","تشرين الأول","تشرين الثاني","كانون الأول"]},
+en:{dir:'ltr',menu_title:'Menu',menu_home:'Home',menu_products:'Products',menu_calc:'Calculator',page_title:'Our Products ⚡',page_desc:'',banner_title:'🎥 Free Installation Support',banner_text:'Bought it and don\'t know how to install? Open video call and I will guide you step by step for free!',banner_btn:'📹 Video Call Now',f_all:'',f_smart:'Smart WiFi 📶',f_solar:'Solar ☀️',f_ind:'Industrial ⚡',f_pro:'Protection 🛡️',btn_wa:'Order on WhatsApp 📱',search_ph:'🔍 Search product...',best_title:'🔥 Best Sellers This Week',best_badge:'Most Requested 🔥',rev:'reviews',days:["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],months:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]},
+ku:{dir:'ltr',menu_title:'Menu',menu_home:'Mal',menu_products:'Berhem',menu_calc:'Hesabker',page_title:'Berhemên Me ⚡',page_desc:'',banner_title:'🎥 Xizmeta Girêdanê ya Belaş',banner_text:'Te kirî û nizane çawa girêbidî? Vîdyo veke û ez ê alîkariya te bikim belaş!',banner_btn:'📹 Vîdyo Banga Niha',f_all:'',f_smart:'Jîr WiFi 📶',f_solar:'Rojê ☀️',f_ind:'Pîşesazî ⚡',f_pro:'Parastin 🛡️',btn_wa:'Li WhatsApp Bixwaze 📱',search_ph:'🔍 Li berhemê bigere...',best_title:'🔥 Herî zêde tê firotin vê hefteyê',best_badge:'Herî daxwazkirî 🔥',rev:'nirxandin',days:["Yekşem","Duşem","Sêşem","Çarşem","Pêncşem","În","Şemî"],months:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]}
+};
+const fakeData={ar:{gov:["دمشق","حلب","الحسكة","القامشلي","حمص","إدلب","المالكية","الدرباسية"],names:["أحمد","محمد","علي","خالد","سليمان","عمر","يوسف","أبو جمال"],ordered:"طلب الآن",ago:"منذ",min:"دقيقة",viewing:"شخص يشاهدون الآن"},en:{gov:["Damascus","Aleppo","Hasakah"],names:["Ahmad","Ali","Khaled"],ordered:"just ordered",ago:"ago",min:"min",viewing:"people viewing now"},ku:{gov:["Şam","Hesekê","Qamişlo"],names:["Ehmed","Elî","Xalid"],ordered:"niha xwest",ago:"berî",min:"deqe",viewing:"kes niha dibînin"}};
+function getRating(idx){let seed=Math.abs(Math.sin(idx*17.7+5.3))*1000;let rating=4.5+(seed%0.5);if(rating>5)rating=5;let count=35+Math.floor((seed*1.3)%215);return{rate:rating.toFixed(1),count:count};}
+function starsHtml(rate){let r=parseFloat(rate);let full=Math.floor(r);let html='';for(let i=0;i<5;i++){html+=i<full?'★':'☆';}return `<span class="stars">${html}</span>`;}
+function updateClock(){let now=new Date();let h=now.getHours()%12;let m=now.getMinutes();let s=now.getSeconds();document.getElementById('hourHand').style.transform=`translateX(-50%) rotate(${(h+m/60)*30}deg)`;document.getElementById('minuteHand').style.transform=`translateX(-50%) rotate(${m*6}deg)`;document.getElementById('secondHand').style.transform=`translateX(-50%) rotate(${s*6}deg)`;document.getElementById('hourHandLarge').style.transform=`translateX(-50%) rotate(${(h+m/60)*30}deg)`;document.getElementById('minuteHandLarge').style.transform=`translateX(-50%) rotate(${m*6}deg)`;document.getElementById('secondHandLarge').style.transform=`translateX(-50%) rotate(${s*6}deg)`;let t=tr[currentLang];document.getElementById('dayName').innerText=t.days[now.getDay()];document.getElementById('dateNum').innerText=now.getDate()+" "+t.months[now.getMonth()];document.getElementById('sidebarDay').innerText=t.days[now.getDay()];document.getElementById('sidebarDate').innerText=now.getDate()+" "+t.months[now.getMonth()]+" "+now.getFullYear();}
+function setLang(lang){
+currentLang=lang;
+let t=tr[lang];
+document.documentElement.lang=lang;
+document.documentElement.dir=t.dir;
+document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
+document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+document.getElementById('menu_title').innerText=t.menu_title;
+document.getElementById('menu_home').innerText=t.menu_home;
+document.getElementById('menu_products').innerText=t.menu_products;
+document.getElementById('menu_calc').innerText=t.menu_calc;
+document.getElementById('page_title').innerText=t.page_title;
+document.getElementById('page_desc').innerText=`${t.page_title.includes('Our')?'All':'جميع'} RBooSH™ - ${products.length} ${lang=='ar'?'منتج':lang=='ku'?'berhem':'items'}`;
+document.getElementById('banner_title').innerText=t.banner_title;
+document.getElementById('banner_text').innerText=t.banner_text;
+document.getElementById('banner_btn').innerText=t.banner_btn;
+document.getElementById('searchInput').placeholder=t.search_ph;
+document.getElementById('best_title').innerText=t.best_title;
+t.f_all = lang=='ar'?`الكل (${products.length})`:lang=='ku'?`Hemû (${products.length})`:`All (${products.length})`;
+updateClock();render();updateCounter();renderBest();
+localStorage.setItem('rboosh_lang',lang);
+}
+function filterProducts(cat){currentFilter=cat;render();}
+function getBestSellers(){const KEY='rboosh_bestsellers';const TIME_KEY='rboosh_bestsellers_time';const DURATION=48*60*60*1000;let saved=localStorage.getItem(KEY);let savedTime=localStorage.getItem(TIME_KEY);let now=Date.now();if(saved&&savedTime&&(now-parseInt(savedTime)<DURATION)){try{let p=JSON.parse(saved); if(p.length==4 && Math.max(...p)<products.length) return p;}catch(e){}}let indices=[...Array(products.length).keys()];indices.sort(()=>0.5-Math.random());let selected=indices.slice(0,4);localStorage.setItem(KEY,JSON.stringify(selected));localStorage.setItem(TIME_KEY,now.toString());return selected;}
+function renderBest(){let t=tr[currentLang];let bestIndices=getBestSellers();let grid=document.getElementById('bestGrid');grid.innerHTML="";bestIndices.forEach(idx=>{let p=products[idx];if(!p) return;let name=currentLang=='en'?p.name_en:currentLang=='ku'?p.name_ku:p.name_ar;let desc=currentLang=='en'?p.desc_en:currentLang=='ku'?p.desc_ku:p.desc_ar;let viewers=Math.floor(Math.random()*175)+100;let waMsg=currentLang=='en'?'Hello Sulaiman, I want ':'مرحبا سليمان اريد ';if(currentLang=='ku')waMsg='Merheba Silêman, ez dixwazim ';let rat=getRating(idx);grid.innerHTML+=`<div class="product-card" style="border-color:#ff6a00;box-shadow:0 0 15px rgba(255,106,0,0.3)"><div class="live-view"><i></i> ${viewers} 👀</div><img src="${p.image}" alt="${name}" loading="lazy"><div class="product-body"><span class="product-badge badge-hot">${t.best_badge}</span><h3>${name}</h3><div class="rating">${starsHtml(rat.rate)}<span class="rating-num">${rat.rate}</span><span class="rating-count">(${rat.count} ${t.rev})</span></div><p class="product-desc">${desc}</p><div class="product-price">${BRAND}</div><a class="btn-wa" href="https://wa.me/4915216839609?text=${waMsg}${encodeURIComponent(name)}" target="_blank">${t.btn_wa}</a></div></div>`;});}
+function render(){let t=tr[currentLang];let search=document.getElementById('searchInput').value.toLowerCase();let fb=document.getElementById('filterBar');let allText = currentLang=='ar'?`الكل (${products.length})`:currentLang=='ku'?`Hemû (${products.length})`:`All (${products.length})`;fb.innerHTML=`<button class="filter-btn ${currentFilter=='all'?'active':''}" onclick="filterProducts('all')">${allText}</button><button class="filter-btn ${currentFilter=='smart'?'active':''}" onclick="filterProducts('smart')">${t.f_smart}</button><button class="filter-btn ${currentFilter=='solar'?'active':''}" onclick="filterProducts('solar')">${t.f_solar}</button><button class="filter-btn ${currentFilter=='industrial'?'active':''}" onclick="filterProducts('industrial')">${t.f_ind}</button><button class="filter-btn ${currentFilter=='protection'?'active':''}" onclick="filterProducts('protection')">${t.f_pro}</button>`;const grid=document.getElementById('productsGrid');grid.innerHTML="";let filtered=currentFilter=='all'?products:products.filter(p=>p.cat==currentFilter);if(search)filtered=filtered.filter(p=>(p.name_ar+p.name_en+p.desc_ar).toLowerCase().includes(search));filtered.forEach(p=>{let realIdx=products.indexOf(p);let name=currentLang=='en'?p.name_en:currentLang=='ku'?p.name_ku:p.name_ar;let desc=currentLang=='en'?p.desc_en:currentLang=='ku'?p.desc_ku:p.desc_ar;let badge=currentLang=='en'?p.badge_en:currentLang=='ku'?p.badge_ku:p.badge_ar;let viewers=Math.floor(Math.random()*175)+25;let waMsg=currentLang=='en'?'Hello Sulaiman, I want ':'مرحبا سليمان اريد ';if(currentLang=='ku')waMsg='Merheba Silêman, ez dixwazim ';let rat=getRating(realIdx);grid.innerHTML+=`<div class="product-card"><div class="live-view"><i></i> ${viewers} 👀</div><img src="${p.image}" alt="${name}" loading="lazy"><div class="product-body"><span class="product-badge">${badge}</span><h3>${name}</h3><div class="rating">${starsHtml(rat.rate)}<span class="rating-num">${rat.rate}</span><span class="rating-count">(${rat.count} ${t.rev})</span></div><p class="product-desc">${desc}</p><div class="product-price">${BRAND}</div><a class="btn-wa" href="https://wa.me/4915216839609?text=${waMsg}${encodeURIComponent(name)}" target="_blank">${t.btn_wa}</a></div></div>`;});}
 function openMenu(){document.getElementById('sidebar').classList.add('open');document.getElementById('overlay').classList.add('show');}
 function closeMenu(){document.getElementById('sidebar').classList.remove('open');document.getElementById('overlay').classList.remove('show');}
-
-const products=[
-{id:1,title:"لوحة توزيع 12 خط - RBooSH™",brand:"GIVIS",price:"$45",cat:"panel",img:"https://i.postimg.cc/KYjDpfyj/IMG-20260902-WA0081.jpg"},
-{id:2,title:"قاطع LS 32A ثلاثي",brand:"LS",price:"$18",cat:"breaker",img:"https://i.postimg.cc/qvkLy0bm/IMG-20260902-WA0020.jpg"},
-{id:3,title:"كونتاكتور Schneider 25A",brand:"Schneider",price:"$22",cat:"contactor",img:"https://i.postimg.cc/PvdzN16d/IMG-20260828-WA0002-1.jpg"},
-{id:4,title:"كابل ÜNAL 2.5mm - 100m",brand:"ÜNAL KABLO",price:"$85",cat:"cable",img:"https://i.postimg.cc/KYjDpfyj/IMG-20260902-WA0081.jpg"},
-{id:5,title:"منظم جهد 2000VA",brand:"RBooSH™",price:"$120",cat:"stabilizer",img:"https://i.postimg.cc/qvkLy0bm/IMG-20260902-WA0020.jpg"},
-{id:6,title:"قاطع CHINT 16A",brand:"CHINT",price:"$7",cat:"breaker",img:"https://i.postimg.cc/PvdzN16d/IMG-20260828-WA0002-1.jpg"},
-{id:7,title:"لوحة توزيع 24 خط معدن",brand:"POLLUX",price:"$75",cat:"panel",img:"https://i.postimg.cc/KYjDpfyj/IMG-20260902-WA0081.jpg"},
-{id:8,title:"كابل CLAY 4mm",brand:"CLAY",price:"$110",cat:"cable",img:"https://i.postimg.cc/qvkLy0bm/IMG-20260902-WA0020.jpg"},
-{id:9,title:"قاطع تفاضلي AKO 40A",brand:"AKO",price:"$28",cat:"breaker",img:"https://i.postimg.cc/PvdzN16d/IMG-20260828-WA0002-1.jpg"},
-{id:10,title:"كونتاكتور HYUNDAI 40A",brand:"HYUNDAI",price:"$35",cat:"contactor",img:"https://i.postimg.cc/KYjDpfyj/IMG-20260902-WA0081.jpg"},
-{id:11,title:"منظم جهد 5000VA - صناعي",brand:"RBooSH™",price:"$250",cat:"stabilizer",img:"https://i.postimg.cc/qvkLy0bm/IMG-20260902-WA0020.jpg"},
-{id:12,title:"لوحة توزيع TENSE 18 خط",brand:"TENSE",price:"$55",cat:"panel",img:"https://i.postimg.cc/PvdzN16d/IMG-20260828-WA0002-1.jpg"},
-];
-
-function renderProducts(filter='all'){
-let grid=document.getElementById('productsGrid');
-grid.innerHTML='';
-let list=filter==='all'?products:products.filter(p=>p.cat===filter);
-list.forEach(p=>{
-grid.innerHTML+=`
-<div class="product-card" data-cat="${p.cat}">
-<img src="${p.img}" loading="lazy">
-<div class="product-info">
-<div class="product-brand">${p.brand}</div>
-<div class="product-title">${p.title}</div>
-<div class="product-price">${p.price}</div>
-<button class="btn-order" onclick="orderNow('${p.title}')">اطلب عبر واتساب 📱</button>
-</div>
-</div>`;
-});
-}
-function filterProducts(cat){
-document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
-event.target.classList.add('active');
-renderProducts(cat);
-}
-function orderNow(title){
-let msg=encodeURIComponent(`مرحبا RBooSH™\nأريد طلب: ${title}\n`);
-window.open(`https://wa.me/963966436341?text=${msg}`,'_blank');
-}
-renderProducts();
-
-// ✅ نفس نظام 90 اسم + كل المدن كل 9 ثواني
-const data={
-ar:{
-gov:["دمشق","حلب","حمص","حماة","اللاذقية","طرطوس","إدلب","الحسكة","الرقة","دير الزور","السويداء","درعا","القنيطرة","ريف دمشق","القامشلي","عامودا","الدرباسية","المالكية","القحطانية","عين العرب","عفرين","اعزاز","الباب","منبج","جرابلس","السفيرة","النبك","يبرود","الزبداني","القطيفة","دوما","داريا","جرمانا","صحنايا","معرة النعمان","جسر الشغور","تلكلخ","صافيتا","بانياس","جبلة","القدموس","مصياف","السلمية","محردة","الميادين","البوكمال","تدمر","شهبا","صلخد","ازرع","نوى","القصير","الرستن","رأس العين","تل تمر","الشدادي","الهول"],
-names:["أحمد","محمد","علي","خالد","حسن","عمر","يوسف","عبدالله","مصطفى","سامر","لؤي","أبو عمار","محمود","حسين","بلال","سليمان","عامر","رامي","فارس","وسيم","أمجد","أنس","إبراهيم","كريم","عدي","قصي","غيث","زيد","طلال","نزار","مازن","فادي","جمال","وائل","رائد","سعيد","بشار","نضال","زياد","مروان","عمار","باسل","أيمن","جهاد","معن","سارة","نور","لانا","لين","شهد","رهف","مريم","فاطمة","زينب","ريم","راما","جودي","تالا","نايا","سيدرا","لمى","ديما","رنيم","جنى","سيلين","ميرا","ليا","هيا","آية","آلاء","رغد","سدين","روان","رزان","حلا","ليان","سما","شام","يارا","غزل","تيماء","ميس","جوري","سلمى","هديل","إسراء","دعاء","نغم","ليلى","عبير","هلا"],
-ordered:"طلب منتج",viewing:"شخص يشاهدون المنتجات الآن",orders:"طلب اليوم من"
-},
-en:{
-gov:["Damascus","Aleppo","Homs","Hama","Latakia","Tartus","Idlib","Hasakah","Raqqa","Deir Ezzor","Suwayda","Daraa","Quneitra","Rif Damascus","Qamishli","Amuda","Darbasiyah","Malikiyah","Kobani","Afrin","Azaz","Al-Bab","Manbij","Jarabulus","Safira","Nabk","Zabadani","Douma","Jaramana","Maarat al-Numan","Jisr al-Shughur","Talkalakh","Safita","Baniyas","Jableh","Masyaf","Salamiyah","Mayadin","Bukamal","Palmyra"],
-names:["Ahmad","Mohammad","Ali","Khaled","Hassan","Omar","Youssef","Abdullah","Mustafa","Samer","Louay","Mahmoud","Hussein","Bilal","Suleiman","Amer","Rami","Fares","Wassim","Amjad","Anas","Ibrahim","Karim","Zaid","Fadi","Bassel","Sara","Nour","Lana","Leen","Shahd","Rahaf","Mariam","Fatima","Zainab","Reem","Rama","Judy","Tala","Naya","Lama","Dima","Jana","Celine","Mira","Haya","Raghad","Rawan","Razan","Hala","Layan","Sama","Sham","Yara","Ghazal","Mais","Jouri","Salma","Israa","Layla"],
-ordered:"ordered product",viewing:"people viewing products now",orders:"orders today from"
-},
-ku:{
-gov:["Qamişlo","Amûdê","Dirbêsiyê","Dêrik","Serêkaniyê","Kobanê","Efrîn","Heleb","Hesekê","Şam","Hims","Laziqiye","Tartus","Idlib","Hama","Reqqa","Dêrezor","Siweyda","Dera","Girkê Legê","Tirbespiyê","Çilaxa","Rimêlan","Til Temir","Hol","Şedadê","Azaz","Al-Bab","Minbic","Nabek","Zebedanî","Dûma","Safita","Baniyas","Misyaf","Palmyra"],
-names:["Azad","Baran","Dijwar","Rebwar","Sipan","Rojhat","Dilovan","Hêvîdar","Çiya","Zagros","Aras","Heval","Ciwan","Renas","Welat","Agit","Serhat","Botan","Delîl","Aram","Roj","Alan","Berxwedan","Xebat","Rojan","Zana","Şivan","Serxwebûn","Amed","Rojgar","Şêrko","Hawkar","Bêwar","Hêmin","Berzan","Lîlav","Avîn","Rojîn","Jîn","Viyan","Sozdar","Delal","Berfîn","Nisrîn","Evîn","Rûken","Dilan","Helîn","Hîvî","Arjin","Avesta","Gulê","Zozan","Ronahî","Narîn","Peyman","Zîn","Şîlan","Xezal","Medya","Jînda","Roza","Lora","Hevi","Darya","Lana","Sara","Zara","Hana","Mîna","Jiyan","Bêrîvan","Gulistan","Newroz","Roşna","Aştî","Sarya","Laleş","Sêvê","Viyan","Nujiyan","Rojda","Canê","Avşîn","Sozan","Rênas","Hêlîn","Zilan"],
-ordered:"berhem xwest",viewing:"kes berheman dibînin",orders:"daxwaz îro ji"
-}};
-let currentLang='ar';
-function setLang(lang){currentLang=lang;document.documentElement.lang=lang;document.documentElement.dir=(lang==='ar'?'rtl':'ltr');document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');updateCounter();}
-function updateCounter(){let v=Math.floor(Math.random()*100)+180;let o=Math.floor(Math.random()*20)+30;let g1=data[currentLang].gov[Math.floor(Math.random()*data[currentLang].gov.length)];let g2=data[currentLang].gov[Math.floor(Math.random()*data[currentLang].gov.length)];if(currentLang==='ar') document.getElementById('counterText').innerHTML=`🔥 ${v} ${data.ar.viewing} - ${o} ${data.ar.orders} ${g1}، ${g2} و باقي محافظات سوريا`;else if(currentLang==='en') document.getElementById('counterText').innerHTML=`🔥 ${v} ${data.en.viewing} - ${o} ${data.en.orders} ${g1}, ${g2} & other Syrian govs`;else document.getElementById('counterText').innerHTML=`🔥 ${v} ${data.ku.viewing} - ${o} ${data.ku.orders} ${g1}, ${g2}`;}
-setInterval(updateCounter,4000);
-function showPopup(){let d=data[currentLang];let n=d.names[Math.floor(Math.random()*d.names.length)];let g=d.gov[Math.floor(Math.random()*d.gov.length)];let m=Math.floor(Math.random()*8)+1;let imgs=["https://i.postimg.cc/KYjDpfyj/IMG-20260902-WA0081.jpg","https://i.postimg.cc/qvkLy0bm/IMG-20260902-WA0020.jpg","https://i.postimg.cc/PvdzN16d/IMG-20260828-WA0002-1.jpg"];document.getElementById('popupImg').src=imgs[Math.floor(Math.random()*imgs.length)];if(currentLang==='ar'){document.getElementById('popupTitle').innerHTML=`✅ ${n} من ${g} ${d.ordered}`;document.getElementById('popupDesc').innerHTML=`اشترى الآن - منذ ${m} دقيقة`;}else if(currentLang==='en'){document.getElementById('popupTitle').innerHTML=`✅ ${n} from ${g} ${d.ordered}`;document.getElementById('popupDesc').innerHTML=`Bought now - ${m} min ago`;}else{document.getElementById('popupTitle').innerHTML=`✅ ${n} ji ${g} ${d.ordered}`;document.getElementById('popupDesc').innerHTML=`Niha kirî - berî ${m} deqe`;}document.getElementById('orderPopup').classList.add('show');setTimeout(()=>{document.getElementById('orderPopup').classList.remove('show');},4500);}setTimeout(showPopup,3000);setInterval(showPopup,9000);updateCounter();
+function updateCounter(){let extra=products.length*12;let base=300+extra;let maxAdd=700-base;if(maxAdd<50)maxAdd=50;let viewers=base+Math.floor(Math.random()*(maxAdd+1));if(viewers>700)viewers=700;if(viewers<300)viewers=300;let d=fakeData[currentLang];document.getElementById('counterText').innerText=`🔥 ${viewers} ${d.viewing}`;}
+function showPopup(){let p=products[Math.floor(Math.random()*products.length)];let d=fakeData[currentLang];let n=d.names[Math.floor(Math.random()*d.names.length)];let g=d.gov[Math.floor(Math.random()*d.gov.length)];let mins=Math.floor(Math.random()*8)+1;let pName=currentLang=='en'?p.name_en:currentLang=='ku'?p.name_ku:p.name_ar;document.getElementById('popupImg').src=p.image;if(currentLang=='ar'){document.getElementById('popupTitle').innerHTML=`✅ ${n} من ${g} ${d.ordered}`;document.getElementById('popupDesc').innerHTML=`${pName.substring(0,30)}... - ${d.ago} ${mins} ${d.min} ✅`;}else if(currentLang=='en'){document.getElementById('popupTitle').innerHTML=`✅ ${n} from ${g} ${d.ordered}`;document.getElementById('popupDesc').innerHTML=`${pName.substring(0,30)}... - ${mins} ${d.min} ${d.ago} ✅`;}else{document.getElementById('popupTitle').innerHTML=`✅ ${n} ji ${g} ${d.ordered}`;document.getElementById('popupDesc').innerHTML=`${pName.substring(0,30)}... - ${d.ago} ${mins} ${d.min} ✅`;}document.getElementById('orderPopup').classList.add('show');setTimeout(()=>{document.getElementById('orderPopup').classList.remove('show');},4500);}
+setInterval(updateClock,1000);updateClock();
+setTimeout(showPopup,3000);setInterval(showPopup,8500);
+let savedLang = localStorage.getItem('rboosh_lang') || 'ar';
+setLang(savedLang);
 </script>
 </body>
 </html>
