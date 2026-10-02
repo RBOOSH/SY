@@ -4,8 +4,8 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>منتجاتنا - RBooSH™</title>
 <style>
-:root{--bg:#000;--card:#111;--text:#fff;--text2:#aaa;--border:#222;--blue:#00bfff;--blue2:#1e3a8a}
-body.light{--bg:#f5f7fb;--card:#fff;--text:#111;--text2:#555;--border:#dbe3ff}
+:root{--bg:#000;--card:#111;--card2:#0a0a0a;--text:#fff;--text2:#aaa;--border:#222;--blue:#00bfff;--blue2:#1e3a8a}
+body.light{--bg:#f5f7fb;--card:#fff;--card2:#eef2ff;--text:#111;--text2:#555;--border:#dbe3ff}
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Tahoma',sans-serif}
 body{background:var(--bg);color:var(--text);line-height:1.8;transition:0.4s}
 .container{max-width:1100px;margin:0 auto;padding:20px;padding-top:85px}
@@ -132,26 +132,20 @@ footer{text-align:center;padding:30px;color:#777;font-size:12px}
   <a href="calculator.html" id="menu_calc">الحاسبة</a>
   <a href="https://www.mediafire.com/file/fwtoatnx6cw9jz5/rboosh_%25288%2529.apk/file" target="_blank" id="menu_apk" style="background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;font-weight:900;border-radius:10px;margin-top:10px;text-align:center;display:block;padding:10px;">📱 حمل تطبيق RBooSH™ 🤖</a>
   <div id="apk_downloads" style="text-align:center;color:#0b3d2e;font-size:12px;font-weight:900;margin-top:8px;background:#e6f9ec;border:1px solid #25D366;border-radius:10px;padding:7px 6px;">🔥 +3,247 شخص حمّل التطبيق</div>
-  <a href="privacy.html" id="menu_privacy" style="display:block;margin-top:15px;padding:12px;text-align:center;border:1px solid var(--border);border-radius:10px;color:var(--text2);text-decoration:none;font-size:13px;font-weight:bold;background:var(--card2,#0a0a0a);">🔒 سياسة الخصوصية</a>
+  <a href="privacy.html" id="menu_privacy" style="display:block;margin-top:15px;padding:12px;text-align:center;border:1px solid var(--border);border-radius:10px;color:var(--text2);text-decoration:none;font-size:13px;font-weight:bold;background:var(--card2);">🔒 سياسة الخصوصية</a>
 </div>
 <div class="container">
 <div class="logo"><img src="logo.png" alt="RBooSH"></div>
 <div class="brands-bar"><div class="brands-track"><div class="brands-group"><span class="c-ls">LS</span><span class="c-schneider">Schneider</span><span class="c-chint">CHINT</span><span class="c-tense">TENSE</span><span class="c-givis">GIVIS</span><span class="c-pollux">POLLUX</span><span class="c-rboosh">RBooSH™</span><span class="c-altech">Altech</span><span class="c-hyundai">HYUNDAI</span><span class="c-clay">CLAY</span><span class="c-unal">ÜNAL KABLO</span><span class="c-ako">AKO</span></div><div class="brands-group" aria-hidden="true"><span class="c-ls">LS</span><span class="c-schneider">Schneider</span><span class="c-chint">CHINT</span><span class="c-tense">TENSE</span><span class="c-givis">GIVIS</span><span class="c-pollux">POLLUX</span><span class="c-rboosh">RBooSH™</span><span class="c-altech">Altech</span><span class="c-hyundai">HYUNDAI</span><span class="c-clay">CLAY</span><span class="c-unal">ÜNAL KABLO</span><span class="c-ako">AKO</span></div></div></div>
 <h1 id="page_title">منتجاتنا ⚡</h1><p style="text-align:center;color:var(--text2);" id="page_desc"></p>
 <div class="visitor-counter"><div class="live-dot"></div><span id="counterText"></span></div>
-
 <h2 class="best-title" id="best_title">🔥 الأكثر مبيعاً هذا الأسبوع</h2>
 <div class="best-wrapper"><div class="best-track" id="bestGrid"></div></div>
-
 <div class="search-box"><input type="text" id="searchInput" placeholder="🔍 ابحث عن منتج..." oninput="handleSearch()"></div>
-
 <div class="filter-bar" id="filterBar"></div>
-
 <div class="products-grid" id="productsGrid"></div>
 <div id="loadMoreWrap" style="text-align:center;margin:30px 0;display:none"><button id="loadMoreBtn" onclick="loadMore()" style="background:linear-gradient(135deg,var(--blue2),var(--blue));color:#fff;border:2px solid var(--blue);padding:12px 28px;border-radius:25px;font-weight:bold;font-size:15px;cursor:pointer;box-shadow:0 0 15px rgba(0,191,255,0.5)"></button></div>
-
 <div class="install-banner"><h2 id="banner_title" style="color:#fff">🎥 خدمة التركيب المجاني</h2><p id="banner_text" style="color:#e0f2ff;font-size:14px;margin:8px 0 12px">اشتريت وما عرفت تركب؟ افتح كاميرا واتساب وأنا أركب معك خطوة بخطوة مجاناً!</p><a id="banner_btn" style="background:#fff;color:#1e3a8a;padding:10px 20px;border-radius:25px;text-decoration:none;font-weight:bold;display:inline-block" href="https://wa.me/4915216839609?text=مرحبا ابو سليمان" target="_blank">📹 اتصل فيديو الآن</a></div>
-
 <footer>© 2026 RBooSH™ - Abu Sulaiman Group | <a href="privacy.html" style="color:#777;text-decoration:underline">Privacy</a></footer>
 </div>
 <div class="order-popup" id="orderPopup"><img id="popupImg" src=""><div style="flex:1"><b id="popupTitle" style="color:#25D366;font-size:13px;display:block"></b><small id="popupDesc" style="color:var(--text2);font-size:11px"></small></div><span style="color:#777;cursor:pointer" onclick="document.getElementById('orderPopup').classList.remove('show')">×</span></div>
